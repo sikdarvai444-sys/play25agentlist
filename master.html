@@ -7,27 +7,36 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
 body{background:#0b3d91;color:#fff}
-.header{display:flex;justify-content:space-between;align-items:center;padding:15px 10px}
-.logo{font-size:28px;font-weight:bold;text-align:center;flex:1}
+.header{display:flex;justify-content:space-between;align-items:center;padding:12px 8px}
+.logo{font-size:24px;font-weight:bold;text-align:center;flex:1}
 .logo span:first-child{color:#ffeb3b}
-.search-icon,.grid-icon{font-size:22px;color:#ffc107;cursor:pointer;padding:5px}
-.menu{background:#1153c7;margin:10px;border-radius:10px;padding:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
-.menu a{color:#fff;text-decoration:none;font-size:14px;font-weight:500}
+.search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
+.menu{background:#1153c7;margin:8px;border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.menu a{color:#fff;text-decoration:none;font-size:12px;font-weight:500}
 .menu a.active{color:#ffeb3b;border-bottom:2px solid #ffeb3b}
-.box{background:#1153c7;margin:10px;border-radius:10px;padding:15px;overflow-x:auto}
-h2{text-align:center;color:#ffeb3b;margin-bottom:15px;font-size:22px;font-weight:bold}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:700px}
+.box{background:#1153c7;margin:8px;border-radius:8px;padding:10px;overflow-x:auto}
+h2{text-align:center;color:#ffeb3b;margin-bottom:10px;font-size:18px;font-weight:bold}
+
+/* কম্প্যাক্ট টেবিল */
+table{width:100%;border-collapse:collapse;font-size:10px;min-width:650px}
 thead{background:#0b3d91}
-th{color:#fff;padding:10px;text-align:center;font-weight:bold}
-td{padding:8px;text-align:center;border-bottom:1px solid #1976d2}
-.avatar{width:35px;height:35px;border-radius:50%;background:#555;display:inline-block;vertical-align:middle;margin-right:5px}
-.name-col{text-align:left}
-.id-box{background:#cddc39;color:#000;padding:4px 6px;border-radius:5px;font-weight:bold;font-size:11px}
-.stars{color:#ffc107;white-space:nowrap}
-.btn-wa{background:#25D366;color:#fff;padding:3px 6px;border-radius:4px;text-decoration:none;font-size:10px;display:block;margin:2px 0}
-.btn-report{background:#f44336;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:11px}
-.btn-view{background:#2196f3;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:11px}
-.support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:10px 20px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer}
+th{color:#fff;padding:6px 3px;text-align:center;font-weight:bold;white-space:nowrap}
+td{padding:5px 3px;text-align:center;border-bottom:1px solid #1976d2;vertical-align:middle}
+
+.avatar{width:28px;height:28px;border-radius:50%;background:#555;display:inline-block;vertical-align:middle;margin-right:3px}
+.avatar img{width:100%;border-radius:50%}
+.name-col{text-align:left;white-space:nowrap}
+.name-col b{font-size:11px}
+.name-col small{font-size:9px;color:#ccc;display:block}
+.id-box{background:#cddc39;color:#000;padding:2px 4px;border-radius:4px;font-weight:bold;font-size:9px;display:inline-block}
+.stars{color:#ffc107;font-size:9px;white-space:nowrap}
+.btn-wa{background:#25D366;color:#fff;padding:2px 4px;border-radius:3px;text-decoration:none;font-size:9px;display:block;margin:1px 0}
+.btn-report{background:#f44336;color:#fff;padding:2px 5px;border-radius:4px;text-decoration:none;font-size:9px}
+.btn-view{background:#2196f3;color:#fff;padding:2px 5px;border-radius:4px;text-decoration:none;font-size:12px}
+.icon-wa{width:18px}
+.icon-fb{width:18px}
+
+.support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:8px 16px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer;font-size:12px}
 
 /* Popup CSS */
 .popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;justify-content:center;align-items:center}
@@ -47,7 +56,7 @@ td{padding:8px;text-align:center;border-bottom:1px solid #1976d2}
 
 <div class="header">
     <div class="search-icon" onclick="openSearch()">🔍</div>
-    <div class="logo">👑 <span>PLAY</span><span>25</span><div style="font-size:12px;letter-spacing:2px">Agent List</div></div>
+    <div class="logo">👑 <span>PLAY</span><span>25</span><div style="font-size:10px;letter-spacing:2px">Agent List</div></div>
     <div class="grid-icon">⊞</div>
 </div>
 
@@ -66,7 +75,7 @@ td{padding:8px;text-align:center;border-bottom:1px solid #1976d2}
     <table>
         <thead>
             <tr>
-                <th>Name</th><th>ID</th><th>Rating</th><th>App Link</th><th>Facebook</th><th>Phone Number</th><th>View</th><th>Report</th>
+                <th>Name</th><th>ID</th><th>Rating</th><th>App</th><th>FB</th><th>Phone</th><th>View</th><th>Report</th>
             </tr>
         </thead>
         <tbody id="agentList"><tr><td colspan="8">Loading...</td></tr></tbody>
@@ -135,8 +144,8 @@ function renderAgents(data){
     let a = data[key];
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
       html += `<tr>
-        <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><br><small>${a.role}</small></td>
-        <td><div class="id-box">ID<br>${a.id}</div></td>
+        <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><small>${a.role}</small></td>
+        <td><div class="id-box">${a.id}</div></td>
         <td class="stars">★★★</td>
         <td><a href="${a.app||'#'}" target="_blank">${a.app? '📱' : '--'}</a></td>
         <td><a href="${a.fb||'#'}" target="_blank">${a.fb? 'f' : '--'}</a></td>
@@ -155,7 +164,6 @@ function doSearch(){
   let id = document.getElementById('searchId').value.trim();
   let phone = document.getElementById('searchPhone').value.trim();
   let result = {};
-
   for(let key in allAgentsData){
     let a = allAgentsData[key];
     let match = true;
