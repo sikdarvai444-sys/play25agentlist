@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Play25</title>
-    <style>
-        body { 
-            background: linear-gradient(135deg, #1e3c72, #2a5298); 
-            color:white; 
-            font-family: Arial;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: rgba(0,0,0,0.4);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        input {
-            width: 90%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        button {
-            background: #38bdf8;
-            color: #1e3c72;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #0ea5e9;
-        }
-        a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN LIST - PLAY25</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#0a1a3f;color:#fff;padding-bottom:60px}
+.header{text-align:center;padding:15px}
+.logo{font-size:28px;font-weight:bold;color:#ffd700}
+.logo span{color:#ff0000}
+.menu{background:#1e3c72;margin:10px;border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.menu a{color:#fff;text-decoration:none;font-size:13px}
+h2{text-align:center;color:#ffd700;margin:15px 0}
+.card{background:#1e3c72;margin:10px;padding:15px;border-radius:10px}
+.admin{display:flex;align-items:center;gap:10px;background:#0a1a3f;padding:10px;border-radius:10px;flex-wrap:wrap;margin-bottom:10px}
+.id-box{background:#ffd700;color:#000;padding:3px 8px;border-radius:5px;font-weight:bold}
+.btn{background:#25D366;color:#fff;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:11px}
+.btn-message{background:#1877f2}
+.support{position:fixed;bottom:10px;left:10px;background:#28a745;padding:8px 12px;border-radius:20px;color:#fff;text-decoration:none;z-index:999}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>🔐 Admin Panel</h1>
-        <p>Agent List ম্যানেজ করুন</p>
-        
-        <input type="text" placeholder="Agent Name লিখুন">
-        <input type="text" placeholder="Agent ID লিখুন">
-        <button>Add Agent</button>
-        
-        <br><br>
-        <a href="index.html">← Home এ ফিরে যান</a>
+<div class="header">
+    <div class="logo">👑 PLAY<span>25</span></div>
+    <div>Agent List</div>
+</div>
+
+<div class="menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="siteowner.html">👤 Site Owner</a>
+    <a href="admin.html">👤 Admin</a>
+    <a href="master.html">👤 Sub Admin</a>
+    <a href="master.html">👤 Super</a>
+    <a href="master.html">👤 Master</a>
+    <a href="#">🎯 Lottery</a>
+</div>
+
+<h2>ADMIN LIST</h2>
+
+<div class="card">
+    <div class="admin">
+        <div>👤</div>
+        <div><b>Rasel Admin</b><br><small>Admin</small></div>
+        <div class="id-box">ID 2</div>
+        <div>+8801XXXXXXXXX<br><a href="https://wa.me/8801XXXXXXXXX" class="btn">Whatsapp</a></div>
+        <a href="#" class="btn btn-message">Message</a>
     </div>
+
+    <div class="admin">
+        <div>👤</div>
+        <div><b>Siam Admin</b><br><small>Admin</small></div>
+        <div class="id-box">ID 3</div>
+        <div>+8801XXXXXXXXX<br><a href="https://wa.me/8801XXXXXXXXX" class="btn">Whatsapp</a></div>
+        <a href="#" class="btn btn-message">Message</a>
+    </div>
+
+    <div class="admin">
+        <div>👤</div>
+        <div><b>Rafi Admin</b><br><small>Admin</small></div>
+        <div class="id-box">ID 4</div>
+        <div>+8801XXXXXXXXX<br><a href="https://wa.me/8801XXXXXXXXX" class="btn">Whatsapp</a></div>
+        <a href="#" class="btn btn-message">Message</a>
+    </div>
+</div>
+
+<p style="text-align:center;margin:10px">নতুন Admin add করতে `<div class="admin">` কপি করে Paste করেন</p>
+
+<a href="#" class="support">🎧 Support</a>
 </body>
 </html>
