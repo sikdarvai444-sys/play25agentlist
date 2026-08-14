@@ -44,14 +44,11 @@ td{padding:8px;border-bottom:1px solid #1976d2}
   <button onclick="saveSettings()">Save FB Links</button>
 
   <h3 style="margin-top:20px">🔗 Proxy Links Add করুন</h3>
-  <input id="p_name" placeholder="Link Name ex: Main Link, Link 2, Low limit casino">
+  <input id="p_name" placeholder="Link Name ex: Main Link, Link 2">
   <input id="p_url" placeholder="Link URL ex: https://play25.live">
   <button onclick="addProxy()">Add Proxy Link</button>
-
   <h3 style="margin-top:20px">📋 All Proxy Links</h3>
-  <table id="proxyList">
-    <tr><th>Name</th><th>URL</th><th>Action</th></tr>
-  </table>
+  <table id="proxyList"><tr><th>Name</th><th>URL</th><th>Action</th></tr></table>
 </div>
 
 <!-- AGENT TAB -->
@@ -60,6 +57,10 @@ td{padding:8px;border-bottom:1px solid #1976d2}
   <input type="hidden" id="editKey">
   <input id="name" placeholder="Agent Name *">
   <input id="id" placeholder="Agent ID/Number * ex: 1, 2, 3">
+  <input id="serial" placeholder="Serial Number * ex: 101, 102">
+  <select id="parent">
+    <option value="">-- কার আন্ডারে -- Site Owner</option>
+  </select>
   <input id="phone" placeholder="WhatsApp Number 8801... *">
   <input id="phone2" placeholder="2nd WhatsApp Number Optional">
   <input id="app" placeholder="App Download Link">
@@ -78,7 +79,7 @@ td{padding:8px;border-bottom:1px solid #1976d2}
   <h3 style="margin-top:20px">📋 All Agents</h3>
   <div style="overflow-x:auto">
   <table id="list">
-    <tr><th>Name</th><th>Role</th><th>ID</th><th>Phone</th><th>Action</th></tr>
+    <tr><th>SL</th><th>Name</th><th>Role</th><th>ID</th><th>Parent</th><th>Phone</th><th>Action</th></tr>
   </table>
   </div>
 </div>
@@ -89,11 +90,8 @@ td{padding:8px;border-bottom:1px solid #1976d2}
   <input id="s_name" placeholder="Support Name ex: CS 1, CS 2">
   <input id="s_phone" placeholder="Support WhatsApp 8801...">
   <button onclick="addSupport()">Add Support</button>
-
   <h3 style="margin-top:20px">📞 All Support</h3>
-  <table id="supportList">
-    <tr><th>Name</th><th>Phone</th><th>Action</th></tr>
-  </table>
+  <table id="supportList"><tr><th>Name</th><th>Phone</th><th>Action</th></tr></table>
 </div>
 
 </div>
@@ -110,6 +108,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 let editingKey = null;
+let allAgents = {};
 
 function openTab(tabName){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'))
@@ -118,74 +117,56 @@ function openTab(tabName){
   document.getElementById(tabName).classList.add('active')
 }
 
-// ===== LINKS FUNCTIONS =====
-function saveSettings(){
-  db.ref('settings/fbGroup').set(document.getElementById('fbGroup').value);
-  db.ref('settings/fbPage').set(document.getElementById('fbPage').value);
-  alert('FB Links Saved!');
-}
-db.ref('settings').on('value', snap=>{
-  let s = snap.val() || {};
-  document.getElementById('fbGroup').value = s.fbGroup || '';
-  document.getElementById('fbPage').value = s.fbPage || '';
-})
+// ===== LINKS =====
+function saveSettings(){db.ref('settings/fbGroup').set(document.getElementById('fbGroup').value);db.ref('settings/fbPage').set(document.getElementById('fbPage').value);alert('FB Links Saved!')}
+db.ref('settings').on('value', snap=>{let s=snap.val()||{};document.getElementById('fbGroup').value=s.fbGroup||'';document.getElementById('fbPage').value=s.fbPage||''})
+function addProxy(){let data={name:document.getElementById('p_name').value.trim(),url:document.getElementById('p_url').value.trim()};if(data.name==''||data.url==''){alert('Name, URL দিন');return;}db.ref('settings/proxyLinks').push(data);document.getElementById('p_name').value='';document.getElementById('p_url').value='';}
+function delProxy(key){if(confirm('Delete করবেন?'))db.ref('settings/proxyLinks/'+key).remove();}
+db.ref('settings/proxyLinks').on('value',snap=>{let h='<tr><th>Name</th><th>URL</th><th>Action</th></tr>';snap.forEach(c=>{let p=c.val();h+=`<tr><td><b>${p.name}</b></td><td>${p.url}</td><td><button class="btn-del" onclick="delProxy('${c.key}')">Del</button></td></tr>`});document.getElementById('proxyList').innerHTML=h})
 
-function addProxy(){
-  let data = {
-    name:document.getElementById('p_name').value.trim(),
-    url:document.getElementById('p_url').value.trim()
-  };
-  if(data.name=='' || data.url==''){alert('Name, URL দিন');return;}
-  db.ref('settings/proxyLinks').push(data); 
-  alert('Proxy Link Added!');
-  document.getElementById('p_name').value='';
-  document.getElementById('p_url').value='';
+// ===== AGENT =====
+function loadParentDropdown(){
+  let h='<option value="">-- Site Owner --</option>';
+  for(let key in allAgents){
+    let a = allAgents[key];
+    h+=`<option value="${a.name} - ${a.role}">${a.name} - ${a.role}</option>`
+  }
+  document.getElementById('parent').innerHTML = h;
 }
-function delProxy(key){ 
-  if(confirm('Delete করবেন?')) db.ref('settings/proxyLinks/'+key).remove(); 
-}
-db.ref('settings/proxyLinks').on('value', snap => {
-  let h='<tr><th>Name</th><th>URL</th><th>Action</th></tr>';
-  snap.forEach(c=>{
-    let p=c.val();
-    h+=`<tr>
-      <td><b>${p.name}</b></td>
-      <td>${p.url}</td>
-      <td><button class="btn-del" onclick="delProxy('${c.key}')">Del</button></td>
-    </tr>`
-  });
-  document.getElementById('proxyList').innerHTML=h
-})
 
-// ===== AGENT FUNCTIONS =====
 function save(){
   let data = {
     name:document.getElementById('name').value.trim(),
     id:document.getElementById('id').value.trim(),
+    serial:document.getElementById('serial').value.trim(),
+    parent:document.getElementById('parent').value,
     phone:document.getElementById('phone').value.trim(),
     phone2:document.getElementById('phone2').value.trim(),
     app:document.getElementById('app').value.trim(),
     fb:document.getElementById('fb').value.trim(),
     role:document.getElementById('role').value
   };
-  if(data.name=='' || data.id=='' || data.phone=='' || data.role==''){
-    alert('Name, ID, Phone, Role দিতেই হবে');return;
+  if(data.name=='' || data.id=='' || data.serial=='' || data.phone=='' || data.role==''){
+    alert('Name, ID, Serial, Phone, Role দিতেই হবে');return;
   }
-  if(editingKey){ 
-    db.ref('agents/'+editingKey).update(data); 
-    alert('Agent Updated!'); 
-  } else { 
-    db.ref('agents').push(data); 
-    alert('Agent Added!'); 
+  if(editingKey){
+    db.ref('agents/'+editingKey).update(data);
+    alert('Agent Updated!');
+  } else {
+    db.ref('agents').push(data);
+    alert('Agent Added!');
   }
   resetForm();
 }
+
 function edit(key, data){
   editingKey = key;
   document.getElementById('formTitle').innerText = '✏️ Agent Edit করুন';
   document.getElementById('saveBtn').innerText = 'Update Agent';
   document.getElementById('name').value = data.name;
   document.getElementById('id').value = data.id;
+  document.getElementById('serial').value = data.serial || '';
+  document.getElementById('parent').value = data.parent || '';
   document.getElementById('phone').value = data.phone;
   document.getElementById('phone2').value = data.phone2 || '';
   document.getElementById('app').value = data.app || '';
@@ -193,21 +174,29 @@ function edit(key, data){
   document.getElementById('role').value = data.role;
   window.scrollTo(0,0);
 }
+
 function del(key){ if(confirm('Agent Delete করবেন?')) db.ref('agents/'+key).remove(); }
+
 function resetForm(){
   editingKey = null;
   document.getElementById('formTitle').innerText = '➕ Agent Add করুন';
   document.getElementById('saveBtn').innerText = 'Save Agent';
-  ['name','id','phone','phone2','app','fb','role'].forEach(id=>document.getElementById(id).value = '');
+  ['name','id','serial','phone','phone2','app','fb','role'].forEach(id=>document.getElementById(id).value = '');
+  document.getElementById('parent').value = '';
 }
+
 db.ref('agents').on('value', snap => {
-  let h='<tr><th>Name</th><th>Role</th><th>ID</th><th>Phone</th><th>Action</th></tr>';
+  allAgents = snap.val() || {};
+  loadParentDropdown();
+  let h='<tr><th>SL</th><th>Name</th><th>Role</th><th>ID</th><th>Parent</th><th>Phone</th><th>Action</th></tr>';
   snap.forEach(c=>{
     let a=c.val();
     h+=`<tr>
+      <td><b>${a.serial || '-'}</b></td>
       <td><b>${a.name}</b></td>
       <td>${a.role}</td>
       <td>${a.id}</td>
+      <td>${a.parent || 'Site Owner'}</td>
       <td>${a.phone}</td>
       <td><button class="btn-edit" onclick='edit("${c.key}",${JSON.stringify(a).replace(/"/g,'&quot;')})'>Edit</button><button class="btn-del" onclick="del('${c.key}')">Del</button></td>
     </tr>`
@@ -215,21 +204,9 @@ db.ref('agents').on('value', snap => {
   document.getElementById('list').innerHTML=h
 })
 
-// ===== SUPPORT FUNCTIONS =====
-function addSupport(){
-  let data = {name:document.getElementById('s_name').value.trim(),phone:document.getElementById('s_phone').value.trim()};
-  if(data.name=='' || data.phone==''){alert('Name, Phone দিন');return;}
-  db.ref('support').push(data); alert('Support Added!');
-  document.getElementById('s_name').value='';document.getElementById('s_phone').value='';
-}
-function delSupport(key){ if(confirm('Support Delete করবেন?')) db.ref('support/'+key).remove(); }
-db.ref('support').on('value', snap => {
-  let h='<tr><th>Name</th><th>Phone</th><th>Action</th></tr>';
-  snap.forEach(c=>{
-    let s=c.val();
-    h+=`<tr><td><b>${s.name}</b></td><td>${s.phone}</td><td><button class="btn-del" onclick="delSupport('${c.key}')">Del</button></td></tr>`
-  });
-  document.getElementById('supportList').innerHTML=h
-})
+// ===== SUPPORT =====
+function addSupport(){let data={name:document.getElementById('s_name').value.trim(),phone:document.getElementById('s_phone').value.trim()};if(data.name==''||data.phone==''){alert('Name, Phone দিন');return;}db.ref('support').push(data);alert('Support Added!');document.getElementById('s_name').value='';document.getElementById('s_phone').value='';}
+function delSupport(key){if(confirm('Support Delete করবেন?'))db.ref('support/'+key).remove();}
+db.ref('support').on('value',snap=>{let h='<tr><th>Name</th><th>Phone</th><th>Action</th></tr>';snap.forEach(c=>{let s=c.val();h+=`<tr><td><b>${s.name}</b></td><td>${s.phone}</td><td><button class="btn-del" onclick="delSupport('${c.key}')">Del</button></td></tr>`});document.getElementById('supportList').innerHTML=h})
 </script>
 </body></html>
