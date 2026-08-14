@@ -7,56 +7,63 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
 body{background:#0b3d91;color:#fff}
-.header{display:flex;justify-content:space-between;align-items:center;padding:12px 8px}
-.logo{font-size:24px;font-weight:bold;text-align:center;flex:1}
+.header{display:flex;justify-content:space-between;align-items:center;padding:10px 8px}
+.logo{font-size:22px;font-weight:bold;text-align:center;flex:1;font-style:italic}
 .logo span:first-child{color:#ffeb3b}
 .search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
-.menu{background:#1153c7;margin:8px;border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.menu{background:#1153c7;margin:8px;border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .menu a{color:#fff;text-decoration:none;font-size:12px;font-weight:500}
-.menu a.active{color:#ffeb3b;border-bottom:2px solid #ffeb3b}
-.box{background:#1153c7;margin:8px;border-radius:8px;padding:10px;overflow-x:auto}
-h2{text-align:center;color:#ffeb3b;margin-bottom:10px;font-size:18px;font-weight:bold}
+.menu a.active{color:#ffeb3b}
+.box{background:#1153c7;margin:8px;border-radius:8px;padding:8px}
+h2{text-align:center;color:#ffeb3b;margin-bottom:8px;font-size:16px;font-weight:bold;text-transform:uppercase}
 
-/* কম্প্যাক্ট টেবিল */
-table{width:100%;border-collapse:collapse;font-size:10px;min-width:650px}
+/* কম্প্যাক্ট টেবিল - পাশে স্ক্রল অফ */
+.box{overflow-x:hidden}
+table{width:100%;border-collapse:collapse;font-size:9px}
 thead{background:#0b3d91}
-th{color:#fff;padding:6px 3px;text-align:center;font-weight:bold;white-space:nowrap}
-td{padding:5px 3px;text-align:center;border-bottom:1px solid #1976d2;vertical-align:middle}
+th{color:#fff;padding:7px 1px;text-align:center;font-weight:500;white-space:nowrap}
+td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-align:middle}
 
-.avatar{width:28px;height:28px;border-radius:50%;background:#555;display:inline-block;vertical-align:middle;margin-right:3px}
-.avatar img{width:100%;border-radius:50%}
-.name-col{text-align:left;white-space:nowrap}
-.name-col b{font-size:11px}
-.name-col small{font-size:9px;color:#ccc;display:block}
-.id-box{background:#cddc39;color:#000;padding:2px 4px;border-radius:4px;font-weight:bold;font-size:9px;display:inline-block}
-.stars{color:#ffc107;font-size:9px;white-space:nowrap}
-.btn-wa{background:#25D366;color:#fff;padding:2px 4px;border-radius:3px;text-decoration:none;font-size:9px;display:block;margin:1px 0}
-.btn-report{background:#f44336;color:#fff;padding:2px 5px;border-radius:4px;text-decoration:none;font-size:9px}
-.btn-view{background:#2196f3;color:#fff;padding:2px 5px;border-radius:4px;text-decoration:none;font-size:12px}
-.icon-wa{width:18px}
-.icon-fb{width:18px}
+.avatar{width:26px;height:26px;border-radius:50%;background:#555;display:inline-block;vertical-align:middle;margin-right:2px}
+.name-col{text-align:left;white-space:nowrap;padding-left:2px}
+.name-col b{font-size:10px;font-weight:500}
+.name-col small{font-size:8px;color:#aaa;display:block}
+.id-box{background:#cddc39;color:#000;padding:1px 3px;border-radius:3px;font-weight:bold;font-size:8px;display:inline-block}
+.stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
+.btn-wa{background:#25D366;color:#fff;padding:1px 3px;border-radius:3px;text-decoration:none;font-size:8px;display:block;margin:1px 0}
+.btn-wa small{font-size:7px;display:block;line-height:1}
+.btn-report{background:#f44336;color:#fff;padding:2px 4px;border-radius:4px;text-decoration:none;font-size:8px}
+.btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px}
 
-.support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:8px 16px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer;font-size:12px}
+/* মোবাইল এ কলাম width ফিক্স */
+th:nth-child(1){width:20%} /* Name */
+th:nth-child(2){width:8%} /* ID */
+th:nth-child(3){width:9%} /* Rating */
+th:nth-child(4){width:7%} /* App */
+th:nth-child(5){width:8%} /* FB */
+th:nth-child(6){width:22%} /* Phone */
+th:nth-child(7){width:7%} /* View */
+th:nth-child(8){width:12%} /* Report */
 
-/* Popup CSS */
+.support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:6px 12px;border-radius:20px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer;font-size:11px}
 .popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;justify-content:center;align-items:center}
 .popup{background:#1153c7;width:90%;max-width:400px;border-radius:10px;padding:15px;position:relative}
-.popup h3{background:#000;padding:10px;border-radius:5px;text-align:center;color:#ffeb3b;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:5px}
+.popup h3{background:#000;padding:10px;border-radius:5px;text-align:center;color:#ffeb3b;margin-bottom:10px}
 .close-btn{position:absolute;top:10px;right:15px;font-size:24px;color:#fff;cursor:pointer}
 .popup label{color:#ffeb3b;font-size:13px;margin-top:8px;display:block}
 .popup select,.popup input{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff}
 .popup button{background:#4caf50;color:#fff;padding:8px 15px;border:none;border-radius:5px;font-weight:bold;cursor:pointer;float:right;margin-top:10px}
-.support-item{display:flex;align-items:center;gap:10px;background:#0b3d91;padding:10px;border-radius:8px;margin-bottom:8px}
-.support-item.icon{width:35px;height:35px;background:#ffc107;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold}
+.support-item{display:flex;align-items:center;gap:10px;background:#0b3d91;padding:8px;border-radius:8px;margin-bottom:8px}
+.support-item.icon{width:30px;height:30px;background:#ffc107;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold}
 .support-item.info{flex:1}
-.support-item.btn-msg{background:#4caf50;color:#fff;padding:5px 10px;border-radius:5px;text-decoration:none;font-size:12px}
+.support-item.btn-msg{background:#4caf50;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:11px}
 </style>
 </head>
 <body>
 
 <div class="header">
     <div class="search-icon" onclick="openSearch()">🔍</div>
-    <div class="logo">👑 <span>PLAY</span><span>25</span><div style="font-size:10px;letter-spacing:2px">Agent List</div></div>
+    <div class="logo">👑 <span>PLAY</span><span>25</span><div style="font-size:9px;letter-spacing:2px;font-style:normal">Agent List</div></div>
     <div class="grid-icon">⊞</div>
 </div>
 
@@ -145,11 +152,11 @@ function renderAgents(data){
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
       html += `<tr>
         <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><small>${a.role}</small></td>
-        <td><div class="id-box">${a.id}</div></td>
-        <td class="stars">★★★</td>
+        <td><div class="id-box">ID ${a.id}</div></td>
+        <td class="stars">★★★★★</td>
         <td><a href="${a.app||'#'}" target="_blank">${a.app? '📱' : '--'}</a></td>
         <td><a href="${a.fb||'#'}" target="_blank">${a.fb? 'f' : '--'}</a></td>
-        <td>${a.phone? `<a href="https://wa.me/${a.phone}" class="btn-wa">${a.phone}</a>` : ''}${a.phone2? `<a href="https://wa.me/${a.phone2}" class="btn-wa">${a.phone2}</a>` : ''}</td>
+        <td>${a.phone? `<a href="https://wa.me/${a.phone}" class="btn-wa">${a.phone}<small>Whatsapp</small></a>` : ''}${a.phone2? `<a href="https://wa.me/${a.phone2}" class="btn-wa">${a.phone2}<small>Whatsapp</small></a>` : ''}</td>
         <td><a href="#" class="btn-view">👁️</a></td>
         <td><a href="#" class="btn-report">Report</a></td>
       </tr>`
