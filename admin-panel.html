@@ -1,138 +1,196 @@
 <!DOCTYPE html>
 <html lang="bn">
-<head><meta charset="UTF-8"><title>ADMIN PANEL - PLAY25</title>
-<style>body{background:#0b3d91;color:#fff;font-family:Arial;padding:10px}
-.box{background:#1153c7;padding:15px;border-radius:10px;margin:10px 0}
-input,select,button,textarea{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none;font-size:14px}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN PANEL - PLAY25</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+body{background:#0b3d91;color:#fff;padding:10px}
+.box{background:#1153c7;padding:15px;border-radius:10px;margin-bottom:10px}
+h2,h3{color:#ffeb3b;text-align:center;margin-bottom:10px}
+.back{color:#ffeb3b;text-decoration:none;display:inline-block;margin-bottom:10px}
+input,select,button{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none;font-size:14px}
 button{background:#4caf50;color:#fff;font-weight:bold;cursor:pointer}
-.btn-del{background:#f44336;padding:5px 8px;font-size:12px}
-.btn-edit{background:#ffc107;color:#000;padding:5px 8px;font-size:12px;margin-right:3px}
-table{width:100%;font-size:11px;border-collapse:collapse}
-th{color:#ffeb3b;padding:6px;text-align:left}
-td{padding:6px;border-bottom:1px solid #1976d2}
-.hierarchy{font-size:11px;color:#aaa}
-.proxy-links a{display:inline-block;background:#000;color:#fff;padding:2px 6px;border-radius:4px;margin:2px;font-size:10px;text-decoration:none}
+.btn-del{background:#f44336;padding:5px 8px;font-size:12px;width:auto}
+.btn-edit{background:#ffc107;color:#000;padding:5px 8px;font-size:12px;width:auto;margin-right:5px}
+table{width:100%;font-size:11px;border-collapse:collapse;background:#0b3d91;border-radius:5px;overflow:hidden}
+th{background:#1153c7;color:#ffeb3b;padding:8px;text-align:left}
+td{padding:8px;border-bottom:1px solid #1976d2}
+.tabs{display:flex;gap:10px;margin-bottom:10px}
+.tab{flex:1;text-align:center;padding:8px;background:#0b3d91;border-radius:5px;cursor:pointer}
+.tab.active{background:#4caf50}
+.tab-content{display:none}
+.tab-content.active{display:block}
 </style>
 </head>
 <body>
-<div class="box"><h2>👑 ADMIN PANEL</h2><a href="index.html" style="color:#ffeb3b">← Back to Site</a></div>
 
 <div class="box">
-<h3 id="formTitle">➕ Agent Add</h3>
-<input type="hidden" id="editKey">
-<input id="name" placeholder="Agent Name *">
-<input id="id" placeholder="Agent ID/Number * ex: A1, M5, S10">
-<input id="phone" placeholder="WhatsApp Number 8801...">
-<select id="role" onchange="loadParent()">
-  <option value="">-- Role Select করুন --</option>
-  <option value="Site Owner">Site Owner</option>
-  <option value="Admin">Admin</option>
-  <option value="Sub Admin">Sub Admin</option>
-  <option value="Super">Super</option>
-  <option value="Master">Master</option>
-</select>
-<select id="parentId">
-  <option value="">-- Parent Select করুন --</option>
-</select>
-<textarea id="proxyLinks" placeholder="Proxy Links - প্রতি লাইনে 1 টা লিংক&#10;ex:&#10;https://play25.live&#10;https://plabon25.com"></textarea>
-<button id="saveBtn" onclick="save()">Save Agent</button>
-<button onclick="resetForm()" style="background:#607d8b">Clear</button>
+<h2>👑 ADMIN PANEL</h2>
+<a href="index.html" class="back">← Back to Site</a>
+
+<div class="tabs">
+  <div class="tab active" onclick="openTab('agent')">Agent</div>
+  <div class="tab" onclick="openTab('support')">Support</div>
 </div>
 
-<div class="box">
-<h3>📋 All Agents</h3>
-<table id="list"><tr><th>Name</th><th>Role</th><th>ID</th><th>Parent</th><th>Links</th><th>Action</th></tr></table>
+<!-- AGENT TAB -->
+<div id="agent" class="tab-content active">
+  <h3 id="formTitle">➕ Agent Add করুন</h3>
+  <input type="hidden" id="editKey">
+  <input id="name" placeholder="Agent Name *">
+  <input id="id" placeholder="Agent ID/Number * ex: 1, 2, 3">
+  <input id="phone" placeholder="WhatsApp Number 8801... *">
+  <input id="phone2" placeholder="2nd WhatsApp Number Optional">
+  <input id="app" placeholder="App Download Link">
+  <input id="fb" placeholder="Facebook Profile Link">
+  <select id="role">
+    <option value="">-- Role Select করুন --</option>
+    <option value="Site Owner">Site Owner</option>
+    <option value="Admin">Admin</option>
+    <option value="Sub Admin">Sub Admin</option>
+    <option value="Super">Super</option>
+    <option value="Master">Master</option>
+  </select>
+  <button id="saveBtn" onclick="save()">Save Agent</button>
+  <button onclick="resetForm()" style="background:#607d8b">Clear</button>
+
+  <h3 style="margin-top:20px">📋 All Agents</h3>
+  <div style="overflow-x:auto">
+  <table id="list">
+    <tr><th>Name</th><th>Role</th><th>ID</th><th>Phone</th><th>Action</th></tr>
+  </table>
+  </div>
+</div>
+
+<!-- SUPPORT TAB -->
+<div id="support" class="tab-content">
+  <h3>🎧 Support Add করুন</h3>
+  <input id="s_name" placeholder="Support Name ex: CS 1, CS 2">
+  <input id="s_phone" placeholder="Support WhatsApp 8801...">
+  <button onclick="addSupport()">Add Support</button>
+
+  <h3 style="margin-top:20px">📞 All Support</h3>
+  <table id="supportList">
+    <tr><th>Name</th><th>Phone</th><th>Action</th></tr>
+  </table>
+</div>
+
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 <script>
-const firebaseConfig = {apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",authDomain: "play25agent.firebaseapp.com",databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",projectId: "play25agent"};
-firebase.initializeApp(firebaseConfig);const db = firebase.database();let allAgents = {};let editingKey = null;
+const firebaseConfig = {
+  apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
+  authDomain: "play25agent.firebaseapp.com",
+  databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "play25agent"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+let editingKey = null;
 
-const hierarchy = {
-  'Master': 'Super',
-  'Super': 'Sub Admin',
-  'Sub Admin': 'Admin',
-  'Admin': 'Site Owner',
-  'Site Owner': ''
+function openTab(tabName){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'))
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'))
+  document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add('active')
+  document.getElementById(tabName).classList.add('active')
 }
 
-function loadParent(){
-  let role = document.getElementById('role').value;
-  let parentRole = hierarchy[role];
-  let select = document.getElementById('parentId');
-  select.innerHTML = '<option value="">-- Parent Select করুন --</option>';
-
-  if(parentRole == '') return;
-
-  for(let key in allAgents){
-    if(allAgents[key].role == parentRole){
-      select.innerHTML += `<option value="${key}">${allAgents[key].name} - ${allAgents[key].id}</option>`;
-    }
-  }
-}
-
+// ===== AGENT FUNCTIONS =====
 function save(){
-  let proxyText = document.getElementById('proxyLinks').value.trim();
-  let proxyArray = proxyText.split('\n').filter(x => x!= '');
-
   let data = {
     name:document.getElementById('name').value.trim(),
     id:document.getElementById('id').value.trim(),
     phone:document.getElementById('phone').value.trim(),
-    role:document.getElementById('role').value,
-    parentId:document.getElementById('parentId').value,
-    proxyLinks: proxyArray
+    phone2:document.getElementById('phone2').value.trim(),
+    app:document.getElementById('app').value.trim(),
+    fb:document.getElementById('fb').value.trim(),
+    role:document.getElementById('role').value
   };
-  if(data.name=='' || data.id=='' || data.role==''){alert('Name, ID, Role দিতেই হবে');return;}
-
-  if(editingKey){ db.ref('agents/'+editingKey).update(data); alert('Updated!'); }
-  else { db.ref('agents').push(data); alert('Added!'); }
+  if(data.name=='' || data.id=='' || data.phone=='' || data.role==''){
+    alert('Name, ID, Phone, Role দিতেই হবে');return;
+  }
+  if(editingKey){ 
+    db.ref('agents/'+editingKey).update(data); 
+    alert('Agent Updated!'); 
+  } else { 
+    db.ref('agents').push(data); 
+    alert('Agent Added!'); 
+  }
   resetForm();
 }
 
 function edit(key, data){
   editingKey = key;
-  document.getElementById('formTitle').innerText = '✏️ Agent Edit';
+  document.getElementById('formTitle').innerText = '✏️ Agent Edit করুন';
   document.getElementById('saveBtn').innerText = 'Update Agent';
   document.getElementById('name').value = data.name;
   document.getElementById('id').value = data.id;
   document.getElementById('phone').value = data.phone;
+  document.getElementById('phone2').value = data.phone2 || '';
+  document.getElementById('app').value = data.app || '';
+  document.getElementById('fb').value = data.fb || '';
   document.getElementById('role').value = data.role;
-  document.getElementById('proxyLinks').value = data.proxyLinks? data.proxyLinks.join('\n') : '';
-  loadParent();
-  setTimeout(()=>{document.getElementById('parentId').value = data.parentId || ''}, 200);
   window.scrollTo(0,0);
 }
 
-function del(key){ if(confirm('Delete করবেন?')) db.ref('agents/'+key).remove(); }
+function del(key){ 
+  if(confirm('Agent Delete করবেন?')) db.ref('agents/'+key).remove(); 
+}
 
 function resetForm(){
   editingKey = null;
-  document.getElementById('formTitle').innerText = '➕ Agent Add';
+  document.getElementById('formTitle').innerText = '➕ Agent Add করুন';
   document.getElementById('saveBtn').innerText = 'Save Agent';
-  ['name','id','phone','role','parentId','proxyLinks'].forEach(id=>document.getElementById(id).value = '');
+  ['name','id','phone','phone2','app','fb','role'].forEach(id=>document.getElementById(id).value = '');
 }
 
 db.ref('agents').on('value', snap => {
-  allAgents = snap.val() || {};
-  let h='<tr><th>Name</th><th>Role</th><th>ID</th><th>Parent</th><th>Links</th><th>Action</th></tr>';
+  let h='<tr><th>Name</th><th>Role</th><th>ID</th><th>Phone</th><th>Action</th></tr>';
   snap.forEach(c=>{
     let a=c.val();
-    let parentName = a.parentId && allAgents[a.parentId]? allAgents[a.parentId].name : 'None';
-    let links = '';
-    if(a.proxyLinks){ a.proxyLinks.forEach(l=>{links += `<a href="${l}" target="_blank">Link</a>`}) }
-
     h+=`<tr>
-      <td><b>${a.name}</b><div class="hierarchy">${a.role}</div></td>
+      <td><b>${a.name}</b></td>
       <td>${a.role}</td>
       <td>${a.id}</td>
-      <td>${parentName}</td>
-      <td class="proxy-links">${links}</td>
+      <td>${a.phone}</td>
       <td><button class="btn-edit" onclick='edit("${c.key}",${JSON.stringify(a).replace(/"/g,'&quot;')})'>Edit</button><button class="btn-del" onclick="del('${c.key}')">Del</button></td>
     </tr>`
   });
   document.getElementById('list').innerHTML=h
 })
-</script></body></html>
+
+// ===== SUPPORT FUNCTIONS =====
+function addSupport(){
+  let data = {
+    name:document.getElementById('s_name').value.trim(),
+    phone:document.getElementById('s_phone').value.trim()
+  };
+  if(data.name=='' || data.phone==''){alert('Name, Phone দিন');return;}
+  db.ref('support').push(data); 
+  alert('Support Added!');
+  document.getElementById('s_name').value='';
+  document.getElementById('s_phone').value='';
+}
+
+function delSupport(key){ 
+  if(confirm('Support Delete করবেন?')) db.ref('support/'+key).remove(); 
+}
+
+db.ref('support').on('value', snap => {
+  let h='<tr><th>Name</th><th>Phone</th><th>Action</th></tr>';
+  snap.forEach(c=>{
+    let s=c.val();
+    h+=`<tr>
+      <td><b>${s.name}</b></td>
+      <td>${s.phone}</td>
+      <td><button class="btn-del" onclick="delSupport('${c.key}')">Del</button></td>
+    </tr>`
+  });
+  document.getElementById('supportList').innerHTML=h
+})
+</script>
+</body></html>
