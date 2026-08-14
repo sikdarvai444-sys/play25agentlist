@@ -1,1 +1,145 @@
-..
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN PANEL - PLAY25</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#0a1a3f;color:#fff;padding:10px}
+.header{background:#1e3c72;padding:15px;border-radius:10px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.header a{color:#ffd700;text-decoration:none;font-weight:bold}
+.box{background:#1e3c72;padding:15px;border-radius:10px;margin:10px 0}
+input,select,button{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none;font-size:15px}
+button{background:#28a745;color:#fff;font-weight:bold;cursor:pointer}
+button:hover{opacity:0.8}
+table{width:100%;background:#0a1a3f;margin-top:10px;border-collapse:collapse;font-size:12px}
+th{color:#ffd700;padding:8px;text-align:left}
+td{padding:8px;border-bottom:1px solid #2a4a8a}
+.btn-del{background:#dc3545;padding:5px 10px;color:#fff;border:none;border-radius:5px;cursor:pointer}
+.btn-edit{background:#ffc107;padding:5px 10px;color:#000;border:none;border-radius:5px;cursor:pointer;margin-right:5px}
+.id-box{background:#ffd700;color:#000;padding:3px 8px;border-radius:5px;font-weight:bold;display:inline-block}
+</style>
+</head>
+<body>
+<div class="header">
+    <h2>👑 PLAY25 ADMIN PANEL</h2>
+    <a href="index.html">← Back to Site</a>
+</div>
+
+<div class="box">
+<h3>➕ Agent Add / Edit</h3>
+<input type="hidden" id="editId">
+<input id="name" placeholder="Agent Name">
+<input id="id" placeholder="Agent ID">
+<input id="phone" placeholder="WhatsApp Number 8801...">
+<input id="fb" placeholder="Facebook Link https://facebook.com/...">
+<select id="role">
+  <option value="">-- Select Role --</option>
+  <option value="Site Owner">Site Owner</option>
+  <option value="Admin">Admin</option>
+  <option value="Sub Admin">Sub Admin</option>
+  <option value="Super">Super</option>
+  <option value="Master">Master</option>
+</select>
+<button id="saveBtn" onclick="saveAgent()">Save Agent</button>
+<button onclick="resetForm()" style="background:#6c757d">Clear Form</button>
+</div>
+
+<div class="box">
+<h3>📋 All Agents List</h3>
+<table id="agentTable">
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>ID</th>
+    <th>Phone</th>
+    <th>Action</th>
+  </tr>
+</table>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
+  authDomain: "play25agent.firebaseapp.com",
+  databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "play25agent"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+let editingKey = null;
+
+function saveAgent(){
+  let data = {
+    name:document.getElementById('name').value,
+    id:document.getElementById('id').value,
+    phone:document.getElementById('phone').value,
+    fb:document.getElementById('fb').value,
+    role:document.getElementById('role').value
+  };
+  
+  if(data.name == '' || data.role == ''){alert('Name এবং Role দিতেই হবে');return;}
+
+  if(editingKey){
+    db.ref('agents/' + editingKey).update(data);
+    alert('Agent Updated!');
+  } else {
+    db.ref('agents').push(data);
+    alert('Agent Added!');
+  }
+  resetForm();
+}
+
+function editAgent(key, data){
+  editingKey = key;
+  document.getElementById('editId').value = key;
+  document.getElementById('name').value = data.name;
+  document.getElementById('id').value = data.id;
+  document.getElementById('phone').value = data.phone;
+  document.getElementById('fb').value = data.fb;
+  document.getElementById('role').value = data.role;
+  document.getElementById('saveBtn').innerText = 'Update Agent';
+  window.scrollTo(0,0);
+}
+
+function deleteAgent(key){
+  if(confirm('আপনি কি Delete করতে চান?')){
+    db.ref('agents/' + key).remove();
+  }
+}
+
+function resetForm(){
+  editingKey = null;
+  document.getElementById('editId').value = '';
+  document.getElementById('name').value = '';
+  document.getElementById('id').value = '';
+  document.getElementById('phone').value = '';
+  document.getElementById('fb').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('saveBtn').innerText = 'Save Agent';
+}
+
+// Firebase থেকে সব Agent দেখাবে
+db.ref('agents').on('value', snap => {
+  let table = document.getElementById('agentTable');
+  table.innerHTML = '<tr><th>Name</th><th>Role</th><th>ID</th><th>Phone</th><th>Action</th></tr>';
+  snap.forEach(child => {
+    let a = child.val();
+    table.innerHTML += `<tr>
+      <td><b>${a.name}</b></td>
+      <td>${a.role}</td>
+      <td><div class="id-box">${a.id}</div></td>
+      <td>${a.phone}</td>
+      <td>
+        <button class="btn-edit" onclick='editAgent("${child.key}", ${JSON.stringify(a).replace(/"/g, '&quot;')})'>Edit</button>
+        <button class="btn-del" onclick="deleteAgent('${child.key}')">Delete</button>
+      </td>
+    </tr>`
+  })
+})
+</script>
+</body>
+</html>
