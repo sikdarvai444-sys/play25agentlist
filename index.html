@@ -3,71 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PLAY25 Agent List</title>
+<title id="pageTitle">PLAY25 Agent List</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#0a1a3f;color:#fff}
-.header{text-align:center;padding:15px}
-.logo{font-size:28px;font-weight:bold;color:#ffd700}
-.logo span{color:#ff0000}
-.menu{background:#1e3c72;margin:10px;border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.menu a{color:#fff;text-decoration:none;font-size:13px}
-.card{background:#1e3c72;margin:10px;padding:15px;border-radius:10px}
-.btn{background:#1877f2;color:#fff;padding:6px 12px;border-radius:8px;text-decoration:none;font-size:12px;display:inline-block;margin:3px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif}
+body{background:#0d47a1;color:#fff}
+.header{text-align:center;padding:15px 10px}
+.logo img{height:45px}
+.menu{background:#1565c0;margin:10px;border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.menu a{color:#fff;text-decoration:none;font-size:13px;padding:5px 8px;font-weight:500}
+.menu a.active{color:#ffeb3b}
+.card{background:#1565c0;margin:10px;border-radius:12px;padding:15px}
+h2{text-align:center;color:#ffeb3b;margin-bottom:15px;font-size:20px}
+.btn{background:#4caf50;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-size:12px;display:inline-block;margin:3px;font-weight:bold}
 .btn-whatsapp{background:#25D366}
-.btn-visit{background:#28a745}
-.btn-report{background:#dc3545}
-.admin{display:flex;align-items:center;gap:8px;background:#0a1a3f;padding:10px;border-radius:10px;flex-wrap:wrap;margin-bottom:10px}
-.id-box{background:#ffd700;color:#000;padding:3px 8px;border-radius:5px;font-weight:bold}
-.link-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #2a4a8a}
-.support{position:fixed;bottom:10px;left:10px;background:#28a745;padding:8px 12px;border-radius:20px;color:#fff;text-decoration:none}
-#agentList{min-height:50px}
+.btn-visit{background:#8bc34a}
+.btn-fb{background:#1877f2}
+.btn-msg{background:#4caf50}
+.marquee-box{background:#1565c0;margin:10px;border-radius:12px;padding:10px;color:#ffeb3b;font-weight:bold}
+.fb-box{display:flex;justify-content:space-between;align-items:center;background:#1565c0;margin:10px;border-radius:12px;padding:12px}
+.fb-box span{color:#ffeb3b;font-weight:500}
+.admin-card{display:flex;align-items:center;gap:10px;background:#0d47a1;padding:12px;border-radius:10px;margin-bottom:10px}
+.admin-avatar{background:#4caf50;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.id-box{background:#ffeb3b;color:#000;padding:5px 10px;border-radius:8px;font-weight:bold;font-size:13px}
+.link-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1976d2;font-size:14px}
+.link-row:last-child{border:none}
+.status-dot{width:8px;height:8px;background:#4caf50;border-radius:50%;display:inline-block;margin-right:5px}
+.support{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:8px 15px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px}
+.info-box{background:#0d47a1;padding:12px;border-radius:10px;margin-top:10px;line-height:1.6;font-size:14px;text-align:justify}
 </style>
 </head>
 <body>
 <div class="header">
-    <div class="logo">👑 PLAY<span>25</span></div>
-    <div>Agent List</div>
+    <div class="logo">👑 <span style="color:#ffeb3b;font-size:28px;font-weight:bold">PLAY</span><span style="font-size:28px;font-weight:bold">25</span></div>
+    <div style="letter-spacing:3px">Agent List</div>
 </div>
 
 <div class="menu">
     <a href="index.html">🏠 Home</a>
-    <a href="#">👤 Site Owner</a>
-    <a href="admin-panel.html">👑 Admin Panel</a>
-    <a href="master.html">👤 Sub Admin</a>
-    <a href="master.html">👤 Super</a>
+    <a href="siteowner.html">👤 Site Owner</a>
+    <a href="admin.html">👤 Admin</a>
+    <a href="subadmin.html">👤 Sub Admin</a>
+    <a href="super.html">👤 Super</a>
     <a href="master.html">👤 Master</a>
     <a href="#">🎯 Lottery</a>
 </div>
 
-<div class="card">
-    <marquee>⚠️ উ লেনদেন করবেন না...</marquee>
+<div class="marquee-box">
+    <marquee>⚠️ র কেউ লেনদেন করবেন না...</marquee>
+</div>
+
+<div class="fb-box">
+    <span>আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ</span>
+    <a href="#" class="btn btn-fb">f এখানে ক্লিক করুন</a>
+</div>
+
+<div class="fb-box">
+    <span>ফেসবুক অফিসিয়াল পেজ</span>
+    <a href="#" class="btn btn-fb">📩 এখানে ক্লিক করুন</a>
 </div>
 
 <div class="card">
-    আমাদের অফিসিয়াল ফেসবুক গ্রুপ: 
-    <a href="#" class="btn">f এখানে ক্লিক করুন</a><br><br>
-    ফেসবুক অফিসিয়াল পেজ: 
-    <a href="#" class="btn">📩 এখানে ক্লিক করুন</a>
+    <h2 id="roleTitle">ADMIN</h2>
+    <div id="agentList"><p style="text-align:center;color:#aaa">Loading...</p></div>
 </div>
 
 <div class="card">
-    <h2 style="text-align:center;color:#ffd700">Admin List</h2>
-    <div id="agentList">
-        <p style="text-align:center;color:#aaa">Loading agents...</p>
+    <h2>আমাদের প্রফি লিংক</h2>
+    <div class="link-row"><span>Main Link</span> <span>play25.live</span> <span><span class="status-dot"></span>Active</span> <a href="https://play25.live" class="btn btn-visit">Visit</a></div>
+    <div class="link-row"><span>Link 2</span> <span>plabon25.com</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
+    <div class="link-row"><span>Link 4</span> <span>play25.bet</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
+    <div class="link-row"><span>Low limit casino</span> <span>bee25.live</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
+    <div class="link-row"><span>link 5</span> <span>plabon.live</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
+</div>
+
+<div class="card">
+    <h2>How many types of agents</h2>
+    <div class="info-box">
+        <h3 style="color:#ffeb3b;text-align:center">অনলাইন সুপার এজেন্ট লিস্টঃ</h3>
+        <p>সুপার এজেন্ট রা, ইউজার একাউন্ট এবং মাস্টার এজেন্ট একাউন্ট খুলে দিতে পারেন। কোন সুপার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি এডমিন কে জানাতে হবে।</p><br>
+
+        <h3 style="color:#ffeb3b;text-align:center">অনলাইন মাস্টার এজেন্ট লিস্টঃ</h3>
+        <p>অনলাইন মাস্টার এজেন্ট রা, শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন। কোন মাস্টার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে অভিযোগ করতে হবে।</p><br>
+
+        <h3 style="color:#ffeb3b;text-align:center">লোকাল মাস্টার এজেন্ট লিস্টঃ</h3>
+        <p>লোকাল মাস্টার এজেন্ট রা,শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন। কিন্তু তাদের সাথে লেনদেন প্রতিটি ইউজার কে নিজ দায়িত্বে লেনদেন করতে হবে। তাদের নামে কোন অভিযোগ কারো কাছে করা যাবে না।</p>
     </div>
 </div>
 
 <div class="card">
-    <h2 style="text-align:center;color:#ffd700">আমাদের প্রফি লিংক</h2>
-    <div class="link-row"><span>Main Link</span> <span>play25.live</span> <span style="color:lightgreen">Active</span> <a href="https://play25.live" class="btn btn-visit">Visit</a></div>
-    <div class="link-row"><span>Link 2</span> <span>plabon25.com</span> <span style="color:lightgreen">Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
-    <div class="link-row"><span>Link 4</span> <span>play25.bet</span> <span style="color:lightgreen">Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
+    <h2>এজেন্ট লিস্টঃ</h2>
+    <div class="info-box">
+        একাউন্ট খুলতে নিচের অনলাইন এজেন্ট লিস্ট এ ক্লিক করুন। এজেন্ট লিস্ট এর এজেন্ট দের সাথে ইউজার দের শুধু মাত্র হোয়াটসাপ এর মাধ্যমে যোগাযোগ করতে হবে। হোয়াটসাপ ছাড়া অন্য কোন মাধ্যমে যোগাযোগ করলে বা লেনদেন করলে তা আইকন উপরে ক্লিক করুন অথবা ফোন নাম্বার টি মোবাইলে সেভ করে তাকে হোয়াটসাপ এ মেসেজ পাঠাতে পারবেন। হোয়াটসাপ এপ টি আপনার মোবাইলে আগে থেকেই থাকতে হবে। না থাকলে গুগুল প্লে থেকে ইন্সটল করে নিন।
+    </div>
 </div>
 
 <div class="card">
-    <h2 style="text-align:center;color:#ffd700">How many types of agents</h2>
-    <p>অনলাইন মাইক্রো এজেন্ট লিস্ট: ... এখানে আপনার লেখা বসাবেন</p>
+    <h2>কিভাবে একাউন্ট খুলবেনঃ</h2>
+    <div class="info-box">
+        play25 তে একাউন্ট করতে হলে আপনার এজেন্ট এর মাধ্যমে একাউন্ট খুলতে হবে। এজেন্ট এর মাধ্যমেই টাকা ডিপোজিট এবং উইথড্র করতে হবে। আপনি যে এজেন্ট এর কাছ থেকে একাউন্ট খুলবেন তার সাথেই সব সময় লেনদেন করতে হবে। ঠিক কোন এজেন্ট কে টাকা দিবেন এবং কিভাবে তার সাথে লেনদেন করবেন তার বুঝতে আপনার নিচের তথ্য গুলো পড়া জরুরী।
+    </div>
 </div>
 
 <a href="#" class="support">🎧 Support</a>
@@ -75,7 +109,6 @@ body{background:#0a1a3f;color:#fff}
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 <script>
-// আপনার Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
   authDomain: "play25agent.firebaseapp.com",
@@ -85,22 +118,45 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// Firebase থেকে Agent লোড করে দেখাবে
+let fileName = window.location.pathname.split("/").pop().replace('.html','');
+let currentRole = fileName;
+
+const roleNames = {
+  'index': 'ALL AGENTS',
+  'siteowner': 'SITE OWNER',
+  'admin': 'ADMIN',
+  'subadmin': 'SUB ADMIN',
+  'super': 'SUPER',
+  'master': 'MASTER'
+}
+
+document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'AGENTS';
+let activeLink = document.querySelector(`a[href="${fileName}.html"]`);
+if(activeLink) activeLink.classList.add('active');
+
 db.ref('agents').on('value', snap => {
   let html = '';
-  if(!snap.exists()){
-    html = '<p style="text-align:center">কোন Agent নাই। Admin Panel থেকে Add করেন</p>';
-  } else {
-    snap.forEach(child => {
-      let a = child.val();
-      html += `<div class="admin">
-        <div>👤</div>
-        <div><b>${a.name}</b><br><small>${a.role || 'Agent'}</small></div>
-        <div class="id-box">${a.id}</div>
-        <div>${a.phone}<br><a href="https://wa.me/${a.phone}" class="btn btn-whatsapp">Whatsapp</a></div>
+  let found = false;
+  snap.forEach(child => {
+    let a = child.val();
+    if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+      found = true;
+      html += `<div class="admin-card">
+        <div class="admin-avatar">👤</div>
+        <div style="flex:1">
+          <div><b>${a.name}</b></div>
+          <div style="font-size:12px;color:#aaa">${a.role}</div>
+        </div>
+        <div class="id-box">ID ${a.id}</div>
+        <div>
+          <div style="font-size:12px">${a.phone}</div>
+          <a href="https://wa.me/${a.phone}" class="btn btn-whatsapp">Whatsapp</a>
+        </div>
+        <a href="#" class="btn btn-msg">Message</a>
       </div>`
-    })
-  }
+    }
+  })
+  if(!found) html = '<p style="text-align:center">কোন Agent পাওয়া যায়নি</p>';
   document.getElementById('agentList').innerHTML = html;
 })
 </script>
