@@ -8,34 +8,34 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif}
 body{background:#0d47a1;color:#fff}
 .header{text-align:center;padding:15px 10px}
-.logo img{height:45px}
+.logo{font-size:32px;font-weight:bold;color:#ffeb3b}
+.logo span{color:#fff}
 .menu{background:#1565c0;margin:10px;border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .menu a{color:#fff;text-decoration:none;font-size:13px;padding:5px 8px;font-weight:500}
 .menu a.active{color:#ffeb3b}
-.card{background:#1565c0;margin:10px;border-radius:12px;padding:15px}
+.box{background:#1565c0;margin:10px;border-radius:12px;padding:15px}
 h2{text-align:center;color:#ffeb3b;margin-bottom:15px;font-size:20px}
 .btn{background:#4caf50;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-size:12px;display:inline-block;margin:3px;font-weight:bold}
 .btn-whatsapp{background:#25D366}
-.btn-visit{background:#8bc34a}
-.btn-fb{background:#1877f2}
 .btn-msg{background:#4caf50}
-.marquee-box{background:#1565c0;margin:10px;border-radius:12px;padding:10px;color:#ffeb3b;font-weight:bold}
-.fb-box{display:flex;justify-content:space-between;align-items:center;background:#1565c0;margin:10px;border-radius:12px;padding:12px}
-.fb-box span{color:#ffeb3b;font-weight:500}
-.admin-card{display:flex;align-items:center;gap:10px;background:#0d47a1;padding:12px;border-radius:10px;margin-bottom:10px}
-.admin-avatar{background:#4caf50;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
-.id-box{background:#ffeb3b;color:#000;padding:5px 10px;border-radius:8px;font-weight:bold;font-size:13px}
-.link-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1976d2;font-size:14px}
-.link-row:last-child{border:none}
-.status-dot{width:8px;height:8px;background:#4caf50;border-radius:50%;display:inline-block;margin-right:5px}
-.support{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:8px 15px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px}
-.info-box{background:#0d47a1;padding:12px;border-radius:10px;margin-top:10px;line-height:1.6;font-size:14px;text-align:justify}
+.btn-fb{background:#1877f2}
+.btn-visit{background:#8bc34a}
+.marquee{color:#ffeb3b;font-weight:bold}
+.fb-row{display:flex;justify-content:space-between;align-items:center;margin:8px 0}
+.agent-card{display:flex;align-items:center;gap:10px;background:#0d47a1;padding:12px;border-radius:10px;margin-bottom:10px}
+.avatar{width:40px;height:40px;background:#4caf50;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.id-box{background:#ffeb3b;color:#000;padding:5px 10px;border-radius:8px;font-weight:bold;font-size:12px;text-align:center}
+.link-table{width:100%;font-size:14px}
+.link-table td{padding:10px;border-bottom:1px solid #1976d2}
+.dot{width:8px;height:8px;background:#4caf50;border-radius:50%;display:inline-block;margin-right:5px}
+.support{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:8px 15px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold}
+.info{line-height:1.6;font-size:14px;text-align:center}
 </style>
 </head>
 <body>
 <div class="header">
-    <div class="logo">👑 <span style="color:#ffeb3b;font-size:28px;font-weight:bold">PLAY</span><span style="font-size:28px;font-weight:bold">25</span></div>
-    <div style="letter-spacing:3px">Agent List</div>
+    <div class="logo">👑 PLAY<span>25</span></div>
+    <div>Agent List</div>
 </div>
 
 <div class="menu">
@@ -48,59 +48,42 @@ h2{text-align:center;color:#ffeb3b;margin-bottom:15px;font-size:20px}
     <a href="#">🎯 Lottery</a>
 </div>
 
-<div class="marquee-box">
-    <marquee>⚠️ র কেউ লেনদেন করবেন না...</marquee>
+<div class="box"><marquee class="marquee">⚠️ উ লেনদেন করবেন না...</marquee></div>
+
+<div class="box">
+    <div class="fb-row">
+        <span>আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ</span>
+        <a href="#" class="btn btn-fb">f এখানে ক্লিক করুন</a>
+    </div>
+    <div class="fb-row">
+        <span>ফেসবুক অফিসিয়াল পেজ</span>
+        <a href="#" class="btn btn-fb">📩 এখানে ক্লিক করুন</a>
+    </div>
 </div>
 
-<div class="fb-box">
-    <span>আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ</span>
-    <a href="#" class="btn btn-fb">f এখানে ক্লিক করুন</a>
-</div>
-
-<div class="fb-box">
-    <span>ফেসবুক অফিসিয়াল পেজ</span>
-    <a href="#" class="btn btn-fb">📩 এখানে ক্লিক করুন</a>
-</div>
-
-<div class="card">
+<div class="box">
     <h2 id="roleTitle">ADMIN</h2>
-    <div id="agentList"><p style="text-align:center;color:#aaa">Loading...</p></div>
+    <div id="agentList">Loading...</div>
 </div>
 
-<div class="card">
+<div class="box">
     <h2>আমাদের প্রফি লিংক</h2>
-    <div class="link-row"><span>Main Link</span> <span>play25.live</span> <span><span class="status-dot"></span>Active</span> <a href="https://play25.live" class="btn btn-visit">Visit</a></div>
-    <div class="link-row"><span>Link 2</span> <span>plabon25.com</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
-    <div class="link-row"><span>Link 4</span> <span>play25.bet</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
-    <div class="link-row"><span>Low limit casino</span> <span>bee25.live</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
-    <div class="link-row"><span>link 5</span> <span>plabon.live</span> <span><span class="status-dot"></span>Active</span> <a href="#" class="btn btn-visit">Visit</a></div>
+    <table class="link-table">
+        <tr><td>Main Link</td><td>play25.live</td><td><span class="dot"></span>Active</td><td><a href="https://play25.live" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>Link 2</td><td>plabon25.com</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>Link 4</td><td>play25.bet</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>Low limit casino</td><td>bee25.live</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>link 5</td><td>plabon.live</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+    </table>
 </div>
 
-<div class="card">
+<div class="box">
     <h2>How many types of agents</h2>
-    <div class="info-box">
-        <h3 style="color:#ffeb3b;text-align:center">অনলাইন সুপার এজেন্ট লিস্টঃ</h3>
+    <div class="info">
+        <h3 style="color:#ffeb3b">অনলাইন সুপার এজেন্ট লিস্টঃ</h3>
         <p>সুপার এজেন্ট রা, ইউজার একাউন্ট এবং মাস্টার এজেন্ট একাউন্ট খুলে দিতে পারেন। কোন সুপার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি এডমিন কে জানাতে হবে।</p><br>
-
-        <h3 style="color:#ffeb3b;text-align:center">অনলাইন মাস্টার এজেন্ট লিস্টঃ</h3>
-        <p>অনলাইন মাস্টার এজেন্ট রা, শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন। কোন মাস্টার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে অভিযোগ করতে হবে।</p><br>
-
-        <h3 style="color:#ffeb3b;text-align:center">লোকাল মাস্টার এজেন্ট লিস্টঃ</h3>
-        <p>লোকাল মাস্টার এজেন্ট রা,শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন। কিন্তু তাদের সাথে লেনদেন প্রতিটি ইউজার কে নিজ দায়িত্বে লেনদেন করতে হবে। তাদের নামে কোন অভিযোগ কারো কাছে করা যাবে না।</p>
-    </div>
-</div>
-
-<div class="card">
-    <h2>এজেন্ট লিস্টঃ</h2>
-    <div class="info-box">
-        একাউন্ট খুলতে নিচের অনলাইন এজেন্ট লিস্ট এ ক্লিক করুন। এজেন্ট লিস্ট এর এজেন্ট দের সাথে ইউজার দের শুধু মাত্র হোয়াটসাপ এর মাধ্যমে যোগাযোগ করতে হবে। হোয়াটসাপ ছাড়া অন্য কোন মাধ্যমে যোগাযোগ করলে বা লেনদেন করলে তা আইকন উপরে ক্লিক করুন অথবা ফোন নাম্বার টি মোবাইলে সেভ করে তাকে হোয়াটসাপ এ মেসেজ পাঠাতে পারবেন। হোয়াটসাপ এপ টি আপনার মোবাইলে আগে থেকেই থাকতে হবে। না থাকলে গুগুল প্লে থেকে ইন্সটল করে নিন।
-    </div>
-</div>
-
-<div class="card">
-    <h2>কিভাবে একাউন্ট খুলবেনঃ</h2>
-    <div class="info-box">
-        play25 তে একাউন্ট করতে হলে আপনার এজেন্ট এর মাধ্যমে একাউন্ট খুলতে হবে। এজেন্ট এর মাধ্যমেই টাকা ডিপোজিট এবং উইথড্র করতে হবে। আপনি যে এজেন্ট এর কাছ থেকে একাউন্ট খুলবেন তার সাথেই সব সময় লেনদেন করতে হবে। ঠিক কোন এজেন্ট কে টাকা দিবেন এবং কিভাবে তার সাথে লেনদেন করবেন তার বুঝতে আপনার নিচের তথ্য গুলো পড়া জরুরী।
+        <h3 style="color:#ffeb3b">অনলাইন মাস্টার এজেন্ট লিস্টঃ</h3>
+        <p>অনলাইন মাস্টার এজেন্ট রা, শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন। কোন মাস্টার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে অভিযোগ করতে হবে।</p>
     </div>
 </div>
 
@@ -119,35 +102,26 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 let fileName = window.location.pathname.split("/").pop().replace('.html','');
-let currentRole = fileName;
+let currentRole = fileName == ''? 'index' : fileName;
 
 const roleNames = {
-  'index': 'ALL AGENTS',
-  'siteowner': 'SITE OWNER',
-  'admin': 'ADMIN',
-  'subadmin': 'SUB ADMIN',
-  'super': 'SUPER',
-  'master': 'MASTER'
+  'index': 'ALL AGENTS', 'siteowner': 'SITE OWNER', 'admin': 'ADMIN',
+  'subadmin': 'SUB ADMIN', 'super': 'SUPER', 'master': 'MASTER'
 }
-
 document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'AGENTS';
-let activeLink = document.querySelector(`a[href="${fileName}.html"]`);
-if(activeLink) activeLink.classList.add('active');
 
 db.ref('agents').on('value', snap => {
   let html = '';
-  let found = false;
   snap.forEach(child => {
     let a = child.val();
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
-      found = true;
-      html += `<div class="admin-card">
-        <div class="admin-avatar">👤</div>
+      html += `<div class="agent-card">
+        <div class="avatar">👤</div>
         <div style="flex:1">
           <div><b>${a.name}</b></div>
           <div style="font-size:12px;color:#aaa">${a.role}</div>
         </div>
-        <div class="id-box">ID ${a.id}</div>
+        <div class="id-box">ID<br>${a.id}</div>
         <div>
           <div style="font-size:12px">${a.phone}</div>
           <a href="https://wa.me/${a.phone}" class="btn btn-whatsapp">Whatsapp</a>
@@ -156,8 +130,7 @@ db.ref('agents').on('value', snap => {
       </div>`
     }
   })
-  if(!found) html = '<p style="text-align:center">কোন Agent পাওয়া যায়নি</p>';
-  document.getElementById('agentList').innerHTML = html;
+  document.getElementById('agentList').innerHTML = html || 'কোন Agent নেই';
 })
 </script>
 </body>
