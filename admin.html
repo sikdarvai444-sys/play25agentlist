@@ -3,38 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADMIN PANEL - PLAY25</title>
+<title id="pageTitle">PLAY25 Agent List</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#0a1a3f;color:#fff;padding:10px}
-.header{background:#1e3c72;padding:15px;border-radius:10px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.header a{color:#ffd700;text-decoration:none;font-weight:bold}
-.box{background:#1e3c72;padding:15px;border-radius:10px;margin:10px 0}
-input,button{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none;font-size:15px}
-button{background:#28a745;color:#fff;font-weight:bold;cursor:pointer}
-table{width:100%;background:#0a1a3f;margin-top:10px;border-collapse:collapse}
-td,th{padding:8px;border:1px solid #2a4a8a;font-size:12px;text-align:left}
-.btn-del{background:#dc3545;padding:4px 8px;cursor:pointer}
+body{background:#0a1a3f;color:#fff}
+.header{text-align:center;padding:15px}
+.logo{font-size:28px;font-weight:bold;color:#ffd700}
+.logo span{color:#ff0000}
+.menu{background:#1e3c72;margin:10px;border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.menu a{color:#fff;text-decoration:none;font-size:13px;padding:6px 10px;border-radius:6px}
+.menu a.active{background:#28a745;font-weight:bold}
+.card{background:#1e3c72;margin:10px;padding:15px;border-radius:10px}
+h2{text-align:center;color:#ffd700;margin-bottom:15px;font-size:22px}
+.btn{background:#1877f2;color:#fff;padding:6px 12px;border-radius:8px;text-decoration:none;font-size:12px;display:inline-block;margin:2px}
+.btn-whatsapp{background:#25D366}
+.btn-fb{background:#1877f2}
+.id-box{background:#ffd700;color:#000;padding:3px 8px;border-radius:5px;font-weight:bold}
+.admin{display:flex;align-items:center;gap:10px;background:#0a1a3f;padding:12px;border-radius:10px;flex-wrap:wrap;margin-bottom:10px}
+.support{position:fixed;bottom:10px;left:10px;background:#28a745;padding:10px 15px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{color:#ffd700;padding:8px;text-align:left}
+td{padding:8px;border-bottom:1px solid #2a4a8a}
 </style>
 </head>
 <body>
 <div class="header">
-    <h2>👑 PLAY25 ADMIN PANEL</h2>
-    <a href="index.html">← Back to Site</a>
+    <div class="logo">👑 PLAY<span>25</span></div>
+    <div>Agent List</div>
 </div>
 
-<div class="box">
-<h3>➕ Agent Add</h3>
-<input id="name" placeholder="Agent Name">
-<input id="id" placeholder="Agent ID">
-<input id="phone" placeholder="WhatsApp Number 8801...">
-<button onclick="addAgent()">Add Agent</button>
+<div class="menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="siteowner.html">👤 Site Owner</a>
+    <a href="admin.html">👤 Admin</a>
+    <a href="subadmin.html">👤 Sub Admin</a>
+    <a href="super.html">👤 Super</a>
+    <a href="master.html">👤 Master</a>
+    <a href="#">🎯 Lottery</a>
 </div>
 
-<div class="box">
-<h3>📋 Agent List</h3>
-<table id="agentTable"><tr><th>Name</th><th>ID</th><th>Phone</th><th>Action</th></tr></table>
+<div class="card">
+    <h2 id="roleTitle">AGENT LIST</h2>
+    <div id="agentList"><p style="text-align:center;color:#aaa">Loading...</p></div>
 </div>
+
+<a href="#" class="support">🎧 Support</a>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
@@ -48,30 +61,48 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-function addAgent(){
-  if(document.getElementById('name').value == ''){alert('Name লিখেন');return;}
-  db.ref('agents').push({
-    name:document.getElementById('name').value,
-    id:document.getElementById('id').value,
-    phone:document.getElementById('phone').value
-  });
-  document.getElementById('name').value = '';
-  document.getElementById('id').value = '';
-  document.getElementById('phone').value = '';
-  alert('Agent Added!')
+// কোন পেজে আছে সেটা URL থেকে ধরবে
+let fileName = window.location.pathname.split("/").pop().replace('.html','');
+let currentRole = fileName; // admin, master, super etc
+
+const roleNames = {
+  'index': 'ALL AGENT LIST',
+  'siteowner': 'SITE OWNER LIST',
+  'admin': 'ADMIN LIST',
+  'subadmin': 'SUB ADMIN LIST',
+  'super': 'SUPER LIST',
+  'master': 'MASTER LIST'
 }
 
+document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'AGENT LIST';
+document.getElementById('pageTitle').innerText = roleNames[currentRole] || 'Agent List';
+let activeLink = document.querySelector(`a[href="${fileName}.html"]`);
+if(activeLink) activeLink.classList.add('active');
+
+// Firebase থেকে Filter করে দেখাবে
 db.ref('agents').on('value', snap => {
-  let table = document.getElementById('agentTable');
-  table.innerHTML = '<tr><th>Name</th><th>ID</th><th>Phone</th><th>Action</th></tr>';
+  let html = `<table><tr><th>Agent</th><th>ID</th><th>Contact</th></tr>`;
+  let found = false;
   snap.forEach(child => {
     let a = child.val();
-    table.innerHTML += `<tr>
-      <td>${a.name}</td><td>${a.id}</td><td>${a.phone}</td>
-      <td><button class="btn-del" onclick="db.ref('agents/${child.key}').remove()">Delete</button></td>
-    </tr>`
+    // Home এ সব দেখাবে, অন্য পেজে role মিললে দেখাবে
+    if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+      found = true;
+      html += `<tr>
+        <td>👤 <b>${a.name}</b><br><small>${a.role}</small></td>
+        <td><div class="id-box">${a.id}</div></td>
+        <td>
+          ${a.phone}<br>
+          <a href="https://wa.me/${a.phone}" class="btn btn-whatsapp">Whatsapp</a>
+          <a href="${a.fb || '#'}" class="btn btn-fb">f</a>
+        </td>
+      </tr>`
+    }
   })
+  html += `</table>`;
+  if(!found) html = '<p style="text-align:center">কোন Agent পাওয়া যায়নি</p>';
+  document.getElementById('agentList').innerHTML = html;
 })
 </script>
 </body>
-</html> 
+</html>
