@@ -3,104 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MASTER LIST - PLAY25</title>
+<title>PLAY25 Agent List</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#0a1a3f;color:#fff;padding-bottom:60px}
-.header{text-align:center;padding:15px}
-.logo{font-size:28px;font-weight:bold;color:#ffd700}
-.logo span{color:#ff0000}
-.menu{background:#1e3c72;margin:10px;border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.menu a{color:#fff;text-decoration:none;font-size:13px}
-h2{text-align:center;color:#ffd700;margin:15px 0}
-.table-container{overflow-x:auto;margin:10px}
-table{width:100%;border-collapse:collapse;background:#1e3c72;border-radius:10px;overflow:hidden}
-th{background:#0a1a3f;color:#ffd700;padding:10px;font-size:12px;white-space:nowrap}
-td{padding:8px;text-align:center;border-bottom:1px solid #2a4a8a;font-size:11px}
-tr:hover{background:#2a4a8a}
-.btn{background:#25D366;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:10px}
-.btn-report{background:#dc3545;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:10px}
-.btn-view{background:#17a2b8;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:10px}
-.app-icons{display:flex;gap:3px;justify-content:center}
-.support{position:fixed;bottom:10px;left:10px;background:#28a745;padding:8px 12px;border-radius:20px;color:#fff;text-decoration:none;z-index:999}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+body{background:#0b3d91;color:#fff}
+.header{text-align:center;padding:10px;background:#0b3d91}
+.logo img{height:50px}
+.menu{background:#1153c7;margin:10px;border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+.menu a{color:#fff;text-decoration:none;font-size:14px;font-weight:500}
+.menu a.active{color:#ffeb3b}
+.box{background:#1153c7;margin:10px;border-radius:10px;padding:15px}
+h2{text-align:center;color:#ffeb3b;margin-bottom:15px;font-size:20px;font-weight:bold}
+.btn{background:#4caf50;color:#fff;padding:6px 12px;border-radius:5px;text-decoration:none;font-size:12px;display:inline-block;font-weight:bold}
+.btn-whatsapp{background:#25D366}
+.btn-msg{background:#4caf50}
+.btn-fb{background:#1877f2}
+.btn-visit{background:#8bc34a}
+.fb-box{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+.agent-card{display:flex;align-items:center;gap:10px;background:#0b3d91;padding:12px;border-radius:10px;margin-bottom:10px}
+.avatar{width:40px;height:40px;background:#4caf50;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.avatar img{width:25px}
+.id-box{background:#cddc39;color:#000;padding:8px 5px;border-radius:8px;font-weight:bold;font-size:12px;text-align:center;width:50px}
+.link-table{width:100%;font-size:14px}
+.link-table td{padding:10px 5px}
+.dot{width:8px;height:8px;background:#4caf50;border-radius:50%;display:inline-block;margin-right:5px}
+.support{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:8px 15px;border-radius:25px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px}
+.info-box{background:#0b3d91;padding:15px;border-radius:10px;line-height:1.8;font-size:14px;text-align:justify}
+.marquee{color:#ffeb3b;font-weight:bold;text-align:right}
 </style>
 </head>
 <body>
+
 <div class="header">
-    <div class="logo">👑 PLAY<span>25</span></div>
-    <div>Agent List</div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:22px;color:#ffeb3b">🔍</span>
+        <div class="logo">👑 <span style="color:#ffeb3b;font-size:32px;font-weight:bold">PLAY</span><span style="font-size:32px;font-weight:bold">25</span><div style="font-size:14px;letter-spacing:2px">Agent List</div></div>
+        <span style="font-size:22px;color:#ffeb3b">⊞</span>
+    </div>
 </div>
 
 <div class="menu">
-    <a href="index.html">🏠 Home</a>
-    <a href="#">👤 Site Owner</a>
+    <a href="index.html" class="active">🏠 Home</a>
+    <a href="siteowner.html">👤 Site Owner</a>
     <a href="admin.html">👤 Admin</a>
-    <a href="master.html">👤 Sub Admin</a>
-    <a href="master.html">👤 Super</a>
+    <a href="subadmin.html">👤 Sub Admin</a>
+    <a href="super.html">👤 Super</a>
     <a href="master.html">👤 Master</a>
     <a href="#">🎯 Lottery</a>
 </div>
 
-<h2>MASTER LIST</h2>
+<div class="box"><div class="marquee">লিস্টে</div></div>
 
-<div class="table-container">
-<table>
-<thead>
-<tr>
-    <th>Home</th>
-    <th>ID</th>
-    <th>App Link</th>
-    <th>Phone Number</th>
-    <th>View</th>
-    <th>Report</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-    <td>😊 Sonny Master</td>
-    <td>*****</td>
-    <td class="app-icons"><a href="#" class="btn">📱</a><a href="#" class="btn">f</a></td>
-    <td>+8801XXXXXXXXX</td>
-    <td><a href="#" class="btn-view">View</a></td>
-    <td><a href="#" class="btn-report">Report</a></td>
-</tr>
-<tr>
-    <td>😎 Bappy Khan Master</td>
-    <td>*****</td>
-    <td class="app-icons"><a href="#" class="btn">📱</a><a href="#" class="btn">f</a></td>
-    <td>+8801XXXXXXXXX</td>
-    <td><a href="#" class="btn-view">View</a></td>
-    <td><a href="#" class="btn-report">Report</a></td>
-</tr>
-<tr>
-    <td>👑 Araf Master</td>
-    <td>*****</td>
-    <td class="app-icons"><a href="#" class="btn">📱</a><a href="#" class="btn">f</a></td>
-    <td>+8801XXXXXXXXX</td>
-    <td><a href="#" class="btn-view">View</a></td>
-    <td><a href="#" class="btn-report">Report</a></td>
-</tr>
-<tr>
-    <td>🔥 Siam Khan Master</td>
-    <td>*****</td>
-    <td class="app-icons"><a href="#" class="btn">📱</a><a href="#" class="btn">f</a></td>
-    <td>+8801XXXXXXXXX</td>
-    <td><a href="#" class="btn-view">View</a></td>
-    <td><a href="#" class="btn-report">Report</a></td>
-</tr>
-<tr>
-    <td>💎 Rafi Master</td>
-    <td>*****</td>
-    <td class="app-icons"><a href="#" class="btn">📱</a><a href="#" class="btn">f</a></td>
-    <td>+8801XXXXXXXXX</td>
-    <td><a href="#" class="btn-view">View</a></td>
-    <td><a href="#" class="btn-report">Report</a></td>
-</tr>
-</tbody>
-</table>
+<div class="box">
+    <div class="fb-box">
+        <span>আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ</span>
+        <a href="#" class="btn btn-fb">f এখানে ক্লিক করুন</a>
+    </div>
+    <div class="fb-box">
+        <span>ফেসবুক অফিসিয়াল পেজ</span>
+        <a href="#" class="btn btn-fb">📩 এখানে ক্লিক করুন</a>
+    </div>
 </div>
-<p style="text-align:center;margin:10px">এখানে আপনার বাকি Agent দের তথ্য Paste করবেন</p>
+
+<div class="box">
+    <h2 id="roleTitle">Admin</h2>
+    <div id="agentList"></div>
+</div>
+
+<div class="box">
+    <h2>আমাদের প্রফি লিংক</h2>
+    <table class="link-table">
+        <tr><td>Main Link</td><td>play25.live</td><td><span class="dot"></span>Active</td><td><a href="https://play25.live" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>Link 2</td><td>plabon25.com</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>Link 4</td><td>play25.bet</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>Low limit<br>casino</td><td>bee25.live</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+        <tr><td>link 5</td><td>plabon.live</td><td><span class="dot"></span>Active</td><td><a href="#" class="btn btn-visit">Visit</a></td></tr>
+    </table>
+</div>
+
+<div class="box">
+    <h2>How many types of agents</h2>
+    <div class="info-box">
+        <h3 style="color:#ffeb3b;text-align:center">অনলাইন সুপার এজেন্ট লিস্টঃ</h3>
+        <p>সুপার এজেন্ট রা, ইউজার একাউন্ট এবং মাস্টার এজেন্ট একাউন্ট খুলে দিতে পারেন। কোন সুপার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি এডমিন কে জানাতে হবে।</p><br>
+        <h3 style="color:#ffeb3b;text-align:center">অনলাইন মাস্টার এজেন্ট লিস্টঃ</h3>
+        <p>অনলাইন মাস্টার এজেন্ট রা, শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন। কোন মাস্টার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে অভিযোগ করতে হবে।</p><br>
+        <h3 style="color:#ffeb3b;text-align:center">লোকাল মাস্টার এজেন্ট লিস্টঃ</h3>
+    </div>
+</div>
+
+<div class="box">
+    <h2>এজেন্ট লিস্টঃ</h2>
+    <div class="info-box">
+        একাউন্ট খুলতে নিচের অনলাইন এজেন্ট লিস্ট এ ক্লিক করুন। এজেন্ট লিস্ট এর এজেন্ট দের সাথে ইউজার দের শুধু মাত্র হোয়াটসাপ এর মাধ্যমে যোগাযোগ করতে হবে। হোয়াটসাপ ছাড়া অন্য কোন মাধ্যমে যোগাযোগ করলে বা লেনদেন করলে তা আইকন উপরে ক্লিক করুন অথবা ফোন নাম্বার টি মোবাইলে সেভ করে তাকে হোয়াটসাপ এ মেসেজ পাঠাতে পারবেন। হোয়াটসাপ এপ টি আপনার মোবাইলে আগে থেকেই থাকতে হবে। না থাকলে গুগুল প্লে থেকে ইন্সটল করে নিন।
+    </div>
+</div>
+
+<div class="box">
+    <h2>কিভাবে একাউন্ট খুলবেনঃ</h2>
+    <div class="info-box">
+        play25 তে একাউন্ট করতে হলে আপনার এজেন্ট এর মাধ্যমে একাউন্ট খুলতে হবে। এজেন্ট এর মাধ্যমেই টাকা ডিপোজিট এবং উইথড্র করতে হবে। আপনি যে এজেন্ট এর কাছ থেকে একাউন্ট খুলবেন তার সাথেই সব সময় লেনদেন করতে হবে। ঠিক কোন এজেন্ট কে টাকা দিবেন এবং কিভাবে তার সাথে লেনদেন করবেন তার বুঝতে আপনার নিচের তথ্য গুলো পড়া জরুরী।
+    </div>
+</div>
 
 <a href="#" class="support">🎧 Support</a>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
+  authDomain: "play25agent.firebaseapp.com",
+  databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "play25agent"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+let fileName = window.location.pathname.split("/").pop().replace('.html','');
+let currentRole = fileName == ''? 'index' : fileName;
+const roleNames = {'index': 'Admin', 'siteowner': 'Site Owner', 'admin': 'Admin', 'subadmin': 'Sub Admin', 'super': 'Super', 'master': 'Master'}
+document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'Admin';
+
+db.ref('agents').on('value', snap => {
+  let html = '';
+  snap.forEach(child => {
+    let a = child.val();
+    if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+      html += `<div class="agent-card">
+        <div class="avatar">👤</div>
+        <div style="flex:1">
+          <div><b>${a.name}</b></div>
+          <div style="font-size:12px;color:#aaa">${a.role}</div>
+        </div>
+        <div class="id-box">ID<br>${a.id}</div>
+        <div>
+          <div style="font-size:12px">${a.phone}</div>
+          <a href="https://wa.me/${a.phone}" class="btn btn-whatsapp">Whatsapp</a>
+        </div>
+        <a href="#" class="btn btn-msg">Message</a>
+      </div>`
+    }
+  })
+  document.getElementById('agentList').innerHTML = html;
+})
+</script>
 </body>
 </html>
