@@ -34,10 +34,15 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 .id-box{background:#ffc107;color:#000;padding:1px 4px;border-radius:4px;font-weight:bold;font-size:8px;display:inline-block}
 .stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
 
-/* WHATSAPP BUTTON - 2 লাইন */
-.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:1px;margin:1px 0;text-decoration:none}
+/* WHATSAPP ICON FOR APP COLUMN */
+.btn-wa-icon-small{background:#25D366;color:#fff;padding:3px 5px;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-wa-icon-small svg{width:12px;height:12px;fill:#fff}
+
+/* PHONE COLUMN */
+.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;margin:1px 0;text-decoration:none}
 .btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap}
-.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1}
+.btn-wa-icon{background:#25D366;color:#fff;padding:2px 6px;border-radius:12px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-wa-icon svg{width:14px;height:14px;fill:#fff}
 
 .btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
 .btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
@@ -76,12 +81,9 @@ th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} t
 
 <div class="header">
     <div class="search-icon" onclick="openSearch()">🔍</div>
-
-    <!-- LOGO IMAGE ADDED -->
     <div class="logo">
         <img src="logo.png" alt="PLAY25 Agent List">
     </div>
-
     <div class="grid-icon">⊞</div>
 </div>
 
@@ -220,21 +222,30 @@ function renderAgents(data){
     let a = data[key];
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
 
-      let appLink = `<span class="btn-none">--</span>`;
+      // APP কলামে এখন ছোট WA আইকন
+      let appLink = `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-icon-small">
+                        <svg viewBox="0 0 32 32"><path d="M19.11 17.205c-.372-.1-2.2-1.084-2.54-1.284-.336-.2-.58-.1-.83.1-.25.2-1.005 1.284-1.23 1.53-.22.24-.44.27-.82.1-.38-.1-1.605-.59-3.06-1.87-1.13-1.01-1.89-2.25-2.11-2.64-.22-.4-.02-.6.16-.78.18-.18.4-.47.6-.7.2-.22.27-.37.4-.62.13-.25.06-.47-.03-.67-.09-.2-.83-2-1.13-2.74-.3-.7-.6-.6-.83-.6-.22 0-.47-.03-.72-.03-.25 0-.66.1-1.01.5-.35.4-1.33 1.3-1.33 3.18 0 1.88 1.37 3.7 1.56 3.95.2.25 2.7 4.12 6.54 5.78.91.39 1.62.63 2.17.8.91.29 1.74.25 2.4.15.73-.11 2.2-.9 2.51-1.76.31-.86.31-1.6.22-1.76-.09-.18-.33-.28-.68-.43zM16 2C8.28 2 2 8.28 2 16c0 2.52.64 4.95 1.84 7.12L2 30l7-1.86C10.85 29.29 13.35 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2z"/></svg>
+                     </a>`;
+
+      // FB কলাম --
       let fbLink = `<span class="btn-none">--</span>`;
 
-      // PHONE DESIGN - 2 লাইন
+      // PHONE COLUMN - নাম্বার + WA আইকন
       let phoneBtns = '';
       if(a.phone){
         phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap">
                         <div class="btn-wa-num">${a.phone}</div>
-                        <div class="btn-wa">Whatsapp</div>
+                        <div class="btn-wa-icon">
+                          <svg viewBox="0 0 32 32"><path d="M19.11 17.205c-.372-.1-2.2-1.084-2.54-1.284-.336-.2-.58-.1-.83.1-.25.2-1.005 1.284-1.23 1.53-.22.24-.44.27-.82.1-.38-.1-1.605-.59-3.06-1.87-1.13-1.01-1.89-2.25-2.11-2.64-.22-.4-.02-.6.16-.78.18-.18.4-.47.6-.7.2-.22.27-.37.4-.62.13-.25.06-.47-.03-.67-.09-.2-.83-2-1.13-2.74-.3-.7-.6-.6-.83-.6-.22 0-.47-.03-.72-.03-.25 0-.66.1-1.01.5-.35.4-1.33 1.3-1.33 3.18 0 1.88 1.37 3.7 1.56 3.95.2.25 2.7 4.12 6.54 5.78.91.39 1.62.63 2.17.8.91.29 1.74.25 2.4.15.73-.11 2.2-.9 2.51-1.76.31-.86.31-1.6.22-1.76-.09-.18-.33-.28-.68-.43zM16 2C8.28 2 2 8.28 2 16c0 2.52.64 4.95 1.84 7.12L2 30l7-1.86C10.85 29.29 13.35 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2z"/></svg>
+                        </div>
                       </a>`;
       }
       if(a.phone2){
         phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap">
                         <div class="btn-wa-num">${a.phone2}</div>
-                        <div class="btn-wa">Whatsapp</div>
+                        <div class="btn-wa-icon">
+                          <svg viewBox="0 0 32 32"><path d="M19.11 17.205c-.372-.1-2.2-1.084-2.54-1.284-.336-.2-.58-.1-.83.1-.25.2-1.005 1.284-1.23 1.53-.22.24-.44.27-.82.1-.38-.1-1.605-.59-3.06-1.87-1.13-1.01-1.89-2.25-2.11-2.64-.22-.4-.02-.6.16-.78.18-.18.4-.47.6-.7.2-.22.27-.37.4-.62.13-.25.06-.47-.03-.67-.09-.2-.83-2-1.13-2.74-.3-.7-.6-.6-.83-.6-.22 0-.47-.03-.72-.03-.25 0-.66.1-1.01.5-.35.4-1.33 1.3-1.33 3.18 0 1.88 1.37 3.7 1.56 3.95.2.25 2.7 4.12 6.54 5.78.91.39 1.62.63 2.17.8.91.29 1.74.25 2.4.15.73-.11 2.2-.9 2.51-1.76.31-.86.31-1.6.22-1.76-.09-.18-.33-.28-.68-.43zM16 2C8.28 2 2 8.28 2 16c0 2.52.64 4.95 1.84 7.12L2 30l7-1.86C10.85 29.29 13.35 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2z"/></svg>
+                        </div>
                       </a>`;
       }
 
