@@ -11,7 +11,6 @@ body{background:#0b3d91;color:#fff}
 .header{display:flex;justify-content:space-between;align-items:center;padding:8px 8px}
 .search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
 
-/* LOGO IMAGE */
 .logo{flex:1;text-align:center}
 .logo img{max-width:180px;height:auto;display:block;margin:0 auto}
 
@@ -51,7 +50,6 @@ h2{
     text-transform:uppercase
 }
 
-/* TABLE */
 .box{overflow-x:hidden}
 
 table{
@@ -77,7 +75,6 @@ td{
     vertical-align:middle
 }
 
-/* NAME ICON */
 .avatar{
     width:26px;
     height:26px;
@@ -131,10 +128,7 @@ td{
     letter-spacing:-1px
 }
 
-/* ==============================
-   APP COLUMN - SMALL ORIGINAL
-   WHATSAPP ICON
-   ============================== */
+/* WHATSAPP APP ICON */
 
 .btn-wa-app{
     background:#25D366;
@@ -158,6 +152,7 @@ td{
 }
 
 /* PHONE */
+
 .btn-wa-wrap{
     display:flex;
     flex-direction:column;
@@ -211,6 +206,7 @@ td{
 }
 
 /* COLUMN WIDTH */
+
 th:nth-child(1){width:20%}
 th:nth-child(2){width:8%}
 th:nth-child(3){width:9%}
@@ -256,6 +252,8 @@ th:nth-child(8){width:12%}
     background:#1153c7;
     width:90%;
     max-width:400px;
+    max-height:92vh;
+    overflow-y:auto;
     border-radius:10px;
     padding:15px;
     position:relative
@@ -276,7 +274,8 @@ th:nth-child(8){width:12%}
     right:15px;
     font-size:24px;
     color:#fff;
-    cursor:pointer
+    cursor:pointer;
+    z-index:10
 }
 
 .popup label{
@@ -310,6 +309,7 @@ th:nth-child(8){width:12%}
 }
 
 /* VIEW POPUP */
+
 .info-box{
     width:100%;
     padding:8px;
@@ -352,7 +352,10 @@ th:nth-child(8){width:12%}
     font-size:10px
 }
 
-/* REPORT POPUP */
+/* =========================
+   REPORT POPUP
+   ========================= */
+
 .report-header{
     background:#f44336;
     color:#fff;
@@ -360,7 +363,8 @@ th:nth-child(8){width:12%}
     padding:8px;
     border-radius:5px;
     font-weight:bold;
-    margin-bottom:10px
+    margin-bottom:10px;
+    font-size:18px
 }
 
 .report-wa-btn{
@@ -375,7 +379,87 @@ th:nth-child(8){width:12%}
     font-weight:bold
 }
 
+/* UPPER PANEL AREA */
+
+.upper-panel-title{
+    color:#ffeb3b;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:12px;
+    margin-bottom:6px;
+}
+
+.upper-panel-list{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:5px;
+}
+
+.upper-panel-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    background:#0b3d91;
+    padding:6px;
+    border-radius:6px;
+}
+
+.upper-panel-info{
+    flex:1;
+    min-width:0;
+}
+
+.upper-panel-name{
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.upper-panel-role{
+    color:#ffc107;
+    font-size:9px;
+    display:block;
+    margin-top:2px;
+}
+
+.upper-panel-id{
+    color:#aaa;
+    font-size:8px;
+}
+
+.report-to-btn{
+    background:#f44336;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    padding:6px 8px;
+    font-size:9px;
+    font-weight:bold;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.report-to-btn:active{
+    transform:scale(.96);
+}
+
+.no-upper-panel{
+    background:#0b3d91;
+    color:#aaa;
+    padding:8px;
+    border-radius:5px;
+    text-align:center;
+    font-size:10px;
+}
+
 /* SUPPORT */
+
 .support-item{
     display:flex;
     align-items:center;
@@ -465,6 +549,7 @@ th:nth-child(8){width:12%}
 <button class="support-btn" onclick="openSupport()">🎧 Support</button>
 
 <!-- SEARCH POPUP -->
+
 <div class="popup-overlay" id="searchPopup">
 
     <div class="popup">
@@ -496,6 +581,7 @@ th:nth-child(8){width:12%}
 </div>
 
 <!-- SUPPORT POPUP -->
+
 <div class="popup-overlay" id="supportPopup">
 
     <div class="popup">
@@ -510,6 +596,7 @@ th:nth-child(8){width:12%}
 </div>
 
 <!-- VIEW DETAILS POPUP -->
+
 <div class="popup-overlay" id="viewPopup">
 
     <div class="popup">
@@ -559,6 +646,7 @@ th:nth-child(8){width:12%}
 </div>
 
 <!-- REPORT POPUP -->
+
 <div class="popup-overlay" id="reportPopup">
 
     <div class="popup">
@@ -592,6 +680,18 @@ th:nth-child(8){width:12%}
         <label>Hierarchy / কার আন্ডারে আছে</label>
 
         <div class="hierarchy-tags" id="reportHierarchy"></div>
+
+        <!-- UPPER PANEL -->
+
+        <div class="upper-panel-title">
+            ⬆️ Upper Panel / Report To
+        </div>
+
+        <div class="upper-panel-list" id="reportUpperPanels">
+            <div class="no-upper-panel">
+                Upper Panel খোঁজা হচ্ছে...
+            </div>
+        </div>
 
         <a id="reportWa" href="#" target="_blank" class="report-wa-btn">
             📱 Whatsapp এ মেসেজ করুন
@@ -675,12 +775,204 @@ function getWaLink(num){
 
     if(!num) return '';
 
-    let clean = num.replace(/[^0-9]/g,'');
+    let clean = String(num).replace(/[^0-9]/g,'');
 
     return `https://wa.me/${clean}`;
 }
 
-/* HIERARCHY */
+/* =========================
+   FIND AGENT
+   ========================= */
+
+function findAgentByValue(value){
+
+    if(value === undefined || value === null || value === '')
+        return null;
+
+    let searchValue = String(value).trim().toLowerCase();
+
+    for(let key in allAgentsData){
+
+        let a = allAgentsData[key] || {};
+
+        let values = [
+            key,
+            a.id,
+            a.name,
+            a.serial,
+            a.phone,
+            a.phone2,
+            a.parent,
+            a.parentId,
+            a.parentID,
+            a.parentSerial,
+            a.parentName
+        ];
+
+        for(let v of values){
+
+            if(
+                v !== undefined &&
+                v !== null &&
+                String(v).trim().toLowerCase() === searchValue
+            ){
+                return {
+                    key:key,
+                    agent:a
+                };
+            }
+        }
+    }
+
+    return null;
+}
+
+/* =========================
+   GET PARENT VALUE
+   ========================= */
+
+function getParentValue(agent){
+
+    if(!agent) return null;
+
+    /*
+       Firebase-এ Parent যেকোনো একটি
+       নামে থাকলে সেখান থেকে নেওয়া হবে।
+    */
+
+    return agent.parent ||
+           agent.parentId ||
+           agent.parentID ||
+           agent.parentKey ||
+           agent.parentSerial ||
+           agent.parentName ||
+           agent.upline ||
+           agent.uplineId ||
+           agent.upper ||
+           agent.upperId ||
+           null;
+}
+
+/* =========================
+   GET ALL UPPER PANELS
+   ========================= */
+
+function getUpperPanels(agentKey, agent){
+
+    let result = [];
+    let visited = {};
+
+    let currentAgent = agent;
+    let currentKey = agentKey;
+
+    /*
+       Direct Parent থেকে শুরু করে
+       উপরের সব Parent বের করা হবে।
+    */
+
+    for(let i = 0; i < 20; i++){
+
+        if(!currentAgent)
+            break;
+
+        let parentValue = getParentValue(currentAgent);
+
+        if(
+            parentValue === undefined ||
+            parentValue === null ||
+            String(parentValue).trim() === ''
+        ){
+            break;
+        }
+
+        let parentResult = findAgentByValue(parentValue);
+
+        if(!parentResult){
+
+            /*
+              parent value না মিললে
+              parentParent দিয়েও চেষ্টা
+              বন্ধ করা হবে।
+            */
+
+            break;
+        }
+
+        let parentKey = parentResult.key;
+        let parentAgent = parentResult.agent;
+
+        /*
+          একই Agent যেন বারবার না আসে
+        */
+
+        if(visited[parentKey])
+            break;
+
+        visited[parentKey] = true;
+
+        /*
+          Current Agent নিজে যেন Upper Panel
+          হিসেবে না আসে
+        */
+
+        if(parentKey !== currentKey){
+
+            result.push({
+                key:parentKey,
+                agent:parentAgent
+            });
+        }
+
+        currentKey = parentKey;
+        currentAgent = parentAgent;
+    }
+
+    /*
+      যদি parent chain থেকে না পাওয়া যায়,
+      পুরোনো parentParent field থেকেও
+      অতিরিক্ত Upper Panel খোঁজা হবে।
+    */
+
+    let extraValues = [
+        agent.parentParent,
+        agent.upperParent,
+        agent.upperParentId,
+        agent.parentParentId,
+        agent.parentParentSerial
+    ];
+
+    for(let value of extraValues){
+
+        if(
+            value === undefined ||
+            value === null ||
+            String(value).trim() === ''
+        )
+            continue;
+
+        let found = findAgentByValue(value);
+
+        if(
+            found &&
+            found.key !== agentKey &&
+            !visited[found.key]
+        ){
+
+            visited[found.key] = true;
+
+            result.push({
+                key:found.key,
+                agent:found.agent
+            });
+        }
+    }
+
+    return result;
+}
+
+/* =========================
+   HIERARCHY
+   ========================= */
 
 function getHierarchy(agent){
 
@@ -704,11 +996,15 @@ function getHierarchy(agent){
     return tags || '<span class="tag">No Parent</span>';
 }
 
-/* VIEW */
+/* =========================
+   VIEW
+   ========================= */
 
 function viewAgent(key){
 
     let a = allAgentsData[key];
+
+    if(!a) return;
 
     document.getElementById('viewName').innerText =
         a.name || 'N/A';
@@ -734,11 +1030,167 @@ function viewAgent(key){
     document.getElementById('viewPopup').style.display='flex';
 }
 
-/* REPORT */
+/* =========================
+   REPORT MESSAGE
+   ========================= */
+
+function makeReportMessage(reportedAgent, targetAgent){
+
+    let reportedName =
+        reportedAgent.name || 'Agent';
+
+    let reportedRole =
+        reportedAgent.role || '';
+
+    let reportedId =
+        reportedAgent.id || '';
+
+    let targetName =
+        targetAgent.name || 'Admin';
+
+    return encodeURIComponent(
+        `Assalamu Alaikum ${targetName},\n\n` +
+        `আমি একজন Agent সম্পর্কে Report করতে চাই।\n\n` +
+        `Name: ${reportedName}\n` +
+        `Type: ${reportedRole}\n` +
+        `ID: ${reportedId}\n` +
+        `Number: ${reportedAgent.phone || 'N/A'}\n\n` +
+        `দয়া করে বিষয়টি যাচাই করবেন।`
+    );
+}
+
+/* =========================
+   REPORT TO UPPER PANEL
+   ========================= */
+
+function reportToUpperPanel(upperKey, reportedKey){
+
+    let upperAgent = allAgentsData[upperKey];
+    let reportedAgent = allAgentsData[reportedKey];
+
+    if(!upperAgent || !reportedAgent)
+        return;
+
+    let phone = upperAgent.phone || upperAgent.phone2;
+
+    if(!phone){
+
+        alert(
+            `${upperAgent.name || upperAgent.role || 'Upper Panel'} এর WhatsApp Number পাওয়া যায়নি।`
+        );
+
+        return;
+    }
+
+    let cleanPhone =
+        String(phone).replace(/[^0-9]/g,'');
+
+    let message =
+        makeReportMessage(
+            reportedAgent,
+            upperAgent
+        );
+
+    let url =
+        `https://wa.me/${cleanPhone}?text=${message}`;
+
+    window.open(url,'_blank');
+}
+
+/* =========================
+   CREATE UPPER PANEL LIST
+   ========================= */
+
+function renderUpperPanels(reportedKey){
+
+    let reportedAgent =
+        allAgentsData[reportedKey];
+
+    let container =
+        document.getElementById('reportUpperPanels');
+
+    if(!reportedAgent){
+
+        container.innerHTML =
+            `<div class="no-upper-panel">
+                Agent তথ্য পাওয়া যায়নি
+            </div>`;
+
+        return;
+    }
+
+    let upperPanels =
+        getUpperPanels(
+            reportedKey,
+            reportedAgent
+        );
+
+    if(!upperPanels.length){
+
+        container.innerHTML =
+            `<div class="no-upper-panel">
+                এই Agent-এর কোনো Upper Panel পাওয়া যায়নি
+            </div>`;
+
+        return;
+    }
+
+    let html = '';
+
+    upperPanels.forEach(item => {
+
+        let a = item.agent;
+
+        let role =
+            a.role || 'Upper Panel';
+
+        let name =
+            a.name || role;
+
+        let id =
+            a.id ? `ID ${a.id}` : '';
+
+        html += `
+        <div class="upper-panel-item">
+
+            <div class="upper-panel-info">
+
+                <span class="upper-panel-name">
+                    ${name}
+                </span>
+
+                <span class="upper-panel-role">
+                    ${role}
+                </span>
+
+                <span class="upper-panel-id">
+                    ${id}
+                </span>
+
+            </div>
+
+            <button
+                class="report-to-btn"
+                onclick="reportToUpperPanel('${item.key}','${reportedKey}')"
+            >
+                Report To ${role}
+            </button>
+
+        </div>`;
+    });
+
+    container.innerHTML = html;
+}
+
+/* =========================
+   REPORT
+   ========================= */
 
 function reportAgent(key){
 
     let a = allAgentsData[key];
+
+    if(!a) return;
 
     document.getElementById('reportName').innerText =
         a.name || 'N/A';
@@ -758,10 +1210,20 @@ function reportAgent(key){
     document.getElementById('reportWa').href =
         getWaLink(a.phone);
 
+    /*
+      Report popup খোলার সময়
+      ওই Agent-এর সব Upper Panel
+      নতুন করে Load হবে।
+    */
+
+    renderUpperPanels(key);
+
     document.getElementById('reportPopup').style.display='flex';
 }
 
-/* AGENTS LOAD */
+/* =========================
+   AGENTS LOAD
+   ========================= */
 
 db.ref('agents').on('value', snap => {
 
@@ -771,7 +1233,9 @@ db.ref('agents').on('value', snap => {
 
 });
 
-/* RENDER AGENTS */
+/* =========================
+   RENDER AGENTS
+   ========================= */
 
 function renderAgents(data){
 
@@ -785,8 +1249,6 @@ function renderAgents(data){
             currentRole == 'index' ||
             a.role.toLowerCase().replace(' ','') == currentRole
         ){
-
-            /* APP COLUMN - SMALL ORIGINAL WHATSAPP ICON */
 
             let appLink = `
             <a
@@ -810,8 +1272,6 @@ function renderAgents(data){
 
             let fbLink =
                 `<span class="btn-none">--</span>`;
-
-            /* PHONE COLUMN */
 
             let phoneBtns = '';
 
@@ -913,7 +1373,9 @@ function renderAgents(data){
         '<tr><td colspan="8">কোন Agent নেই</td></tr>';
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH
+   ========================= */
 
 function doSearch(){
 
@@ -937,13 +1399,17 @@ function doSearch(){
         if(type != 'all' && a.role != type)
             match = false;
 
-        if(id != '' && !a.id.includes(id))
+        if(
+            id != '' &&
+            !String(a.id || '').includes(id)
+        )
             match = false;
 
         if(
             phone != '' &&
-            !a.phone.includes(phone) &&
-            !(a.phone2 && a.phone2.includes(phone))
+            !String(a.phone || '').includes(phone) &&
+            !(a.phone2 &&
+              String(a.phone2).includes(phone))
         )
             match = false;
 
@@ -956,7 +1422,9 @@ function doSearch(){
     closeSearch();
 }
 
-/* SUPPORT LOAD */
+/* =========================
+   SUPPORT LOAD
+   ========================= */
 
 db.ref('support').on('value', snap => {
 
