@@ -33,7 +33,7 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 .btn-wa{background:#25D366;color:#fff;padding:1px 3px;border-radius:3px;text-decoration:none;font-size:8px;display:block;margin:1px 0}
 .btn-wa small{font-size:7px;display:block;line-height:1}
 .btn-report{background:#f44336;color:#fff;padding:2px 4px;border-radius:4px;text-decoration:none;font-size:8px}
-.btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px}
+.btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
 
 /* মোবাইল এ কলাম width ফিক্স */
 th:nth-child(1){width:20%} /* Name */
@@ -46,13 +46,21 @@ th:nth-child(7){width:7%} /* View */
 th:nth-child(8){width:12%} /* Report */
 
 .support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:6px 12px;border-radius:20px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer;font-size:11px}
-.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;justify-content:center;align-items:center}
+.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999;justify-content:center;align-items:center}
 .popup{background:#1153c7;width:90%;max-width:400px;border-radius:10px;padding:15px;position:relative}
 .popup h3{background:#000;padding:10px;border-radius:5px;text-align:center;color:#ffeb3b;margin-bottom:10px}
 .close-btn{position:absolute;top:10px;right:15px;font-size:24px;color:#fff;cursor:pointer}
 .popup label{color:#ffeb3b;font-size:13px;margin-top:8px;display:block}
 .popup select,.popup input{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff}
 .popup button{background:#4caf50;color:#fff;padding:8px 15px;border:none;border-radius:5px;font-weight:bold;cursor:pointer;float:right;margin-top:10px}
+
+/* VIEW POPUP NEW */
+.info-box{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff;text-align:left}
+.btn-wa-popup{background:#25D366;color:#fff;padding:6px 12px;border-radius:5px;text-decoration:none;display:inline-block;margin:5px 0}
+.stars-popup{text-align:center;font-size:18px;color:#ffc107;margin:5px 0}
+.hierarchy-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tag{background:#4caf50;padding:4px 8px;border-radius:15px;font-size:10px}
+
 .support-item{display:flex;align-items:center;gap:10px;background:#0b3d91;padding:8px;border-radius:8px;margin-bottom:8px}
 .support-item.icon{width:30px;height:30px;background:#ffc107;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold}
 .support-item.info{flex:1}
@@ -122,6 +130,21 @@ th:nth-child(8){width:12%} /* Report */
   </div>
 </div>
 
+<!-- VIEW DETAILS POPUP NEW -->
+<div class="popup-overlay" id="viewPopup">
+  <div class="popup"><span class="close-btn" onclick="closeView()">&times;</span>
+    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#ffc107;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#000">👤</div></div>
+    <label>Name</label><div class="info-box" id="viewName"></div>
+    <label>Type</label><div class="info-box" id="viewRole"></div>
+    <label>Number</label><div class="info-box" id="viewPhone"></div>
+    <label>ID Number</label><div class="info-box" id="viewId"></div>
+    <label>Serial</label><div class="info-box" id="viewSerial"></div>
+    <label>Message</label><a id="viewWa" href="#" target="_blank" class="btn-wa-popup">📱 Whatsapp</a>
+    <label>Rating</label><div class="stars-popup">★★★★★</div>
+    <label>Hierarchy / কার আন্ডারে</label><div class="hierarchy-tags" id="viewHierarchy"></div>
+  </div>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 <script>
@@ -138,6 +161,30 @@ function openSearch(){document.getElementById('searchPopup').style.display='flex
 function closeSearch(){document.getElementById('searchPopup').style.display='none'}
 function openSupport(){document.getElementById('supportPopup').style.display='flex'}
 function closeSupport(){document.getElementById('supportPopup').style.display='none'}
+function closeView(){document.getElementById('viewPopup').style.display='none'}
+
+// Hierarchy বের করার ফাংশন
+function getHierarchy(agent) {
+  let tags = '';
+  if(agent.parent) tags += `<span class="tag">Parent: ${agent.parent}</span>`;
+  if(agent.parentSerial) tags += `<span class="tag">${agent.parentSerial}</span>`;
+  if(agent.role!= 'Site Owner') tags += `<span class="tag">Level: ${agent.role}</span>`;
+  if(!agent.parent) tags += `<span class="tag">Site Owner</span>`;
+  return tags || '<span class="tag">No Parent</span>';
+}
+
+// View Details Function NEW
+function viewAgent(key){
+  let a = allAgentsData[key];
+  document.getElementById('viewName').innerText = a.name;
+  document.getElementById('viewRole').innerText = a.role;
+  document.getElementById('viewPhone').innerText = a.phone;
+  document.getElementById('viewId').innerText = a.id;
+  document.getElementById('viewSerial').innerText = a.serial || '-';
+  document.getElementById('viewWa').href = `https://wa.me/${a.phone}`;
+  document.getElementById('viewHierarchy').innerHTML = getHierarchy(a);
+  document.getElementById('viewPopup').style.display='flex';
+}
 
 // Agents Load
 db.ref('agents').on('value', snap => {
@@ -157,7 +204,7 @@ function renderAgents(data){
         <td><a href="${a.app||'#'}" target="_blank">${a.app? '📱' : '--'}</a></td>
         <td><a href="${a.fb||'#'}" target="_blank">${a.fb? 'f' : '--'}</a></td>
         <td>${a.phone? `<a href="https://wa.me/${a.phone}" class="btn-wa">${a.phone}<small>Whatsapp</small></a>` : ''}${a.phone2? `<a href="https://wa.me/${a.phone2}" class="btn-wa">${a.phone2}<small>Whatsapp</small></a>` : ''}</td>
-        <td><a href="#" class="btn-view">👁️</a></td>
+        <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
         <td><a href="#" class="btn-report">Report</a></td>
       </tr>`
     }
