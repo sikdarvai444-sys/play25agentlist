@@ -7,10 +7,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
 body{background:#0b3d91;color:#fff}
-.header{display:flex;justify-content:space-between;align-items:center;padding:10px 8px}
-.logo{font-size:22px;font-weight:bold;text-align:center;flex:1;font-style:italic}
-.logo span:first-child{color:#ffeb3b}
+.header{display:flex;justify-content:space-between;align-items:center;padding:8px 8px}
 .search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
+
+/* LOGO IMAGE */
+.logo{flex:1;text-align:center}
+.logo img{max-width:160px;height:auto;display:block;margin:0 auto}
+
 .menu{background:#1153c7;margin:8px;border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .menu a{color:#fff;text-decoration:none;font-size:12px;font-weight:500}
 .menu a.active{color:#ffeb3b}
@@ -33,8 +36,8 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 
 /* WHATSAPP BUTTON - 2 লাইন */
 .btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:1px;margin:1px 0;text-decoration:none}
-.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap} /* ছোট + এক লাইন */
-.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1} /* আরো ছোট */
+.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap}
+.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1}
 
 .btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
 .btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
@@ -73,7 +76,12 @@ th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} t
 
 <div class="header">
     <div class="search-icon" onclick="openSearch()">🔍</div>
-    <div class="logo">👑 <span>PLAY</span><span>25</span><div style="font-size:9px;letter-spacing:2px;font-style:normal">Agent List</div></div>
+
+    <!-- LOGO IMAGE ADDED -->
+    <div class="logo">
+        <img src="logo.png" alt="PLAY25 Agent List">
+    </div>
+
     <div class="grid-icon">⊞</div>
 </div>
 
