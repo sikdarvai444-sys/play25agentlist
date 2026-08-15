@@ -4,76 +4,508 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PLAY25 Agent List</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#0b3d91;color:#fff}
-.header{display:flex;justify-content:space-between;align-items:center;padding:10px 8px}
-.logo{font-size:22px;font-weight:bold;text-align:center;flex:1;font-style:italic}
-.logo span:first-child{color:#ffeb3b}
+.header{display:flex;justify-content:space-between;align-items:center;padding:8px 8px}
 .search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
-.menu{background:#1153c7;margin:8px;border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-.menu a{color:#fff;text-decoration:none;font-size:12px;font-weight:500}
+
+.logo{flex:1;text-align:center}
+.logo img{max-width:180px;height:auto;display:block;margin:0 auto}
+
+.menu{
+    background:#1153c7;
+    margin:8px;
+    border-radius:8px;
+    padding:8px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px
+}
+
+.menu a{
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:500
+}
+
 .menu a.active{color:#ffeb3b}
-.box{background:#1153c7;margin:8px;border-radius:8px;padding:8px}
-h2{text-align:center;color:#ffeb3b;margin-bottom:8px;font-size:16px;font-weight:bold;text-transform:uppercase}
 
-/* TABLE */
+.box{
+    background:#1153c7;
+    margin:8px;
+    border-radius:8px;
+    padding:8px
+}
+
+h2{
+    text-align:center;
+    color:#ffeb3b;
+    margin-bottom:8px;
+    font-size:16px;
+    font-weight:bold;
+    text-transform:uppercase
+}
+
 .box{overflow-x:hidden}
-table{width:100%;border-collapse:collapse;font-size:9px}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:9px
+}
+
 thead{background:#0b3d91}
-th{color:#fff;padding:7px 1px;text-align:center;font-weight:500;white-space:nowrap}
-td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-align:middle}
 
-.avatar{width:26px;height:26px;border-radius:50%;background:#555;display:inline-block;vertical-align:middle;margin-right:2px}
-.name-col{text-align:left;white-space:nowrap;padding-left:2px}
-.name-col b{font-size:10px;font-weight:500}
-.name-col small{font-size:8px;color:#aaa;display:block}
-.id-box{background:#ffc107;color:#000;padding:1px 4px;border-radius:4px;font-weight:bold;font-size:8px;display:inline-block}
-.stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
+th{
+    color:#fff;
+    padding:7px 1px;
+    text-align:center;
+    font-weight:500;
+    white-space:nowrap
+}
 
-/* WHATSAPP BUTTON - 2 লাইন */
-.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:1px;margin:1px 0;text-decoration:none}
-.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap} /* ছোট + এক লাইন */
-.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1} /* আরো ছোট */
+td{
+    padding:5px 1px;
+    text-align:center;
+    border-bottom:1px solid #1976d2;
+    vertical-align:middle
+}
 
-.btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
-.btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
-.btn-none{color:#888;font-size:12px}
+.avatar{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#000;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    vertical-align:middle;
+    margin-right:2px;
+    color:#fff;
+    font-size:15px;
+}
 
-/* কলাম width */
-th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} th:nth-child(4){width:7%} th:nth-child(5){width:8%} th:nth-child(6){width:22%} th:nth-child(7){width:7%} th:nth-child(8){width:12%}
+.avatar::after{
+    content:"👤";
+    font-size:15px;
+    line-height:1;
+}
 
-.support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:6px 12px;border-radius:20px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer;font-size:11px}
-.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999;justify-content:center;align-items:center}
-.popup{background:#1153c7;width:90%;max-width:400px;border-radius:10px;padding:15px;position:relative}
-.popup h3{background:#000;padding:10px;border-radius:5px;text-align:center;color:#ffeb3b;margin-bottom:10px}
-.close-btn{position:absolute;top:10px;right:15px;font-size:24px;color:#fff;cursor:pointer}
-.popup label{color:#ffeb3b;font-size:13px;margin-top:8px;display:block}
-.popup select,.popup input{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff}
-.popup button{background:#4caf50;color:#fff;padding:8px 15px;border:none;border-radius:5px;font-weight:bold;cursor:pointer;float:right;margin-top:10px}
+.name-col{
+    text-align:left;
+    white-space:nowrap;
+    padding-left:2px
+}
+
+.name-col b{
+    font-size:10px;
+    font-weight:500
+}
+
+.name-col small{
+    font-size:8px;
+    color:#aaa;
+    display:block
+}
+
+.id-box{
+    background:#ffc107;
+    color:#000;
+    padding:1px 4px;
+    border-radius:4px;
+    font-weight:bold;
+    font-size:8px;
+    display:inline-block
+}
+
+.stars{
+    color:#ffc107;
+    font-size:9px;
+    letter-spacing:-1px
+}
+
+/* WHATSAPP APP ICON */
+
+.btn-wa-app{
+    background:#25D366;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    padding:0;
+    margin:0;
+    vertical-align:middle;
+}
+
+.btn-wa-app svg{
+    width:13px;
+    height:13px;
+    fill:#fff;
+    display:block;
+}
+
+/* PHONE */
+
+.btn-wa-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1px;
+    margin:1px 0;
+    text-decoration:none
+}
+
+.btn-wa-num{
+    font-size:8px;
+    font-weight:bold;
+    color:#fff;
+    line-height:1;
+    white-space:nowrap
+}
+
+.btn-wa{
+    background:#25D366;
+    color:#fff;
+    padding:1px 5px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:6px;
+    display:inline-block;
+    line-height:1
+}
+
+.btn-report{
+    background:#f44336;
+    color:#fff;
+    padding:2px 6px;
+    border-radius:4px;
+    text-decoration:none;
+    font-size:8px;
+    cursor:pointer
+}
+
+.btn-view{
+    color:#fff;
+    padding:2px 3px;
+    border-radius:4px;
+    text-decoration:none;
+    font-size:12px;
+    cursor:pointer
+}
+
+.btn-none{
+    color:#888;
+    font-size:12px
+}
+
+/* COLUMN WIDTH */
+
+th:nth-child(1){width:20%}
+th:nth-child(2){width:8%}
+th:nth-child(3){width:9%}
+th:nth-child(4){width:7%}
+th:nth-child(5){width:8%}
+th:nth-child(6){width:22%}
+th:nth-child(7){width:7%}
+th:nth-child(8){width:12%}
+
+.support-btn{
+    position:fixed;
+    bottom:10px;
+    left:10px;
+    background:#4caf50;
+    padding:6px 12px;
+    border-radius:20px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    z-index:99;
+    border:none;
+    cursor:pointer;
+    font-size:11px
+}
+
+.popup-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    z-index:999;
+    justify-content:center;
+    align-items:center
+}
+
+.popup{
+    background:#1153c7;
+    width:90%;
+    max-width:400px;
+    max-height:92vh;
+    overflow-y:auto;
+    border-radius:10px;
+    padding:15px;
+    position:relative
+}
+
+.popup h3{
+    background:#000;
+    padding:10px;
+    border-radius:5px;
+    text-align:center;
+    color:#ffeb3b;
+    margin-bottom:10px
+}
+
+.close-btn{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:24px;
+    color:#fff;
+    cursor:pointer;
+    z-index:10
+}
+
+.popup label{
+    color:#ffeb3b;
+    font-size:13px;
+    margin-top:8px;
+    display:block
+}
+
+.popup select,
+.popup input{
+    width:100%;
+    padding:8px;
+    margin:5px 0;
+    border-radius:5px;
+    border:none;
+    background:#0b3d91;
+    color:#fff
+}
+
+.popup button{
+    background:#4caf50;
+    color:#fff;
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    float:right;
+    margin-top:10px
+}
 
 /* VIEW POPUP */
-.info-box{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff;text-align:left}
-.btn-wa-popup{background:#25D366;color:#fff;padding:6px 12px;border-radius:5px;text-decoration:none;display:inline-block;margin:5px 0}
-.stars-popup{text-align:center;font-size:18px;color:#ffc107;margin:5px 0}
-.hierarchy-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
-.tag{background:#4caf50;padding:4px 8px;border-radius:15px;font-size:10px}
 
-/* REPORT POPUP */
-.report-header{background:#f44336;color:#fff;text-align:center;padding:8px;border-radius:5px;font-weight:bold;margin-bottom:10px}
-.report-wa-btn{display:block;background:#25D366;color:#fff;padding:8px;border-radius:5px;text-decoration:none;text-align:center;margin-top:10px;font-weight:bold}
+.info-box{
+    width:100%;
+    padding:8px;
+    margin:5px 0;
+    border-radius:5px;
+    border:none;
+    background:#0b3d91;
+    color:#fff;
+    text-align:left
+}
 
-.support-item{display:flex;align-items:center;gap:10px;background:#0b3d91;padding:8px;border-radius:8px;margin-bottom:8px}
-.support-item.icon{width:30px;height:30px;background:#ffc107;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold}
-.support-item.info{flex:1}
-.support-item.btn-msg{background:#4caf50;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:11px}
+.btn-wa-popup{
+    background:#25D366;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:5px;
+    text-decoration:none;
+    display:inline-block;
+    margin:5px 0
+}
+
+.stars-popup{
+    text-align:center;
+    font-size:18px;
+    color:#ffc107;
+    margin:5px 0
+}
+
+.hierarchy-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-top:5px
+}
+
+.tag{
+    background:#4caf50;
+    padding:4px 8px;
+    border-radius:15px;
+    font-size:10px
+}
+
+/* =========================
+   REPORT POPUP
+   ========================= */
+
+.report-header{
+    background:#f44336;
+    color:#fff;
+    text-align:center;
+    padding:8px;
+    border-radius:5px;
+    font-weight:bold;
+    margin-bottom:10px;
+    font-size:18px
+}
+
+.report-wa-btn{
+    display:block;
+    background:#25D366;
+    color:#fff;
+    padding:8px;
+    border-radius:5px;
+    text-decoration:none;
+    text-align:center;
+    margin-top:10px;
+    font-weight:bold
+}
+
+/* UPPER PANEL AREA */
+
+.upper-panel-title{
+    color:#ffeb3b;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:12px;
+    margin-bottom:6px;
+}
+
+.upper-panel-list{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:5px;
+}
+
+.upper-panel-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    background:#0b3d91;
+    padding:6px;
+    border-radius:6px;
+}
+
+.upper-panel-info{
+    flex:1;
+    min-width:0;
+}
+
+.upper-panel-name{
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.upper-panel-role{
+    color:#ffc107;
+    font-size:9px;
+    display:block;
+    margin-top:2px;
+}
+
+.upper-panel-id{
+    color:#aaa;
+    font-size:8px;
+}
+
+.report-to-btn{
+    background:#f44336;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    padding:6px 8px;
+    font-size:9px;
+    font-weight:bold;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.report-to-btn:active{
+    transform:scale(.96);
+}
+
+.no-upper-panel{
+    background:#0b3d91;
+    color:#aaa;
+    padding:8px;
+    border-radius:5px;
+    text-align:center;
+    font-size:10px;
+}
+
+/* SUPPORT */
+
+.support-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#0b3d91;
+    padding:8px;
+    border-radius:8px;
+    margin-bottom:8px
+}
+
+.support-item .icon{
+    width:30px;
+    height:30px;
+    background:#ffc107;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#000;
+    font-weight:bold
+}
+
+.support-item .info{
+    flex:1
+}
+
+.support-item .btn-msg{
+    background:#4caf50;
+    color:#fff;
+    padding:4px 8px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:11px
+}
 </style>
 </head>
+
 <body>
 
 <div class="header">
     <div class="search-icon" onclick="openSearch()">🔍</div>
-    <div class="logo">👑 <span>PLAY</span><span>25</span><div style="font-size:9px;letter-spacing:2px;font-style:normal">Agent List</div></div>
+
+    <div class="logo">
+        <img src="logo.png" alt="PLAY25 Agent List">
+    </div>
+
     <div class="grid-icon">⊞</div>
 </div>
 
@@ -88,189 +520,952 @@ th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} t
 </div>
 
 <div class="box">
+
     <h2 id="roleTitle">MASTER LIST</h2>
+
     <table>
-        <thead><tr><th>Name</th><th>ID</th><th>Rating</th><th>App</th><th>FB</th><th>Phone</th><th>View</th><th>Report</th></tr></thead>
-        <tbody id="agentList"><tr><td colspan="8">Loading...</td></tr></tbody>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Rating</th>
+                <th>App</th>
+                <th>FB</th>
+                <th>Phone</th>
+                <th>View</th>
+                <th>Report</th>
+            </tr>
+        </thead>
+
+        <tbody id="agentList">
+            <tr>
+                <td colspan="8">Loading...</td>
+            </tr>
+        </tbody>
     </table>
+
 </div>
 
 <button class="support-btn" onclick="openSupport()">🎧 Support</button>
 
-<!-- Search Popup -->
+<!-- SEARCH POPUP -->
+
 <div class="popup-overlay" id="searchPopup">
-  <div class="popup"><span class="close-btn" onclick="closeSearch()">&times;</span><h3>👤 এজেন্ট খুঁজুন</h3>
-  <label>Type</label><select id="searchType"><option value="all">All Agent</option><option value="Site Owner">Site Owner</option><option value="Admin">Admin</option><option value="Sub Admin">Sub Admin</option><option value="Super">Super</option><option value="Master">Master</option></select>
-  <label>Search By Agent ID</label><input type="text" id="searchId"><label>Search by Whatsapp</label><input type="text" id="searchPhone"><button onclick="doSearch()">Search</button></div>
+
+    <div class="popup">
+
+        <span class="close-btn" onclick="closeSearch()">&times;</span>
+
+        <h3>👤 এজেন্ট খুঁজুন</h3>
+
+        <label>Type</label>
+
+        <select id="searchType">
+            <option value="all">All Agent</option>
+            <option value="Site Owner">Site Owner</option>
+            <option value="Admin">Admin</option>
+            <option value="Sub Admin">Sub Admin</option>
+            <option value="Super">Super</option>
+            <option value="Master">Master</option>
+        </select>
+
+        <label>Search By Agent ID</label>
+        <input type="text" id="searchId">
+
+        <label>Search by Whatsapp</label>
+        <input type="text" id="searchPhone">
+
+        <button onclick="doSearch()">Search</button>
+
+    </div>
 </div>
 
-<!-- Support Popup -->
+<!-- SUPPORT POPUP -->
+
 <div class="popup-overlay" id="supportPopup">
-  <div class="popup"><span class="close-btn" onclick="closeSupport()">&times;</span><h3>🎧 Support Team</h3><div id="supportList">Loading...</div></div>
+
+    <div class="popup">
+
+        <span class="close-btn" onclick="closeSupport()">&times;</span>
+
+        <h3>🎧 Support Team</h3>
+
+        <div id="supportList">Loading...</div>
+
+    </div>
 </div>
 
 <!-- VIEW DETAILS POPUP -->
+
 <div class="popup-overlay" id="viewPopup">
-  <div class="popup"><span class="close-btn" onclick="closeView()">&times;</span>
-    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div></div>
-    <label>Name</label><div class="info-box" id="viewName"></div>
-    <label>Type</label><div class="info-box" id="viewRole"></div>
-    <label>Number</label><div class="info-box" id="viewPhone"></div>
-    <label>ID Number</label><div class="info-box" id="viewId"></div>
-    <label>Serial</label><div class="info-box" id="viewSerial"></div>
-    <label>Message</label><a id="viewWa" href="#" target="_blank" class="btn-wa-popup">📱 Whatsapp</a>
-    <label>Rating</label><div class="stars-popup">★★★</div>
-    <label>Hierarchy / কার আন্ডারে</label><div class="hierarchy-tags" id="viewHierarchy"></div>
-  </div>
+
+    <div class="popup">
+
+        <span class="close-btn" onclick="closeView()">&times;</span>
+
+        <div style="text-align:center;margin-bottom:10px">
+
+            <div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">
+                👤
+            </div>
+
+        </div>
+
+        <label>Name</label>
+        <div class="info-box" id="viewName"></div>
+
+        <label>Type</label>
+        <div class="info-box" id="viewRole"></div>
+
+        <label>Number</label>
+        <div class="info-box" id="viewPhone"></div>
+
+        <label>ID Number</label>
+        <div class="info-box" id="viewId"></div>
+
+        <label>Serial</label>
+        <div class="info-box" id="viewSerial"></div>
+
+        <label>Message</label>
+
+        <a id="viewWa" href="#" target="_blank" class="btn-wa-popup">
+            📱 Whatsapp
+        </a>
+
+        <label>Rating</label>
+
+        <div class="stars-popup">
+            ★★★
+        </div>
+
+        <label>Hierarchy / কার আন্ডারে</label>
+
+        <div class="hierarchy-tags" id="viewHierarchy"></div>
+
+    </div>
 </div>
 
-<!-- REPORT INFO POPUP -->
+<!-- REPORT POPUP -->
+
 <div class="popup-overlay" id="reportPopup">
-  <div class="popup"><span class="close-btn" onclick="closeReport()">&times;</span>
-    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div></div>
-    <div class="report-header">Report This Person</div>
-    <label>Name</label><div class="info-box" id="reportName"></div>
-    <label>Type</label><div class="info-box" id="reportRole"></div>
-    <label>Number</label><div class="info-box" id="reportPhone"></div>
-    <label>ID Number</label><div class="info-box" id="reportId"></div>
-    <label>Hierarchy / কার আন্ডারে আছে</label><div class="hierarchy-tags" id="reportHierarchy"></div>
-    <a id="reportWa" href="#" target="_blank" class="report-wa-btn">📱 Whatsapp এ মেসেজ করুন</a>
-  </div>
+
+    <div class="popup">
+
+        <span class="close-btn" onclick="closeReport()">&times;</span>
+
+        <div style="text-align:center;margin-bottom:10px">
+
+            <div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">
+                👤
+            </div>
+
+        </div>
+
+        <div class="report-header">
+            Report This Person
+        </div>
+
+        <label>Name</label>
+        <div class="info-box" id="reportName"></div>
+
+        <label>Type</label>
+        <div class="info-box" id="reportRole"></div>
+
+        <label>Number</label>
+        <div class="info-box" id="reportPhone"></div>
+
+        <label>ID Number</label>
+        <div class="info-box" id="reportId"></div>
+
+        <label>Hierarchy / কার আন্ডারে আছে</label>
+
+        <div class="hierarchy-tags" id="reportHierarchy"></div>
+
+        <!-- UPPER PANEL -->
+
+        <div class="upper-panel-title">
+            ⬆️ Upper Panel / Report To
+        </div>
+
+        <div class="upper-panel-list" id="reportUpperPanels">
+            <div class="no-upper-panel">
+                Upper Panel খোঁজা হচ্ছে...
+            </div>
+        </div>
+
+        <a id="reportWa" href="#" target="_blank" class="report-wa-btn">
+            📱 Whatsapp এ মেসেজ করুন
+        </a>
+
+    </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
 <script>
-const firebaseConfig = {apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",authDomain: "play25agent.firebaseapp.com",databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",projectId: "play25agent"};
-firebase.initializeApp(firebaseConfig);const db = firebase.database();let allAgentsData = {};
 
-let fileName = window.location.pathname.split("/").pop().replace('.html','');
-let currentRole = fileName == ''? 'index' : fileName;
-const roleNames = {'index': 'ALL AGENT LIST', 'siteowner': 'SITE OWNER LIST', 'admin': 'ADMIN LIST','subadmin': 'SUB ADMIN LIST', 'super': 'SUPER LIST', 'master': 'MASTER LIST'}
-document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'AGENT LIST';
-document.querySelectorAll('.menu a').forEach(a=>{if(a.getAttribute('href').includes(currentRole)) a.classList.add('active')})
+const firebaseConfig = {
+    apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
+    authDomain: "play25agent.firebaseapp.com",
+    databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "play25agent"
+};
 
-function openSearch(){document.getElementById('searchPopup').style.display='flex'}
-function closeSearch(){document.getElementById('searchPopup').style.display='none'}
-function openSupport(){document.getElementById('supportPopup').style.display='flex'}
-function closeSupport(){document.getElementById('supportPopup').style.display='none'}
-function closeView(){document.getElementById('viewPopup').style.display='none'}
-function closeReport(){document.getElementById('reportPopup').style.display='none'}
+firebase.initializeApp(firebaseConfig);
 
-// নাম্বার থেকে WA লিংক
+const db = firebase.database();
+
+let allAgentsData = {};
+
+let fileName = window.location.pathname
+    .split("/")
+    .pop()
+    .replace('.html','');
+
+let currentRole = fileName == '' ? 'index' : fileName;
+
+const roleNames = {
+    'index':'ALL AGENT LIST',
+    'siteowner':'SITE OWNER LIST',
+    'admin':'ADMIN LIST',
+    'subadmin':'SUB ADMIN LIST',
+    'super':'SUPER LIST',
+    'master':'MASTER LIST'
+};
+
+document.getElementById('roleTitle').innerText =
+    roleNames[currentRole] || 'AGENT LIST';
+
+document.querySelectorAll('.menu a').forEach(a => {
+
+    if(a.getAttribute('href').includes(currentRole)){
+        a.classList.add('active');
+    }
+
+});
+
+function openSearch(){
+    document.getElementById('searchPopup').style.display='flex';
+}
+
+function closeSearch(){
+    document.getElementById('searchPopup').style.display='none';
+}
+
+function openSupport(){
+    document.getElementById('supportPopup').style.display='flex';
+}
+
+function closeSupport(){
+    document.getElementById('supportPopup').style.display='none';
+}
+
+function closeView(){
+    document.getElementById('viewPopup').style.display='none';
+}
+
+function closeReport(){
+    document.getElementById('reportPopup').style.display='none';
+}
+
+/* WHATSAPP LINK */
+
 function getWaLink(num){
+
     if(!num) return '';
-    let clean = num.replace(/[^0-9]/g,'');
+
+    let clean = String(num).replace(/[^0-9]/g,'');
+
     return `https://wa.me/${clean}`;
 }
 
-// Hierarchy
-function getHierarchy(agent) {
-  let tags = '';
-  if(agent.parent) tags += `<span class="tag">Direct: ${agent.parent}</span>`;
-  if(agent.parentParent) tags += `<span class="tag">Upper: ${agent.parentParent}</span>`;
-  if(agent.parentSerial) tags += `<span class="tag">${agent.parentSerial}</span>`;
-  if(agent.role!= 'Site Owner') tags += `<span class="tag">Level: ${agent.role}</span>`;
-  if(!agent.parent) tags += `<span class="tag">Site Owner</span>`;
-  return tags || '<span class="tag">No Parent</span>';
+/* =========================
+   FIND AGENT
+   ========================= */
+
+function findAgentByValue(value){
+
+    if(value === undefined || value === null || value === '')
+        return null;
+
+    let searchValue = String(value).trim().toLowerCase();
+
+    for(let key in allAgentsData){
+
+        let a = allAgentsData[key] || {};
+
+        let values = [
+            key,
+            a.id,
+            a.name,
+            a.serial,
+            a.phone,
+            a.phone2,
+            a.parent,
+            a.parentId,
+            a.parentID,
+            a.parentSerial,
+            a.parentName
+        ];
+
+        for(let v of values){
+
+            if(
+                v !== undefined &&
+                v !== null &&
+                String(v).trim().toLowerCase() === searchValue
+            ){
+                return {
+                    key:key,
+                    agent:a
+                };
+            }
+        }
+    }
+
+    return null;
 }
 
-// View Details
+/* =========================
+   GET PARENT VALUE
+   ========================= */
+
+function getParentValue(agent){
+
+    if(!agent) return null;
+
+    /*
+       Firebase-এ Parent যেকোনো একটি
+       নামে থাকলে সেখান থেকে নেওয়া হবে।
+    */
+
+    return agent.parent ||
+           agent.parentId ||
+           agent.parentID ||
+           agent.parentKey ||
+           agent.parentSerial ||
+           agent.parentName ||
+           agent.upline ||
+           agent.uplineId ||
+           agent.upper ||
+           agent.upperId ||
+           null;
+}
+
+/* =========================
+   GET ALL UPPER PANELS
+   ========================= */
+
+function getUpperPanels(agentKey, agent){
+
+    let result = [];
+    let visited = {};
+
+    let currentAgent = agent;
+    let currentKey = agentKey;
+
+    /*
+       Direct Parent থেকে শুরু করে
+       উপরের সব Parent বের করা হবে।
+    */
+
+    for(let i = 0; i < 20; i++){
+
+        if(!currentAgent)
+            break;
+
+        let parentValue = getParentValue(currentAgent);
+
+        if(
+            parentValue === undefined ||
+            parentValue === null ||
+            String(parentValue).trim() === ''
+        ){
+            break;
+        }
+
+        let parentResult = findAgentByValue(parentValue);
+
+        if(!parentResult){
+
+            /*
+              parent value না মিললে
+              parentParent দিয়েও চেষ্টা
+              বন্ধ করা হবে।
+            */
+
+            break;
+        }
+
+        let parentKey = parentResult.key;
+        let parentAgent = parentResult.agent;
+
+        /*
+          একই Agent যেন বারবার না আসে
+        */
+
+        if(visited[parentKey])
+            break;
+
+        visited[parentKey] = true;
+
+        /*
+          Current Agent নিজে যেন Upper Panel
+          হিসেবে না আসে
+        */
+
+        if(parentKey !== currentKey){
+
+            result.push({
+                key:parentKey,
+                agent:parentAgent
+            });
+        }
+
+        currentKey = parentKey;
+        currentAgent = parentAgent;
+    }
+
+    /*
+      যদি parent chain থেকে না পাওয়া যায়,
+      পুরোনো parentParent field থেকেও
+      অতিরিক্ত Upper Panel খোঁজা হবে।
+    */
+
+    let extraValues = [
+        agent.parentParent,
+        agent.upperParent,
+        agent.upperParentId,
+        agent.parentParentId,
+        agent.parentParentSerial
+    ];
+
+    for(let value of extraValues){
+
+        if(
+            value === undefined ||
+            value === null ||
+            String(value).trim() === ''
+        )
+            continue;
+
+        let found = findAgentByValue(value);
+
+        if(
+            found &&
+            found.key !== agentKey &&
+            !visited[found.key]
+        ){
+
+            visited[found.key] = true;
+
+            result.push({
+                key:found.key,
+                agent:found.agent
+            });
+        }
+    }
+
+    return result;
+}
+
+/* =========================
+   HIERARCHY
+   ========================= */
+
+function getHierarchy(agent){
+
+    let tags = '';
+
+    if(agent.parent)
+        tags += `<span class="tag">Direct: ${agent.parent}</span>`;
+
+    if(agent.parentParent)
+        tags += `<span class="tag">Upper: ${agent.parentParent}</span>`;
+
+    if(agent.parentSerial)
+        tags += `<span class="tag">${agent.parentSerial}</span>`;
+
+    if(agent.role != 'Site Owner')
+        tags += `<span class="tag">Level: ${agent.role}</span>`;
+
+    if(!agent.parent)
+        tags += `<span class="tag">Site Owner</span>`;
+
+    return tags || '<span class="tag">No Parent</span>';
+}
+
+/* =========================
+   VIEW
+   ========================= */
+
 function viewAgent(key){
-  let a = allAgentsData[key];
-  document.getElementById('viewName').innerText = a.name || 'N/A';
-  document.getElementById('viewRole').innerText = a.role || 'N/A';
-  document.getElementById('viewPhone').innerText = a.phone || 'N/A';
-  document.getElementById('viewId').innerText = a.id || 'N/A';
-  document.getElementById('viewSerial').innerText = a.serial || '-';
-  document.getElementById('viewWa').href = getWaLink(a.phone);
-  document.getElementById('viewHierarchy').innerHTML = getHierarchy(a);
-  document.getElementById('viewPopup').style.display='flex';
+
+    let a = allAgentsData[key];
+
+    if(!a) return;
+
+    document.getElementById('viewName').innerText =
+        a.name || 'N/A';
+
+    document.getElementById('viewRole').innerText =
+        a.role || 'N/A';
+
+    document.getElementById('viewPhone').innerText =
+        a.phone || 'N/A';
+
+    document.getElementById('viewId').innerText =
+        a.id || 'N/A';
+
+    document.getElementById('viewSerial').innerText =
+        a.serial || '-';
+
+    document.getElementById('viewWa').href =
+        getWaLink(a.phone);
+
+    document.getElementById('viewHierarchy').innerHTML =
+        getHierarchy(a);
+
+    document.getElementById('viewPopup').style.display='flex';
 }
 
-// Report Info Popup
+/* =========================
+   REPORT MESSAGE
+   ========================= */
+
+function makeReportMessage(reportedAgent, targetAgent){
+
+    let reportedName =
+        reportedAgent.name || 'Agent';
+
+    let reportedRole =
+        reportedAgent.role || '';
+
+    let reportedId =
+        reportedAgent.id || '';
+
+    let targetName =
+        targetAgent.name || 'Admin';
+
+    return encodeURIComponent(
+        `Assalamu Alaikum ${targetName},\n\n` +
+        `আমি একজন Agent সম্পর্কে Report করতে চাই।\n\n` +
+        `Name: ${reportedName}\n` +
+        `Type: ${reportedRole}\n` +
+        `ID: ${reportedId}\n` +
+        `Number: ${reportedAgent.phone || 'N/A'}\n\n` +
+        `দয়া করে বিষয়টি যাচাই করবেন।`
+    );
+}
+
+/* =========================
+   REPORT TO UPPER PANEL
+   ========================= */
+
+function reportToUpperPanel(upperKey, reportedKey){
+
+    let upperAgent = allAgentsData[upperKey];
+    let reportedAgent = allAgentsData[reportedKey];
+
+    if(!upperAgent || !reportedAgent)
+        return;
+
+    let phone = upperAgent.phone || upperAgent.phone2;
+
+    if(!phone){
+
+        alert(
+            `${upperAgent.name || upperAgent.role || 'Upper Panel'} এর WhatsApp Number পাওয়া যায়নি।`
+        );
+
+        return;
+    }
+
+    let cleanPhone =
+        String(phone).replace(/[^0-9]/g,'');
+
+    let message =
+        makeReportMessage(
+            reportedAgent,
+            upperAgent
+        );
+
+    let url =
+        `https://wa.me/${cleanPhone}?text=${message}`;
+
+    window.open(url,'_blank');
+}
+
+/* =========================
+   CREATE UPPER PANEL LIST
+   ========================= */
+
+function renderUpperPanels(reportedKey){
+
+    let reportedAgent =
+        allAgentsData[reportedKey];
+
+    let container =
+        document.getElementById('reportUpperPanels');
+
+    if(!reportedAgent){
+
+        container.innerHTML =
+            `<div class="no-upper-panel">
+                Agent তথ্য পাওয়া যায়নি
+            </div>`;
+
+        return;
+    }
+
+    let upperPanels =
+        getUpperPanels(
+            reportedKey,
+            reportedAgent
+        );
+
+    if(!upperPanels.length){
+
+        container.innerHTML =
+            `<div class="no-upper-panel">
+                এই Agent-এর কোনো Upper Panel পাওয়া যায়নি
+            </div>`;
+
+        return;
+    }
+
+    let html = '';
+
+    upperPanels.forEach(item => {
+
+        let a = item.agent;
+
+        let role =
+            a.role || 'Upper Panel';
+
+        let name =
+            a.name || role;
+
+        let id =
+            a.id ? `ID ${a.id}` : '';
+
+        html += `
+        <div class="upper-panel-item">
+
+            <div class="upper-panel-info">
+
+                <span class="upper-panel-name">
+                    ${name}
+                </span>
+
+                <span class="upper-panel-role">
+                    ${role}
+                </span>
+
+                <span class="upper-panel-id">
+                    ${id}
+                </span>
+
+            </div>
+
+            <button
+                class="report-to-btn"
+                onclick="reportToUpperPanel('${item.key}','${reportedKey}')"
+            >
+                Report To ${role}
+            </button>
+
+        </div>`;
+    });
+
+    container.innerHTML = html;
+}
+
+/* =========================
+   REPORT
+   ========================= */
+
 function reportAgent(key){
-  let a = allAgentsData[key];
-  document.getElementById('reportName').innerText = a.name || 'N/A';
-  document.getElementById('reportRole').innerText = a.role || 'N/A';
-  document.getElementById('reportPhone').innerText = a.phone || 'N/A';
-  document.getElementById('reportId').innerText = a.id || 'N/A';
-  document.getElementById('reportHierarchy').innerHTML = getHierarchy(a);
-  document.getElementById('reportWa').href = getWaLink(a.phone);
-  document.getElementById('reportPopup').style.display='flex';
+
+    let a = allAgentsData[key];
+
+    if(!a) return;
+
+    document.getElementById('reportName').innerText =
+        a.name || 'N/A';
+
+    document.getElementById('reportRole').innerText =
+        a.role || 'N/A';
+
+    document.getElementById('reportPhone').innerText =
+        a.phone || 'N/A';
+
+    document.getElementById('reportId').innerText =
+        a.id || 'N/A';
+
+    document.getElementById('reportHierarchy').innerHTML =
+        getHierarchy(a);
+
+    document.getElementById('reportWa').href =
+        getWaLink(a.phone);
+
+    /*
+      Report popup খোলার সময়
+      ওই Agent-এর সব Upper Panel
+      নতুন করে Load হবে।
+    */
+
+    renderUpperPanels(key);
+
+    document.getElementById('reportPopup').style.display='flex';
 }
 
-// Agents Load
+/* =========================
+   AGENTS LOAD
+   ========================= */
+
 db.ref('agents').on('value', snap => {
-  allAgentsData = snap.val() || {};
-  renderAgents(allAgentsData);
-})
+
+    allAgentsData = snap.val() || {};
+
+    renderAgents(allAgentsData);
+
+});
+
+/* =========================
+   RENDER AGENTS
+   ========================= */
 
 function renderAgents(data){
-  let html = '';
-  for(let key in data){
-    let a = data[key];
-    if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
 
-      let appLink = `<span class="btn-none">--</span>`;
-      let fbLink = `<span class="btn-none">--</span>`;
+    let html = '';
 
-      // PHONE DESIGN - 2 লাইন
-      let phoneBtns = '';
-      if(a.phone){
-        phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap">
-                        <div class="btn-wa-num">${a.phone}</div>
-                        <div class="btn-wa">Whatsapp</div>
-                      </a>`;
-      }
-      if(a.phone2){
-        phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap">
-                        <div class="btn-wa-num">${a.phone2}</div>
-                        <div class="btn-wa">Whatsapp</div>
-                      </a>`;
-      }
+    for(let key in data){
 
-      html += `<tr>
-        <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><small>${a.role}</small></td>
-        <td><div class="id-box">ID ${a.id}</div></td>
-        <td class="stars">★★★</td>
-        <td>${appLink}</td>
-        <td>${fbLink}</td>
-        <td>${phoneBtns || '--'}</td>
-        <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
-        <td><a onclick="reportAgent('${key}')" class="btn-report">Report</a></td>
-      </tr>`
+        let a = data[key];
+
+        if(
+            currentRole == 'index' ||
+            a.role.toLowerCase().replace(' ','') == currentRole
+        ){
+
+            let appLink = `
+            <a
+                href="${getWaLink(a.phone)}"
+                target="_blank"
+                class="btn-wa-app"
+                title="WhatsApp"
+            >
+
+                <svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    aria-label="WhatsApp"
+                >
+
+                    <path d="M20.52 3.48A11.91 11.91 0 0 0 12.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L.02 24l6.24-1.64a11.9 11.9 0 0 0 5.78 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.18-3.47-8.42zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.7.97.99-3.61-.23-.37a9.91 9.91 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.46-4.45 9.91-9.91 9.91zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.48-.88-.78-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.25-.2-.54-.35z"/>
+
+                </svg>
+
+            </a>`;
+
+            let fbLink =
+                `<span class="btn-none">--</span>`;
+
+            let phoneBtns = '';
+
+            if(a.phone){
+
+                phoneBtns += `
+                <a
+                    href="${getWaLink(a.phone)}"
+                    target="_blank"
+                    class="btn-wa-wrap"
+                >
+
+                    <div class="btn-wa-num">
+                        ${a.phone}
+                    </div>
+
+                    <div class="btn-wa">
+                        Whatsapp
+                    </div>
+
+                </a>`;
+            }
+
+            if(a.phone2){
+
+                phoneBtns += `
+                <a
+                    href="${getWaLink(a.phone2)}"
+                    target="_blank"
+                    class="btn-wa-wrap"
+                >
+
+                    <div class="btn-wa-num">
+                        ${a.phone2}
+                    </div>
+
+                    <div class="btn-wa">
+                        Whatsapp
+                    </div>
+
+                </a>`;
+            }
+
+            html += `
+            <tr>
+
+                <td class="name-col">
+                    <div class="avatar"></div>
+                    <b>${a.name}</b>
+                    <small>${a.role}</small>
+                </td>
+
+                <td>
+                    <div class="id-box">
+                        ID ${a.id}
+                    </div>
+                </td>
+
+                <td class="stars">
+                    ★★★
+                </td>
+
+                <td>
+                    ${appLink}
+                </td>
+
+                <td>
+                    ${fbLink}
+                </td>
+
+                <td>
+                    ${phoneBtns || '--'}
+                </td>
+
+                <td>
+                    <a
+                        onclick="viewAgent('${key}')"
+                        class="btn-view"
+                    >
+                        👁️
+                    </a>
+                </td>
+
+                <td>
+                    <a
+                        onclick="reportAgent('${key}')"
+                        class="btn-report"
+                    >
+                        Report
+                    </a>
+                </td>
+
+            </tr>`;
+        }
     }
-  }
-  document.getElementById('agentList').innerHTML = html || '<tr><td colspan="8">কোন Agent নেই</td></tr>';
+
+    document.getElementById('agentList').innerHTML =
+        html ||
+        '<tr><td colspan="8">কোন Agent নেই</td></tr>';
 }
 
-// Search Function
+/* =========================
+   SEARCH
+   ========================= */
+
 function doSearch(){
-  let type = document.getElementById('searchType').value;
-  let id = document.getElementById('searchId').value.trim();
-  let phone = document.getElementById('searchPhone').value.trim();
-  let result = {};
-  for(let key in allAgentsData){
-    let a = allAgentsData[key];
-    let match = true;
-    if(type!= 'all' && a.role!= type) match = false;
-    if(id!= '' &&!a.id.includes(id)) match = false;
-    if(phone!= '' &&!a.phone.includes(phone) &&!(a.phone2 && a.phone2.includes(phone))) match = false;
-    if(match) result[key] = a;
-  }
-  renderAgents(result);
-  closeSearch();
+
+    let type =
+        document.getElementById('searchType').value;
+
+    let id =
+        document.getElementById('searchId').value.trim();
+
+    let phone =
+        document.getElementById('searchPhone').value.trim();
+
+    let result = {};
+
+    for(let key in allAgentsData){
+
+        let a = allAgentsData[key];
+
+        let match = true;
+
+        if(type != 'all' && a.role != type)
+            match = false;
+
+        if(
+            id != '' &&
+            !String(a.id || '').includes(id)
+        )
+            match = false;
+
+        if(
+            phone != '' &&
+            !String(a.phone || '').includes(phone) &&
+            !(a.phone2 &&
+              String(a.phone2).includes(phone))
+        )
+            match = false;
+
+        if(match)
+            result[key] = a;
+    }
+
+    renderAgents(result);
+
+    closeSearch();
 }
 
-// Support Load
+/* =========================
+   SUPPORT LOAD
+   ========================= */
+
 db.ref('support').on('value', snap => {
-  let html = '';
-  snap.forEach(child => {
-    let s = child.val();
-    html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="${getWaLink(s.phone)}" class="btn-msg" target="_blank">Message</a></div>`
-  })
-  document.getElementById('supportList').innerHTML = html || 'কোন Support নেই';
-})
+
+    let html = '';
+
+    snap.forEach(child => {
+
+        let s = child.val();
+
+        html += `
+        <div class="support-item">
+
+            <div class="icon">
+                🎧
+            </div>
+
+            <div class="info">
+
+                <b>${s.name}</b>
+                <br>
+                <small>${s.phone}</small>
+
+            </div>
+
+            <a
+                href="${getWaLink(s.phone)}"
+                class="btn-msg"
+                target="_blank"
+            >
+                Message
+            </a>
+
+        </div>`;
+    });
+
+    document.getElementById('supportList').innerHTML =
+        html || 'কোন Support নেই';
+
+});
+
 </script>
-</body></html>
+
+</body>
+</html>
