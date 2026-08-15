@@ -1,131 +1,30 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
-<meta name="theme-color" content="#064b80">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>PLAY25 Agent List</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <style>
-
-/* =====================================================
-   ROOT
-===================================================== */
-
-:root{
-
-    --bg:#064b80;
-
-    --header:#064b80;
-
-    --panel:#0968ad;
-
-    --panel2:#0a5c95;
-
-    --card:#0b426b;
-
-    --card2:#0d507c;
-
-    --yellow:#ffe21b;
-
-    --green:#8bc510;
-
-    --online:#39ef55;
-
-    --blue:#1678e8;
-
-    --red:#ff4b52;
-
-    --white:#ffffff;
-
-    --text:#ffffff;
-
-    --muted:#aeb8c1;
-
-    --shadow:
-    0 8px 25px rgba(0,0,0,.15);
-
-}
-
-
-/* LIGHT MODE */
-
-body.light{
-
-    --bg:#eef5fa;
-
-    --header:#ffffff;
-
-    --panel:#ffffff;
-
-    --panel2:#edf5fb;
-
-    --card:#ffffff;
-
-    --card2:#edf5fb;
-
-    --text:#17232d;
-
-    --muted:#63717d;
-
-}
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    margin:0;
+    padding:0;
+    background:#064c82;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-
-    background:var(--bg);
-
-    color:var(--text);
-
-    font-family:
-    "Noto Sans Bengali",
-    Arial,
-    sans-serif;
-
     min-height:100vh;
-
-    padding-bottom:70px;
-
-    transition:.25s;
-
 }
 
-button,
-input{
-    font-family:inherit;
-}
-
-button{
-    cursor:pointer;
+button,input{
+    font:inherit;
 }
 
 a{
@@ -133,2046 +32,1325 @@ a{
     color:inherit;
 }
 
+:root{
+    --bg:#075084;
+    --panel:#0866ad;
+    --panel2:#0b74c2;
+    --row:#104c70;
+    --lime:#8fc20e;
+    --yellow:#ffe000;
+    --green:#38bd51;
+    --red:#ff4b52;
+    --white:#fff;
+}
 
-/* =====================================================
-   HEADER
-===================================================== */
+.page{
+    width:100%;
+    max-width:760px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:90px;
+}
+
+/* HEADER */
 
 .header{
-
-    height:185px;
-
-    background:var(--header);
-
+    height:187px;
     position:relative;
-
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
-
-    overflow:hidden;
-
+    justify-content:center;
 }
 
 .logo{
-
-    font-family:Arial,sans-serif;
-
-    font-size:
-    clamp(42px,12vw,68px);
-
     font-weight:900;
-
     font-style:italic;
-
-    color:#ffe21b;
-
     letter-spacing:-5px;
-
-    text-shadow:
-    2px 2px 0 #fff;
-
+    line-height:.8;
+    font-size:68px;
+    color:#ffe000;
+    text-shadow:2px 2px 0 #ffd200;
 }
 
 .logo span{
     color:#fff;
 }
 
+.crown{
+    position:absolute;
+    top:25px;
+    left:calc(50% - 92px);
+    font-size:29px;
+    color:#ff334d;
+}
+
 .logo-sub{
-
     position:absolute;
-
-    top:125px;
-
-    font-size:18px;
-
-    letter-spacing:7px;
-
-    font-weight:bold;
-
+    top:112px;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:9px;
     color:#fff;
-
 }
 
+/* HEADER ICONS */
 
-.header-btn{
-
+.icon-btn{
     position:absolute;
-
-    top:68px;
-
-    color:var(--yellow);
-
-    background:none;
-
+    top:62px;
+    width:54px;
+    height:54px;
     border:0;
-
-    font-size:34px;
-
+    background:transparent;
+    color:var(--yellow);
+    cursor:pointer;
 }
 
-.header-btn.left{
-    left:25px;
+.search-btn{
+    left:22px;
 }
 
-.header-btn.right{
-    right:25px;
+.grid-btn{
+    right:22px;
 }
 
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.container{
-
-    width:
-    min(94%,680px);
-
-    margin:auto;
-
+.search-icon{
+    display:inline-block;
+    width:27px;
+    height:27px;
+    border:5px solid var(--yellow);
+    border-radius:50%;
+    position:relative;
 }
 
+.search-icon:after{
+    content:"";
+    position:absolute;
+    width:17px;
+    height:5px;
+    background:var(--yellow);
+    right:-14px;
+    bottom:-7px;
+    transform:rotate(48deg);
+    border-radius:4px;
+}
 
-/* =====================================================
-   NAV
-===================================================== */
+.grid-icon{
+    display:grid;
+    grid-template-columns:repeat(2,14px);
+    gap:6px;
+    justify-content:center;
+}
+
+.grid-icon i{
+    height:14px;
+    background:var(--yellow);
+    border-radius:5px;
+}
+
+/* NAVIGATION */
 
 .nav{
-
-    margin-top:0;
-
-    background:
-    linear-gradient(
-    145deg,
-    #096db5,
-    #0861a3
-    );
-
-    border-radius:
-    0 0 22px 22px;
-
-    padding:
-    25px 12px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:22px 8px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.nav-btn{
-
-    background:none;
-
-    border:0;
-
-    color:white;
-
-    font-size:16px;
-
+    margin:0 22px 30px;
+    background:linear-gradient(#0b6fbc,#0863aa);
+    border-radius:18px;
+    padding:29px 14px 27px;
     display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:5px;
-
-    transition:.2s;
-
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px 22px;
+    font-size:24px;
 }
 
-.nav-btn i{
-
-    font-size:20px;
-
-}
-
-.nav-btn.active{
-
-    color:var(--yellow);
-
-    transform:
-    translateY(-2px);
-
-}
-
-
-/* =====================================================
-   NOTICE
-===================================================== */
-
-.notice{
-
-    margin-top:22px;
-
-    background:var(--panel);
-
-    border-radius:16px;
-
-    height:60px;
-
+.nav a{
     display:flex;
-
     align-items:center;
-
-    overflow:hidden;
-
-    box-shadow:var(--shadow);
-
-}
-
-.marquee{
-
+    gap:7px;
     white-space:nowrap;
+}
 
+.nav a.active{
     color:var(--yellow);
-
-    font-size:20px;
-
-    animation:
-    marquee 12s linear infinite;
-
 }
 
-@keyframes marquee{
-
-    from{
-        transform:
-        translateX(100%);
-    }
-
-    to{
-        transform:
-        translateX(-100%);
-    }
-
-}
-
-
-/* =====================================================
-   SOCIAL BUTTONS
-===================================================== */
-
-.social-box{
-
-    margin-top:18px;
-
-    background:var(--panel);
-
-    border-radius:16px;
-
-    padding:12px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:8px;
-
-    color:var(--yellow);
-
-    font-size:15px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.social-btn{
-
-    background:var(--blue);
-
+.nav .ico{
+    font-size:21px;
     color:#fff;
-
-    padding:
-    9px 12px;
-
-    border-radius:9px;
-
-    white-space:nowrap;
-
-    font-size:14px;
-
 }
 
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-.stats{
-
-    margin-top:20px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:10px;
-
-}
-
-.stat{
-
-    background:var(--panel);
-
-    border-radius:15px;
-
-    padding:14px 8px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow);
-
-}
-
-.stat i{
-
+.nav a.active .ico{
     color:var(--yellow);
-
-    font-size:20px;
-
 }
 
-.stat-number{
-
-    font-size:22px;
-
-    font-weight:bold;
-
-}
-
-.stat-label{
-
-    color:var(--muted);
-
-    font-size:12px;
-
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-.search-area{
-
-    margin-top:20px;
-
-    display:flex;
-
-    gap:8px;
-
-}
+/* SEARCH */
 
 .search-box{
-
-    flex:1;
-
-    position:relative;
-
-}
-
-.search-box i{
-
-    position:absolute;
-
-    left:14px;
-
-    top:50%;
-
-    transform:
-    translateY(-50%);
-
-    color:#8c99a3;
-
+    display:none;
+    margin:0 22px 20px;
+    background:#0b4b70;
+    border-radius:14px;
+    padding:12px;
 }
 
 .search-box input{
-
     width:100%;
-
-    height:48px;
-
     border:0;
-
     outline:0;
-
-    border-radius:13px;
-
-    background:var(--panel);
-
-    color:var(--text);
-
-    padding:
-    0 15px 0 42px;
-
-    font-size:15px;
-
-}
-
-.sort-btn{
-
-    width:48px;
-
-    height:48px;
-
-    border:0;
-
-    border-radius:13px;
-
-    background:var(--green);
-
+    background:#075084;
     color:#fff;
-
-    font-size:18px;
-
+    border-radius:10px;
+    padding:13px 15px;
 }
 
+/* NOTICE */
 
-/* =====================================================
-   PAGE TITLE
-===================================================== */
-
-.page-title{
-
-    text-align:center;
-
-    color:var(--yellow);
-
-    font-size:25px;
-
-    margin:
-    25px 0 15px;
-
+.notice,
+.social,
+.section{
+    margin:0 22px 30px;
+    border-radius:14px;
+    background:#086ab2;
 }
 
-
-/* =====================================================
-   AGENT LIST
-===================================================== */
-
-.agent-list{
-
+.notice{
+    height:77px;
     display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-}
-
-
-/* AGENT CARD */
-
-.agent-card{
-
-    background:var(--card);
-
-    border-radius:16px;
-
-    padding:13px;
-
-    box-shadow:
-    0 5px 18px
-    rgba(0,0,0,.12);
-
-    border:
-    1px solid
-    rgba(255,255,255,.03);
-
-}
-
-
-.agent-top{
-
-    display:flex;
-
     align-items:center;
-
-    gap:10px;
-
+    padding:0 22px;
+    color:var(--yellow);
+    font-size:27px;
+    overflow:hidden;
+    white-space:nowrap;
 }
 
+/* SOCIAL */
+
+.social{
+    padding:13px 17px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    color:var(--yellow);
+    font-size:20px;
+    min-height:77px;
+}
+
+.social-text{
+    flex:1;
+    text-align:center;
+}
+
+.social-btn{
+    border:0;
+    border-radius:8px;
+    background:#2784e9;
+    color:#fff;
+    padding:9px 13px;
+    font-size:20px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+/* SECTION */
+
+.section{
+    padding:27px 0 0;
+    background:#086ab2;
+    overflow:hidden;
+}
+
+.section-title{
+    text-align:center;
+    color:var(--yellow);
+    font-size:34px;
+    margin:0 0 24px;
+    font-weight:500;
+}
+
+/* HOME PROFILE */
+
+.home-card{
+    margin:0 8px;
+    background:#0a4e78;
+    border-radius:14px;
+    padding:18px 17px;
+}
+
+.home-profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#0b5480;
+    border-radius:14px;
+    padding:18px;
+}
 
 .avatar{
-
-    width:52px;
-
-    height:52px;
-
+    width:47px;
+    height:47px;
     border-radius:50%;
-
-    background:
-    var(--green);
-
-    color:#125073;
-
+    background:var(--lime);
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    flex-shrink:0;
-
-    font-size:22px;
-
-    overflow:hidden;
-
+    color:#174a38;
+    font-size:27px;
 }
 
-.avatar img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-}
-
-
-.agent-info{
-
+.profile-name{
+    font-size:18px;
+    line-height:1.15;
     flex:1;
-
-    min-width:0;
-
 }
 
-.agent-name{
-
+.role{
+    color:#9faab2;
     font-size:16px;
-
-    font-weight:600;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
+    margin-top:3px;
 }
 
-.agent-role{
-
-    color:var(--muted);
-
-    font-size:12px;
-
-}
-
-
-.status{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:4px;
-
-    color:var(--online);
-
-    font-size:11px;
-
-}
-
-.status-dot{
-
-    width:6px;
-
-    height:6px;
-
-    background:var(--online);
-
-    border-radius:50%;
-
-}
-
-
-.id{
-
-    background:var(--green);
-
-    color:#183b16;
-
-    border-radius:9px;
-
-    padding:
-    5px 8px;
-
-    font-size:12px;
-
-    font-weight:bold;
-
+.idbox{
+    background:var(--lime);
+    color:#172b23;
+    border-radius:11px;
+    padding:9px 12px;
     text-align:center;
-
-}
-
-.id small{
-
-    display:block;
-
-    font-size:8px;
-
-}
-
-
-.rating{
-
-    margin-top:10px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-}
-
-.stars{
-
-    color:var(--yellow);
-
-    letter-spacing:1px;
-
-    font-size:14px;
-
-}
-
-.rating-text{
-
-    color:var(--muted);
-
-    font-size:11px;
-
-}
-
-
-/* =====================================================
-   ACTIONS
-===================================================== */
-
-.actions{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:7px;
-
-    margin-top:12px;
-
-}
-
-.action{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:9px 4px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:3px;
-
-    font-size:10px;
-
-    color:#fff;
-
-}
-
-.action i{
-
     font-size:17px;
-
+    min-width:61px;
 }
 
-.whatsapp{
-
-    background:#20b957;
-
+.idbox b{
+    display:block;
+    font-size:16px;
 }
 
-.facebook{
-
-    background:#1877f2;
-
-}
-
-.view{
-
-    background:#556b7d;
-
-}
-
-.report{
-
-    background:var(--red);
-
-}
-
-
-/* =====================================================
-   PHONE
-===================================================== */
-
-.phone-row{
-
-    margin-top:10px;
-
-    background:
-    rgba(0,0,0,.12);
-
-    border-radius:9px;
-
-    padding:8px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:6px;
-
-}
-
-.phone{
-
-    font-size:12px;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-
-}
-
-.copy{
-
-    background:var(--green);
-
+.msgbtn,
+.visitbtn{
+    background:#46bf51;
     border:0;
-
     color:#fff;
-
-    border-radius:7px;
-
-    padding:5px 8px;
-
-    font-size:10px;
-
+    border-radius:9px;
+    padding:9px 16px;
+    cursor:pointer;
+    font-size:18px;
 }
 
-
-/* =====================================================
-   NO RESULT
-===================================================== */
-
-.no-result{
-
-    text-align:center;
-
-    padding:40px 10px;
-
-    color:var(--muted);
-
-}
-
-.no-result i{
-
-    font-size:45px;
-
-    margin-bottom:10px;
-
-    color:var(--yellow);
-
-}
-
-
-/* =====================================================
-   PROCESS
-===================================================== */
+/* PROCESS */
 
 .process{
-
-    margin-top:25px;
-
-    background:var(--panel);
-
-    border-radius:17px;
-
-    padding:20px 12px;
-
+    margin-top:30px;
+    padding-bottom:25px;
 }
 
-.process h2{
-
-    color:var(--yellow);
-
-    text-align:center;
-
-    font-size:22px;
-
-    font-weight:500;
-
-    margin-bottom:15px;
-
+.process-card{
+    margin:0 30px;
+    background:#0a4e78;
+    border-radius:14px;
+    padding:18px;
 }
 
 .process-row{
-
-    background:var(--card);
-
-    border-radius:13px;
-
-    padding:13px;
-
     display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 5px;
+    border-bottom:1px solid rgba(255,255,255,.25);
+    font-size:21px;
+}
+
+.process-row:last-child{
+    border-bottom:0;
+}
+
+.status{
+    color:#43ed66;
+}
+
+.dot{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    background:#38ed68;
+    border-radius:50%;
+    margin-right:7px;
+}
+
+/* LIST */
+
+.list-wrap{
+    margin:0 22px 30px;
+    background:#0b4b70;
+    border-radius:14px;
+    padding:20px 24px;
+    overflow-x:auto;
+}
+
+.table-head{
+    background:#0871bb;
+    border-radius:13px;
+    padding:14px 7px;
+
+    display:grid;
+    grid-template-columns:
+        1.45fr
+        .55fr
+        .9fr
+        .55fr
+        .65fr
+        1.3fr
+        .45fr
+        .8fr;
 
     align-items:center;
+    text-align:center;
 
-    justify-content:space-between;
-
-    gap:8px;
-
-}
-
-.domain{
-
-    font-size:15px;
-
-}
-
-.active{
-
-    color:var(--online);
-
-    font-size:13px;
-
-}
-
-.visit{
-
-    background:var(--green);
-
+    font-size:16px;
     color:#fff;
 
-    border-radius:8px;
-
-    padding:7px 12px;
-
-    font-size:13px;
-
+    min-width:700px;
 }
 
+.row{
+    min-height:78px;
 
-/* =====================================================
-   SUPPORT
-===================================================== */
+    display:grid;
+    grid-template-columns:
+        1.45fr
+        .55fr
+        .9fr
+        .55fr
+        .65fr
+        1.3fr
+        .45fr
+        .8fr;
+
+    align-items:center;
+    text-align:center;
+
+    border-bottom:2px solid rgba(255,255,255,.9);
+
+    gap:4px;
+    min-width:700px;
+}
+
+.row:last-child{
+    border-bottom:0;
+}
+
+.name-cell{
+    text-align:left;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+}
+
+.avatar.sm{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    font-size:21px;
+}
+
+.name{
+    font-size:15px;
+    line-height:1.15;
+    word-break:break-word;
+}
+
+.rating{
+    background:#132e48;
+    border-radius:7px;
+    padding:5px 4px;
+    color:var(--yellow);
+    font-size:13px;
+    white-space:nowrap;
+}
+
+.whatsapp{
+    font-size:31px;
+    color:#fff;
+    cursor:pointer;
+}
+
+.fb{
+    font-size:29px;
+    color:#fff;
+    cursor:pointer;
+}
+
+.phone{
+    font-size:12px;
+    line-height:1.15;
+}
+
+.wa-label{
+    display:inline-block;
+    background:#35bd52;
+    color:#fff;
+    border-radius:8px;
+    padding:2px 6px;
+    margin-top:2px;
+    font-size:11px;
+}
+
+.view{
+    font-size:25px;
+    cursor:pointer;
+}
+
+.report{
+    border:0;
+    background:var(--red);
+    color:#fff;
+    border-radius:8px;
+    padding:7px 10px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.empty{
+    text-align:center;
+    color:#b9d4e4;
+    padding:25px;
+    display:none;
+}
+
+/* SUPPORT */
 
 .support{
-
     position:fixed;
+    left:30px;
+    bottom:25px;
+    z-index:20;
 
-    left:20px;
-
-    bottom:20px;
-
-    z-index:100;
-
-    background:var(--green);
-
-    color:white;
+    background:var(--lime);
+    color:#fff;
 
     border:0;
+    border-radius:14px;
 
-    border-radius:13px;
+    padding:14px 20px;
 
-    padding:
-    11px 15px;
-
-    font-size:17px;
-
+    font-size:23px;
     font-weight:bold;
 
-    box-shadow:
-    0 5px 20px
-    rgba(0,0,0,.25);
+    box-shadow:0 4px 15px #003a6066;
 
+    cursor:pointer;
 }
 
-
-/* =====================================================
-   BOTTOM NAV MOBILE
-===================================================== */
-
-.bottom-nav{
-
-    display:none;
-
-}
-
-@media(max-width:600px){
-
-    .bottom-nav{
-
-        position:fixed;
-
-        left:0;
-
-        right:0;
-
-        bottom:0;
-
-        height:62px;
-
-        background:
-        #063e6b;
-
-        z-index:90;
-
-        display:grid;
-
-        grid-template-columns:
-        repeat(5,1fr);
-
-        border-top:
-        1px solid
-        rgba(255,255,255,.1);
-
-    }
-
-    .bottom-btn{
-
-        background:none;
-
-        border:0;
-
-        color:#b9c5cd;
-
-        font-size:10px;
-
-        display:flex;
-
-        flex-direction:column;
-
-        align-items:center;
-
-        justify-content:center;
-
-        gap:3px;
-
-    }
-
-    .bottom-btn i{
-
-        font-size:18px;
-
-    }
-
-    .bottom-btn.active{
-
-        color:var(--yellow);
-
-    }
-
-    body{
-
-        padding-bottom:75px;
-
-    }
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
+/* MODAL */
 
 .modal{
-
     position:fixed;
-
     inset:0;
 
-    background:
-    rgba(0,0,0,.7);
+    background:rgba(0,0,0,.65);
+
+    z-index:50;
 
     display:none;
-
-    align-items:flex-end;
-
+    align-items:center;
     justify-content:center;
 
-    z-index:200;
-
-    padding:10px;
-
+    padding:20px;
 }
 
 .modal.show{
-
     display:flex;
-
 }
 
 .modal-box{
+    width:min(430px,100%);
 
-    width:min(100%,500px);
+    background:#0b5e96;
 
-    background:var(--panel);
+    border-radius:18px;
 
-    border-radius:
-    20px 20px 10px 10px;
+    padding:24px;
 
-    padding:22px;
-
-    animation:
-    slideUp .25s ease;
-
+    box-shadow:0 10px 40px #0008;
 }
 
-@keyframes slideUp{
-
-    from{
-        transform:
-        translateY(100%);
-    }
-
-    to{
-        transform:
-        translateY(0);
-    }
-
+.modal-title{
+    color:var(--yellow);
+    font-size:25px;
+    margin-bottom:15px;
 }
 
-.modal-close{
+.modal-box input,
+.modal-box textarea{
+    width:100%;
 
-    float:right;
+    background:#075084;
+    color:#fff;
 
-    background:none;
-
-    border:0;
-
-    color:var(--text);
-
-    font-size:22px;
-
-}
-
-.modal-profile{
-
-    text-align:center;
-
-    padding:10px;
-
-}
-
-.modal-profile .avatar{
-
-    width:80px;
-
-    height:80px;
-
-    margin:auto;
-
-    font-size:32px;
-
-}
-
-.modal-name{
-
-    font-size:22px;
-
-    margin-top:10px;
-
-}
-
-.modal-role{
-
-    color:var(--muted);
-
-}
-
-.modal-info{
-
-    margin-top:18px;
-
-    display:grid;
-
-    gap:8px;
-
-}
-
-.info{
-
-    background:var(--card);
-
-    padding:10px;
-
-    border-radius:9px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-}
-
-.modal-actions{
-
-    margin-top:15px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:8px;
-
-}
-
-.modal-actions button{
-
-    border:0;
+    border:1px solid #2a80b8;
 
     border-radius:10px;
 
-    padding:11px;
+    padding:12px;
 
+    margin:6px 0 12px;
+
+    outline:none;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.close{
+    background:#777;
+    border:0;
     color:#fff;
-
+    border-radius:8px;
+    padding:9px 15px;
 }
 
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-.toast{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:85px;
-
-    transform:
-    translateX(-50%)
-    translateY(20px);
-
-    background:#111;
-
+.send{
+    background:var(--red);
+    border:0;
     color:#fff;
-
-    padding:
-    10px 17px;
-
-    border-radius:9px;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.25s;
-
-    z-index:500;
-
-    font-size:13px;
-
+    border-radius:8px;
+    padding:9px 15px;
 }
 
-.toast.show{
+/* MOBILE */
 
-    opacity:1;
+@media(max-width:600px){
 
-    transform:
-    translateX(-50%)
-    translateY(0);
-
-}
-
-
-/* =====================================================
-   DESKTOP
-===================================================== */
-
-@media(min-width:601px){
-
-    .nav{
-
-        grid-template-columns:
-        repeat(7,1fr);
-
-        border-radius:20px;
-
+    .page{
+        max-width:100%;
     }
-
-    .agent-list{
-
-        display:grid;
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-        gap:12px;
-
-    }
-
-}
-
-
-/* =====================================================
-   SMALL PHONE
-===================================================== */
-
-@media(max-width:380px){
 
     .header{
-
-        height:160px;
-
+        height:187px;
     }
 
     .logo{
-
-        font-size:42px;
-
+        font-size:58px;
     }
 
     .logo-sub{
-
-        top:108px;
-
-        font-size:13px;
-
+        font-size:21px;
+        letter-spacing:7px;
+        top:111px;
     }
 
-    .header-btn{
-
-        top:58px;
-
-        font-size:27px;
-
-    }
-
-    .header-btn.left{
-
-        left:15px;
-
-    }
-
-    .header-btn.right{
-
-        right:15px;
-
+    .crown{
+        left:calc(50% - 81px);
+        font-size:25px;
     }
 
     .nav{
+        margin:0 22px 30px;
+        padding:28px 10px 26px;
 
-        gap:18px 4px;
+        gap:24px 18px;
 
-        padding:20px 5px;
-
+        font-size:23px;
     }
 
-    .nav-btn{
-
-        font-size:13px;
-
+    .notice{
+        height:77px;
+        font-size:26px;
     }
 
-    .nav-btn i{
-
-        font-size:17px;
-
-    }
-
-    .social-box{
-
-        font-size:12px;
-
+    .social{
+        font-size:20px;
     }
 
     .social-btn{
-
-        font-size:11px;
-
-        padding:8px;
-
+        font-size:18px;
     }
 
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading{
-
-    text-align:center;
-
-    padding:40px;
-
-    color:var(--yellow);
-
-}
-
-.spinner{
-
-    width:35px;
-
-    height:35px;
-
-    border:
-    4px solid
-    rgba(255,255,255,.2);
-
-    border-top-color:
-    var(--yellow);
-
-    border-radius:50%;
-
-    animation:
-    spin .7s linear infinite;
-
-    margin:auto auto 10px;
-
-}
-
-@keyframes spin{
-
-    to{
-        transform:
-        rotate(360deg);
+    .section-title{
+        font-size:31px;
     }
 
+    .list-wrap{
+        margin:0 22px 30px;
+        padding:18px 24px;
+        overflow-x:auto;
+    }
+
+    .table-head,
+    .row{
+        min-width:700px;
+    }
+
+    .row{
+        min-height:78px;
+    }
 }
 
+@media(max-width:430px){
+
+    .nav{
+        gap:22px 13px;
+        font-size:20px;
+    }
+
+    .nav .ico{
+        font-size:18px;
+    }
+
+    .social{
+        font-size:18px;
+    }
+
+    .social-btn{
+        font-size:16px;
+    }
+
+    .support{
+        left:30px;
+        bottom:24px;
+        font-size:21px;
+    }
+}
 </style>
 </head>
 
-
 <body>
 
+<div class="page">
 
-<!-- =================================================
-     HEADER
-================================================= -->
+<!-- HEADER -->
 
 <header class="header">
 
-<button class="header-btn left"
-onclick="focusSearch()">
+<button
+class="icon-btn search-btn"
+onclick="toggleSearch()"
+aria-label="Search">
 
-<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-icon"></span>
 
 </button>
 
+<div class="crown">♛</div>
 
 <div class="logo">
-
 PLAY<span>25</span>
+</div>
 
 <div class="logo-sub">
 Agent List
 </div>
 
-</div>
+<button
+class="icon-btn grid-btn"
+onclick="window.scrollTo({top:0,behavior:'smooth'})"
+aria-label="Menu">
 
-
-<button class="header-btn right"
-onclick="toggleTheme()">
-
-<i class="fa-solid fa-moon"></i>
+<span class="grid-icon">
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+</span>
 
 </button>
 
 </header>
 
 
-
-<main class="container">
-
-
-<!-- =================================================
-     MAIN NAV
-================================================= -->
+<!-- NAVIGATION -->
 
 <nav class="nav">
 
-<button
-class="nav-btn active"
-data-page="home"
-onclick="changePage('home',this)">
+<a href="#home"
+class="active"
+data-tab="home">
 
-<i class="fa-solid fa-house"></i>
-
+<span class="ico">⌂</span>
 Home
 
-</button>
+</a>
 
+<a href="#owner"
+data-tab="owner">
 
-<button
-class="nav-btn"
-data-page="owner"
-onclick="changePage('owner',this)">
-
-<i class="fa-solid fa-user"></i>
-
+<span class="ico">♟</span>
 Site Owner
 
-</button>
+</a>
 
+<a href="#admin"
+data-tab="admin">
 
-<button
-class="nav-btn"
-data-page="admin"
-onclick="changePage('admin',this)">
-
-<i class="fa-solid fa-user-group"></i>
-
+<span class="ico">♟</span>
 Admin
 
-</button>
+</a>
 
+<a href="#subadmin"
+data-tab="subadmin">
 
-<button
-class="nav-btn"
-data-page="subadmin"
-onclick="changePage('subadmin',this)">
-
-<i class="fa-solid fa-users"></i>
-
+<span class="ico">♟</span>
 Sub Admin
 
-</button>
+</a>
 
+<a href="#super"
+data-tab="super">
 
-<button
-class="nav-btn"
-data-page="super"
-onclick="changePage('super',this)">
-
-<i class="fa-solid fa-user-tie"></i>
-
+<span class="ico">♟</span>
 Super
 
-</button>
+</a>
 
+<a href="#master"
+data-tab="master">
 
-<button
-class="nav-btn"
-data-page="master"
-onclick="changePage('master',this)">
-
-<i class="fa-solid fa-crown"></i>
-
+<span class="ico">♟</span>
 Master
 
-</button>
+</a>
 
+<a href="#lottery"
+data-tab="lottery">
 
-<button
-class="nav-btn"
-data-page="lottery"
-onclick="changePage('lottery',this)">
-
-<i class="fa-solid fa-bullseye"></i>
-
+<span class="ico">◎</span>
 Lottery
 
-</button>
+</a>
 
 </nav>
 
 
+<!-- SEARCH -->
 
-<!-- =================================================
-     NOTICE
-================================================= -->
+<div
+class="search-box"
+id="searchBox">
+
+<input
+id="searchInput"
+placeholder="Search name, ID or phone..."
+oninput="render()">
+
+</div>
+
+
+<!-- HOME -->
+
+<section id="homeSection">
 
 <div class="notice">
 
-<div class="marquee">
-
-কাউকে বিশ্বাস করবেন না...
-
-</div>
+<marquee>
+এখানে কোনো জুয়া/বেটিং সেবা দেওয়া হয় না...
+</marquee>
 
 </div>
 
 
+<div class="social">
 
-<!-- =================================================
-     SOCIAL
-================================================= -->
-
-<div class="social-box">
-
-<span>
-
+<div class="social-text">
 আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ
-
-</span>
-
-<a
-href="#"
-class="social-btn">
-
-<i class="fa-brands fa-facebook"></i>
-
-এখানে ক্লিক করুন
-
-</a>
-
 </div>
-
-
-<div class="social-box">
-
-<span>
-
-ফেসবুক অফিসিয়াল পেজ
-
-</span>
-
-<a
-href="#"
-class="social-btn">
-
-<i class="fa-brands fa-facebook-messenger"></i>
-
-এখানে ক্লিক করুন
-
-</a>
-
-</div>
-
-
-
-<!-- =================================================
-     STATS
-================================================= -->
-
-<div class="stats">
-
-<div class="stat">
-
-<i class="fa-solid fa-users"></i>
-
-<div
-class="stat-number"
-id="totalAgents">
-
-0
-
-</div>
-
-<div class="stat-label">
-
-Total Agents
-
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<i class="fa-solid fa-circle-check"></i>
-
-<div
-class="stat-number">
-
-Active
-
-</div>
-
-<div class="stat-label">
-
-Status
-
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<i class="fa-solid fa-star"></i>
-
-<div
-class="stat-number">
-
-5.0
-
-</div>
-
-<div class="stat-label">
-
-Rating
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =================================================
-     SEARCH
-================================================= -->
-
-<div class="search-area">
-
-<div class="search-box">
-
-<i class="fa-solid fa-search"></i>
-
-<input
-id="search"
-type="search"
-placeholder="Agent name / ID / phone..."
-oninput="searchAgents()">
-
-</div>
-
 
 <button
-class="sort-btn"
-onclick="sortAgents()">
+class="social-btn"
+onclick="openExternal('https://facebook.com/')">
 
-<i class="fa-solid fa-arrow-down-a-z"></i>
+f এখানে ক্লিক করুন
 
 </button>
 
 </div>
 
 
+<div class="social">
 
-<!-- =================================================
-     CONTENT
-================================================= -->
+<div class="social-text">
+ফেসবুক অফিসিয়াল পেজ
+</div>
 
-<div id="content"></div>
+<button
+class="social-btn"
+onclick="openExternal('https://facebook.com/')">
+
+☁ এখানে ক্লিক করুন
+
+</button>
+
+</div>
 
 
+<!-- ADMIN HOME CARD -->
 
-<!-- =================================================
-     PROXY
-================================================= -->
+<section class="section">
 
-<section class="process">
-
-<h2>
-
-আমাদের প্রক্সি লিংক
-
+<h2 class="section-title">
+Admin
 </h2>
+
+<div class="home-card">
+
+<div class="home-profile">
+
+<div class="avatar">
+●
+</div>
+
+<div class="profile-name">
+
+Plabon Khan
+
+<div class="role">
+Site Owner
+</div>
+
+</div>
+
+<div class="idbox">
+
+<b>ID</b>
+
+1
+
+</div>
+
+<div>
+
+<div style="font-size:16px">
++971507872525
+</div>
+
+<span class="wa-label">
+Whatsapp
+</span>
+
+</div>
+
+<button
+class="msgbtn"
+onclick="openWhatsApp('+971507872525')">
+
+Message
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PROCESS -->
+
+<div class="process">
+
+<h2 class="section-title">
+আমাদের প্রক্সি লিংক
+</h2>
+
+<div class="process-card">
+
+<div class="process-row">
+
+<span>
+play25.live
+</span>
+
+<span class="status">
+
+<span class="dot"></span>
+
+Active
+
+<button
+class="visitbtn"
+onclick="alert('Demo link')">
+
+Visit
+
+</button>
+
+</span>
+
+</div>
 
 
 <div class="process-row">
 
-<span class="domain">
-
-play25.live
-
+<span>
+Official Directory
 </span>
 
-
-<span class="active">
-
-● Active
-
+<span class="status">
+Active
 </span>
 
+</div>
 
-<a
-class="visit"
-href="https://play25.live"
-target="_blank">
-
-Visit
-
-</a>
+</div>
 
 </div>
 
 </section>
 
+</section>
+
+
+<!-- LIST -->
+
+<main
+id="listSection"
+style="display:none">
+
+<h2
+class="section-title"
+id="listTitle">
+
+SITE OWNER LIST
+
+</h2>
+
+
+<div class="list-wrap">
+
+<div class="table-head">
+
+<span>Name</span>
+
+<span>ID</span>
+
+<span>Rating</span>
+
+<span>
+App<br>Link
+</span>
+
+<span>
+Facebook
+</span>
+
+<span>
+Phone<br>Number
+</span>
+
+<span>
+View
+</span>
+
+<span>
+Report
+</span>
+
+</div>
+
+
+<div
+class="rows"
+id="rows">
+</div>
+
+
+<div
+class="empty"
+id="empty">
+
+কোনো ফলাফল পাওয়া যায়নি
+
+</div>
+
+</div>
 
 </main>
 
 
-
-<!-- =================================================
-     SUPPORT
-================================================= -->
+<!-- SUPPORT -->
 
 <button
 class="support"
 onclick="support()">
 
-<i class="fa-solid fa-headset"></i>
-
-Support
+◉ &nbsp;Support
 
 </button>
 
 
-
-<!-- =================================================
-     MOBILE BOTTOM NAV
-================================================= -->
-
-<nav class="bottom-nav">
-
-<button
-class="bottom-btn active"
-onclick="bottomPage('home',this)">
-
-<i class="fa-solid fa-house"></i>
-
-Home
-
-</button>
-
-
-<button
-class="bottom-btn"
-onclick="bottomPage('admin',this)">
-
-<i class="fa-solid fa-user-group"></i>
-
-Admin
-
-</button>
-
-
-<button
-class="bottom-btn"
-onclick="bottomPage('super',this)">
-
-<i class="fa-solid fa-user-tie"></i>
-
-Super
-
-</button>
-
-
-<button
-class="bottom-btn"
-onclick="bottomPage('master',this)">
-
-<i class="fa-solid fa-crown"></i>
-
-Master
-
-</button>
-
-
-<button
-class="bottom-btn"
-onclick="focusSearch()">
-
-<i class="fa-solid fa-search"></i>
-
-Search
-
-</button>
-
-</nav>
-
-
-
-<!-- =================================================
-     MODAL
-================================================= -->
+<!-- REPORT MODAL -->
 
 <div
 class="modal"
-id="modal"
-onclick="closeModal(event)">
+id="modal">
+
+<div class="modal-box">
 
 <div
-class="modal-box"
-onclick="event.stopPropagation()">
+class="modal-title"
+id="modalTitle">
+
+Report
+
+</div>
+
+<input
+id="reportName"
+readonly>
+
+<textarea
+id="reportText"
+rows="4"
+placeholder="কারণ লিখুন...">
+</textarea>
+
+<div class="modal-actions">
 
 <button
-class="modal-close"
+class="close"
 onclick="closeModal()">
 
-<i class="fa-solid fa-xmark"></i>
+Close
 
 </button>
 
+<button
+class="send"
+onclick="sendReport()">
 
-<div id="modalContent"></div>
+Report
+
+</button>
+
+</div>
 
 </div>
 
 </div>
-
-
-
-<!-- =================================================
-     TOAST
-================================================= -->
-
-<div
-class="toast"
-id="toast">
-
-Done
-
-</div>
-
 
 
 <script>
 
+/* DATA */
 
-/* =====================================================
-   DATA
-===================================================== */
-
-const agents={
-
+const data={
 
 owner:[
-
 {
-name:"Plabon Khan",
-role:"Site Owner",
+n:'Plabon Khan',
+r:'Site Owner',
 id:1,
-phone:"+971507872525"
+p:'+971507872525'
 }
-
 ],
 
-
 admin:[
-
 {
-name:"Plabon Khan",
-role:"Admin",
+n:'Plabon Khan',
+r:'Admin',
 id:1,
-phone:"+971503557767",
-facebook:true
+p:'+971503657767',
+fb:true
 },
 
 {
-name:"Salam Ali",
-role:"Admin",
+n:'Salam Ali',
+r:'Admin',
 id:3,
-phone:"+601125567256"
+p:'+60125567256'
 }
-
 ],
-
 
 subadmin:[
 
 {
-name:"Pasha Vai",
-role:"Sub Admin",
+n:'Pasha Vai',
+r:'Sub Admin',
 id:5,
-phone:"+601127901350"
+p:'+601127901350'
 },
 
 {
-name:"Tafsir Khan",
-role:"Sub Admin",
+n:'Tafsir Khan',
+r:'Sub Admin',
 id:6,
-phone:"+60175893894"
+p:'+60175893894'
 },
 
 {
-name:"Asif Khan",
-role:"Sub Admin",
+n:'Asif Khan',
+r:'Sub Admin',
 id:7,
-phone:"+971561739263"
+p:'+971561739263'
 },
 
 {
-name:"Samir Khan",
-role:"Sub Admin",
+n:'Samir Khan',
+r:'Sub Admin',
 id:8,
-phone:"+971506037267"
+p:'+971506037267'
 },
 
 {
-name:"Farhan Khan",
-role:"Sub Admin",
+n:'Farhan Khan',
+r:'Sub Admin',
 id:10,
-phone:"+971547992525"
+p:'+971547992525'
 },
 
 {
-name:"Don",
-role:"Sub Admin",
+n:'Don',
+r:'Sub Admin',
 id:13,
-phone:"+601123498684"
+p:'+601123498684'
 },
 
 {
-name:"Rockon",
-role:"Sub Admin",
+n:'Rockon',
+r:'Sub Admin',
 id:14,
-phone:"+601125597835"
+p:'+601255597835'
 },
 
 {
-name:"Salman Habib",
-role:"Sub Admin",
+n:'Salman Habib',
+r:'Sub Admin',
 id:15,
-phone:"+60197400042"
+p:'+60107400042'
 }
 
 ],
-
 
 super:[
 
 {
-name:"Amir Vai",
-role:"Super",
+n:'Amir Vai',
+r:'Super',
 id:10,
-phone:"+971568101419"
+p:'+971568101419'
 },
 
 {
-name:"Himel Khan",
-role:"Super",
+n:'Himel Khan',
+r:'Super',
 id:1,
-phone:"+971543380407"
+p:'+971543380407'
 },
 
 {
-name:"Srabon Khan",
-role:"Super",
+n:'Srabon Khan',
+r:'Super',
 id:3,
-phone:"+601123497151"
+p:'+601123497151',
+photo:true
 },
 
 {
-name:"James Bond",
-role:"Super",
+n:'James Bond',
+r:'Super',
 id:4,
-phone:"+14099953088"
+p:'+14099953088'
 },
 
 {
-name:"Pasha Vai",
-role:"Super",
+n:'Pasha Vai',
+r:'Super',
 id:5,
-phone:"+601127901350"
+p:'+601127901350'
 },
 
 {
-name:"Tafsir Khan",
-role:"Super",
+n:'Tafsir Khan',
+r:'Super',
 id:6,
-phone:"+60175893894"
+p:'+60175893894'
 },
 
 {
-name:"Asif Khan",
-role:"Super",
+n:'Asif Khan',
+r:'Super',
 id:7,
-phone:"+971561739263"
+p:'+971561739263'
 },
 
 {
-name:"Samir Khan",
-role:"Super",
+n:'Samir Khan',
+r:'Super',
 id:8,
-phone:"+971506037267"
+p:'+971506037267'
 },
 
 {
-name:"Jibon Khan",
-role:"Super",
+n:'Jibon Khan',
+r:'Super',
 id:9,
-phone:"+601123119084"
+p:'+601123119084'
 }
 
 ],
 
-
 master:[
 
 {
-name:"Sunvy Khan",
-role:"Master",
+n:'Sunvy Khan',
+r:'Master',
 id:1,
-phone:"+601070472754"
+p:'+60107047254',
+photo:true
 },
 
 {
-name:"Bappy Khan",
-role:"Master",
+n:'Bappy Khan',
+r:'Master',
 id:2,
-phone:"+601123498374",
-facebook:true
+p:'+601123498374',
+fb:true,
+p2:'+60112044174'
 },
 
 {
-name:"Asif Islam",
-role:"Master",
+n:'Asif Islam',
+r:'Master',
 id:4,
-phone:"+601114261897"
+p:'+601114261897'
 },
 
 {
-name:"Samir Khan",
-role:"Master",
+n:'Samir Khan',
+r:'Master',
 id:7,
-phone:"+60147472138"
+p:'+60147472138'
 },
 
 {
-name:"Sana Khan",
-role:"Master",
+n:'Sana Khan',
+r:'Master',
 id:8,
-phone:"+601122374852"
+p:'+601122374852'
 },
 
 {
-name:"Bakir Khan",
-role:"Master",
+n:'Bakir Khan',
+r:'Master',
 id:9,
-phone:"+60175896700"
+p:'+60175896700',
+p2:'+971567589851'
 },
 
 {
-name:"Rashed Khan",
-role:"Master",
+n:'Rashed Khan',
+r:'Master',
 id:10,
-phone:"+60175895440"
+p:'+60175895440',
+p2:'+971567411057'
+},
+
+{
+n:'Master User',
+r:'Master',
+id:11,
+p:'+60175858490'
 }
 
 ]
@@ -2180,874 +1358,446 @@ phone:"+60175895440"
 };
 
 
-let currentPage="home";
-
-let currentAgents=[];
-
-let ascending=true;
+let current='owner';
 
 
+/* ACTIVE MENU */
 
-/* =====================================================
-   TOTAL
-===================================================== */
+function setActive(tab){
 
-function getAllAgents(){
+document
+.querySelectorAll('.nav a')
+.forEach(a=>{
 
-return Object.values(agents)
-.flat();
+a.classList.toggle(
+'active',
+a.dataset.tab===tab
+);
 
-}
-
-
-document.getElementById("totalAgents")
-.textContent=getAllAgents().length;
-
-
-
-/* =====================================================
-   AVATAR
-===================================================== */
-
-function avatar(agent){
-
-if(agent.image){
-
-return `
-
-<div class="avatar">
-
-<img
-src="${agent.image}"
-alt="${agent.name}">
-
-</div>
-
-`;
-
-}
-
-return `
-
-<div class="avatar">
-
-<i class="fa-solid fa-user"></i>
-
-</div>
-
-`;
+});
 
 }
 
 
+/* SEARCH */
 
-/* =====================================================
-   HOME
-===================================================== */
+function toggleSearch(){
 
-function homePage(){
+const box=
+document.getElementById('searchBox');
 
-return `
+box.style.display=
+box.style.display==='block'
+?'none'
+:'block';
 
-<h1 class="page-title">
+if(box.style.display==='block'){
 
-Admin
+document
+.getElementById('searchInput')
+.focus();
 
-</h1>
-
-
-<div class="agent-list">
-
-${createCards(agents.admin)}
-
-</div>
-
-`;
+}
 
 }
 
 
+/* RENDER LIST */
 
-/* =====================================================
-   CARD
-===================================================== */
+function render(){
 
-function createCards(list){
+const list=
+data[current]||[];
 
-return list.map(agent=>`
-
-<div
-class="agent-card"
-data-name="${agent.name.toLowerCase()}"
-data-phone="${agent.phone}"
-data-id="${agent.id}">
-
-
-<div class="agent-top">
+const q=
+(document
+.getElementById('searchInput')
+?.value||'')
+.toLowerCase()
+.trim();
 
 
-${avatar(agent)}
+const filtered=
+list.filter(x=>
+
+(
+x.n+
+' '+
+x.id+
+' '+
+x.p+
+' '+
+x.r
+)
+.toLowerCase()
+.includes(q)
+
+);
 
 
-<div class="agent-info">
+const rows=
+document.getElementById('rows');
 
-<div class="agent-name">
+rows.innerHTML='';
 
-${agent.name}
+
+filtered.forEach(x=>{
+
+const el=
+document.createElement('div');
+
+el.className='row';
+
+
+el.innerHTML=`
+
+<div class="name-cell">
+
+<div class="avatar sm">
+●
+</div>
+
+<div class="name">
+
+${x.n}
+
+<br>
+
+<span class="role">
+${x.r}
+</span>
 
 </div>
 
-<div class="agent-role">
-
-${agent.role}
-
-</div>
-
-<div class="status">
-
-<span class="status-dot"></span>
-
-Active
-
-</div>
-
 </div>
 
 
-<div class="id">
+<div>
 
-<small>ID</small>
+<div class="idbox">
 
-${agent.id}
+<b>ID</b>
+
+${x.id}
+
+</div>
 
 </div>
 
 
-</div>
+<div>
 
-
-
-<div class="rating">
-
-<div class="stars">
-
+<span class="rating">
 ★★★★★
-
-</div>
-
-<div class="rating-text">
-
-5.0 / 5.0
-
-</div>
+</span>
 
 </div>
 
 
+<div>
 
-<div class="phone-row">
+<span
+class="whatsapp"
+title="WhatsApp"
+onclick="openWhatsApp('${x.p}')">
 
-<span class="phone">
-
-${agent.phone}
+◔
 
 </span>
 
-<button
-class="copy"
-onclick="copyPhone('${agent.phone}')">
+</div>
 
-<i class="fa-solid fa-copy"></i>
 
-Copy
+<div>
 
-</button>
+${
+x.fb
+
+?
+
+`<span
+class="fb"
+onclick="openExternal('https://facebook.com/')">
+●
+</span>`
+
+:
+
+'— —'
+
+}
 
 </div>
 
 
+<div class="phone">
 
-<div class="actions">
+${x.p}
 
+<br>
 
-<a
-class="action whatsapp"
-href="https://wa.me/${agent.phone.replace(/\\D/g,'')}"
-target="_blank">
-
-<i class="fa-brands fa-whatsapp"></i>
-
-WhatsApp
-
-</a>
-
+<span class="wa-label">
+Whatsapp
+</span>
 
 ${
-agent.facebook
+x.p2
 
 ?
 
-`<a
-class="action facebook"
-href="#">
-
-<i class="fa-brands fa-facebook"></i>
-
-Facebook
-
-</a>`
+`<br>
+<span class="wa-label">
+Whatsapp1
+</span>`
 
 :
 
-`<button
-class="action facebook"
-onclick="showToast('Facebook নেই')">
-
-<i class="fa-brands fa-facebook"></i>
-
-Facebook
-
-</button>`
+''
 
 }
 
+</div>
+
+
+<div
+class="view"
+onclick="viewUser(
+'${x.n}',
+'${x.r}',
+'${x.id}',
+'${x.p}'
+)">
+
+◉
+
+</div>
+
+
+<div>
 
 <button
-class="action view"
-onclick='viewAgent(${JSON.stringify(agent)})'>
-
-<i class="fa-solid fa-eye"></i>
-
-View
-
-</button>
-
-
-<button
-class="action report"
-onclick="reportAgent('${agent.name}')">
-
-<i class="fa-solid fa-flag"></i>
+class="report"
+onclick="reportUser('${x.n}')">
 
 Report
 
 </button>
 
-
-</div>
-
-
-</div>
-
-`).join("");
-
-}
-
-
-
-/* =====================================================
-   TABLE PAGE
-===================================================== */
-
-function listPage(title,list){
-
-currentAgents=[...list];
-
-return `
-
-<h1 class="page-title">
-
-${title}
-
-</h1>
-
-
-<div
-class="agent-list"
-id="agentList">
-
-${createCards(list)}
-
 </div>
 
 `;
 
-}
+rows.appendChild(el);
 
+});
 
-
-/* =====================================================
-   CHANGE PAGE
-===================================================== */
-
-function changePage(page,button){
-
-currentPage=page;
 
 document
-.querySelectorAll(".nav-btn")
-.forEach(btn=>
-btn.classList.remove("active")
-);
-
-if(button){
-
-button.classList.add("active");
+.getElementById('empty')
+.style.display=
+filtered.length
+?'none'
+:'block';
 
 }
 
 
-if(page==="home"){
+/* SHOW TAB */
 
-document.getElementById("content")
-.innerHTML=homePage();
+function showTab(tab){
 
-return;
+if(tab==='home'){
 
-}
-
-
-if(page==="lottery"){
-
-document.getElementById("content")
-.innerHTML=`
-
-<h1 class="page-title">
-
-LOTTERY
-
-</h1>
-
-<div class="home-card"
-style="
-background:var(--panel);
-padding:40px;
-text-align:center;
-border-radius:15px;
-">
-
-<i
-class="fa-solid fa-bullseye"
-style="
-font-size:50px;
-color:var(--yellow);
-margin-bottom:15px;
-">
-</i>
-
-<br>
-
-Lottery List Coming Soon
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-const names={
-
-owner:"SITE OWNER LIST",
-
-admin:"ADMIN LIST",
-
-subadmin:"SUB ADMIN LIST",
-
-super:"SUPER LIST",
-
-master:"MASTER LIST"
-
-};
-
-
-document.getElementById("content")
-.innerHTML=
-listPage(
-names[page],
-agents[page]
-);
-
-}
-
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-function searchAgents(){
-
-const value=
 document
-.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+.getElementById('homeSection')
+.style.display='block';
 
+document
+.getElementById('listSection')
+.style.display='none';
 
-const cards=
-document.querySelectorAll(
-".agent-card"
+}
+
+else if(tab==='lottery'){
+
+alert(
+'Lottery section is disabled in this demo.'
 );
 
-
-let found=0;
-
-
-cards.forEach(card=>{
-
-const text=
-card.dataset.name
-+
-card.dataset.phone
-+
-card.dataset.id;
-
-
-if(text.includes(value)){
-
-card.style.display="block";
-
-found++;
+return;
 
 }
 
 else{
 
-card.style.display="none";
-
-}
-
-});
-
-
-let no=
-document.querySelector(".no-result");
-
-
-if(!found && value){
-
-if(!no){
-
-no=document.createElement("div");
-
-no.className="no-result";
-
-no.innerHTML=`
-
-<i class="fa-solid fa-face-frown"></i>
-
-<br>
-
-কোনো Agent পাওয়া যায়নি
-
-`;
+current=tab;
 
 document
-.getElementById("content")
-.appendChild(no);
-
-}
-
-}
-
-else if(no){
-
-no.remove();
-
-}
-
-}
-
-
-
-/* =====================================================
-   SORT
-===================================================== */
-
-function sortAgents(){
-
-if(!currentAgents.length){
-
-showToast("আগে একটি List নির্বাচন করুন");
-
-return;
-
-}
-
-
-currentAgents.sort((a,b)=>{
-
-return ascending
-
-?
-a.name.localeCompare(b.name)
-:
-b.name.localeCompare(a.name);
-
-});
-
-
-ascending=!ascending;
-
-
-const container=
-document.getElementById("content");
-
-
-const title=
-container.querySelector(".page-title")
-?.textContent || "";
-
-
-container.innerHTML=
-listPage(title,currentAgents);
-
-showToast("List Sorted");
-
-}
-
-
-
-/* =====================================================
-   VIEW
-===================================================== */
-
-function viewAgent(agent){
-
-const modal=
-document.getElementById("modal");
-
-const content=
-document.getElementById("modalContent");
-
-
-content.innerHTML=`
-
-<div class="modal-profile">
-
-${avatar(agent)}
-
-<div class="modal-name">
-
-${agent.name}
-
-</div>
-
-<div class="modal-role">
-
-${agent.role}
-
-</div>
-
-</div>
-
-
-<div class="modal-info">
-
-<div class="info">
-
-<span>ID</span>
-
-<strong>${agent.id}</strong>
-
-</div>
-
-
-<div class="info">
-
-<span>Phone</span>
-
-<strong>${agent.phone}</strong>
-
-</div>
-
-
-<div class="info">
-
-<span>Rating</span>
-
-<strong>★★★★★</strong>
-
-</div>
-
-
-<div class="info">
-
-<span>Status</span>
-
-<strong
-style="color:var(--online)">
-
-● Active
-
-</strong>
-
-</div>
-
-</div>
-
-
-<div class="modal-actions">
-
-<a
-class="whatsapp"
-href="https://wa.me/${agent.phone.replace(/\\D/g,'')}"
-target="_blank">
-
-<i class="fa-brands fa-whatsapp"></i>
-
-WhatsApp
-
-</a>
-
-
-<button
-class="view"
-onclick="copyPhone('${agent.phone}')">
-
-<i class="fa-solid fa-copy"></i>
-
-Copy Number
-
-</button>
-
-</div>
-
-`;
-
-
-modal.classList.add("show");
-
-}
-
-
-
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
-
-function closeModal(event){
-
-if(
-!event ||
-event.target.id==="modal"
-){
+.getElementById('homeSection')
+.style.display='none';
 
 document
-.getElementById("modal")
-.classList.remove("show");
+.getElementById('listSection')
+.style.display='block';
+
+
+const titles={
+
+owner:'SITE OWNER LIST',
+
+admin:'ADMIN LIST',
+
+subadmin:'SUB ADMIN LIST',
+
+super:'SUPER LIST',
+
+master:'MASTER LIST'
+
+};
+
+
+document
+.getElementById('listTitle')
+.textContent=
+titles[tab]||'LIST';
+
+
+render();
 
 }
 
-}
 
+setActive(tab);
 
-
-/* =====================================================
-   COPY
-===================================================== */
-
-function copyPhone(phone){
-
-navigator
-.clipboard
-.writeText(phone)
-.then(()=>{
-
-showToast(
-"Phone number copied"
-);
-
-})
-.catch(()=>{
-
-showToast(phone);
-
+window.scrollTo({
+top:0,
+behavior:'smooth'
 });
 
 }
 
 
+/* MENU CLICK */
 
-/* =====================================================
-   REPORT
-===================================================== */
+document
+.querySelectorAll('.nav a')
+.forEach(a=>{
 
-function reportAgent(name){
+a.addEventListener(
+'click',
+e=>{
 
-const ok=
-confirm(
-name+
-" কে Report করতে চান?"
+e.preventDefault();
+
+showTab(
+a.dataset.tab
 );
 
-if(ok){
+});
 
-showToast(
-"Report submitted"
+});
+
+
+/* WHATSAPP */
+
+function openWhatsApp(phone){
+
+window.open(
+'https://wa.me/'+
+phone.replace(/\D/g,''),
+'_blank'
 );
 
 }
 
+
+/* EXTERNAL */
+
+function openExternal(url){
+
+window.open(
+url,
+'_blank'
+);
+
 }
 
 
+/* VIEW */
 
-/* =====================================================
-   SUPPORT
-===================================================== */
+function viewUser(n,r,id,p){
+
+alert(
+
+'Name: '+n+
+'\nRole: '+r+
+'\nID: '+id+
+'\nPhone: '+p
+
+);
+
+}
+
+
+/* REPORT */
+
+function reportUser(n){
+
+document
+.getElementById('reportName')
+.value=n;
+
+document
+.getElementById('reportText')
+.value='';
+
+document
+.getElementById('modalTitle')
+.textContent='Report: '+n;
+
+document
+.getElementById('modal')
+.classList.add('show');
+
+}
+
+
+function closeModal(){
+
+document
+.getElementById('modal')
+.classList.remove('show');
+
+}
+
+
+function sendReport(){
+
+alert(
+'Report submitted (demo).'
+);
+
+closeModal();
+
+}
+
+
+/* SUPPORT */
 
 function support(){
 
-showToast(
-"Support team-এ যোগাযোগ করুন"
+alert(
+'Support: WhatsApp / Messenger support can be connected here.'
 );
 
 }
 
 
+/* START */
 
-/* =====================================================
-   SEARCH FOCUS
-===================================================== */
-
-function focusSearch(){
-
-document
-.getElementById("search")
-.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-setTimeout(()=>{
-
-document
-.getElementById("search")
-.focus();
-
-},400);
-
-}
-
-
-
-/* =====================================================
-   THEME
-===================================================== */
-
-function toggleTheme(){
-
-document
-.body
-.classList
-.toggle("light");
-
-
-localStorage.setItem(
-"theme",
-document.body.classList.contains("light")
-?
-"light"
-:
-"dark"
-);
-
-}
-
-
-
-/* LOAD THEME */
-
-if(
-localStorage.getItem("theme")
-==="light"
-){
-
-document
-.body
-.classList
-.add("light");
-
-}
-
-
-
-/* =====================================================
-   BOTTOM NAV
-===================================================== */
-
-function bottomPage(page,button){
-
-document
-.querySelectorAll(".bottom-btn")
-.forEach(btn=>
-btn.classList.remove("active")
-);
-
-button.classList.add("active");
-
-
-const navButton=
-document.querySelector(
-`.nav-btn[data-page="${page}"]`
-);
-
-
-changePage(
-page,
-navButton
-);
-
-}
-
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-let toastTimer;
-
-function showToast(message){
-
-const toast=
-document.getElementById("toast");
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-clearTimeout(toastTimer);
-
-toastTimer=
-setTimeout(()=>{
-
-toast.classList.remove("show");
-
-},1800);
-
-}
-
-
-
-/* =====================================================
-   START
-===================================================== */
-
-changePage(
-"home",
-document.querySelector(
-'.nav-btn[data-page="home"]'
-)
-);
+showTab('home');
 
 </script>
-
 
 </body>
 </html>
