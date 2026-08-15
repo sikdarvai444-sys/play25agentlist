@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLAY25 Agent List</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+body{background:#0b3d91;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;padding:8px 8px}
+.search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
+
+/* LOGO IMAGE */
+.logo{flex:1;text-align:center}
+.logo img{max-width:180px;height:auto;display:block;margin:0 auto}
+
+.menu{background:#1153c7;margin:8px;border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.menu a{color:#fff;text-decoration:none;font-size:12px;font-weight:500}
+.menu a.active{color:#ffeb3b}
+.box{background:#1153c7;margin:8px;border-radius:8px;padding:8px}
+h2{text-align:center;color:#ffeb3b;margin-bottom:8px;font-size:16px;font-weight:bold;text-transform:uppercase}
+
+/* TABLE */
+.box{overflow-x:hidden}
+table{width:100%;border-collapse:collapse;font-size:9px}
+thead{background:#0b3d91}
+th{color:#fff;padding:7px 1px;text-align:center;font-weight:500;white-space:nowrap}
+td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-align:middle}
+
+.avatar{width:26px;height:26px;border-radius:50%;background:#555;display:inline-block;vertical-align:middle;margin-right:2px}
+.name-col{text-align:left;white-space:nowrap;padding-left:2px}
+.name-col b{font-size:10px;font-weight:500}
+.name-col small{font-size:8px;color:#aaa;display:block}
+.id-box{background:#ffc107;color:#000;padding:1px 4px;border-radius:4px;font-weight:bold;font-size:8px;display:inline-block}
+.stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
+
+/* APP COLUMN WA ICON - ORIGINAL SMALL */
+.btn-wa-app{background:#25D366;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.btn-wa-app svg{width:11px;height:11px;fill:#fff}
+
+.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:1px;margin:1px 0;text-decoration:none}
+.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap}
+.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1}
+
+.btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
+.btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
+.btn-none{color:#888;font-size:12px}
+
+/* কলাম width */
+th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} th:nth-child(4){width:7%} th:nth-child(5){width:8%} th:nth-child(6){width:22%} th:nth-child(7){width:7%} th:nth-child(8){width:12%}
+
+.support-btn{position:fixed;bottom:10px;left:10px;background:#4caf50;padding:6px 12px;border-radius:20px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:5px;z-index:99;border:none;cursor:pointer;font-size:11px}
+.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999;justify-content:center;align-items:center}
+.popup{background:#1153c7;width:90%;max-width:400px;border-radius:10px;padding:15px;position:relative}
+.popup h3{background:#000;padding:10px;border-radius:5px;text-align:center;color:#ffeb3b;margin-bottom:10px}
+.close-btn{position:absolute;top:10px;right:15px;font-size:24px;color:#fff;cursor:pointer}
+.popup label{color:#ffeb3b;font-size:13px;margin-top:8px;display:block}
+.popup select,.popup input{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff}
+.popup button{background:#4caf50;color:#fff;padding:8px 15px;border:none;border-radius:5px;font-weight:bold;cursor:pointer;float:right;margin-top:10px}
+
+/* VIEW POPUP */
+.info-box{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none;background:#0b3d91;color:#fff;text-align:left}
+.btn-wa-popup{background:#25D366;color:#fff;padding:6px 12px;border-radius:5px;text-decoration:none;display:inline-block;margin:5px 0}
+.stars-popup{text-align:center;font-size:18px;color:#ffc107;margin:5px 0}
+.hierarchy-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tag{background:#4caf50;padding:4px 8px;border-radius:15px;font-size:10px}
+
+/* REPORT POPUP */
+.report-header{background:#f44336;color:#fff;text-align:center;padding:8px;border-radius:5px;font-weight:bold;margin-bottom:10px}
+.report-wa-btn{display:block;background:#25D366;color:#fff;padding:8px;border-radius:5px;text-decoration:none;text-align:center;margin-top:10px;font-weight:bold}
+
+.support-item{display:flex;align-items:center;gap:10px;background:#0b3d91;padding:8px;border-radius:8px;margin-bottom:8px}
+.support-item.icon{width:30px;height:30px;background:#ffc107;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold}
+.support-item.info{flex:1}
+.support-item.btn-msg{background:#4caf50;color:#fff;padding:4px 8px;border-radius:5px;text-decoration:none;font-size:11px}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="search-icon" onclick="openSearch()">🔍</div>
+    <div class="logo">
+        <img src="logo.png" alt="PLAY25 Agent List">
+    </div>
+    <div class="grid-icon">⊞</div>
+</div>
+
+<div class="menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="siteowner.html">👤 Site Owner</a>
+    <a href="admin.html">👤 Admin</a>
+    <a href="subadmin.html">👤 Sub Admin</a>
+    <a href="super.html">👤 Super</a>
+    <a href="master.html">👤 Master</a>
+    <a href="#">🎯 Lottery</a>
+</div>
+
+<div class="box">
+    <h2 id="roleTitle">MASTER LIST</h2>
+    <table>
+        <thead><tr><th>Name</th><th>ID</th><th>Rating</th><th>App</th><th>FB</th><th>Phone</th><th>View</th><th>Report</th></tr></thead>
+        <tbody id="agentList"><tr><td colspan="8">Loading...</td></tr></tbody>
+    </table>
+</div>
+
+<button class="support-btn" onclick="openSupport()">🎧 Support</button>
+
+<!-- Search Popup -->
+<div class="popup-overlay" id="searchPopup">
+  <div class="popup"><span class="close-btn" onclick="closeSearch()">&times;</span><h3>👤 এজেন্ট খুঁজুন</h3>
+  <label>Type</label><select id="searchType"><option value="all">All Agent</option><option value="Site Owner">Site Owner</option><option value="Admin">Admin</option><option value="Sub Admin">Sub Admin</option><option value="Super">Super</option><option value="Master">Master</option></select>
+  <label>Search By Agent ID</label><input type="text" id="searchId"><label>Search by Whatsapp</label><input type="text" id="searchPhone"><button onclick="doSearch()">Search</button></div>
+</div>
+
+<!-- Support Popup -->
+<div class="popup-overlay" id="supportPopup">
+  <div class="popup"><span class="close-btn" onclick="closeSupport()">&times;</span><h3>🎧 Support Team</h3><div id="supportList">Loading...</div></div>
+</div>
+
+<!-- VIEW DETAILS POPUP -->
+<div class="popup-overlay" id="viewPopup">
+  <div class="popup"><span class="close-btn" onclick="closeView()">&times;</span>
+    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div></div>
+    <label>Name</label><div class="info-box" id="viewName"></div>
+    <label>Type</label><div class="info-box" id="viewRole"></div>
+    <label>Number</label><div class="info-box" id="viewPhone"></div>
+    <label>ID Number</label><div class="info-box" id="viewId"></div>
+    <label>Serial</label><div class="info-box" id="viewSerial"></div>
+    <label>Message</label><a id="viewWa" href="#" target="_blank" class="btn-wa-popup">📱 Whatsapp</a>
+    <label>Rating</label><div class="stars-popup">★★★</div>
+    <label>Hierarchy / কার আন্ডারে</label><div class="hierarchy-tags" id="viewHierarchy"></div>
+  </div>
+</div>
+
+<!-- REPORT INFO POPUP -->
+<div class="popup-overlay" id="reportPopup">
+  <div class="popup"><span class="close-btn" onclick="closeReport()">&times;</span>
+    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div></div>
+    <div class="report-header">Report This Person</div>
+    <label>Name</label><div class="info-box" id="reportName"></div>
+    <label>Type</label><div class="info-box" id="reportRole"></div>
+    <label>Number</label><div class="info-box" id="reportPhone"></div>
+    <label>ID Number</label><div class="info-box" id="reportId"></div>
+    <label>Hierarchy / কার আন্ডারে আছে</label><div class="hierarchy-tags" id="reportHierarchy"></div>
+    <a id="reportWa" href="#" target="_blank" class="report-wa-btn">📱 Whatsapp এ মেসেজ করুন</a>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",authDomain: "play25agent.firebaseapp.com",databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",projectId: "play25agent"};
+firebase.initializeApp(firebaseConfig);const db = firebase.database();let allAgentsData = {};
+
+let fileName = window.location.pathname.split("/").pop().replace('.html','');
+let currentRole = fileName == ''? 'index' : fileName;
+const roleNames = {'index': 'ALL AGENT LIST', 'siteowner': 'SITE OWNER LIST', 'admin': 'ADMIN LIST','subadmin': 'SUB ADMIN LIST', 'super': 'SUPER LIST', 'master': 'MASTER LIST'}
+document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'AGENT LIST';
+document.querySelectorAll('.menu a').forEach(a=>{if(a.getAttribute('href').includes(currentRole)) a.classList.add('active')})
+
+function openSearch(){document.getElementById('searchPopup').style.display='flex'}
+function closeSearch(){document.getElementById('searchPopup').style.display='none'}
+function openSupport(){document.getElementById('supportPopup').style.display='flex'}
+function closeSupport(){document.getElementById('supportPopup').style.display='none'}
+function closeView(){document.getElementById('viewPopup').style.display='none'}
+function closeReport(){document.getElementById('reportPopup').style.display='none'}
+
+// নাম্বার থেকে WA লিংক
+function getWaLink(num){
+    if(!num) return '';
+    let clean = num.replace(/[^0-9]/g,'');
+    return `https://wa.me/${clean}`;
+}
+
+// Hierarchy
+function getHierarchy(agent) {
+  let tags = '';
+  if(agent.parent) tags += `<span class="tag">Direct: ${agent.parent}</span>`;
+  if(agent.parentParent) tags += `<span class="tag">Upper: ${agent.parentParent}</span>`;
+  if(agent.parentSerial) tags += `<span class="tag">${agent.parentSerial}</span>`;
+  if(agent.role!= 'Site Owner') tags += `<span class="tag">Level: ${agent.role}</span>`;
+  if(!agent.parent) tags += `<span class="tag">Site Owner</span>`;
+  return tags || '<span class="tag">No Parent</span>';
+}
+
+// View Details
+function viewAgent(key){
+  let a = allAgentsData[key];
+  document.getElementById('viewName').innerText = a.name || 'N/A';
+  document.getElementById('viewRole').innerText = a.role || 'N/A';
+  document.getElementById('viewPhone').innerText = a.phone || 'N/A';
+  document.getElementById('viewId').innerText = a.id || 'N/A';
+  document.getElementById('viewSerial').innerText = a.serial || '-';
+  document.getElementById('viewWa').href = getWaLink(a.phone);
+  document.getElementById('viewHierarchy').innerHTML = getHierarchy(a);
+  document.getElementById('viewPopup').style.display='flex';
+}
+
+// Report Info Popup
+function reportAgent(key){
+  let a = allAgentsData[key];
+  document.getElementById('reportName').innerText = a.name || 'N/A';
+  document.getElementById('reportRole').innerText = a.role || 'N/A';
+  document.getElementById('reportPhone').innerText = a.phone || 'N/A';
+  document.getElementById('reportId').innerText = a.id || 'N/A';
+  document.getElementById('reportHierarchy').innerHTML = getHierarchy(a);
+  document.getElementById('reportWa').href = getWaLink(a.phone);
+  document.getElementById('reportPopup').style.display='flex';
+}
+
+// Agents Load
+db.ref('agents').on('value', snap => {
+  allAgentsData = snap.val() || {};
+  renderAgents(allAgentsData);
+})
+
+function renderAgents(data){
+  let html = '';
+  for(let key in data){
+    let a = data[key];
+    if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+
+      // APP COLUMN - অরিজিনাল WA আইকন
+      let appLink = `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-app" title="WhatsApp">
+                        <svg role="img" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.271.296-1.043 1.016-1.043 2.479 0 1.462 1.067 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.07-.124-.248-.197-.545-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-8.948c-.46-.229-2.71-1.336-3.13-1.488-.42-.152-.724-.228-1.03.228-.306.456-1.185 1.488-1.452 1.791-.267.303-.534.339-.994.112-.46-.229-1.942-.715-3.698-2.277-1.366-1.217-2.289-2.718-2.555-3.179-.266-.46-.028-.71.2-.942.205-.205.46-.534.69-.8.229-.266.305-.46.46-.76.153-.3.025-.56-.123-.789-.148-.23-1.34-3.23-1.84-4.414-.484-1.16-.96-.99-1.32-.99-.34 0-.73 0-1.12.01-.39.01-1.03.15-1.57.76-.54.6-2.06 2.02-2.06 4.93 0 2.91 2.11 5.72 2.41 6.12.3.4 4.17 6.37 10.1 8.94 1.42.61 2.53.97 3.4 1.24.92.27 1.75.23 2.41.14.73-.1 2.26-.93 2.58-1.82.32-.89.32-1.65.22-1.82-.1-.18-.37-.29-.83-.52z"/></svg>
+                     </a>`;
+
+      let fbLink = `<span class="btn-none">--</span>`;
+
+      // PHONE COLUMN
+      let phoneBtns = '';
+      if(a.phone){
+        phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap">
+                        <div class="btn-wa-num">${a.phone}</div>
+                        <div class="btn-wa">Whatsapp</div>
+                      </a>`;
+      }
+      if(a.phone2){
+        phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap">
+                        <div class="btn-wa-num">${a.phone2}</div>
+                        <div class="btn-wa">Whatsapp</div>
+                      </a>`;
+      }
+
+      html += `<tr>
+        <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><small>${a.role}</small></td>
+        <td><div class="id-box">ID ${a.id}</div></td>
+        <td class="stars">★★★</td>
+        <td>${appLink}</td>
+        <td>${fbLink}</td>
+        <td>${phoneBtns || '--'}</td>
+        <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
+        <td><a onclick="reportAgent('${key}')" class="btn-report">Report</a></td>
+      </tr>`
+    }
+  }
+  document.getElementById('agentList').innerHTML = html || '<tr><td colspan="8">কোন Agent নেই</td></tr>';
+}
+
+// Search Function
+function doSearch(){
+  let type = document.getElementById('searchType').value;
+  let id = document.getElementById('searchId').value.trim();
+  let phone = document.getElementById('searchPhone').value.trim();
+  let result = {};
+  for(let key in allAgentsData){
+    let a = allAgentsData[key];
+    let match = true;
+    if(type!= 'all' && a.role!= type) match = false;
+    if(id!= '' &&!a.id.includes(id)) match = false;
+    if(phone!= '' &&!a.phone.includes(phone) &&!(a.phone2 && a.phone2.includes(phone))) match = false;
+    if(match) result[key] = a;
+  }
+  renderAgents(result);
+  closeSearch();
+}
+
+// Support Load
+db.ref('support').on('value', snap => {
+  let html = '';
+  snap.forEach(child => {
+    let s = child.val();
+    html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="${getWaLink(s.phone)}" class="btn-msg" target="_blank">Message</a></div>`
+  })
+  document.getElementById('supportList').innerHTML = html || 'কোন Support নেই';
+})
+</script>
+</body></html>
