@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0b3d91">
+
 <title>PLAY25 Agent List</title>
 
 <style>
@@ -16,112 +16,106 @@
 
 html,body{
     width:100%;
-    min-height:100%;
+    max-width:100%;
+    overflow-x:hidden;
 }
 
 body{
     background:#0b3d91;
     color:#fff;
-    overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
 
 .header{
     width:100%;
-    min-height:180px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:8px 8px;
+    justify-content:space-between;
+    padding:7px 5px;
 }
 
 .search-icon,
 .grid-icon{
-    width:45px;
-    height:45px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:28px;
-    color:#ffeb00;
-    cursor:pointer;
+    width:35px;
     flex-shrink:0;
+    text-align:center;
+    font-size:21px;
+    color:#ffc107;
+    cursor:pointer;
 }
 
 .logo{
     flex:1;
+    min-width:0;
     text-align:center;
 }
 
 .logo img{
-    width:180px;
-    max-width:100%;
-    height:auto;
     display:block;
-    margin:0 auto;
+    width:auto;
+    max-width:170px;
+    max-height:65px;
+    height:auto;
+    margin:auto;
 }
 
 /* ================= MENU ================= */
 
 .menu{
-    background:#1153c7;
+    width:calc(100% - 16px);
     margin:8px;
-    border-radius:12px;
-    padding:15px 8px;
+    padding:9px 5px;
+    background:#1153c7;
+    border-radius:8px;
+
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     align-items:center;
-    gap:15px 18px;
+    gap:8px 11px;
 }
 
 .menu a{
     color:#fff;
     text-decoration:none;
-    font-size:15px;
+    font-size:11px;
     font-weight:500;
     white-space:nowrap;
-    transition:.2s;
 }
 
-.menu a:hover,
 .menu a.active{
     color:#ffeb3b;
 }
 
-/* ================= HOME BOXES ================= */
+/* ================= MAIN BOX ================= */
 
 .box{
-    background:#1153c7;
+    width:calc(100% - 16px);
     margin:8px;
-    border-radius:10px;
-    padding:14px;
+    padding:7px 3px;
+    background:#1153c7;
+    border-radius:8px;
     overflow:hidden;
 }
 
 h2{
     text-align:center;
     color:#ffeb3b;
-    margin-bottom:18px;
-    font-size:22px;
+    margin-bottom:8px;
+    font-size:15px;
     font-weight:bold;
     text-transform:uppercase;
 }
 
 /* ================= TABLE ================= */
 
-.table-wrap{
-    width:100%;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-}
-
 table{
     width:100%;
-    min-width:720px;
+    max-width:100%;
+    table-layout:fixed;
     border-collapse:collapse;
-    font-size:12px;
+    font-size:7px;
 }
 
 thead{
@@ -129,364 +123,494 @@ thead{
 }
 
 th{
+    padding:6px 0;
     color:#fff;
-    padding:10px 4px;
     text-align:center;
+    font-size:7px;
     font-weight:500;
-    white-space:nowrap;
-}
-
-td{
-    padding:9px 4px;
-    text-align:center;
-    border-bottom:2px solid #1976d2;
-    vertical-align:middle;
-}
-
-tbody tr{
-    transition:.2s;
-}
-
-tbody tr:hover{
-    background:rgba(255,255,255,.04);
-}
-
-/* ================= AGENT ================= */
-
-.agent-box{
-    display:flex;
-    align-items:center;
-    gap:5px;
-}
-
-.avatar{
-    width:34px;
-    height:34px;
-    min-width:34px;
-    border-radius:50%;
-    background:#7cbf00;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    line-height:1.1;
+    white-space:normal;
     overflow:hidden;
 }
 
-.avatar img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+td{
+    padding:5px 0;
+    text-align:center;
+    vertical-align:middle;
+    border-bottom:2px solid rgba(255,255,255,.8);
+    overflow:hidden;
 }
 
-.avatar-default{
-    font-size:18px;
+/* COLUMN SIZE */
+
+th:nth-child(1),
+td:nth-child(1){
+    width:21%;
 }
+
+th:nth-child(2),
+td:nth-child(2){
+    width:9%;
+}
+
+th:nth-child(3),
+td:nth-child(3){
+    width:10%;
+}
+
+th:nth-child(4),
+td:nth-child(4){
+    width:7%;
+}
+
+th:nth-child(5),
+td:nth-child(5){
+    width:6%;
+}
+
+th:nth-child(6),
+td:nth-child(6){
+    width:26%;
+}
+
+th:nth-child(7),
+td:nth-child(7){
+    width:7%;
+}
+
+th:nth-child(8),
+td:nth-child(8){
+    width:14%;
+}
+
+/* ================= NAME ================= */
 
 .name-col{
     text-align:left;
-    white-space:nowrap;
-    padding-left:3px;
+    white-space:normal;
+    padding-left:1px;
 }
 
 .name-col b{
-    font-size:12px;
+    display:inline-block;
+    vertical-align:middle;
+    max-width:calc(100% - 24px);
+
+    font-size:8px;
     font-weight:500;
-    display:block;
+    line-height:1.05;
+
+    overflow-wrap:anywhere;
+    word-break:break-word;
 }
 
 .name-col small{
-    font-size:10px;
-    color:#aaa;
     display:block;
+    margin-left:22px;
+
+    color:#aaa;
+    font-size:6px;
+    line-height:1.05;
+
+    white-space:normal;
+    overflow-wrap:anywhere;
+}
+
+/* ================= AVATAR ================= */
+
+.avatar{
+    width:20px;
+    height:20px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    vertical-align:middle;
+
+    background:#7cb900;
+    border-radius:50%;
+
+    margin-right:1px;
+}
+
+.avatar:after{
+    content:"👤";
+    font-size:11px;
 }
 
 /* ================= ID ================= */
 
 .id-box{
-    background:#8bc400;
-    color:#111;
-    padding:7px 9px;
-    border-radius:8px;
-    font-weight:bold;
-    font-size:11px;
     display:inline-block;
+
+    background:#8bc400;
+    color:#000;
+
+    padding:3px 2px;
+    border-radius:4px;
+
+    font-size:6px;
+    font-weight:bold;
+
+    line-height:1;
+    max-width:100%;
+    overflow:hidden;
 }
 
 /* ================= RATING ================= */
 
 .stars{
     color:#ffc107;
-    font-size:13px;
+    font-size:7px;
     letter-spacing:-2px;
     white-space:nowrap;
 }
 
-/* ================= WHATSAPP ================= */
+/* ================= WHATSAPP APP ================= */
 
 .btn-wa-app{
-    background:transparent;
-    width:34px;
-    height:34px;
-    border-radius:50%;
+    width:22px;
+    height:22px;
+
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
+    background:transparent;
+    border-radius:50%;
+
     text-decoration:none;
 }
 
 .btn-wa-app svg{
-    width:30px;
-    height:30px;
+    width:20px;
+    height:20px;
     fill:#fff;
 }
 
+/* ================= PHONE ================= */
+
 .btn-wa-wrap{
+    width:100%;
+    max-width:100%;
+
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
+
     gap:2px;
-    margin:2px 0;
+
+    margin:1px 0;
+
     text-decoration:none;
 }
 
 .btn-wa-num{
-    font-size:10px;
-    font-weight:bold;
+    width:100%;
+
     color:#fff;
+
+    font-size:6px;
+    font-weight:bold;
+
     line-height:1.1;
-    white-space:nowrap;
+
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:break-all;
 }
 
 .btn-wa{
+    display:inline-block;
+
     background:#25D366;
     color:#fff;
-    padding:3px 7px;
-    border-radius:10px;
+
+    padding:2px 3px;
+
+    border-radius:7px;
+
     text-decoration:none;
-    font-size:8px;
-    display:inline-block;
+
+    font-size:5px;
     line-height:1;
 }
 
-/* ================= BUTTONS ================= */
-
-.btn-report{
-    background:#f44336;
-    color:#fff;
-    padding:6px 10px;
-    border-radius:7px;
-    text-decoration:none;
-    font-size:10px;
-    cursor:pointer;
-    border:0;
-    display:inline-block;
-}
-
-.btn-report:hover{
-    background:#ff5b52;
-}
+/* ================= VIEW ================= */
 
 .btn-view{
     color:#fff;
-    padding:4px 6px;
-    border-radius:5px;
-    text-decoration:none;
-    font-size:19px;
+    padding:2px;
+    font-size:12px;
     cursor:pointer;
-    display:inline-block;
+    text-decoration:none;
 }
 
-.btn-view:hover{
-    transform:scale(1.1);
+/* ================= REPORT ================= */
+
+.btn-report{
+    display:inline-block;
+
+    background:#f44336;
+    color:#fff;
+
+    padding:3px 3px;
+
+    border-radius:5px;
+
+    font-size:6px;
+
+    cursor:pointer;
+    text-decoration:none;
 }
+
+/* ================= NONE ================= */
 
 .btn-none{
-    color:#aaa;
-    font-size:15px;
+    color:#888;
+    font-size:9px;
 }
-
-/* ================= COLUMN WIDTH ================= */
-
-th:nth-child(1){width:20%}
-th:nth-child(2){width:8%}
-th:nth-child(3){width:10%}
-th:nth-child(4){width:8%}
-th:nth-child(5){width:8%}
-th:nth-child(6){width:22%}
-th:nth-child(7){width:7%}
-th:nth-child(8){width:12%}
 
 /* ================= SUPPORT ================= */
 
 .support-btn{
     position:fixed;
-    bottom:18px;
-    left:18px;
-    background:#8bc400;
-    padding:10px 18px;
-    border-radius:12px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
+
+    left:9px;
+    bottom:10px;
+
+    z-index:99;
+
     display:flex;
     align-items:center;
-    gap:7px;
-    z-index:999;
-    border:none;
-    cursor:pointer;
-    font-size:15px;
-    box-shadow:0 4px 15px rgba(0,0,0,.3);
-}
+    gap:4px;
 
-.support-btn:hover{
-    transform:translateY(-2px);
+    background:#8bc400;
+    color:#fff;
+
+    padding:7px 11px;
+
+    border:none;
+    border-radius:15px;
+
+    font-size:11px;
+    font-weight:bold;
+
+    cursor:pointer;
 }
 
 /* ================= POPUP ================= */
 
 .popup-overlay{
     display:none;
+
     position:fixed;
+
     top:0;
     left:0;
+
     width:100%;
     height:100%;
-    background:rgba(0,0,0,.8);
-    z-index:9999;
+
+    background:rgba(0,0,0,.82);
+
+    z-index:999;
+
     justify-content:center;
     align-items:center;
-    padding:15px;
+
+    padding:10px;
 }
 
 .popup{
-    background:#1153c7;
-    width:100%;
-    max-width:430px;
-    max-height:90vh;
-    overflow-y:auto;
-    border-radius:12px;
-    padding:18px;
     position:relative;
-    box-shadow:0 10px 40px rgba(0,0,0,.5);
+
+    width:100%;
+    max-width:400px;
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#1153c7;
+
+    border-radius:10px;
+
+    padding:14px;
 }
 
 .popup h3{
-    background:#0b3d91;
-    padding:12px;
-    border-radius:7px;
-    text-align:center;
+    background:#000;
     color:#ffeb3b;
-    margin-bottom:12px;
-    font-size:18px;
+
+    padding:9px;
+
+    margin-bottom:10px;
+
+    border-radius:5px;
+
+    text-align:center;
 }
 
 .close-btn{
     position:absolute;
-    top:10px;
-    right:15px;
-    font-size:28px;
+
+    top:7px;
+    right:12px;
+
     color:#fff;
+
+    font-size:24px;
+
     cursor:pointer;
-    z-index:2;
 }
 
 .popup label{
-    color:#ffeb3b;
-    font-size:13px;
-    margin-top:10px;
     display:block;
+
+    color:#ffeb3b;
+
+    font-size:12px;
+
+    margin-top:8px;
 }
 
 .popup select,
 .popup input{
     width:100%;
-    padding:10px;
+
+    padding:8px;
+
     margin:5px 0;
-    border-radius:6px;
+
     border:none;
-    outline:none;
+    border-radius:5px;
+
     background:#0b3d91;
     color:#fff;
-    font-size:14px;
+
+    outline:none;
 }
 
 .popup button{
-    background:#8bc400;
-    color:#fff;
-    padding:9px 18px;
-    border:none;
-    border-radius:6px;
-    font-weight:bold;
-    cursor:pointer;
     float:right;
+
     margin-top:10px;
+
+    background:#4caf50;
+    color:#fff;
+
+    padding:8px 15px;
+
+    border:none;
+    border-radius:5px;
+
+    font-weight:bold;
+
+    cursor:pointer;
 }
 
-/* ================= VIEW ================= */
+/* ================= INFO BOX ================= */
 
 .info-box{
     width:100%;
-    padding:9px;
+
+    padding:8px;
+
     margin:5px 0;
-    border-radius:6px;
+
+    border-radius:5px;
+
     background:#0b3d91;
     color:#fff;
+
     text-align:left;
-    min-height:34px;
+
+    overflow-wrap:anywhere;
 }
 
+/* ================= VIEW WHATSAPP ================= */
+
 .btn-wa-popup{
+    display:inline-block;
+
+    margin:5px 0;
+
+    padding:6px 12px;
+
     background:#25D366;
     color:#fff;
-    padding:8px 14px;
-    border-radius:6px;
+
+    border-radius:5px;
+
     text-decoration:none;
-    display:inline-block;
-    margin:5px 0;
 }
 
 .stars-popup{
     text-align:center;
-    font-size:22px;
+
     color:#ffc107;
-    margin:7px 0;
+
+    font-size:18px;
+
+    margin:5px 0;
 }
+
+/* ================= HIERARCHY ================= */
 
 .hierarchy-tags{
     display:flex;
     flex-wrap:wrap;
     gap:5px;
+
     margin-top:5px;
 }
 
 .tag{
-    background:#8bc400;
-    color:#fff;
-    padding:5px 9px;
+    background:#4caf50;
+
+    padding:4px 8px;
+
     border-radius:15px;
-    font-size:10px;
+
+    font-size:9px;
 }
 
 /* ================= REPORT ================= */
 
 .report-header{
     background:#f44336;
+
     color:#fff;
+
     text-align:center;
-    padding:9px;
-    border-radius:6px;
+
+    padding:8px;
+
+    border-radius:5px;
+
     font-weight:bold;
+
     margin-bottom:10px;
 }
 
 .report-wa-btn{
     display:block;
+
     background:#25D366;
     color:#fff;
-    padding:10px;
-    border-radius:6px;
+
+    padding:8px;
+
+    border-radius:5px;
+
     text-decoration:none;
+
     text-align:center;
-    margin-top:12px;
+
+    margin-top:10px;
+
     font-weight:bold;
 }
 
@@ -495,144 +619,208 @@ th:nth-child(8){width:12%}
 .support-item{
     display:flex;
     align-items:center;
-    gap:10px;
+
+    gap:8px;
+
     background:#0b3d91;
-    padding:10px;
+
+    padding:8px;
+
     border-radius:8px;
+
     margin-bottom:8px;
 }
 
 .support-item .icon{
-    width:36px;
-    height:36px;
-    min-width:36px;
+    width:30px;
+    height:30px;
+
+    flex-shrink:0;
+
     background:#ffc107;
+
+    color:#000;
+
     border-radius:50%;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#000;
+
     font-weight:bold;
 }
 
 .support-item .info{
     flex:1;
+    min-width:0;
 }
 
 .support-item .btn-msg{
-    background:#8bc400;
+    background:#4caf50;
     color:#fff;
-    padding:6px 9px;
+
+    padding:4px 8px;
+
     border-radius:5px;
+
     text-decoration:none;
-    font-size:11px;
+
+    font-size:10px;
+
+    white-space:nowrap;
 }
 
-/* ================= TOAST ================= */
+/* ================= SMALL MOBILE ================= */
 
-.toast{
-    position:fixed;
-    left:50%;
-    bottom:80px;
-    transform:translateX(-50%);
-    background:#222;
-    color:#fff;
-    padding:10px 16px;
-    border-radius:20px;
-    display:none;
-    z-index:10000;
-    font-size:13px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:600px){
+@media(max-width:360px){
 
     .header{
-        min-height:175px;
-        padding:8px 5px;
+        padding:5px 3px;
+    }
+
+    .logo img{
+        max-width:150px;
+        max-height:58px;
     }
 
     .search-icon,
     .grid-icon{
-        width:40px;
-        height:40px;
-        font-size:25px;
-    }
-
-    .logo img{
-        width:180px;
+        width:31px;
+        font-size:19px;
     }
 
     .menu{
-        margin:8px;
-        padding:14px 6px;
-        gap:14px 16px;
-    }
-
-    .menu a{
-        font-size:14px;
-    }
-
-    .box{
-        margin:8px;
-        padding:9px;
-        border-radius:10px;
-    }
-
-    h2{
-        font-size:19px;
-        margin-bottom:13px;
-    }
-
-    table{
-        min-width:700px;
-        font-size:11px;
-    }
-
-    th{
-        padding:9px 3px;
-    }
-
-    td{
+        gap:7px 8px;
         padding:8px 3px;
     }
 
-    .support-btn{
-        left:10px;
-        bottom:15px;
-        padding:9px 15px;
-        font-size:14px;
-    }
-
-    .popup{
-        max-width:95%;
-        padding:15px;
-    }
-}
-
-/* খুব ছোট ফোন */
-
-@media(max-width:380px){
-
-    .logo img{
-        width:155px;
-    }
-
-    .menu{
-        gap:11px 12px;
-    }
-
     .menu a{
-        font-size:12px;
+        font-size:9px;
     }
 
     .box{
-        margin:6px;
+        padding:6px 2px;
     }
 
     h2{
-        font-size:17px;
+        font-size:13px;
+    }
+
+    table{
+        font-size:6px;
+    }
+
+    th{
+        font-size:6px;
+        padding:5px 0;
+    }
+
+    td{
+        padding:4px 0;
+    }
+
+    .name-col b{
+        font-size:7px;
+        max-width:calc(100% - 21px);
+    }
+
+    .name-col small{
+        margin-left:21px;
+        font-size:5.5px;
+    }
+
+    .avatar{
+        width:18px;
+        height:18px;
+    }
+
+    .avatar:after{
+        font-size:10px;
+    }
+
+    .id-box{
+        font-size:5.5px;
+        padding:3px 1px;
+    }
+
+    .stars{
+        font-size:6px;
+    }
+
+    .btn-wa-app{
+        width:20px;
+        height:20px;
+    }
+
+    .btn-wa-app svg{
+        width:18px;
+        height:18px;
+    }
+
+    .btn-wa-num{
+        font-size:5.5px;
+    }
+
+    .btn-wa{
+        font-size:4.5px;
+        padding:2px;
+    }
+
+    .btn-view{
+        font-size:10px;
+    }
+
+    .btn-report{
+        font-size:5.5px;
+        padding:3px 2px;
+    }
+
+    .support-btn{
+        left:7px;
+        bottom:8px;
+        padding:6px 9px;
+        font-size:10px;
+    }
+}
+
+/* ================= VERY SMALL PHONE ================= */
+
+@media(max-width:320px){
+
+    .menu{
+        gap:6px;
+    }
+
+    .menu a{
+        font-size:8px;
+    }
+
+    h2{
+        font-size:12px;
+    }
+
+    table{
+        font-size:5.5px;
+    }
+
+    th{
+        font-size:5.5px;
+    }
+
+    .name-col b{
+        font-size:6.5px;
+    }
+
+    .name-col small{
+        font-size:5px;
+    }
+
+    .id-box{
+        font-size:5px;
+    }
+
+    .btn-report{
+        font-size:5px;
     }
 }
 </style>
@@ -644,101 +832,80 @@ th:nth-child(8){width:12%}
 
 <div class="header">
 
-    <div class="search-icon" onclick="openSearch()" title="Search">
-        🔍
-    </div>
+    <div class="search-icon" onclick="openSearch()">🔍</div>
 
     <div class="logo">
-        <img src="logo.png" alt="PLAY25 Agent List"
-             onerror="this.style.display='none';this.parentElement.innerHTML='<b style=&quot;color:#ffeb3b;font-size:35px&quot;>PLAY25</b><small style=&quot;display:block;font-size:15px&quot;>Agent List</small>'">
+        <img src="logo.png" alt="PLAY25 Agent List">
     </div>
 
-    <div class="grid-icon" onclick="openMenu()" title="Menu">
-        ⊞
-    </div>
+    <div class="grid-icon">⊞</div>
 
 </div>
+
 
 <!-- ================= MENU ================= -->
 
-<div class="menu" id="mainMenu">
+<div class="menu">
 
-    <a href="index.html" data-role="index">
-        🏠 Home
-    </a>
+    <a href="index.html">🏠 Home</a>
 
-    <a href="siteowner.html" data-role="siteowner">
-        👤 Site Owner
-    </a>
+    <a href="siteowner.html">👤 Site Owner</a>
 
-    <a href="admin.html" data-role="admin">
-        👤 Admin
-    </a>
+    <a href="admin.html">👤 Admin</a>
 
-    <a href="subadmin.html" data-role="subadmin">
-        👤 Sub Admin
-    </a>
+    <a href="subadmin.html">👤 Sub Admin</a>
 
-    <a href="super.html" data-role="super">
-        👤 Super
-    </a>
+    <a href="super.html">👤 Super</a>
 
-    <a href="master.html" data-role="master">
-        👤 Master
-    </a>
+    <a href="master.html">👤 Master</a>
 
-    <a href="#" onclick="openLottery(event)">
-        🎯 Lottery
-    </a>
+    <a href="#">🎯 Lottery</a>
 
 </div>
 
-<!-- ================= LIST ================= -->
+
+<!-- ================= AGENT TABLE ================= -->
 
 <div class="box">
 
-    <h2 id="roleTitle">ALL AGENT LIST</h2>
+    <h2 id="roleTitle">MASTER LIST</h2>
 
-    <div class="table-wrap">
+    <table>
 
-        <table>
+        <thead>
 
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>ID</th>
-                    <th>Rating</th>
-                    <th>App</th>
-                    <th>FB</th>
-                    <th>Phone Number</th>
-                    <th>View</th>
-                    <th>Report</th>
-                </tr>
-            </thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Rating</th>
+                <th>App</th>
+                <th>FB</th>
+                <th>Phone</th>
+                <th>View</th>
+                <th>Report</th>
+            </tr>
 
-            <tbody id="agentList">
+        </thead>
 
-                <tr>
-                    <td colspan="8">Loading...</td>
-                </tr>
+        <tbody id="agentList">
 
-            </tbody>
+            <tr>
+                <td colspan="8">Loading...</td>
+            </tr>
 
-        </table>
+        </tbody>
 
-    </div>
+    </table>
 
 </div>
 
-<!-- ================= SUPPORT ================= -->
+
+<!-- ================= SUPPORT BUTTON ================= -->
 
 <button class="support-btn" onclick="openSupport()">
     🎧 Support
 </button>
 
-<!-- ================= TOAST ================= -->
-
-<div class="toast" id="toast"></div>
 
 <!-- ================= SEARCH POPUP ================= -->
 
@@ -746,7 +913,7 @@ th:nth-child(8){width:12%}
 
     <div class="popup">
 
-        <span class="close-btn" onclick="closeSearch()">×</span>
+        <span class="close-btn" onclick="closeSearch()">&times;</span>
 
         <h3>👤 এজেন্ট খুঁজুন</h3>
 
@@ -763,6 +930,7 @@ th:nth-child(8){width:12%}
 
         </select>
 
+
         <label>Search By Agent ID</label>
 
         <input
@@ -771,23 +939,24 @@ th:nth-child(8){width:12%}
             placeholder="Agent ID"
         >
 
+
         <label>Search by Whatsapp</label>
 
         <input
             type="text"
             id="searchPhone"
-            placeholder="Phone number"
+            placeholder="Whatsapp Number"
         >
+
 
         <button onclick="doSearch()">
             Search
         </button>
 
-        <div style="clear:both"></div>
-
     </div>
 
 </div>
+
 
 <!-- ================= SUPPORT POPUP ================= -->
 
@@ -795,7 +964,7 @@ th:nth-child(8){width:12%}
 
     <div class="popup">
 
-        <span class="close-btn" onclick="closeSupport()">×</span>
+        <span class="close-btn" onclick="closeSupport()">&times;</span>
 
         <h3>🎧 Support Team</h3>
 
@@ -807,29 +976,29 @@ th:nth-child(8){width:12%}
 
 </div>
 
+
 <!-- ================= VIEW POPUP ================= -->
 
 <div class="popup-overlay" id="viewPopup">
 
     <div class="popup">
 
-        <span class="close-btn" onclick="closeView()">×</span>
+        <span class="close-btn" onclick="closeView()">&times;</span>
+
 
         <div style="text-align:center;margin-bottom:10px">
 
             <div
-                id="viewAvatar"
                 style="
-                width:70px;
-                height:70px;
+                width:60px;
+                height:60px;
                 border-radius:50%;
-                background:#7cbf00;
-                margin:auto;
+                background:#555;
+                margin:0 auto;
                 display:flex;
                 align-items:center;
                 justify-content:center;
-                font-size:32px;
-                overflow:hidden;
+                font-size:30px;
                 "
             >
                 👤
@@ -837,20 +1006,26 @@ th:nth-child(8){width:12%}
 
         </div>
 
+
         <label>Name</label>
         <div class="info-box" id="viewName"></div>
+
 
         <label>Type</label>
         <div class="info-box" id="viewRole"></div>
 
+
         <label>Number</label>
         <div class="info-box" id="viewPhone"></div>
+
 
         <label>ID Number</label>
         <div class="info-box" id="viewId"></div>
 
+
         <label>Serial</label>
         <div class="info-box" id="viewSerial"></div>
+
 
         <label>Message</label>
 
@@ -863,14 +1038,13 @@ th:nth-child(8){width:12%}
             📱 Whatsapp
         </a>
 
+
         <label>Rating</label>
 
-        <div
-            class="stars-popup"
-            id="viewRating"
-        >
-            ★★★★★
+        <div class="stars-popup">
+            ★★★
         </div>
+
 
         <label>Hierarchy / কার আন্ডারে</label>
 
@@ -883,29 +1057,29 @@ th:nth-child(8){width:12%}
 
 </div>
 
+
 <!-- ================= REPORT POPUP ================= -->
 
 <div class="popup-overlay" id="reportPopup">
 
     <div class="popup">
 
-        <span class="close-btn" onclick="closeReport()">×</span>
+        <span class="close-btn" onclick="closeReport()">&times;</span>
+
 
         <div style="text-align:center;margin-bottom:10px">
 
             <div
-                id="reportAvatar"
                 style="
-                width:70px;
-                height:70px;
+                width:60px;
+                height:60px;
                 border-radius:50%;
-                background:#7cbf00;
-                margin:auto;
+                background:#555;
+                margin:0 auto;
                 display:flex;
                 align-items:center;
                 justify-content:center;
-                font-size:32px;
-                overflow:hidden;
+                font-size:30px;
                 "
             >
                 👤
@@ -913,21 +1087,27 @@ th:nth-child(8){width:12%}
 
         </div>
 
+
         <div class="report-header">
             Report This Person
         </div>
 
+
         <label>Name</label>
         <div class="info-box" id="reportName"></div>
+
 
         <label>Type</label>
         <div class="info-box" id="reportRole"></div>
 
+
         <label>Number</label>
         <div class="info-box" id="reportPhone"></div>
 
+
         <label>ID Number</label>
         <div class="info-box" id="reportId"></div>
+
 
         <label>Hierarchy / কার আন্ডারে আছে</label>
 
@@ -935,6 +1115,7 @@ th:nth-child(8){width:12%}
             class="hierarchy-tags"
             id="reportHierarchy"
         ></div>
+
 
         <a
             id="reportWa"
@@ -949,77 +1130,92 @@ th:nth-child(8){width:12%}
 
 </div>
 
+
 <!-- ================= FIREBASE ================= -->
 
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
 
 <script>
 
-/* =====================================================
-   FIREBASE
-===================================================== */
-
 const firebaseConfig = {
 
-    apiKey:"AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
+    apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
 
-    authDomain:"play25agent.firebaseapp.com",
+    authDomain: "play25agent.firebaseapp.com",
 
     databaseURL:
     "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
 
-    projectId:"play25agent"
+    projectId: "play25agent"
 
 };
+
 
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.database();
 
+
 let allAgentsData = {};
 
 
-/* =====================================================
-   CURRENT PAGE / ROLE
-===================================================== */
+/* ================= CURRENT PAGE ================= */
 
 let fileName =
     window.location.pathname
     .split("/")
     .pop()
-    .replace(".html","")
-    .toLowerCase();
+    .replace(".html","");
+
 
 let currentRole =
-    fileName === "" ? "index" : fileName;
+    fileName === ""
+    ? "index"
+    : fileName;
 
 
 const roleNames = {
 
-    index:"ALL AGENT LIST",
+    "index":
+    "ALL AGENT LIST",
 
-    siteowner:"SITE OWNER LIST",
+    "siteowner":
+    "SITE OWNER LIST",
 
-    admin:"ADMIN LIST",
+    "admin":
+    "ADMIN LIST",
 
-    subadmin:"SUB ADMIN LIST",
+    "subadmin":
+    "SUB ADMIN LIST",
 
-    super:"SUPER LIST",
+    "super":
+    "SUPER LIST",
 
-    master:"MASTER LIST"
+    "master":
+    "MASTER LIST"
 
 };
+
 
 document.getElementById("roleTitle").innerText =
     roleNames[currentRole] || "AGENT LIST";
 
 
-/* ACTIVE MENU */
+/* ================= ACTIVE MENU ================= */
 
-document.querySelectorAll(".menu a").forEach(a => {
+document
+.querySelectorAll(".menu a")
+.forEach(a => {
 
-    if(a.dataset.role === currentRole){
+    let href = a.getAttribute("href") || "";
+
+    if(
+        href.includes(currentRole) ||
+        (currentRole === "index" && href === "index.html")
+    ){
 
         a.classList.add("active");
 
@@ -1028,213 +1224,78 @@ document.querySelectorAll(".menu a").forEach(a => {
 });
 
 
-/* =====================================================
-   POPUP FUNCTIONS
-===================================================== */
+/* ================= POPUPS ================= */
 
 function openSearch(){
 
-    document.getElementById("searchPopup").style.display="flex";
-
-    setTimeout(() => {
-
-        document.getElementById("searchId").focus();
-
-    },100);
+    document
+    .getElementById("searchPopup")
+    .style.display = "flex";
 
 }
+
 
 function closeSearch(){
 
-    document.getElementById("searchPopup").style.display="none";
+    document
+    .getElementById("searchPopup")
+    .style.display = "none";
 
 }
+
 
 function openSupport(){
 
-    document.getElementById("supportPopup").style.display="flex";
+    document
+    .getElementById("supportPopup")
+    .style.display = "flex";
 
 }
+
 
 function closeSupport(){
 
-    document.getElementById("supportPopup").style.display="none";
+    document
+    .getElementById("supportPopup")
+    .style.display = "none";
 
 }
+
 
 function closeView(){
 
-    document.getElementById("viewPopup").style.display="none";
+    document
+    .getElementById("viewPopup")
+    .style.display = "none";
 
 }
+
 
 function closeReport(){
 
-    document.getElementById("reportPopup").style.display="none";
-
-}
-
-function openMenu(){
-
-    document.getElementById("mainMenu")
-    .scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-}
-
-function openLottery(e){
-
-    e.preventDefault();
-
-    showToast("Lottery section coming soon");
+    document
+    .getElementById("reportPopup")
+    .style.display = "none";
 
 }
 
 
-/* =====================================================
-   ESC KEY
-===================================================== */
-
-document.addEventListener("keydown",function(e){
-
-    if(e.key === "Escape"){
-
-        closeSearch();
-        closeSupport();
-        closeView();
-        closeReport();
-
-    }
-
-});
-
-
-/* =====================================================
-   CLICK OUTSIDE POPUP
-===================================================== */
-
-document.querySelectorAll(".popup-overlay").forEach(popup => {
-
-    popup.addEventListener("click",function(e){
-
-        if(e.target === popup){
-
-            popup.style.display="none";
-
-        }
-
-    });
-
-});
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-let toastTimer;
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.innerText = message;
-
-    toast.style.display="block";
-
-    clearTimeout(toastTimer);
-
-    toastTimer =
-        setTimeout(() => {
-
-            toast.style.display="none";
-
-        },2500);
-
-}
-
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
+/* ================= WHATSAPP ================= */
 
 function getWaLink(num){
 
-    if(!num) return "#";
+    if(!num) return "";
 
     let clean =
         String(num)
         .replace(/[^0-9]/g,"");
 
-    return clean
-        ? "https://wa.me/" + clean
-        : "#";
+    return "https://wa.me/" + clean;
 
 }
 
 
-/* =====================================================
-   SAFE TEXT
-===================================================== */
-
-function safe(value){
-
-    if(value === undefined ||
-       value === null ||
-       value === ""){
-
-        return "N/A";
-
-    }
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================================
-   ROLE NORMALIZE
-===================================================== */
-
-function normalizeRole(role){
-
-    return String(role || "")
-        .toLowerCase()
-        .replace(/\s+/g,"");
-
-}
-
-
-/* =====================================================
-   RATING
-===================================================== */
-
-function getStars(rating){
-
-    let r =
-        parseInt(rating || 5);
-
-    if(r < 0) r = 0;
-
-    if(r > 5) r = 5;
-
-    return "★".repeat(r) +
-           "☆".repeat(5-r);
-
-}
-
-
-/* =====================================================
-   HIERARCHY
-===================================================== */
+/* ================= HIERARCHY ================= */
 
 function getHierarchy(agent){
 
@@ -1244,7 +1305,7 @@ function getHierarchy(agent){
 
         tags +=
         `<span class="tag">
-        Direct: ${safe(agent.parent)}
+        Direct: ${agent.parent}
         </span>`;
 
     }
@@ -1253,7 +1314,7 @@ function getHierarchy(agent){
 
         tags +=
         `<span class="tag">
-        Upper: ${safe(agent.parentParent)}
+        Upper: ${agent.parentParent}
         </span>`;
 
     }
@@ -1262,16 +1323,16 @@ function getHierarchy(agent){
 
         tags +=
         `<span class="tag">
-        ${safe(agent.parentSerial)}
+        ${agent.parentSerial}
         </span>`;
 
     }
 
-    if(agent.role !== "Site Owner"){
+    if(agent.role != "Site Owner"){
 
         tags +=
         `<span class="tag">
-        Level: ${safe(agent.role)}
+        Level: ${agent.role}
         </span>`;
 
     }
@@ -1286,413 +1347,295 @@ function getHierarchy(agent){
     }
 
     return tags ||
-        '<span class="tag">No Parent</span>';
+    '<span class="tag">No Parent</span>';
 
 }
 
 
-/* =====================================================
-   AVATAR
-===================================================== */
-
-function getAvatar(agent){
-
-    if(agent.photo ||
-       agent.image ||
-       agent.avatar){
-
-        let img =
-            agent.photo ||
-            agent.image ||
-            agent.avatar;
-
-        return `
-        <div class="avatar">
-            <img
-                src="${safe(img)}"
-                alt=""
-                onerror="this.parentElement.innerHTML='👤'"
-            >
-        </div>`;
-
-    }
-
-    return `
-    <div class="avatar avatar-default">
-        👤
-    </div>`;
-
-}
-
-
-/* =====================================================
-   VIEW AGENT
-===================================================== */
+/* ================= VIEW AGENT ================= */
 
 function viewAgent(key){
 
-    const a =
-        allAgentsData[key];
+    let a = allAgentsData[key];
 
     if(!a) return;
 
-    document.getElementById("viewName")
-        .innerText = a.name || "N/A";
 
-    document.getElementById("viewRole")
-        .innerText = a.role || "N/A";
+    document.getElementById("viewName").innerText =
+        a.name || "N/A";
 
-    document.getElementById("viewPhone")
-        .innerText = a.phone || "N/A";
 
-    document.getElementById("viewId")
-        .innerText = a.id || "N/A";
+    document.getElementById("viewRole").innerText =
+        a.role || "N/A";
 
-    document.getElementById("viewSerial")
-        .innerText = a.serial || "-";
 
-    document.getElementById("viewWa")
-        .href = getWaLink(a.phone);
+    document.getElementById("viewPhone").innerText =
+        a.phone || "N/A";
 
-    document.getElementById("viewRating")
-        .innerText = getStars(a.rating || 5);
 
-    document.getElementById("viewHierarchy")
-        .innerHTML = getHierarchy(a);
+    document.getElementById("viewId").innerText =
+        a.id || "N/A";
 
-    const avatar =
-        document.getElementById("viewAvatar");
 
-    if(a.photo || a.image || a.avatar){
+    document.getElementById("viewSerial").innerText =
+        a.serial || "-";
 
-        const image =
-            a.photo || a.image || a.avatar;
 
-        avatar.innerHTML =
-        `<img
-            src="${safe(image)}"
-            style="width:100%;height:100%;object-fit:cover"
-            onerror="this.parentElement.innerHTML='👤'"
-        >`;
+    document.getElementById("viewWa").href =
+        getWaLink(a.phone);
 
-    }else{
 
-        avatar.innerHTML="👤";
+    document.getElementById("viewHierarchy").innerHTML =
+        getHierarchy(a);
 
-    }
 
-    document.getElementById("viewPopup")
-        .style.display="flex";
+    document.getElementById("viewPopup").style.display =
+        "flex";
 
 }
 
 
-/* =====================================================
-   REPORT AGENT
-===================================================== */
+/* ================= REPORT ================= */
 
 function reportAgent(key){
 
-    const a =
-        allAgentsData[key];
+    let a = allAgentsData[key];
 
     if(!a) return;
 
-    document.getElementById("reportName")
-        .innerText = a.name || "N/A";
 
-    document.getElementById("reportRole")
-        .innerText = a.role || "N/A";
-
-    document.getElementById("reportPhone")
-        .innerText = a.phone || "N/A";
-
-    document.getElementById("reportId")
-        .innerText = a.id || "N/A";
-
-    document.getElementById("reportHierarchy")
-        .innerHTML = getHierarchy(a);
-
-    document.getElementById("reportWa")
-        .href = getWaLink(a.phone);
-
-    document.getElementById("reportPopup")
-        .style.display="flex";
-
-}
+    document.getElementById("reportName").innerText =
+        a.name || "N/A";
 
 
-/* =====================================================
-   WHATSAPP SVG
-===================================================== */
+    document.getElementById("reportRole").innerText =
+        a.role || "N/A";
 
-function whatsappIcon(){
 
-return `
-<svg
-viewBox="0 0 24 24"
-aria-label="WhatsApp">
+    document.getElementById("reportPhone").innerText =
+        a.phone || "N/A";
 
-<path d="
-M17.472 14.382
-c-.297-.149-1.758-.867-2.03-.967
--.273-.099-.471-.148-.67.15
--.197.297-.767.966-.94 1.164
--.173.199-.347.223-.644.075
--.297-.15-1.255-.463-2.39-1.475
--.883-.788-1.48-1.761-1.653-2.059
--.173-.297-.018-.458.13-.606
-.134-.133.298-.347.446-.52
-.149-.174.198-.298.298-.497
-.099-.198.05-.371-.025-.52
--.075-.149-.668-1.612-.916-2.207
--.242-.579-.487-.5-.67-.51
--.173-.008-.371-.01-.57-.01
--.198 0-.52.074-.792.372
--.271.296-1.043 1.016-1.043 2.479
-0 1.462 1.067 2.875 1.213 3.074
-.149.198 2.096 3.2 5.077 4.487
-.709.306 1.262.489 1.694.625
-.712.227 1.36.195 1.871.118
-.571-.085 1.758-.719 2.006-1.413
-.248-.694.248-1.289.173-1.413
--.07-.124-.248-.197-.545-.347z
-M12.051 21.785
-h-.004a9.87 9.87 0 01-5.031-1.378
-l-.361-.214-3.741.982.999-3.648
--.235-.374a9.86 9.86 0 01-1.51-5.26
-c.001-5.45 4.436-9.884 9.888-9.884
-2.64 0 5.122 1.03 6.988 2.898
-a9.825 9.825 0 012.893 6.994
-c-.003 5.45-4.437 9.884-9.885 9.884z
-"/>
 
-</svg>`;
+    document.getElementById("reportId").innerText =
+        a.id || "N/A";
+
+
+    document.getElementById("reportHierarchy").innerHTML =
+        getHierarchy(a);
+
+
+    document.getElementById("reportWa").href =
+        getWaLink(a.phone);
+
+
+    document.getElementById("reportPopup").style.display =
+        "flex";
 
 }
 
 
-/* =====================================================
-   RENDER AGENTS
-===================================================== */
+/* ================= LOAD AGENTS ================= */
+
+db.ref("agents").on("value", snap => {
+
+    allAgentsData =
+        snap.val() || {};
+
+    renderAgents(allAgentsData);
+
+});
+
+
+/* ================= RENDER AGENTS ================= */
 
 function renderAgents(data){
 
     let html = "";
 
-    let count = 0;
-
     for(let key in data){
 
-        const a = data[key];
+        let a = data[key];
 
-        const role =
-            normalizeRole(a.role);
+        let role =
+            String(a.role || "")
+            .toLowerCase()
+            .replace(/\s/g,"");
+
 
         if(
-            currentRole !== "index" &&
-            role !== currentRole
+            currentRole === "index" ||
+            role === currentRole
         ){
 
-            continue;
+            /* APP */
 
-        }
+            let appLink = `
 
-        count++;
+                <a
+                    href="${getWaLink(a.phone)}"
+                    target="_blank"
+                    class="btn-wa-app"
+                    title="WhatsApp"
+                >
 
-        /* APP */
+                    <svg
+                        viewBox="0 0 24 24"
+                    >
 
-        const appLink = `
-        <a
-            href="${getWaLink(a.phone)}"
-            target="_blank"
-            rel="noopener"
-            class="btn-wa-app"
-            title="WhatsApp"
-        >
-            ${whatsappIcon()}
-        </a>`;
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.271.296-1.043 1.016-1.043 2.479 0 1.462 1.067 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.07-.124-.248-.197-.545-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-8.948c-.46-.229-2.71-1.336-3.13-1.488-.42-.152-.724-.228-1.03.228-.306.456-1.185 1.488-1.452 1.791-.267.303-.534.339-.994.112-.46-.229-1.942-.715-3.698-2.277-1.366-1.217-2.289-2.718-2.555-3.179-.266-.46-.028-.71.2-.942.205-.205.46-.534.69-.8.229-.266.305-.46.46-.76.153-.3.025-.56-.123-.789-.148-.23-1.34-3.23-1.84-4.414-.484-1.16-.96-.99-1.32-.99-.34 0-.73 0-1.12.01-.39.01-1.03.15-1.57.76-.54.6-2.06 2.02-2.06 4.93 0 2.91 2.11 5.72 2.41 6.12.3.4 4.17 6.37 10.1 8.94 1.42.61 2.53.97 3.4 1.24.92.27 1.75.23 2.41.14.73-.1 2.26-.93 2.58-1.82.32-.89.32-1.65.22-1.82-.1-.18-.37-.29-.83-.52z"/>
 
+                    </svg>
 
-        /* FACEBOOK */
+                </a>
 
-        let fbLink =
-            `<span class="btn-none">--</span>`;
-
-        if(a.facebook){
-
-            fbLink = `
-            <a
-                href="${safe(a.facebook)}"
-                target="_blank"
-                rel="noopener"
-                style="
-                color:#fff;
-                font-size:25px;
-                text-decoration:none;
-                "
-                title="Facebook"
-            >
-                ●
-            </a>`;
-
-        }
+            `;
 
 
-        /* PHONE */
+            /* FACEBOOK */
 
-        let phoneBtns = "";
-
-        if(a.phone){
-
-            phoneBtns += `
-            <a
-                href="${getWaLink(a.phone)}"
-                target="_blank"
-                rel="noopener"
-                class="btn-wa-wrap"
-            >
-
-                <div class="btn-wa-num">
-                    ${safe(a.phone)}
-                </div>
-
-                <div class="btn-wa">
-                    Whatsapp
-                </div>
-
-            </a>`;
-
-        }
+            let fbLink =
+                `<span class="btn-none">--</span>`;
 
 
-        if(a.phone2){
+            /* PHONE */
 
-            phoneBtns += `
-            <a
-                href="${getWaLink(a.phone2)}"
-                target="_blank"
-                rel="noopener"
-                class="btn-wa-wrap"
-            >
-
-                <div class="btn-wa-num">
-                    ${safe(a.phone2)}
-                </div>
-
-                <div class="btn-wa">
-                    Whatsapp
-                </div>
-
-            </a>`;
-
-        }
+            let phoneBtns = "";
 
 
-        /* PHOTO */
+            if(a.phone){
 
-        const avatar =
-            getAvatar(a);
+                phoneBtns += `
+
+                    <a
+                        href="${getWaLink(a.phone)}"
+                        target="_blank"
+                        class="btn-wa-wrap"
+                    >
+
+                        <div class="btn-wa-num">
+                            ${a.phone}
+                        </div>
+
+                        <div class="btn-wa">
+                            Whatsapp
+                        </div>
+
+                    </a>
+
+                `;
+
+            }
 
 
-        html += `
+            if(a.phone2){
 
-        <tr>
+                phoneBtns += `
 
-            <td class="name-col">
+                    <a
+                        href="${getWaLink(a.phone2)}"
+                        target="_blank"
+                        class="btn-wa-wrap"
+                    >
 
-                <div class="agent-box">
+                        <div class="btn-wa-num">
+                            ${a.phone2}
+                        </div>
 
-                    ${avatar}
+                        <div class="btn-wa">
+                            Whatsapp
+                        </div>
 
-                    <div>
+                    </a>
+
+                `;
+
+            }
+
+
+            html += `
+
+                <tr>
+
+                    <td class="name-col">
+
+                        <div class="avatar"></div>
 
                         <b>
-                            ${safe(a.name)}
+                            ${a.name || "N/A"}
                         </b>
 
                         <small>
-                            ${safe(a.role)}
+                            ${a.role || ""}
                         </small>
 
-                    </div>
-
-                </div>
-
-            </td>
+                    </td>
 
 
-            <td>
+                    <td>
 
-                <div class="id-box">
+                        <div class="id-box">
+                            ID ${a.id || "-"}
+                        </div>
 
-                    ID ${safe(a.id)}
-
-                </div>
-
-            </td>
+                    </td>
 
 
-            <td class="stars">
-
-                ${getStars(a.rating || 5)}
-
-            </td>
+                    <td class="stars">
+                        ★★★
+                    </td>
 
 
-            <td>
-
-                ${appLink}
-
-            </td>
+                    <td>
+                        ${appLink}
+                    </td>
 
 
-            <td>
-
-                ${fbLink}
-
-            </td>
+                    <td>
+                        ${fbLink}
+                    </td>
 
 
-            <td>
-
-                ${phoneBtns || "--"}
-
-            </td>
+                    <td>
+                        ${phoneBtns || "--"}
+                    </td>
 
 
-            <td>
+                    <td>
 
-                <a
-                    onclick="viewAgent('${key}')"
-                    class="btn-view"
-                    title="View"
-                >
-                    👁️
-                </a>
+                        <a
+                            onclick="viewAgent('${key}')"
+                            class="btn-view"
+                        >
+                            👁️
+                        </a>
 
-            </td>
+                    </td>
 
 
-            <td>
+                    <td>
 
-                <a
-                    onclick="reportAgent('${key}')"
-                    class="btn-report"
-                >
-                    Report
-                </a>
+                        <a
+                            onclick="reportAgent('${key}')"
+                            class="btn-report"
+                        >
+                            Report
+                        </a>
 
-            </td>
+                    </td>
 
-        </tr>`;
+                </tr>
+
+            `;
+
+        }
 
     }
 
 
-    document.getElementById("agentList")
-        .innerHTML =
+    document.getElementById("agentList").innerHTML =
+
         html ||
+
         `<tr>
             <td colspan="8">
                 কোন Agent নেই
@@ -1702,135 +1645,79 @@ function renderAgents(data){
 }
 
 
-/* =====================================================
-   FIREBASE AGENTS
-===================================================== */
-
-db.ref("agents").on(
-
-    "value",
-
-    snap => {
-
-        allAgentsData =
-            snap.val() || {};
-
-        renderAgents(allAgentsData);
-
-    },
-
-    error => {
-
-        console.error(error);
-
-        document.getElementById("agentList")
-            .innerHTML =
-            `<tr>
-                <td colspan="8">
-                    Data Load Error
-                </td>
-            </tr>`;
-
-    }
-
-);
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
+/* ================= SEARCH ================= */
 
 function doSearch(){
 
-    const type =
-        document.getElementById("searchType")
+    let type =
+        document
+        .getElementById("searchType")
         .value;
 
-    const id =
-        document.getElementById("searchId")
+
+    let id =
+        document
+        .getElementById("searchId")
         .value
-        .trim()
-        .toLowerCase();
+        .trim();
 
-    const phone =
-        document.getElementById("searchPhone")
+
+    let phone =
+        document
+        .getElementById("searchPhone")
         .value
-        .trim()
-        .toLowerCase();
+        .trim();
 
 
-    const result = {};
+    let result = {};
 
 
     for(let key in allAgentsData){
 
-        const a =
-            allAgentsData[key];
+        let a = allAgentsData[key];
 
+        let match = true;
 
-        /* ROLE */
 
         if(
             type !== "all" &&
-            String(a.role || "").toLowerCase()
-            !== type.toLowerCase()
+            a.role !== type
         ){
 
-            continue;
+            match = false;
 
         }
 
 
-        /* CURRENT PAGE ROLE */
-
         if(
-            currentRole !== "index" &&
-            normalizeRole(a.role)
-            !== currentRole
-        ){
-
-            continue;
-
-        }
-
-
-        /* ID */
-
-        if(
-            id &&
+            id !== "" &&
             !String(a.id || "")
-            .toLowerCase()
             .includes(id)
         ){
 
-            continue;
+            match = false;
 
         }
-
-
-        /* PHONE */
-
-        const p1 =
-            String(a.phone || "")
-            .toLowerCase();
-
-        const p2 =
-            String(a.phone2 || "")
-            .toLowerCase();
 
 
         if(
-            phone &&
-            !p1.includes(phone) &&
-            !p2.includes(phone)
+            phone !== "" &&
+            !String(a.phone || "")
+            .includes(phone) &&
+            !String(a.phone2 || "")
+            .includes(phone)
         ){
 
-            continue;
+            match = false;
 
         }
 
 
-        result[key] = a;
+        if(match){
+
+            result[key] = a;
+
+        }
 
     }
 
@@ -1839,63 +1726,22 @@ function doSearch(){
 
     closeSearch();
 
-
-    if(
-        Object.keys(result).length === 0
-    ){
-
-        showToast("কোন Agent পাওয়া যায়নি");
-
-    }else{
-
-        showToast(
-            Object.keys(result).length +
-            " জন Agent পাওয়া গেছে"
-        );
-
-    }
-
 }
 
 
-/* =====================================================
-   ENTER KEY SEARCH
-===================================================== */
+/* ================= SUPPORT ================= */
 
-["searchId","searchPhone"].forEach(id => {
+db.ref("support").on("value", snap => {
 
-    document.getElementById(id)
-    .addEventListener("keydown",function(e){
-
-        if(e.key === "Enter"){
-
-            doSearch();
-
-        }
-
-    });
-
-});
+    let html = "";
 
 
-/* =====================================================
-   SUPPORT LOAD
-===================================================== */
+    snap.forEach(child => {
 
-db.ref("support").on(
+        let s = child.val();
 
-    "value",
 
-    snap => {
-
-        let html = "";
-
-        snap.forEach(child => {
-
-            const s =
-                child.val();
-
-            html += `
+        html += `
 
             <div class="support-item">
 
@@ -1903,41 +1749,63 @@ db.ref("support").on(
                     🎧
                 </div>
 
+
                 <div class="info">
 
                     <b>
-                        ${safe(s.name)}
+                        ${s.name || "Support"}
                     </b>
 
                     <br>
 
                     <small>
-                        ${safe(s.phone)}
+                        ${s.phone || ""}
                     </small>
 
                 </div>
+
 
                 <a
                     href="${getWaLink(s.phone)}"
                     class="btn-msg"
                     target="_blank"
-                    rel="noopener"
                 >
                     Message
                 </a>
 
-            </div>`;
+            </div>
 
-        });
+        `;
+
+    });
 
 
-        document.getElementById("supportList")
-            .innerHTML =
-            html || "কোন Support নেই";
+    document.getElementById("supportList").innerHTML =
 
-    }
+        html ||
 
-);
+        "কোন Support নেই";
+
+});
+
+
+/* ================= CLOSE POPUP OUTSIDE ================= */
+
+document
+.querySelectorAll(".popup-overlay")
+.forEach(popup => {
+
+    popup.addEventListener("click", function(e){
+
+        if(e.target === popup){
+
+            popup.style.display = "none";
+
+        }
+
+    });
+
+});
 
 </script>
 
