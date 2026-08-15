@@ -35,6 +35,11 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 .btn-report{background:#f44336;color:#fff;padding:2px 4px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
 .btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
 
+/* NEW: WA ICON FOR APP COLUMN */
+.wa-icon{width:18px;height:18px;display:inline-block;vertical-align:middle}
+.wa-icon svg{width:100%;height:100%;fill:#25D366}
+.btn-none{color:#888;font-size:12px}
+
 /* কলাম width */
 th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} th:nth-child(4){width:7%} th:nth-child(5){width:8%} th:nth-child(6){width:22%} th:nth-child(7){width:7%} th:nth-child(8){width:12%}
 
@@ -152,7 +157,14 @@ function closeSupport(){document.getElementById('supportPopup').style.display='n
 function closeView(){document.getElementById('viewPopup').style.display='none'}
 function closeReport(){document.getElementById('reportPopup').style.display='none'}
 
-// Hierarchy বের করার ফাংশন - উপরের উপর পর্যন্ত
+// নাম্বার থেকে WA লিংক বানোর ফাংশন
+function getWaLink(num){
+    if(!num) return '';
+    let clean = num.replace(/[^0-9]/g,''); // + - স্পেস বাদ দিবে
+    return `https://wa.me/${clean}`;
+}
+
+// Hierarchy বের করার ফাংশন
 function getHierarchy(agent) {
   let tags = '';
   if(agent.parent) tags += `<span class="tag">Direct: ${agent.parent}</span>`;
@@ -171,7 +183,7 @@ function viewAgent(key){
   document.getElementById('viewPhone').innerText = a.phone || 'N/A';
   document.getElementById('viewId').innerText = a.id || 'N/A';
   document.getElementById('viewSerial').innerText = a.serial || '-';
-  document.getElementById('viewWa').href = a.phone? `https://wa.me/${a.phone}` : '#';
+  document.getElementById('viewWa').href = getWaLink(a.phone);
   document.getElementById('viewHierarchy').innerHTML = getHierarchy(a);
   document.getElementById('viewPopup').style.display='flex';
 }
@@ -184,7 +196,7 @@ function reportAgent(key){
   document.getElementById('reportPhone').innerText = a.phone || 'N/A';
   document.getElementById('reportId').innerText = a.id || 'N/A';
   document.getElementById('reportHierarchy').innerHTML = getHierarchy(a);
-  document.getElementById('reportWa').href = a.phone? `https://wa.me/${a.phone}` : '#';
+  document.getElementById('reportWa').href = getWaLink(a.phone);
   document.getElementById('reportPopup').style.display='flex';
 }
 
@@ -196,16 +208,21 @@ db.ref('agents').on('value', snap => {
 
 function renderAgents(data){
   let html = '';
+  const waSvg = `<svg viewBox="0 0 32 32"><path d="M19.11 17.205c-.372-.188-.962-.286-1.517-.288-1.538-.019-2.872 1.442-2.891 3.036-.019 1.629 1.237 2.943 2.81 2.967 1.537.023 2.868-1.438 2.886-3.032.018-1.532-1.229-2.969-2.886-2.969zm-4.44 1.536c-.186-.093-.373-.181-.56-.272-.185-.09-.368-.18-.55-.27a1.94 1.94 0 0 0-.548-.213 1.4 1.4 0 0 0-.42-.053 2.2 2.2 0 0 0-1.317.384c-.188.118-.375.236-.563.354l-.545.283a2.2 2.2 0 0 0-.676.6 2.48 2.48 0 0 0-.42 1.403c.024 1.571 1.375 2.889 3.048 2.889 1.678 0 3.072-1.336 3.048-2.913-.022-1.515-1.313-2.877-2.941-2.878zM16.5 2C8.28 2 1.5 8.28 1.5 16.5S8.28 31 16.5 31 31.5 24.72 31.5 16.5 24.72 2 16.5 2zm0 2C22.84 4 28 9.16 28 15.5S22.84 27 16.5 27 5 21.84 5 15.5 10.16 4 16.5 4z"/></svg>`;
+
   for(let key in data){
     let a = data[key];
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+      // App কলাম: phone থাকলে অটো WA আইকন
+      let appLink = a.phone? `<a href="${getWaLink(a.phone)}" target="_blank" class="wa-icon">${waSvg}</a>` : `<span class="btn-none">--</span>`;
+
       html += `<tr>
         <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><small>${a.role}</small></td>
         <td><div class="id-box">ID ${a.id}</div></td>
         <td class="stars">★★★</td>
-        <td><a href="${a.app||'#'}" target="_blank">${a.app? '📱' : '--'}</a></td>
-        <td><a href="${a.fb||'#'}" target="_blank">${a.fb? 'f' : '--'}</a></td>
-        <td>${a.phone? `<a href="https://wa.me/${a.phone}" class="btn-wa">${a.phone}<small>Whatsapp</small></a>` : ''}${a.phone2? `<a href="https://wa.me/${a.phone2}" class="btn-wa">${a.phone2}<small>Whatsapp</small></a>` : ''}</td>
+        <td>${appLink}</td>
+        <td><span class="btn-none">--</span></td>
+        <td>${a.phone? `<a href="${getWaLink(a.phone)}" class="btn-wa">${a.phone}<small>Whatsapp</small></a>` : ''}${a.phone2? `<a href="${getWaLink(a.phone2)}" class="btn-wa">${a.phone2}<small>Whatsapp</small></a>` : ''}</td>
         <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
         <td><a onclick="reportAgent('${key}')" class="btn-report">Report</a></td>
       </tr>`
@@ -237,7 +254,7 @@ db.ref('support').on('value', snap => {
   let html = '';
   snap.forEach(child => {
     let s = child.val();
-    html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="https://wa.me/${s.phone}" class="btn-msg" target="_blank">Message</a></div>`
+    html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="${getWaLink(s.phone)}" class="btn-msg" target="_blank">Message</a></div>`
   })
   document.getElementById('supportList').innerHTML = html || 'কোন Support নেই';
 })
