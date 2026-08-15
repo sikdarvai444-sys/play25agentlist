@@ -1,717 +1,638 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+<meta name="theme-color" content="#0b3d91">
 <title>PLAY25 Agent List</title>
 
 <style>
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 html,body{
-    margin:0;
-    padding:0;
-    background:#064c82;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+    width:100%;
+    min-height:100%;
 }
 
 body{
-    min-height:100vh;
+    background:#0b3d91;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-button,input{
-    font:inherit;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-:root{
-    --bg:#075084;
-    --panel:#0866ad;
-    --panel2:#0b74c2;
-    --row:#104c70;
-    --lime:#8fc20e;
-    --yellow:#ffe000;
-    --green:#38bd51;
-    --red:#ff4b52;
-    --white:#fff;
-}
-
-.page{
-    width:100%;
-    max-width:760px;
-    margin:auto;
-    min-height:100vh;
-    padding-bottom:90px;
-}
-
-/* HEADER */
+/* ================= HEADER ================= */
 
 .header{
-    height:187px;
-    position:relative;
+    width:100%;
+    min-height:180px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 8px;
+}
+
+.search-icon,
+.grid-icon{
+    width:45px;
+    height:45px;
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:28px;
+    color:#ffeb00;
+    cursor:pointer;
+    flex-shrink:0;
 }
 
 .logo{
-    font-weight:900;
-    font-style:italic;
-    letter-spacing:-5px;
-    line-height:.8;
-    font-size:68px;
-    color:#ffe000;
-    text-shadow:2px 2px 0 #ffd200;
+    flex:1;
+    text-align:center;
 }
 
-.logo span{
-    color:#fff;
+.logo img{
+    width:180px;
+    max-width:100%;
+    height:auto;
+    display:block;
+    margin:0 auto;
 }
 
-.crown{
-    position:absolute;
-    top:25px;
-    left:calc(50% - 92px);
-    font-size:29px;
-    color:#ff334d;
-}
+/* ================= MENU ================= */
 
-.logo-sub{
-    position:absolute;
-    top:112px;
-    font-size:24px;
-    font-weight:800;
-    letter-spacing:9px;
-    color:#fff;
-}
-
-/* HEADER ICONS */
-
-.icon-btn{
-    position:absolute;
-    top:62px;
-    width:54px;
-    height:54px;
-    border:0;
-    background:transparent;
-    color:var(--yellow);
-    cursor:pointer;
-}
-
-.search-btn{
-    left:22px;
-}
-
-.grid-btn{
-    right:22px;
-}
-
-.search-icon{
-    display:inline-block;
-    width:27px;
-    height:27px;
-    border:5px solid var(--yellow);
-    border-radius:50%;
-    position:relative;
-}
-
-.search-icon:after{
-    content:"";
-    position:absolute;
-    width:17px;
-    height:5px;
-    background:var(--yellow);
-    right:-14px;
-    bottom:-7px;
-    transform:rotate(48deg);
-    border-radius:4px;
-}
-
-.grid-icon{
-    display:grid;
-    grid-template-columns:repeat(2,14px);
-    gap:6px;
-    justify-content:center;
-}
-
-.grid-icon i{
-    height:14px;
-    background:var(--yellow);
-    border-radius:5px;
-}
-
-/* NAVIGATION */
-
-.nav{
-    margin:0 22px 30px;
-    background:linear-gradient(#0b6fbc,#0863aa);
-    border-radius:18px;
-    padding:29px 14px 27px;
+.menu{
+    background:#1153c7;
+    margin:8px;
+    border-radius:12px;
+    padding:15px 8px;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:25px 22px;
-    font-size:24px;
-}
-
-.nav a{
-    display:flex;
     align-items:center;
-    gap:7px;
-    white-space:nowrap;
+    gap:15px 18px;
 }
 
-.nav a.active{
-    color:var(--yellow);
-}
-
-.nav .ico{
-    font-size:21px;
+.menu a{
     color:#fff;
-}
-
-.nav a.active .ico{
-    color:var(--yellow);
-}
-
-/* SEARCH */
-
-.search-box{
-    display:none;
-    margin:0 22px 20px;
-    background:#0b4b70;
-    border-radius:14px;
-    padding:12px;
-}
-
-.search-box input{
-    width:100%;
-    border:0;
-    outline:0;
-    background:#075084;
-    color:#fff;
-    border-radius:10px;
-    padding:13px 15px;
-}
-
-/* NOTICE */
-
-.notice,
-.social,
-.section{
-    margin:0 22px 30px;
-    border-radius:14px;
-    background:#086ab2;
-}
-
-.notice{
-    height:77px;
-    display:flex;
-    align-items:center;
-    padding:0 22px;
-    color:var(--yellow);
-    font-size:27px;
-    overflow:hidden;
-    white-space:nowrap;
-}
-
-/* SOCIAL */
-
-.social{
-    padding:13px 17px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    color:var(--yellow);
-    font-size:20px;
-    min-height:77px;
-}
-
-.social-text{
-    flex:1;
-    text-align:center;
-}
-
-.social-btn{
-    border:0;
-    border-radius:8px;
-    background:#2784e9;
-    color:#fff;
-    padding:9px 13px;
-    font-size:20px;
-    cursor:pointer;
-    white-space:nowrap;
-}
-
-/* SECTION */
-
-.section{
-    padding:27px 0 0;
-    background:#086ab2;
-    overflow:hidden;
-}
-
-.section-title{
-    text-align:center;
-    color:var(--yellow);
-    font-size:34px;
-    margin:0 0 24px;
+    text-decoration:none;
+    font-size:15px;
     font-weight:500;
+    white-space:nowrap;
+    transition:.2s;
 }
 
-/* HOME PROFILE */
-
-.home-card{
-    margin:0 8px;
-    background:#0a4e78;
-    border-radius:14px;
-    padding:18px 17px;
+.menu a:hover,
+.menu a.active{
+    color:#ffeb3b;
 }
 
-.home-profile{
+/* ================= HOME BOXES ================= */
+
+.box{
+    background:#1153c7;
+    margin:8px;
+    border-radius:10px;
+    padding:14px;
+    overflow:hidden;
+}
+
+h2{
+    text-align:center;
+    color:#ffeb3b;
+    margin-bottom:18px;
+    font-size:22px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+table{
+    width:100%;
+    min-width:720px;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+thead{
+    background:#0b3d91;
+}
+
+th{
+    color:#fff;
+    padding:10px 4px;
+    text-align:center;
+    font-weight:500;
+    white-space:nowrap;
+}
+
+td{
+    padding:9px 4px;
+    text-align:center;
+    border-bottom:2px solid #1976d2;
+    vertical-align:middle;
+}
+
+tbody tr{
+    transition:.2s;
+}
+
+tbody tr:hover{
+    background:rgba(255,255,255,.04);
+}
+
+/* ================= AGENT ================= */
+
+.agent-box{
     display:flex;
     align-items:center;
-    gap:15px;
-    background:#0b5480;
-    border-radius:14px;
-    padding:18px;
+    gap:5px;
 }
 
 .avatar{
-    width:47px;
-    height:47px;
+    width:34px;
+    height:34px;
+    min-width:34px;
     border-radius:50%;
-    background:var(--lime);
+    background:#7cbf00;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#174a38;
-    font-size:27px;
+    overflow:hidden;
 }
 
-.profile-name{
-    font-size:18px;
-    line-height:1.15;
-    flex:1;
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.role{
-    color:#9faab2;
-    font-size:16px;
-    margin-top:3px;
-}
-
-.idbox{
-    background:var(--lime);
-    color:#172b23;
-    border-radius:11px;
-    padding:9px 12px;
-    text-align:center;
-    font-size:17px;
-    min-width:61px;
-}
-
-.idbox b{
-    display:block;
-    font-size:16px;
-}
-
-.msgbtn,
-.visitbtn{
-    background:#46bf51;
-    border:0;
-    color:#fff;
-    border-radius:9px;
-    padding:9px 16px;
-    cursor:pointer;
+.avatar-default{
     font-size:18px;
 }
 
-/* PROCESS */
-
-.process{
-    margin-top:30px;
-    padding-bottom:25px;
-}
-
-.process-card{
-    margin:0 30px;
-    background:#0a4e78;
-    border-radius:14px;
-    padding:18px;
-}
-
-.process-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px 5px;
-    border-bottom:1px solid rgba(255,255,255,.25);
-    font-size:21px;
-}
-
-.process-row:last-child{
-    border-bottom:0;
-}
-
-.status{
-    color:#43ed66;
-}
-
-.dot{
-    display:inline-block;
-    width:16px;
-    height:16px;
-    background:#38ed68;
-    border-radius:50%;
-    margin-right:7px;
-}
-
-/* LIST */
-
-.list-wrap{
-    margin:0 22px 30px;
-    background:#0b4b70;
-    border-radius:14px;
-    padding:20px 24px;
-    overflow-x:auto;
-}
-
-.table-head{
-    background:#0871bb;
-    border-radius:13px;
-    padding:14px 7px;
-
-    display:grid;
-    grid-template-columns:
-        1.45fr
-        .55fr
-        .9fr
-        .55fr
-        .65fr
-        1.3fr
-        .45fr
-        .8fr;
-
-    align-items:center;
-    text-align:center;
-
-    font-size:16px;
-    color:#fff;
-
-    min-width:700px;
-}
-
-.row{
-    min-height:78px;
-
-    display:grid;
-    grid-template-columns:
-        1.45fr
-        .55fr
-        .9fr
-        .55fr
-        .65fr
-        1.3fr
-        .45fr
-        .8fr;
-
-    align-items:center;
-    text-align:center;
-
-    border-bottom:2px solid rgba(255,255,255,.9);
-
-    gap:4px;
-    min-width:700px;
-}
-
-.row:last-child{
-    border-bottom:0;
-}
-
-.name-cell{
+.name-col{
     text-align:left;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    min-width:0;
+    white-space:nowrap;
+    padding-left:3px;
 }
 
-.avatar.sm{
-    width:38px;
-    height:38px;
-    min-width:38px;
-    font-size:21px;
+.name-col b{
+    font-size:12px;
+    font-weight:500;
+    display:block;
 }
 
-.name{
-    font-size:15px;
-    line-height:1.15;
-    word-break:break-word;
+.name-col small{
+    font-size:10px;
+    color:#aaa;
+    display:block;
 }
 
-.rating{
-    background:#132e48;
-    border-radius:7px;
-    padding:5px 4px;
-    color:var(--yellow);
+/* ================= ID ================= */
+
+.id-box{
+    background:#8bc400;
+    color:#111;
+    padding:7px 9px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:11px;
+    display:inline-block;
+}
+
+/* ================= RATING ================= */
+
+.stars{
+    color:#ffc107;
     font-size:13px;
+    letter-spacing:-2px;
     white-space:nowrap;
 }
 
-.whatsapp{
-    font-size:31px;
+/* ================= WHATSAPP ================= */
+
+.btn-wa-app{
+    background:transparent;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+
+.btn-wa-app svg{
+    width:30px;
+    height:30px;
+    fill:#fff;
+}
+
+.btn-wa-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    margin:2px 0;
+    text-decoration:none;
+}
+
+.btn-wa-num{
+    font-size:10px;
+    font-weight:bold;
     color:#fff;
-    cursor:pointer;
+    line-height:1.1;
+    white-space:nowrap;
 }
 
-.fb{
-    font-size:29px;
+.btn-wa{
+    background:#25D366;
     color:#fff;
-    cursor:pointer;
-}
-
-.phone{
-    font-size:12px;
-    line-height:1.15;
-}
-
-.wa-label{
+    padding:3px 7px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:8px;
     display:inline-block;
-    background:#35bd52;
+    line-height:1;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn-report{
+    background:#f44336;
     color:#fff;
-    border-radius:8px;
-    padding:2px 6px;
-    margin-top:2px;
-    font-size:11px;
-}
-
-.view{
-    font-size:25px;
+    padding:6px 10px;
+    border-radius:7px;
+    text-decoration:none;
+    font-size:10px;
     cursor:pointer;
-}
-
-.report{
     border:0;
-    background:var(--red);
+    display:inline-block;
+}
+
+.btn-report:hover{
+    background:#ff5b52;
+}
+
+.btn-view{
     color:#fff;
-    border-radius:8px;
-    padding:7px 10px;
+    padding:4px 6px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:19px;
     cursor:pointer;
+    display:inline-block;
+}
+
+.btn-view:hover{
+    transform:scale(1.1);
+}
+
+.btn-none{
+    color:#aaa;
+    font-size:15px;
+}
+
+/* ================= COLUMN WIDTH ================= */
+
+th:nth-child(1){width:20%}
+th:nth-child(2){width:8%}
+th:nth-child(3){width:10%}
+th:nth-child(4){width:8%}
+th:nth-child(5){width:8%}
+th:nth-child(6){width:22%}
+th:nth-child(7){width:7%}
+th:nth-child(8){width:12%}
+
+/* ================= SUPPORT ================= */
+
+.support-btn{
+    position:fixed;
+    bottom:18px;
+    left:18px;
+    background:#8bc400;
+    padding:10px 18px;
+    border-radius:12px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    z-index:999;
+    border:none;
+    cursor:pointer;
+    font-size:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+}
+
+.support-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= POPUP ================= */
+
+.popup-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+}
+
+.popup{
+    background:#1153c7;
+    width:100%;
+    max-width:430px;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:12px;
+    padding:18px;
+    position:relative;
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+.popup h3{
+    background:#0b3d91;
+    padding:12px;
+    border-radius:7px;
+    text-align:center;
+    color:#ffeb3b;
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+.close-btn{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:28px;
+    color:#fff;
+    cursor:pointer;
+    z-index:2;
+}
+
+.popup label{
+    color:#ffeb3b;
+    font-size:13px;
+    margin-top:10px;
+    display:block;
+}
+
+.popup select,
+.popup input{
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border-radius:6px;
+    border:none;
+    outline:none;
+    background:#0b3d91;
+    color:#fff;
     font-size:14px;
 }
 
-.empty{
-    text-align:center;
-    color:#b9d4e4;
-    padding:25px;
-    display:none;
-}
-
-/* SUPPORT */
-
-.support{
-    position:fixed;
-    left:30px;
-    bottom:25px;
-    z-index:20;
-
-    background:var(--lime);
+.popup button{
+    background:#8bc400;
     color:#fff;
-
-    border:0;
-    border-radius:14px;
-
-    padding:14px 20px;
-
-    font-size:23px;
+    padding:9px 18px;
+    border:none;
+    border-radius:6px;
     font-weight:bold;
-
-    box-shadow:0 4px 15px #003a6066;
-
     cursor:pointer;
+    float:right;
+    margin-top:10px;
 }
 
-/* MODAL */
+/* ================= VIEW ================= */
 
-.modal{
-    position:fixed;
-    inset:0;
+.info-box{
+    width:100%;
+    padding:9px;
+    margin:5px 0;
+    border-radius:6px;
+    background:#0b3d91;
+    color:#fff;
+    text-align:left;
+    min-height:34px;
+}
 
-    background:rgba(0,0,0,.65);
+.btn-wa-popup{
+    background:#25D366;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:6px;
+    text-decoration:none;
+    display:inline-block;
+    margin:5px 0;
+}
 
-    z-index:50;
+.stars-popup{
+    text-align:center;
+    font-size:22px;
+    color:#ffc107;
+    margin:7px 0;
+}
 
-    display:none;
+.hierarchy-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-top:5px;
+}
+
+.tag{
+    background:#8bc400;
+    color:#fff;
+    padding:5px 9px;
+    border-radius:15px;
+    font-size:10px;
+}
+
+/* ================= REPORT ================= */
+
+.report-header{
+    background:#f44336;
+    color:#fff;
+    text-align:center;
+    padding:9px;
+    border-radius:6px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.report-wa-btn{
+    display:block;
+    background:#25D366;
+    color:#fff;
+    padding:10px;
+    border-radius:6px;
+    text-decoration:none;
+    text-align:center;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+/* ================= SUPPORT LIST ================= */
+
+.support-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#0b3d91;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:8px;
+}
+
+.support-item .icon{
+    width:36px;
+    height:36px;
+    min-width:36px;
+    background:#ffc107;
+    border-radius:50%;
+    display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:20px;
+    color:#000;
+    font-weight:bold;
 }
 
-.modal.show{
-    display:flex;
+.support-item .info{
+    flex:1;
 }
 
-.modal-box{
-    width:min(430px,100%);
-
-    background:#0b5e96;
-
-    border-radius:18px;
-
-    padding:24px;
-
-    box-shadow:0 10px 40px #0008;
-}
-
-.modal-title{
-    color:var(--yellow);
-    font-size:25px;
-    margin-bottom:15px;
-}
-
-.modal-box input,
-.modal-box textarea{
-    width:100%;
-
-    background:#075084;
+.support-item .btn-msg{
+    background:#8bc400;
     color:#fff;
-
-    border:1px solid #2a80b8;
-
-    border-radius:10px;
-
-    padding:12px;
-
-    margin:6px 0 12px;
-
-    outline:none;
+    padding:6px 9px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:11px;
 }
 
-.modal-actions{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-}
+/* ================= TOAST ================= */
 
-.close{
-    background:#777;
-    border:0;
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:80px;
+    transform:translateX(-50%);
+    background:#222;
     color:#fff;
-    border-radius:8px;
-    padding:9px 15px;
+    padding:10px 16px;
+    border-radius:20px;
+    display:none;
+    z-index:10000;
+    font-size:13px;
 }
 
-.send{
-    background:var(--red);
-    border:0;
-    color:#fff;
-    border-radius:8px;
-    padding:9px 15px;
-}
-
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
-    .page{
-        max-width:100%;
-    }
-
     .header{
-        height:187px;
+        min-height:175px;
+        padding:8px 5px;
     }
 
-    .logo{
-        font-size:58px;
-    }
-
-    .logo-sub{
-        font-size:21px;
-        letter-spacing:7px;
-        top:111px;
-    }
-
-    .crown{
-        left:calc(50% - 81px);
+    .search-icon,
+    .grid-icon{
+        width:40px;
+        height:40px;
         font-size:25px;
     }
 
-    .nav{
-        margin:0 22px 30px;
-        padding:28px 10px 26px;
-
-        gap:24px 18px;
-
-        font-size:23px;
+    .logo img{
+        width:180px;
     }
 
-    .notice{
-        height:77px;
-        font-size:26px;
+    .menu{
+        margin:8px;
+        padding:14px 6px;
+        gap:14px 16px;
     }
 
-    .social{
-        font-size:20px;
+    .menu a{
+        font-size:14px;
     }
 
-    .social-btn{
-        font-size:18px;
+    .box{
+        margin:8px;
+        padding:9px;
+        border-radius:10px;
     }
 
-    .section-title{
-        font-size:31px;
+    h2{
+        font-size:19px;
+        margin-bottom:13px;
     }
 
-    .list-wrap{
-        margin:0 22px 30px;
-        padding:18px 24px;
-        overflow-x:auto;
-    }
-
-    .table-head,
-    .row{
+    table{
         min-width:700px;
+        font-size:11px;
     }
 
-    .row{
-        min-height:78px;
+    th{
+        padding:9px 3px;
+    }
+
+    td{
+        padding:8px 3px;
+    }
+
+    .support-btn{
+        left:10px;
+        bottom:15px;
+        padding:9px 15px;
+        font-size:14px;
+    }
+
+    .popup{
+        max-width:95%;
+        padding:15px;
     }
 }
 
-@media(max-width:430px){
+/* খুব ছোট ফোন */
 
-    .nav{
-        gap:22px 13px;
-        font-size:20px;
+@media(max-width:380px){
+
+    .logo img{
+        width:155px;
     }
 
-    .nav .ico{
-        font-size:18px;
+    .menu{
+        gap:11px 12px;
     }
 
-    .social{
-        font-size:18px;
+    .menu a{
+        font-size:12px;
     }
 
-    .social-btn{
-        font-size:16px;
+    .box{
+        margin:6px;
     }
 
-    .support{
-        left:30px;
-        bottom:24px;
-        font-size:21px;
+    h2{
+        font-size:17px;
     }
 }
 </style>
@@ -719,1083 +640,1304 @@ a{
 
 <body>
 
-<div class="page">
+<!-- ================= HEADER ================= -->
 
-<!-- HEADER -->
+<div class="header">
 
-<header class="header">
+    <div class="search-icon" onclick="openSearch()" title="Search">
+        🔍
+    </div>
 
-<button
-class="icon-btn search-btn"
-onclick="toggleSearch()"
-aria-label="Search">
+    <div class="logo">
+        <img src="logo.png" alt="PLAY25 Agent List"
+             onerror="this.style.display='none';this.parentElement.innerHTML='<b style=&quot;color:#ffeb3b;font-size:35px&quot;>PLAY25</b><small style=&quot;display:block;font-size:15px&quot;>Agent List</small>'">
+    </div>
 
-<span class="search-icon"></span>
+    <div class="grid-icon" onclick="openMenu()" title="Menu">
+        ⊞
+    </div>
 
+</div>
+
+<!-- ================= MENU ================= -->
+
+<div class="menu" id="mainMenu">
+
+    <a href="index.html" data-role="index">
+        🏠 Home
+    </a>
+
+    <a href="siteowner.html" data-role="siteowner">
+        👤 Site Owner
+    </a>
+
+    <a href="admin.html" data-role="admin">
+        👤 Admin
+    </a>
+
+    <a href="subadmin.html" data-role="subadmin">
+        👤 Sub Admin
+    </a>
+
+    <a href="super.html" data-role="super">
+        👤 Super
+    </a>
+
+    <a href="master.html" data-role="master">
+        👤 Master
+    </a>
+
+    <a href="#" onclick="openLottery(event)">
+        🎯 Lottery
+    </a>
+
+</div>
+
+<!-- ================= LIST ================= -->
+
+<div class="box">
+
+    <h2 id="roleTitle">ALL AGENT LIST</h2>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Rating</th>
+                    <th>App</th>
+                    <th>FB</th>
+                    <th>Phone Number</th>
+                    <th>View</th>
+                    <th>Report</th>
+                </tr>
+            </thead>
+
+            <tbody id="agentList">
+
+                <tr>
+                    <td colspan="8">Loading...</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- ================= SUPPORT ================= -->
+
+<button class="support-btn" onclick="openSupport()">
+    🎧 Support
 </button>
 
-<div class="crown">♛</div>
+<!-- ================= TOAST ================= -->
 
-<div class="logo">
-PLAY<span>25</span>
-</div>
+<div class="toast" id="toast"></div>
 
-<div class="logo-sub">
-Agent List
-</div>
+<!-- ================= SEARCH POPUP ================= -->
 
-<button
-class="icon-btn grid-btn"
-onclick="window.scrollTo({top:0,behavior:'smooth'})"
-aria-label="Menu">
+<div class="popup-overlay" id="searchPopup">
 
-<span class="grid-icon">
-<i></i>
-<i></i>
-<i></i>
-<i></i>
-</span>
+    <div class="popup">
 
-</button>
+        <span class="close-btn" onclick="closeSearch()">×</span>
 
-</header>
+        <h3>👤 এজেন্ট খুঁজুন</h3>
 
+        <label>Type</label>
 
-<!-- NAVIGATION -->
+        <select id="searchType">
 
-<nav class="nav">
+            <option value="all">All Agent</option>
+            <option value="Site Owner">Site Owner</option>
+            <option value="Admin">Admin</option>
+            <option value="Sub Admin">Sub Admin</option>
+            <option value="Super">Super</option>
+            <option value="Master">Master</option>
 
-<a href="#home"
-class="active"
-data-tab="home">
+        </select>
 
-<span class="ico">⌂</span>
-Home
+        <label>Search By Agent ID</label>
 
-</a>
+        <input
+            type="text"
+            id="searchId"
+            placeholder="Agent ID"
+        >
 
-<a href="#owner"
-data-tab="owner">
+        <label>Search by Whatsapp</label>
 
-<span class="ico">♟</span>
-Site Owner
+        <input
+            type="text"
+            id="searchPhone"
+            placeholder="Phone number"
+        >
 
-</a>
+        <button onclick="doSearch()">
+            Search
+        </button>
 
-<a href="#admin"
-data-tab="admin">
+        <div style="clear:both"></div>
 
-<span class="ico">♟</span>
-Admin
-
-</a>
-
-<a href="#subadmin"
-data-tab="subadmin">
-
-<span class="ico">♟</span>
-Sub Admin
-
-</a>
-
-<a href="#super"
-data-tab="super">
-
-<span class="ico">♟</span>
-Super
-
-</a>
-
-<a href="#master"
-data-tab="master">
-
-<span class="ico">♟</span>
-Master
-
-</a>
-
-<a href="#lottery"
-data-tab="lottery">
-
-<span class="ico">◎</span>
-Lottery
-
-</a>
-
-</nav>
-
-
-<!-- SEARCH -->
-
-<div
-class="search-box"
-id="searchBox">
-
-<input
-id="searchInput"
-placeholder="Search name, ID or phone..."
-oninput="render()">
+    </div>
 
 </div>
 
+<!-- ================= SUPPORT POPUP ================= -->
 
-<!-- HOME -->
+<div class="popup-overlay" id="supportPopup">
 
-<section id="homeSection">
+    <div class="popup">
 
-<div class="notice">
+        <span class="close-btn" onclick="closeSupport()">×</span>
 
-<marquee>
-এখানে কোনো জুয়া/বেটিং সেবা দেওয়া হয় না...
-</marquee>
+        <h3>🎧 Support Team</h3>
 
-</div>
+        <div id="supportList">
+            Loading...
+        </div>
 
-
-<div class="social">
-
-<div class="social-text">
-আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ
-</div>
-
-<button
-class="social-btn"
-onclick="openExternal('https://facebook.com/')">
-
-f এখানে ক্লিক করুন
-
-</button>
+    </div>
 
 </div>
 
+<!-- ================= VIEW POPUP ================= -->
 
-<div class="social">
+<div class="popup-overlay" id="viewPopup">
 
-<div class="social-text">
-ফেসবুক অফিসিয়াল পেজ
-</div>
+    <div class="popup">
 
-<button
-class="social-btn"
-onclick="openExternal('https://facebook.com/')">
+        <span class="close-btn" onclick="closeView()">×</span>
 
-☁ এখানে ক্লিক করুন
+        <div style="text-align:center;margin-bottom:10px">
 
-</button>
+            <div
+                id="viewAvatar"
+                style="
+                width:70px;
+                height:70px;
+                border-radius:50%;
+                background:#7cbf00;
+                margin:auto;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:32px;
+                overflow:hidden;
+                "
+            >
+                👤
+            </div>
 
-</div>
+        </div>
 
+        <label>Name</label>
+        <div class="info-box" id="viewName"></div>
 
-<!-- ADMIN HOME CARD -->
+        <label>Type</label>
+        <div class="info-box" id="viewRole"></div>
 
-<section class="section">
+        <label>Number</label>
+        <div class="info-box" id="viewPhone"></div>
 
-<h2 class="section-title">
-Admin
-</h2>
+        <label>ID Number</label>
+        <div class="info-box" id="viewId"></div>
 
-<div class="home-card">
+        <label>Serial</label>
+        <div class="info-box" id="viewSerial"></div>
 
-<div class="home-profile">
+        <label>Message</label>
 
-<div class="avatar">
-●
-</div>
+        <a
+            id="viewWa"
+            href="#"
+            target="_blank"
+            class="btn-wa-popup"
+        >
+            📱 Whatsapp
+        </a>
 
-<div class="profile-name">
+        <label>Rating</label>
 
-Plabon Khan
+        <div
+            class="stars-popup"
+            id="viewRating"
+        >
+            ★★★★★
+        </div>
 
-<div class="role">
-Site Owner
-</div>
+        <label>Hierarchy / কার আন্ডারে</label>
 
-</div>
+        <div
+            class="hierarchy-tags"
+            id="viewHierarchy"
+        ></div>
 
-<div class="idbox">
-
-<b>ID</b>
-
-1
-
-</div>
-
-<div>
-
-<div style="font-size:16px">
-+971507872525
-</div>
-
-<span class="wa-label">
-Whatsapp
-</span>
-
-</div>
-
-<button
-class="msgbtn"
-onclick="openWhatsApp('+971507872525')">
-
-Message
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- PROCESS -->
-
-<div class="process">
-
-<h2 class="section-title">
-আমাদের প্রক্সি লিংক
-</h2>
-
-<div class="process-card">
-
-<div class="process-row">
-
-<span>
-play25.live
-</span>
-
-<span class="status">
-
-<span class="dot"></span>
-
-Active
-
-<button
-class="visitbtn"
-onclick="alert('Demo link')">
-
-Visit
-
-</button>
-
-</span>
+    </div>
 
 </div>
 
+<!-- ================= REPORT POPUP ================= -->
 
-<div class="process-row">
+<div class="popup-overlay" id="reportPopup">
 
-<span>
-Official Directory
-</span>
+    <div class="popup">
 
-<span class="status">
-Active
-</span>
+        <span class="close-btn" onclick="closeReport()">×</span>
 
-</div>
+        <div style="text-align:center;margin-bottom:10px">
 
-</div>
+            <div
+                id="reportAvatar"
+                style="
+                width:70px;
+                height:70px;
+                border-radius:50%;
+                background:#7cbf00;
+                margin:auto;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:32px;
+                overflow:hidden;
+                "
+            >
+                👤
+            </div>
 
-</div>
+        </div>
 
-</section>
+        <div class="report-header">
+            Report This Person
+        </div>
 
-</section>
+        <label>Name</label>
+        <div class="info-box" id="reportName"></div>
 
+        <label>Type</label>
+        <div class="info-box" id="reportRole"></div>
 
-<!-- LIST -->
+        <label>Number</label>
+        <div class="info-box" id="reportPhone"></div>
 
-<main
-id="listSection"
-style="display:none">
+        <label>ID Number</label>
+        <div class="info-box" id="reportId"></div>
 
-<h2
-class="section-title"
-id="listTitle">
+        <label>Hierarchy / কার আন্ডারে আছে</label>
 
-SITE OWNER LIST
+        <div
+            class="hierarchy-tags"
+            id="reportHierarchy"
+        ></div>
 
-</h2>
+        <a
+            id="reportWa"
+            href="#"
+            target="_blank"
+            class="report-wa-btn"
+        >
+            📱 Whatsapp এ মেসেজ করুন
+        </a>
 
-
-<div class="list-wrap">
-
-<div class="table-head">
-
-<span>Name</span>
-
-<span>ID</span>
-
-<span>Rating</span>
-
-<span>
-App<br>Link
-</span>
-
-<span>
-Facebook
-</span>
-
-<span>
-Phone<br>Number
-</span>
-
-<span>
-View
-</span>
-
-<span>
-Report
-</span>
+    </div>
 
 </div>
 
+<!-- ================= FIREBASE ================= -->
 
-<div
-class="rows"
-id="rows">
-</div>
-
-
-<div
-class="empty"
-id="empty">
-
-কোনো ফলাফল পাওয়া যায়নি
-
-</div>
-
-</div>
-
-</main>
-
-
-<!-- SUPPORT -->
-
-<button
-class="support"
-onclick="support()">
-
-◉ &nbsp;Support
-
-</button>
-
-
-<!-- REPORT MODAL -->
-
-<div
-class="modal"
-id="modal">
-
-<div class="modal-box">
-
-<div
-class="modal-title"
-id="modalTitle">
-
-Report
-
-</div>
-
-<input
-id="reportName"
-readonly>
-
-<textarea
-id="reportText"
-rows="4"
-placeholder="কারণ লিখুন...">
-</textarea>
-
-<div class="modal-actions">
-
-<button
-class="close"
-onclick="closeModal()">
-
-Close
-
-</button>
-
-<button
-class="send"
-onclick="sendReport()">
-
-Report
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
 <script>
 
-/* DATA */
+/* =====================================================
+   FIREBASE
+===================================================== */
 
-const data={
+const firebaseConfig = {
 
-owner:[
-{
-n:'Plabon Khan',
-r:'Site Owner',
-id:1,
-p:'+971507872525'
-}
-],
+    apiKey:"AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
 
-admin:[
-{
-n:'Plabon Khan',
-r:'Admin',
-id:1,
-p:'+971503657767',
-fb:true
-},
+    authDomain:"play25agent.firebaseapp.com",
 
-{
-n:'Salam Ali',
-r:'Admin',
-id:3,
-p:'+60125567256'
-}
-],
+    databaseURL:
+    "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
 
-subadmin:[
-
-{
-n:'Pasha Vai',
-r:'Sub Admin',
-id:5,
-p:'+601127901350'
-},
-
-{
-n:'Tafsir Khan',
-r:'Sub Admin',
-id:6,
-p:'+60175893894'
-},
-
-{
-n:'Asif Khan',
-r:'Sub Admin',
-id:7,
-p:'+971561739263'
-},
-
-{
-n:'Samir Khan',
-r:'Sub Admin',
-id:8,
-p:'+971506037267'
-},
-
-{
-n:'Farhan Khan',
-r:'Sub Admin',
-id:10,
-p:'+971547992525'
-},
-
-{
-n:'Don',
-r:'Sub Admin',
-id:13,
-p:'+601123498684'
-},
-
-{
-n:'Rockon',
-r:'Sub Admin',
-id:14,
-p:'+601255597835'
-},
-
-{
-n:'Salman Habib',
-r:'Sub Admin',
-id:15,
-p:'+60107400042'
-}
-
-],
-
-super:[
-
-{
-n:'Amir Vai',
-r:'Super',
-id:10,
-p:'+971568101419'
-},
-
-{
-n:'Himel Khan',
-r:'Super',
-id:1,
-p:'+971543380407'
-},
-
-{
-n:'Srabon Khan',
-r:'Super',
-id:3,
-p:'+601123497151',
-photo:true
-},
-
-{
-n:'James Bond',
-r:'Super',
-id:4,
-p:'+14099953088'
-},
-
-{
-n:'Pasha Vai',
-r:'Super',
-id:5,
-p:'+601127901350'
-},
-
-{
-n:'Tafsir Khan',
-r:'Super',
-id:6,
-p:'+60175893894'
-},
-
-{
-n:'Asif Khan',
-r:'Super',
-id:7,
-p:'+971561739263'
-},
-
-{
-n:'Samir Khan',
-r:'Super',
-id:8,
-p:'+971506037267'
-},
-
-{
-n:'Jibon Khan',
-r:'Super',
-id:9,
-p:'+601123119084'
-}
-
-],
-
-master:[
-
-{
-n:'Sunvy Khan',
-r:'Master',
-id:1,
-p:'+60107047254',
-photo:true
-},
-
-{
-n:'Bappy Khan',
-r:'Master',
-id:2,
-p:'+601123498374',
-fb:true,
-p2:'+60112044174'
-},
-
-{
-n:'Asif Islam',
-r:'Master',
-id:4,
-p:'+601114261897'
-},
-
-{
-n:'Samir Khan',
-r:'Master',
-id:7,
-p:'+60147472138'
-},
-
-{
-n:'Sana Khan',
-r:'Master',
-id:8,
-p:'+601122374852'
-},
-
-{
-n:'Bakir Khan',
-r:'Master',
-id:9,
-p:'+60175896700',
-p2:'+971567589851'
-},
-
-{
-n:'Rashed Khan',
-r:'Master',
-id:10,
-p:'+60175895440',
-p2:'+971567411057'
-},
-
-{
-n:'Master User',
-r:'Master',
-id:11,
-p:'+60175858490'
-}
-
-]
+    projectId:"play25agent"
 
 };
 
+firebase.initializeApp(firebaseConfig);
 
-let current='owner';
+const db = firebase.database();
+
+let allAgentsData = {};
+
+
+/* =====================================================
+   CURRENT PAGE / ROLE
+===================================================== */
+
+let fileName =
+    window.location.pathname
+    .split("/")
+    .pop()
+    .replace(".html","")
+    .toLowerCase();
+
+let currentRole =
+    fileName === "" ? "index" : fileName;
+
+
+const roleNames = {
+
+    index:"ALL AGENT LIST",
+
+    siteowner:"SITE OWNER LIST",
+
+    admin:"ADMIN LIST",
+
+    subadmin:"SUB ADMIN LIST",
+
+    super:"SUPER LIST",
+
+    master:"MASTER LIST"
+
+};
+
+document.getElementById("roleTitle").innerText =
+    roleNames[currentRole] || "AGENT LIST";
 
 
 /* ACTIVE MENU */
 
-function setActive(tab){
+document.querySelectorAll(".menu a").forEach(a => {
 
-document
-.querySelectorAll('.nav a')
-.forEach(a=>{
+    if(a.dataset.role === currentRole){
 
-a.classList.toggle(
-'active',
-a.dataset.tab===tab
-);
+        a.classList.add("active");
+
+    }
 
 });
 
-}
 
+/* =====================================================
+   POPUP FUNCTIONS
+===================================================== */
 
-/* SEARCH */
+function openSearch(){
 
-function toggleSearch(){
+    document.getElementById("searchPopup").style.display="flex";
 
-const box=
-document.getElementById('searchBox');
+    setTimeout(() => {
 
-box.style.display=
-box.style.display==='block'
-?'none'
-:'block';
+        document.getElementById("searchId").focus();
 
-if(box.style.display==='block'){
-
-document
-.getElementById('searchInput')
-.focus();
+    },100);
 
 }
 
-}
+function closeSearch(){
 
-
-/* RENDER LIST */
-
-function render(){
-
-const list=
-data[current]||[];
-
-const q=
-(document
-.getElementById('searchInput')
-?.value||'')
-.toLowerCase()
-.trim();
-
-
-const filtered=
-list.filter(x=>
-
-(
-x.n+
-' '+
-x.id+
-' '+
-x.p+
-' '+
-x.r
-)
-.toLowerCase()
-.includes(q)
-
-);
-
-
-const rows=
-document.getElementById('rows');
-
-rows.innerHTML='';
-
-
-filtered.forEach(x=>{
-
-const el=
-document.createElement('div');
-
-el.className='row';
-
-
-el.innerHTML=`
-
-<div class="name-cell">
-
-<div class="avatar sm">
-●
-</div>
-
-<div class="name">
-
-${x.n}
-
-<br>
-
-<span class="role">
-${x.r}
-</span>
-
-</div>
-
-</div>
-
-
-<div>
-
-<div class="idbox">
-
-<b>ID</b>
-
-${x.id}
-
-</div>
-
-</div>
-
-
-<div>
-
-<span class="rating">
-★★★★★
-</span>
-
-</div>
-
-
-<div>
-
-<span
-class="whatsapp"
-title="WhatsApp"
-onclick="openWhatsApp('${x.p}')">
-
-◔
-
-</span>
-
-</div>
-
-
-<div>
-
-${
-x.fb
-
-?
-
-`<span
-class="fb"
-onclick="openExternal('https://facebook.com/')">
-●
-</span>`
-
-:
-
-'— —'
+    document.getElementById("searchPopup").style.display="none";
 
 }
 
-</div>
+function openSupport(){
 
-
-<div class="phone">
-
-${x.p}
-
-<br>
-
-<span class="wa-label">
-Whatsapp
-</span>
-
-${
-x.p2
-
-?
-
-`<br>
-<span class="wa-label">
-Whatsapp1
-</span>`
-
-:
-
-''
+    document.getElementById("supportPopup").style.display="flex";
 
 }
 
-</div>
+function closeSupport(){
+
+    document.getElementById("supportPopup").style.display="none";
+
+}
+
+function closeView(){
+
+    document.getElementById("viewPopup").style.display="none";
+
+}
+
+function closeReport(){
+
+    document.getElementById("reportPopup").style.display="none";
+
+}
+
+function openMenu(){
+
+    document.getElementById("mainMenu")
+    .scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+function openLottery(e){
+
+    e.preventDefault();
+
+    showToast("Lottery section coming soon");
+
+}
 
 
-<div
-class="view"
-onclick="viewUser(
-'${x.n}',
-'${x.r}',
-'${x.id}',
-'${x.p}'
-)">
+/* =====================================================
+   ESC KEY
+===================================================== */
 
-◉
+document.addEventListener("keydown",function(e){
 
-</div>
+    if(e.key === "Escape"){
 
+        closeSearch();
+        closeSupport();
+        closeView();
+        closeReport();
 
-<div>
-
-<button
-class="report"
-onclick="reportUser('${x.n}')">
-
-Report
-
-</button>
-
-</div>
-
-`;
-
-rows.appendChild(el);
+    }
 
 });
 
 
-document
-.getElementById('empty')
-.style.display=
-filtered.length
-?'none'
-:'block';
+/* =====================================================
+   CLICK OUTSIDE POPUP
+===================================================== */
 
-}
+document.querySelectorAll(".popup-overlay").forEach(popup => {
 
+    popup.addEventListener("click",function(e){
 
-/* SHOW TAB */
+        if(e.target === popup){
 
-function showTab(tab){
+            popup.style.display="none";
 
-if(tab==='home'){
+        }
 
-document
-.getElementById('homeSection')
-.style.display='block';
-
-document
-.getElementById('listSection')
-.style.display='none';
-
-}
-
-else if(tab==='lottery'){
-
-alert(
-'Lottery section is disabled in this demo.'
-);
-
-return;
-
-}
-
-else{
-
-current=tab;
-
-document
-.getElementById('homeSection')
-.style.display='none';
-
-document
-.getElementById('listSection')
-.style.display='block';
-
-
-const titles={
-
-owner:'SITE OWNER LIST',
-
-admin:'ADMIN LIST',
-
-subadmin:'SUB ADMIN LIST',
-
-super:'SUPER LIST',
-
-master:'MASTER LIST'
-
-};
-
-
-document
-.getElementById('listTitle')
-.textContent=
-titles[tab]||'LIST';
-
-
-render();
-
-}
-
-
-setActive(tab);
-
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
-
-}
-
-
-/* MENU CLICK */
-
-document
-.querySelectorAll('.nav a')
-.forEach(a=>{
-
-a.addEventListener(
-'click',
-e=>{
-
-e.preventDefault();
-
-showTab(
-a.dataset.tab
-);
-
-});
+    });
 
 });
 
 
-/* WHATSAPP */
+/* =====================================================
+   TOAST
+===================================================== */
 
-function openWhatsApp(phone){
+let toastTimer;
 
-window.open(
-'https://wa.me/'+
-phone.replace(/\D/g,''),
-'_blank'
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.style.display="block";
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(() => {
+
+            toast.style.display="none";
+
+        },2500);
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function getWaLink(num){
+
+    if(!num) return "#";
+
+    let clean =
+        String(num)
+        .replace(/[^0-9]/g,"");
+
+    return clean
+        ? "https://wa.me/" + clean
+        : "#";
+
+}
+
+
+/* =====================================================
+   SAFE TEXT
+===================================================== */
+
+function safe(value){
+
+    if(value === undefined ||
+       value === null ||
+       value === ""){
+
+        return "N/A";
+
+    }
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   ROLE NORMALIZE
+===================================================== */
+
+function normalizeRole(role){
+
+    return String(role || "")
+        .toLowerCase()
+        .replace(/\s+/g,"");
+
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+function getStars(rating){
+
+    let r =
+        parseInt(rating || 5);
+
+    if(r < 0) r = 0;
+
+    if(r > 5) r = 5;
+
+    return "★".repeat(r) +
+           "☆".repeat(5-r);
+
+}
+
+
+/* =====================================================
+   HIERARCHY
+===================================================== */
+
+function getHierarchy(agent){
+
+    let tags = "";
+
+    if(agent.parent){
+
+        tags +=
+        `<span class="tag">
+        Direct: ${safe(agent.parent)}
+        </span>`;
+
+    }
+
+    if(agent.parentParent){
+
+        tags +=
+        `<span class="tag">
+        Upper: ${safe(agent.parentParent)}
+        </span>`;
+
+    }
+
+    if(agent.parentSerial){
+
+        tags +=
+        `<span class="tag">
+        ${safe(agent.parentSerial)}
+        </span>`;
+
+    }
+
+    if(agent.role !== "Site Owner"){
+
+        tags +=
+        `<span class="tag">
+        Level: ${safe(agent.role)}
+        </span>`;
+
+    }
+
+    if(!agent.parent){
+
+        tags +=
+        `<span class="tag">
+        Site Owner
+        </span>`;
+
+    }
+
+    return tags ||
+        '<span class="tag">No Parent</span>';
+
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+function getAvatar(agent){
+
+    if(agent.photo ||
+       agent.image ||
+       agent.avatar){
+
+        let img =
+            agent.photo ||
+            agent.image ||
+            agent.avatar;
+
+        return `
+        <div class="avatar">
+            <img
+                src="${safe(img)}"
+                alt=""
+                onerror="this.parentElement.innerHTML='👤'"
+            >
+        </div>`;
+
+    }
+
+    return `
+    <div class="avatar avatar-default">
+        👤
+    </div>`;
+
+}
+
+
+/* =====================================================
+   VIEW AGENT
+===================================================== */
+
+function viewAgent(key){
+
+    const a =
+        allAgentsData[key];
+
+    if(!a) return;
+
+    document.getElementById("viewName")
+        .innerText = a.name || "N/A";
+
+    document.getElementById("viewRole")
+        .innerText = a.role || "N/A";
+
+    document.getElementById("viewPhone")
+        .innerText = a.phone || "N/A";
+
+    document.getElementById("viewId")
+        .innerText = a.id || "N/A";
+
+    document.getElementById("viewSerial")
+        .innerText = a.serial || "-";
+
+    document.getElementById("viewWa")
+        .href = getWaLink(a.phone);
+
+    document.getElementById("viewRating")
+        .innerText = getStars(a.rating || 5);
+
+    document.getElementById("viewHierarchy")
+        .innerHTML = getHierarchy(a);
+
+    const avatar =
+        document.getElementById("viewAvatar");
+
+    if(a.photo || a.image || a.avatar){
+
+        const image =
+            a.photo || a.image || a.avatar;
+
+        avatar.innerHTML =
+        `<img
+            src="${safe(image)}"
+            style="width:100%;height:100%;object-fit:cover"
+            onerror="this.parentElement.innerHTML='👤'"
+        >`;
+
+    }else{
+
+        avatar.innerHTML="👤";
+
+    }
+
+    document.getElementById("viewPopup")
+        .style.display="flex";
+
+}
+
+
+/* =====================================================
+   REPORT AGENT
+===================================================== */
+
+function reportAgent(key){
+
+    const a =
+        allAgentsData[key];
+
+    if(!a) return;
+
+    document.getElementById("reportName")
+        .innerText = a.name || "N/A";
+
+    document.getElementById("reportRole")
+        .innerText = a.role || "N/A";
+
+    document.getElementById("reportPhone")
+        .innerText = a.phone || "N/A";
+
+    document.getElementById("reportId")
+        .innerText = a.id || "N/A";
+
+    document.getElementById("reportHierarchy")
+        .innerHTML = getHierarchy(a);
+
+    document.getElementById("reportWa")
+        .href = getWaLink(a.phone);
+
+    document.getElementById("reportPopup")
+        .style.display="flex";
+
+}
+
+
+/* =====================================================
+   WHATSAPP SVG
+===================================================== */
+
+function whatsappIcon(){
+
+return `
+<svg
+viewBox="0 0 24 24"
+aria-label="WhatsApp">
+
+<path d="
+M17.472 14.382
+c-.297-.149-1.758-.867-2.03-.967
+-.273-.099-.471-.148-.67.15
+-.197.297-.767.966-.94 1.164
+-.173.199-.347.223-.644.075
+-.297-.15-1.255-.463-2.39-1.475
+-.883-.788-1.48-1.761-1.653-2.059
+-.173-.297-.018-.458.13-.606
+.134-.133.298-.347.446-.52
+.149-.174.198-.298.298-.497
+.099-.198.05-.371-.025-.52
+-.075-.149-.668-1.612-.916-2.207
+-.242-.579-.487-.5-.67-.51
+-.173-.008-.371-.01-.57-.01
+-.198 0-.52.074-.792.372
+-.271.296-1.043 1.016-1.043 2.479
+0 1.462 1.067 2.875 1.213 3.074
+.149.198 2.096 3.2 5.077 4.487
+.709.306 1.262.489 1.694.625
+.712.227 1.36.195 1.871.118
+.571-.085 1.758-.719 2.006-1.413
+.248-.694.248-1.289.173-1.413
+-.07-.124-.248-.197-.545-.347z
+M12.051 21.785
+h-.004a9.87 9.87 0 01-5.031-1.378
+l-.361-.214-3.741.982.999-3.648
+-.235-.374a9.86 9.86 0 01-1.51-5.26
+c.001-5.45 4.436-9.884 9.888-9.884
+2.64 0 5.122 1.03 6.988 2.898
+a9.825 9.825 0 012.893 6.994
+c-.003 5.45-4.437 9.884-9.885 9.884z
+"/>
+
+</svg>`;
+
+}
+
+
+/* =====================================================
+   RENDER AGENTS
+===================================================== */
+
+function renderAgents(data){
+
+    let html = "";
+
+    let count = 0;
+
+    for(let key in data){
+
+        const a = data[key];
+
+        const role =
+            normalizeRole(a.role);
+
+        if(
+            currentRole !== "index" &&
+            role !== currentRole
+        ){
+
+            continue;
+
+        }
+
+        count++;
+
+        /* APP */
+
+        const appLink = `
+        <a
+            href="${getWaLink(a.phone)}"
+            target="_blank"
+            rel="noopener"
+            class="btn-wa-app"
+            title="WhatsApp"
+        >
+            ${whatsappIcon()}
+        </a>`;
+
+
+        /* FACEBOOK */
+
+        let fbLink =
+            `<span class="btn-none">--</span>`;
+
+        if(a.facebook){
+
+            fbLink = `
+            <a
+                href="${safe(a.facebook)}"
+                target="_blank"
+                rel="noopener"
+                style="
+                color:#fff;
+                font-size:25px;
+                text-decoration:none;
+                "
+                title="Facebook"
+            >
+                ●
+            </a>`;
+
+        }
+
+
+        /* PHONE */
+
+        let phoneBtns = "";
+
+        if(a.phone){
+
+            phoneBtns += `
+            <a
+                href="${getWaLink(a.phone)}"
+                target="_blank"
+                rel="noopener"
+                class="btn-wa-wrap"
+            >
+
+                <div class="btn-wa-num">
+                    ${safe(a.phone)}
+                </div>
+
+                <div class="btn-wa">
+                    Whatsapp
+                </div>
+
+            </a>`;
+
+        }
+
+
+        if(a.phone2){
+
+            phoneBtns += `
+            <a
+                href="${getWaLink(a.phone2)}"
+                target="_blank"
+                rel="noopener"
+                class="btn-wa-wrap"
+            >
+
+                <div class="btn-wa-num">
+                    ${safe(a.phone2)}
+                </div>
+
+                <div class="btn-wa">
+                    Whatsapp
+                </div>
+
+            </a>`;
+
+        }
+
+
+        /* PHOTO */
+
+        const avatar =
+            getAvatar(a);
+
+
+        html += `
+
+        <tr>
+
+            <td class="name-col">
+
+                <div class="agent-box">
+
+                    ${avatar}
+
+                    <div>
+
+                        <b>
+                            ${safe(a.name)}
+                        </b>
+
+                        <small>
+                            ${safe(a.role)}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <td>
+
+                <div class="id-box">
+
+                    ID ${safe(a.id)}
+
+                </div>
+
+            </td>
+
+
+            <td class="stars">
+
+                ${getStars(a.rating || 5)}
+
+            </td>
+
+
+            <td>
+
+                ${appLink}
+
+            </td>
+
+
+            <td>
+
+                ${fbLink}
+
+            </td>
+
+
+            <td>
+
+                ${phoneBtns || "--"}
+
+            </td>
+
+
+            <td>
+
+                <a
+                    onclick="viewAgent('${key}')"
+                    class="btn-view"
+                    title="View"
+                >
+                    👁️
+                </a>
+
+            </td>
+
+
+            <td>
+
+                <a
+                    onclick="reportAgent('${key}')"
+                    class="btn-report"
+                >
+                    Report
+                </a>
+
+            </td>
+
+        </tr>`;
+
+    }
+
+
+    document.getElementById("agentList")
+        .innerHTML =
+        html ||
+        `<tr>
+            <td colspan="8">
+                কোন Agent নেই
+            </td>
+        </tr>`;
+
+}
+
+
+/* =====================================================
+   FIREBASE AGENTS
+===================================================== */
+
+db.ref("agents").on(
+
+    "value",
+
+    snap => {
+
+        allAgentsData =
+            snap.val() || {};
+
+        renderAgents(allAgentsData);
+
+    },
+
+    error => {
+
+        console.error(error);
+
+        document.getElementById("agentList")
+            .innerHTML =
+            `<tr>
+                <td colspan="8">
+                    Data Load Error
+                </td>
+            </tr>`;
+
+    }
+
 );
 
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function doSearch(){
+
+    const type =
+        document.getElementById("searchType")
+        .value;
+
+    const id =
+        document.getElementById("searchId")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const phone =
+        document.getElementById("searchPhone")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const result = {};
+
+
+    for(let key in allAgentsData){
+
+        const a =
+            allAgentsData[key];
+
+
+        /* ROLE */
+
+        if(
+            type !== "all" &&
+            String(a.role || "").toLowerCase()
+            !== type.toLowerCase()
+        ){
+
+            continue;
+
+        }
+
+
+        /* CURRENT PAGE ROLE */
+
+        if(
+            currentRole !== "index" &&
+            normalizeRole(a.role)
+            !== currentRole
+        ){
+
+            continue;
+
+        }
+
+
+        /* ID */
+
+        if(
+            id &&
+            !String(a.id || "")
+            .toLowerCase()
+            .includes(id)
+        ){
+
+            continue;
+
+        }
+
+
+        /* PHONE */
+
+        const p1 =
+            String(a.phone || "")
+            .toLowerCase();
+
+        const p2 =
+            String(a.phone2 || "")
+            .toLowerCase();
+
+
+        if(
+            phone &&
+            !p1.includes(phone) &&
+            !p2.includes(phone)
+        ){
+
+            continue;
+
+        }
+
+
+        result[key] = a;
+
+    }
+
+
+    renderAgents(result);
+
+    closeSearch();
+
+
+    if(
+        Object.keys(result).length === 0
+    ){
+
+        showToast("কোন Agent পাওয়া যায়নি");
+
+    }else{
+
+        showToast(
+            Object.keys(result).length +
+            " জন Agent পাওয়া গেছে"
+        );
+
+    }
+
 }
 
 
-/* EXTERNAL */
+/* =====================================================
+   ENTER KEY SEARCH
+===================================================== */
 
-function openExternal(url){
+["searchId","searchPhone"].forEach(id => {
 
-window.open(
-url,
-'_blank'
+    document.getElementById(id)
+    .addEventListener("keydown",function(e){
+
+        if(e.key === "Enter"){
+
+            doSearch();
+
+        }
+
+    });
+
+});
+
+
+/* =====================================================
+   SUPPORT LOAD
+===================================================== */
+
+db.ref("support").on(
+
+    "value",
+
+    snap => {
+
+        let html = "";
+
+        snap.forEach(child => {
+
+            const s =
+                child.val();
+
+            html += `
+
+            <div class="support-item">
+
+                <div class="icon">
+                    🎧
+                </div>
+
+                <div class="info">
+
+                    <b>
+                        ${safe(s.name)}
+                    </b>
+
+                    <br>
+
+                    <small>
+                        ${safe(s.phone)}
+                    </small>
+
+                </div>
+
+                <a
+                    href="${getWaLink(s.phone)}"
+                    class="btn-msg"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Message
+                </a>
+
+            </div>`;
+
+        });
+
+
+        document.getElementById("supportList")
+            .innerHTML =
+            html || "কোন Support নেই";
+
+    }
+
 );
-
-}
-
-
-/* VIEW */
-
-function viewUser(n,r,id,p){
-
-alert(
-
-'Name: '+n+
-'\nRole: '+r+
-'\nID: '+id+
-'\nPhone: '+p
-
-);
-
-}
-
-
-/* REPORT */
-
-function reportUser(n){
-
-document
-.getElementById('reportName')
-.value=n;
-
-document
-.getElementById('reportText')
-.value='';
-
-document
-.getElementById('modalTitle')
-.textContent='Report: '+n;
-
-document
-.getElementById('modal')
-.classList.add('show');
-
-}
-
-
-function closeModal(){
-
-document
-.getElementById('modal')
-.classList.remove('show');
-
-}
-
-
-function sendReport(){
-
-alert(
-'Report submitted (demo).'
-);
-
-closeModal();
-
-}
-
-
-/* SUPPORT */
-
-function support(){
-
-alert(
-'Support: WhatsApp / Messenger support can be connected here.'
-);
-
-}
-
-
-/* START */
-
-showTab('home');
 
 </script>
 
