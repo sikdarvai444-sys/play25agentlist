@@ -62,11 +62,10 @@ label{color:#ffeb3b;font-size:13px;margin-top:5px;display:block}
 <div id="agent" class="tab-content">
   <h3 id="formTitle">➕ Agent Add করুন</h3>
   <input type="hidden" id="editKey">
-  <input id="name" placeholder="Agent Name *">
-  <input id="id" placeholder="Agent ID/Number * ex: 1, 2, 3">
 
-  <label>Role Select করুন *</label>
-  <select id="role" onchange="loadParentDropdown()">
+  <!-- 1. উপরের Role: যাকে এড করতেছি তার -->
+  <label>Agent Role Select করুন *</label>
+  <select id="role" onchange="handleRoleChange()">
     <option value="">-- Role Select করুন --</option>
     <option value="Site Owner">Site Owner</option>
     <option value="Admin">Admin</option>
@@ -75,14 +74,23 @@ label{color:#ffeb3b;font-size:13px;margin-top:5px;display:block}
     <option value="Master">Master</option>
   </select>
 
+  <input id="name" placeholder="Agent Name *">
+  <input id="id" placeholder="Agent ID/Number * ex: 1, 2, 3">
+
+  <label>WhatsApp Number *</label>
+  <input id="phone" placeholder="WhatsApp Number 6011... *" type="tel" required>
+
+  <!-- 2. নিচের Role + Parent: তার আন্ডারে আছে তার -->
   <div id="parentBox" class="parent-group">
-    <label>কার আন্ডারে *</label>
+    <label>Parent Role *</label>
+    <select id="parentRole" disabled></select>
+
+    <label>কার আন্ডারে Select করুন *</label>
     <select id="parent" onchange="setParentId()"></select>
   </div>
 
   <input id="parentId" placeholder="Parent এর ID Number" readonly>
 
-  <input id="phone" placeholder="WhatsApp Number 6011... *">
   <input id="fb" placeholder="Facebook Profile Link">
 
   <button id="saveBtn" onclick="save()">Save Agent</button>
@@ -112,7 +120,7 @@ const firebaseConfig = {apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",authDo
 firebase.initializeApp(firebaseConfig);const db = firebase.database();
 let editingKey = null;let allAgents = {};
 
-// Hierarchy: উপরের Role এর আন্ডারে নিচের Role থাকবে
+// Hierarchy: নিচের Role এর উপরে কে থাকবে
 const hierarchy = {
   "Admin": "Site Owner",
   "Sub Admin": "Admin",
@@ -129,11 +137,11 @@ function getWaLink(num){
 
 function openTab(tabName){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add('active');document.getElementById(tabName).classList.add('active')}
 
-// PARENT DROPDOWN + ID AUTO SET
-function loadParentDropdown(){
+// ROLE CHANGE হলে Parent Role auto set হবে
+function handleRoleChange(){
   let selectedRole = document.getElementById('role').value;
   let parentBox = document.getElementById('parentBox');
-  let parentSelect = document.getElementById('parent');
+  let parentRoleSelect = document.getElementById('parentRole');
 
   if(selectedRole == '' || selectedRole == 'Site Owner'){
     parentBox.style.display = 'none';
@@ -141,13 +149,25 @@ function loadParentDropdown(){
     return;
   }
   parentBox.style.display = 'block';
-  let requiredParentRole = hierarchy[selectedRole];
 
-  let h = `<option value="">-- ${requiredParentRole} Select করুন --</option>`;
+  let requiredParentRole = hierarchy[selectedRole];
+  parentRoleSelect.innerHTML = `<option value="${requiredParentRole}">${requiredParentRole}</option>`;
+  parentRoleSelect.value = requiredParentRole;
+
+  loadParentDropdown();
+}
+
+// PARENT DROPDOWN + ID + SERIAL AUTO SET
+function loadParentDropdown(){
+  let parentRole = document.getElementById('parentRole').value;
+  let parentSelect = document.getElementById('parent');
+
+  let h = `<option value="">-- ${parentRole} Select করুন --</option>`;
   for(let key in allAgents){
     let a = allAgents[key];
-    if(a.role == requiredParentRole){
-      h+=`<option value="${a.name}" data-id="${a.id}" data-key="${key}">${a.name} - ID:${a.id}</option>`
+    if(a.role == parentRole){
+      // এখানে Serial সহ দেখাবে
+      h+=`<option value="${a.name}" data-id="${a.id}" data-serial="${a.serial || ''}" data-key="${key}">${a.name} - ID:${a.id} - SL:${a.serial || '-'}</option>`
     }
   }
   parentSelect.innerHTML = h;
@@ -168,6 +188,7 @@ function save(){
     role:document.getElementById('role').value,
     parent:document.getElementById('parent').value,
     parentId:document.getElementById('parentId').value,
+    parentRole:document.getElementById('parentRole').value,
     phone:document.getElementById('phone').value.trim(),
     fb:document.getElementById('fb').value.trim()
   };
@@ -185,11 +206,19 @@ function edit(key, data){
   editingKey = key;
   document.getElementById('formTitle').innerText = '✏️ Agent Edit করুন';
   document.getElementById('saveBtn').innerText = 'Update Agent';
-  document.getElementById('name').value = data.name;
-  document.getElementById('id').value = data.id;
+
   document.getElementById('role').value = data.role;
-  loadParentDropdown();
-  setTimeout(()=>{document.getElementById('parent').value = data.parent || '';document.getElementById('parentId').value = data.parentId || '';},100)
+  handleRoleChange(); // Parent box show করবে
+
+  setTimeout(()=>{
+    document.getElementById('name').value = data.name;
+    document.getElementById('id').value = data.id;
+    loadParentDropdown();
+    setTimeout(()=>{
+      document.getElementById('parent').value = data.parent || '';
+      document.getElementById('parentId').value = data.parentId || '';
+    },100)
+  },100)
   document.getElementById('phone').value = data.phone;
   document.getElementById('fb').value = data.fb || '';
   window.scrollTo(0,0);
@@ -204,7 +233,6 @@ function resetForm(){
 
 db.ref('agents').on('value', snap => {
   allAgents = snap.val() || {};
-  loadParentDropdown();
   const waSvg = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.271.296-1.043 1.02-1.043 2.488 0 1.467 1.068 2.885 1.217 3.084.149.199 2.105 3.213 5.1 4.506.714.309 1.27.492 1.705.63.716.227 1.368.195 1.882.118.574-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.273-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-8.56c-.148-.266-.54-.437-.918-.539-.378-.103-2.242-1.105-2.59-1.231-.348-.126-.602-.189-.852.189-.25.378-.962 1.231-1.18 1.482-.218.25-.436.28-.813.094-.378-.187-1.594-.587-3.037-1.875-1.125-1.004-1.885-2.243-2.103-2.62-.218-.377-.026-.58.166-.77.163-.162.357-.422.54-.634.184-.214.245-.38.367-.634.121-.254.06-.475-.03-.669-.09-.193-.813-1.959-1.114-2.682-.292-.71-.588-.613-.813-.625-.214-.012-.459-.012-.708-.012-.247 0-.65.092-.99.441-.34.349-1.295 1.265-1.295 3.081s1.327 3.58 1.512 3.828c.184.248 2.615 3.992 6.338 5.596.886.383 1.578.613 2.116.784.889.283 1.698.243 2.336.147.714-.106 2.194-.897 2.502-1.764.307-.868.307-1.612.215-1.768"/></svg>`;
 
   let h='<tr><th>SL</th><th>Name</th><th>Role</th><th>ID</th><th>App</th><th>Parent</th><th>Phone</th><th>Action</th></tr>';
