@@ -31,10 +31,10 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 .id-box{background:#ffc107;color:#000;padding:1px 4px;border-radius:4px;font-weight:bold;font-size:8px;display:inline-block}
 .stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
 
-/* WHATSAPP BUTTON - এক লাইন */
-.btn-wa-wrap{display:inline-flex;align-items:center;gap:3px;margin:1px 0;text-decoration:none;background:#25D366;padding:1px 5px;border-radius:12px}
-.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1}
-.btn-wa{font-size:7px;color:#fff;line-height:1}
+/* WHATSAPP BUTTON - 2 লাইন */
+.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:1px;margin:1px 0;text-decoration:none}
+.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap} /* ছোট + এক লাইন */
+.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1} /* আরো ছোট */
 
 .btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
 .btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
@@ -215,18 +215,18 @@ function renderAgents(data){
       let appLink = `<span class="btn-none">--</span>`;
       let fbLink = `<span class="btn-none">--</span>`;
 
-      // PHONE DESIGN - এক লাইন
+      // PHONE DESIGN - 2 লাইন
       let phoneBtns = '';
       if(a.phone){
         phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap">
-                        <span class="btn-wa-num">${a.phone}</span>
-                        <span class="btn-wa">Whatsapp</span>
+                        <div class="btn-wa-num">${a.phone}</div>
+                        <div class="btn-wa">Whatsapp</div>
                       </a>`;
       }
       if(a.phone2){
         phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap">
-                        <span class="btn-wa-num">${a.phone2}</span>
-                        <span class="btn-wa">Whatsapp</span>
+                        <div class="btn-wa-num">${a.phone2}</div>
+                        <div class="btn-wa">Whatsapp</div>
                       </a>`;
       }
 
