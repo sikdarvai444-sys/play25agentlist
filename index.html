@@ -31,17 +31,13 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 .id-box{background:#ffc107;color:#000;padding:1px 4px;border-radius:4px;font-weight:bold;font-size:8px;display:inline-block}
 .stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
 
-/* NEW WHATSAPP BUTTON - নাম্বার উপরে, নিচে Whatsapp পিল */
-.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;margin:2px 0}
-.btn-wa-num{font-size:9px;font-weight:bold;color:#fff;line-height:1}
-.btn-wa{background:#25D366;color:#fff;padding:1px 6px;border-radius:12px;text-decoration:none;font-size:7px;display:inline-block;line-height:1.2}
+/* WHATSAPP BUTTON - এক লাইন */
+.btn-wa-wrap{display:inline-flex;align-items:center;gap:3px;margin:1px 0;text-decoration:none;background:#25D366;padding:1px 5px;border-radius:12px}
+.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1}
+.btn-wa{font-size:7px;color:#fff;line-height:1}
 
 .btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
 .btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
-
-/* ORGINAL WA ICON */
-.wa-icon{width:20px;height:20px;display:inline-block;vertical-align:middle;background:#25D366;border-radius:50%;padding:3px}
-.wa-icon svg{width:100%;height:100%;fill:#fff}
 .btn-none{color:#888;font-size:12px}
 
 /* কলাম width */
@@ -161,14 +157,14 @@ function closeSupport(){document.getElementById('supportPopup').style.display='n
 function closeView(){document.getElementById('viewPopup').style.display='none'}
 function closeReport(){document.getElementById('reportPopup').style.display='none'}
 
-// নাম্বার থেকে WA লিংক বানোর ফাংশন
+// নাম্বার থেকে WA লিংক
 function getWaLink(num){
     if(!num) return '';
     let clean = num.replace(/[^0-9]/g,'');
     return `https://wa.me/${clean}`;
 }
 
-// Hierarchy বের করার ফাংশন
+// Hierarchy
 function getHierarchy(agent) {
   let tags = '';
   if(agent.parent) tags += `<span class="tag">Direct: ${agent.parent}</span>`;
@@ -212,25 +208,25 @@ db.ref('agents').on('value', snap => {
 
 function renderAgents(data){
   let html = '';
-  const waSvg = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.271.296-1.043 1.02-1.043 2.488 0 1.467 1.068 2.885 1.217 3.084.149.199 2.105 3.213 5.1 4.506.714.309 1.27.492 1.705.63.716.227 1.368.195 1.882.118.574-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.273-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-8.56c-.148-.266-.54-.437-.918-.539-.378-.103-2.242-1.105-2.59-1.231-.348-.126-.602-.189-.852.189-.25.378-.962 1.231-1.18 1.482-.218.25-.436.28-.813.094-.378-.187-1.594-.587-3.037-1.875-1.125-1.004-1.885-2.243-2.103-2.62-.218-.377-.026-.58.166-.77.163-.162.357-.422.54-.634.184-.214.245-.38.367-.634.121-.254.06-.475-.03-.669-.09-.193-.813-1.959-1.114-2.682-.292-.71-.588-.613-.813-.625-.214-.012-.459-.012-.708-.012-.247 0-.65.092-.99.441-.34.349-1.295 1.265-1.295 3.081s1.327 3.58 1.512 3.828c.184.248 2.615 3.992 6.338 5.596.886.383 1.578.613 2.116.784.889.283 1.698.243 2.336.147.714-.106 2.194-.897 2.502-1.764.307-.868.307-1.612.215-1.768"/></svg>`;
-
   for(let key in data){
     let a = data[key];
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
-      let appLink = a.phone? `<a href="${getWaLink(a.phone)}" target="_blank" class="wa-icon">${waSvg}</a>` : `<span class="btn-none">-</span>`;
 
-      // NEW PHONE DESIGN
+      let appLink = `<span class="btn-none">--</span>`;
+      let fbLink = `<span class="btn-none">--</span>`;
+
+      // PHONE DESIGN - এক লাইন
       let phoneBtns = '';
       if(a.phone){
         phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap">
-                        <div class="btn-wa-num">${a.phone}</div>
-                        <div class="btn-wa">Whatsapp</div>
+                        <span class="btn-wa-num">${a.phone}</span>
+                        <span class="btn-wa">Whatsapp</span>
                       </a>`;
       }
       if(a.phone2){
         phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap">
-                        <div class="btn-wa-num">${a.phone2}</div>
-                        <div class="btn-wa">Whatsapp</div>
+                        <span class="btn-wa-num">${a.phone2}</span>
+                        <span class="btn-wa">Whatsapp</span>
                       </a>`;
       }
 
@@ -239,8 +235,8 @@ function renderAgents(data){
         <td><div class="id-box">ID ${a.id}</div></td>
         <td class="stars">★★★</td>
         <td>${appLink}</td>
-        <td><span class="btn-none">-</span></td>
-        <td>${phoneBtns || '-'}</td>
+        <td>${fbLink}</td>
+        <td>${phoneBtns || '--'}</td>
         <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
         <td><a onclick="reportAgent('${key}')" class="btn-report">Report</a></td>
       </tr>`
