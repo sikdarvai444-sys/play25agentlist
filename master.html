@@ -28,12 +28,17 @@ td{padding:5px 1px;text-align:center;border-bottom:1px solid #1976d2;vertical-al
 .name-col{text-align:left;white-space:nowrap;padding-left:2px}
 .name-col b{font-size:10px;font-weight:500}
 .name-col small{font-size:8px;color:#aaa;display:block}
-.id-box{background:#cddc39;color:#000;padding:1px 3px;border-radius:3px;font-weight:bold;font-size:8px;display:inline-block}
+.id-box{background:#ffc107;color:#000;padding:1px 4px;border-radius:4px;font-weight:bold;font-size:8px;display:inline-block}
 .stars{color:#ffc107;font-size:9px;letter-spacing:-1px}
-.btn-wa{background:#25D366;color:#fff;padding:1px 3px;border-radius:3px;text-decoration:none;font-size:8px;display:block;margin:1px 0}
-.btn-wa small{font-size:7px;display:block;line-height:1}
-.btn-report{background:#f44336;color:#fff;padding:2px 4px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
+
+/* WHATSAPP BUTTON - 2 লাইন */
+.btn-wa-wrap{display:flex;flex-direction:column;align-items:center;gap:1px;margin:1px 0;text-decoration:none}
+.btn-wa-num{font-size:8px;font-weight:bold;color:#fff;line-height:1;white-space:nowrap} /* ছোট + এক লাইন */
+.btn-wa{background:#25D366;color:#fff;padding:1px 5px;border-radius:10px;text-decoration:none;font-size:6px;display:inline-block;line-height:1} /* আরো ছোট */
+
+.btn-report{background:#f44336;color:#fff;padding:2px 6px;border-radius:4px;text-decoration:none;font-size:8px;cursor:pointer}
 .btn-view{color:#fff;padding:2px 3px;border-radius:4px;text-decoration:none;font-size:12px;cursor:pointer}
+.btn-none{color:#888;font-size:12px}
 
 /* কলাম width */
 th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} th:nth-child(4){width:7%} th:nth-child(5){width:8%} th:nth-child(6){width:22%} th:nth-child(7){width:7%} th:nth-child(8){width:12%}
@@ -107,7 +112,7 @@ th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} t
 <!-- VIEW DETAILS POPUP -->
 <div class="popup-overlay" id="viewPopup">
   <div class="popup"><span class="close-btn" onclick="closeView()">&times;</span>
-    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#ffc107;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#000">👤</div></div>
+    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div></div>
     <label>Name</label><div class="info-box" id="viewName"></div>
     <label>Type</label><div class="info-box" id="viewRole"></div>
     <label>Number</label><div class="info-box" id="viewPhone"></div>
@@ -122,7 +127,7 @@ th:nth-child(1){width:20%} th:nth-child(2){width:8%} th:nth-child(3){width:9%} t
 <!-- REPORT INFO POPUP -->
 <div class="popup-overlay" id="reportPopup">
   <div class="popup"><span class="close-btn" onclick="closeReport()">&times;</span>
-    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#ffc107;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#000">👤</div></div>
+    <div style="text-align:center;margin-bottom:10px"><div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div></div>
     <div class="report-header">Report This Person</div>
     <label>Name</label><div class="info-box" id="reportName"></div>
     <label>Type</label><div class="info-box" id="reportRole"></div>
@@ -152,7 +157,14 @@ function closeSupport(){document.getElementById('supportPopup').style.display='n
 function closeView(){document.getElementById('viewPopup').style.display='none'}
 function closeReport(){document.getElementById('reportPopup').style.display='none'}
 
-// Hierarchy বের করার ফাংশন - উপরের উপর পর্যন্ত
+// নাম্বার থেকে WA লিংক
+function getWaLink(num){
+    if(!num) return '';
+    let clean = num.replace(/[^0-9]/g,'');
+    return `https://wa.me/${clean}`;
+}
+
+// Hierarchy
 function getHierarchy(agent) {
   let tags = '';
   if(agent.parent) tags += `<span class="tag">Direct: ${agent.parent}</span>`;
@@ -171,7 +183,7 @@ function viewAgent(key){
   document.getElementById('viewPhone').innerText = a.phone || 'N/A';
   document.getElementById('viewId').innerText = a.id || 'N/A';
   document.getElementById('viewSerial').innerText = a.serial || '-';
-  document.getElementById('viewWa').href = a.phone? `https://wa.me/${a.phone}` : '#';
+  document.getElementById('viewWa').href = getWaLink(a.phone);
   document.getElementById('viewHierarchy').innerHTML = getHierarchy(a);
   document.getElementById('viewPopup').style.display='flex';
 }
@@ -184,7 +196,7 @@ function reportAgent(key){
   document.getElementById('reportPhone').innerText = a.phone || 'N/A';
   document.getElementById('reportId').innerText = a.id || 'N/A';
   document.getElementById('reportHierarchy').innerHTML = getHierarchy(a);
-  document.getElementById('reportWa').href = a.phone? `https://wa.me/${a.phone}` : '#';
+  document.getElementById('reportWa').href = getWaLink(a.phone);
   document.getElementById('reportPopup').style.display='flex';
 }
 
@@ -199,13 +211,32 @@ function renderAgents(data){
   for(let key in data){
     let a = data[key];
     if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+
+      let appLink = `<span class="btn-none">--</span>`;
+      let fbLink = `<span class="btn-none">--</span>`;
+
+      // PHONE DESIGN - 2 লাইন
+      let phoneBtns = '';
+      if(a.phone){
+        phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap">
+                        <div class="btn-wa-num">${a.phone}</div>
+                        <div class="btn-wa">Whatsapp</div>
+                      </a>`;
+      }
+      if(a.phone2){
+        phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap">
+                        <div class="btn-wa-num">${a.phone2}</div>
+                        <div class="btn-wa">Whatsapp</div>
+                      </a>`;
+      }
+
       html += `<tr>
         <td class="name-col"><div class="avatar"></div> <b>${a.name}</b><small>${a.role}</small></td>
         <td><div class="id-box">ID ${a.id}</div></td>
         <td class="stars">★★★</td>
-        <td><a href="${a.app||'#'}" target="_blank">${a.app? '📱' : '--'}</a></td>
-        <td><a href="${a.fb||'#'}" target="_blank">${a.fb? 'f' : '--'}</a></td>
-        <td>${a.phone? `<a href="https://wa.me/${a.phone}" class="btn-wa">${a.phone}<small>Whatsapp</small></a>` : ''}${a.phone2? `<a href="https://wa.me/${a.phone2}" class="btn-wa">${a.phone2}<small>Whatsapp</small></a>` : ''}</td>
+        <td>${appLink}</td>
+        <td>${fbLink}</td>
+        <td>${phoneBtns || '--'}</td>
         <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
         <td><a onclick="reportAgent('${key}')" class="btn-report">Report</a></td>
       </tr>`
@@ -237,7 +268,7 @@ db.ref('support').on('value', snap => {
   let html = '';
   snap.forEach(child => {
     let s = child.val();
-    html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="https://wa.me/${s.phone}" class="btn-msg" target="_blank">Message</a></div>`
+    html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="${getWaLink(s.phone)}" class="btn-msg" target="_blank">Message</a></div>`
   })
   document.getElementById('supportList').innerHTML = html || 'কোন Support নেই';
 })
