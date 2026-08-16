@@ -3,380 +3,1008 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PLAY25 Agent List</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0b3d91;color:#fff}
-.header{display:flex;justify-content:space-between;align-items:center;padding:8px 8px}
-.search-icon,.grid-icon{font-size:20px;color:#ffc107;cursor:pointer;padding:5px}
 
-.logo{flex:1;text-align:center}
-.logo img{max-width:180px;height:auto;display:block;margin:0 auto}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-.menu{
-    background:#1153c7;
-    margin:8px;
-    border-radius:8px;
-    padding:10px 8px;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#06477f;
+    color:#fff;
+    font-family:"Noto Sans Bengali","Poppins",sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(100%,720px);
+    margin:auto;
+    padding:0 24px;
+}
+
+
+/* ================= HEADER ================= */
+
+.header{
+    background:#06477f;
+    padding:28px 24px 24px;
+    text-align:center;
+}
+
+.header-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.icon{
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#ffe400;
+}
+
+.search{
+    font-size:38px;
+    line-height:1;
+}
+
+.logo{
+    width:235px;
+    max-width:58vw;
+    height:auto;
+    object-fit:contain;
+}
+
+.grid-icon{
+    display:grid;
+    grid-template-columns:repeat(2,13px);
+    gap:5px;
+}
+
+.grid-icon span{
+    width:13px;
+    height:13px;
+    border-radius:4px;
+    background:#ffe400;
+}
+
+.tagline{
+    color:#fff;
+    letter-spacing:8px;
+    font-size:20px;
+    font-weight:600;
+    margin-top:2px;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.nav-card,
+.section{
+    background:#0969b8;
+    border-radius:15px;
+}
+
+.nav-card{
+    padding:22px 18px;
+    margin-bottom:20px;
+}
+
+.nav{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:12px
+    gap:19px 18px;
 }
 
-.menu a{
-    color:#fff;
-    text-decoration:none;
-    font-size:12px;
+.nav a{
+    font-size:18px;
+    white-space:nowrap;
+}
+
+.nav a:first-child{
+    color:#ffe400;
+}
+
+
+/* ================= COMMON SECTION ================= */
+
+.section{
+    margin-bottom:20px;
+    padding:28px 10px;
+}
+
+.section-title{
+    text-align:center;
+    color:#ffe400;
+    font-size:31px;
     font-weight:500;
+    margin-bottom:28px;
+}
+
+
+/* ================= LINK STRIP ================= */
+
+.link-strip{
     display:flex;
     align-items:center;
-    gap:4px
-}
-
-.menu a.active{color:#ffeb3b}
-
-.box{
-    background:#1153c7;
-    margin:8px;
-    border-radius:8px;
-    padding:12px
-}
-
-h2,h3{
-    text-align:center;
-    color:#ffeb3b;
-    margin-bottom:10px;
-    font-size:15px;
-    font-weight:bold;
-}
-
-/* NOTICE BOX */
-.notice-box{
-    background:#0b3d91;
-    padding:10px;
-    border-radius:6px;
-    text-align:center;
-    font-size:12px;
-    margin-bottom:10px;
-}
-
-/* BUTTON GROUP */
-.btn-group{display:flex;gap:8px;margin-bottom:10px}
-.btn{
-    flex:1;
-    padding:8px;
-    border-radius:6px;
-    text-decoration:none;
-    text-align:center;
-    font-size:11px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:5px
-}
-.btn-fb{background:#1877f2;color:#fff}
-.btn-telegram{background:#0088cc;color:#fff}
-.btn-wa{background:#25D366;color:#fff}
-
-/* ADMIN CARD */
-.admin-card{
-    background:#0b3d91;
-    padding:10px;
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    gap:10px
-}
-.admin-avatar{
-    width:35px;height:35px;border-radius:50%;background:#555;display:flex;align-items:center;justify-content:center;font-size:18px
-}
-.admin-info{flex:1}
-.admin-info b{display:block;font-size:12px}
-.admin-info small{display:block;font-size:9px;color:#aaa}
-.admin-id{
-    background:#ffc107;color:#000;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:bold
-}
-.admin-phone{font-size:10px;margin:2px 0}
-.admin-msg{
-    background:#25D366;color:#fff;padding:4px 10px;border-radius:5px;text-decoration:none;font-size:10px;font-weight:bold
-}
-
-/* PROXY LINK TABLE */
-.proxy-table{width:100%;font-size:11px}
-.proxy-table td{padding:6px 4px;border-bottom:1px solid #1976d2}
-.proxy-table .status{color:#4caf50;font-size:10px}
-.proxy-table .visit{
-    background:#4caf50;color:#fff;padding:3px 8px;border-radius:4px;text-decoration:none;font-size:9px;font-weight:bold
-}
-
-/* ABOUT SECTION */
-.about-title{color:#ffeb3b;font-size:13px;font-weight:bold;margin:15px 0 8px 0;text-align:center}
-.about-text{
-    background:#0b3d91;
-    padding:10px;
-    border-radius:6px;
-    font-size:11px;
-    line-height:1.6;
-    text-align:justify;
-    margin-bottom:10px
-}
-
-.support-btn{
-    position:fixed;
-    bottom:10px;
-    left:10px;
-    background:#4caf50;
-    padding:6px 12px;
-    border-radius:20px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    z-index:99;
-    border:none;
-    cursor:pointer;
-    font-size:11px
-}
-
-/* SUPPORT POPUP */
-.popup-overlay{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.8);
-    z-index:999;
-    justify-content:center;
-    align-items:center
-}
-.popup{
-    background:#1153c7;
-    width:90%;
-    max-width:400px;
-    max-height:92vh;
-    overflow-y:auto;
-    border-radius:10px;
-    padding:15px;
-    position:relative
-}
-.close-btn{
-    position:absolute;
-    top:10px;
-    right:15px;
-    font-size:24px;
-    color:#fff;
-    cursor:pointer
-}
-.support-item{
-    display:flex;
-    align-items:center;
+    justify-content:space-between;
     gap:10px;
-    background:#0b3d91;
-    padding:8px;
+
+    padding:12px 18px;
+
+    background:#0969b8;
+    border-radius:13px;
+
+    margin-bottom:20px;
+    min-height:68px;
+}
+
+.link-strip .label{
+    color:#ffe400;
+    font-size:19px;
+    flex:1;
+}
+
+.action{
+    background:#197fe8;
     border-radius:8px;
-    margin-bottom:8px
+    padding:8px 14px;
+    font-size:18px;
+    white-space:nowrap;
 }
-.support-item .icon{
-    width:30px;
-    height:30px;
-    background:#ffc107;
-    border-radius:50%;
-    display:flex;
+
+
+/* ================= NOTICE ================= */
+
+.notice{
+    background:#075087;
+    border-radius:15px;
+    padding:22px 28px;
+    text-align:center;
+    font-size:21px;
+    line-height:1.7;
+}
+
+
+/* ================= ADMIN ================= */
+
+.admin-card{
+    background:#075087;
+    border-radius:15px;
+    padding:18px 12px;
+
+    display:grid;
+    grid-template-columns:1fr 62px 1.1fr auto;
+
     align-items:center;
-    justify-content:center;
-    color:#000;
-    font-weight:bold
+    gap:12px;
 }
-.support-item .info{flex:1}
-.support-item .btn-msg{
-    background:#4caf50;
+
+.admin-name{
+    font-size:17px;
+}
+
+.admin-role{
+    font-size:13px;
+    opacity:.65;
+}
+
+.id-box{
+    background:#8fc900;
     color:#fff;
-    padding:4px 8px;
-    border-radius:5px;
-    text-decoration:none;
-    font-size:11px
+
+    border-radius:15px;
+    padding:9px 10px;
+
+    text-align:center;
+    font-size:18px;
 }
+
+.whatsapp{
+    display:inline-block;
+
+    background:#4ebd46;
+
+    border-radius:12px;
+
+    padding:2px 9px;
+
+    font-size:13px;
+
+    margin-top:3px;
+}
+
+.message{
+    background:#4ebd46;
+
+    padding:7px 12px;
+
+    border-radius:9px;
+
+    font-size:16px;
+}
+
+
+/* ================= LINKS TABLE ================= */
+
+.table-wrap{
+    overflow-x:auto;
+    background:#075087;
+    border-radius:15px;
+}
+
+.links-table{
+    width:100%;
+    min-width:590px;
+    border-collapse:collapse;
+}
+
+.links-table td{
+    padding:12px;
+
+    border-bottom:1px solid rgba(255,255,255,.12);
+
+    font-family:"Poppins","Noto Sans Bengali",sans-serif;
+
+    font-size:17px;
+}
+
+.links-table tr:last-child td{
+    border-bottom:0;
+}
+
+.status{
+    color:#45ff50;
+    white-space:nowrap;
+}
+
+.status-dot{
+    display:inline-block;
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    background:#45ff50;
+
+    margin-right:6px;
+
+    vertical-align:-2px;
+}
+
+.visit{
+    display:inline-block;
+
+    background:#8fc900;
+
+    padding:5px 18px;
+
+    border-radius:9px;
+
+    font-family:"Noto Sans Bengali",sans-serif;
+}
+
+
+/* ================= AGENT LIST ================= */
+
+.agent-text{
+    background:#075087;
+
+    border-radius:15px;
+
+    padding:22px 26px;
+
+    font-size:20px;
+
+    line-height:1.8;
+}
+
+.agent-text h3{
+    text-align:center;
+
+    color:#ffe400;
+
+    font-size:24px;
+
+    margin-bottom:12px;
+}
+
+.agent-text + .agent-text{
+    margin-top:16px;
+}
+
+
+/* ================= UPDATE ================= */
+
+.update-box{
+    height:120px;
+
+    background:#075087;
+
+    border-radius:15px;
+}
+
+
+/* ================= SUPPORT ================= */
+
+.support{
+    position:fixed;
+
+    left:32px;
+    bottom:28px;
+
+    z-index:99;
+
+    background:#8fc900;
+
+    color:#fff;
+
+    border-radius:14px;
+
+    padding:12px 18px;
+
+    font-weight:700;
+
+    font-family:"Poppins","Noto Sans Bengali",sans-serif;
+
+    font-size:18px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.support span{
+    font-size:23px;
+    margin-right:7px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .header{
+        padding-top:24px;
+    }
+
+    .logo{
+        width:230px;
+    }
+
+    .tagline{
+        font-size:17px;
+        letter-spacing:5px;
+    }
+
+    .nav{
+        gap:14px 13px;
+    }
+
+    .nav a{
+        font-size:17px;
+    }
+
+    .section{
+        padding:24px 10px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .notice{
+        font-size:19px;
+        padding:20px 22px;
+    }
+
+    .link-strip .label{
+        font-size:17px;
+    }
+
+    .action{
+        font-size:16px;
+    }
+
+    .admin-card{
+        grid-template-columns:1fr 56px;
+    }
+
+    .admin-card > :nth-child(3){
+        grid-column:1;
+        grid-row:2;
+    }
+
+    .admin-card > :nth-child(4){
+        grid-column:2;
+        grid-row:2;
+    }
+
+    .agent-text{
+        font-size:18px;
+    }
+
+    .support{
+        left:32px;
+        bottom:26px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<div class="header">
-    <div class="search-icon">🔍</div>
-    <div class="logo">
-        <img src="logo.png" alt="PLAY25 Agent List">
-    </div>
-    <div class="grid-icon">⊞</div>
-</div>
 
-<div class="menu">
-    <a href="index.html" class="active">🏠 Home</a>
-    <a href="siteowner.html">👤 Site Owner</a>
-    <a href="admin.html">👤 Admin</a>
-    <a href="subadmin.html">👤 Sub Admin</a>
-    <a href="super.html">👤 Super</a>
-    <a href="master.html">👤 Master</a>
-    <a href="#">🎯 Lottery</a>
-</div>
+<!-- ================= HEADER ================= -->
 
-<!-- NOTICE -->
-<div class="box">
-    <div class="notice-box">
-        লিংকটির বাহিরে কেউ লেনদেন করবেন না...
-    </div>
-    <div class="btn-group">
-        <a href="#" class="btn btn-fb">📘 আমাদের অফিসিয়াল ফেসবুক গ্রুপ</a>
-        <a href="#" class="btn btn-telegram">✈️ টেলিগ্রাম চ্যানেল</a>
-    </div>
-    <div class="btn-group">
-        <a href="#" class="btn btn-fb">👤 ফেসবুক অফিসিয়াল পেজ</a>
-        <a href="#" class="btn btn-wa">💬 হোয়াটসঅ্যাপ চ্যানেল</a>
-    </div>
-</div>
+<header class="header">
 
-<!-- ADMIN CARD -->
-<div class="box">
-    <h2>Admin</h2>
-    <div class="admin-card" id="adminCard">
-        <div class="admin-avatar">👤</div>
-        <div class="admin-info">
-            <b id="adminName">Loading...</b>
-            <small id="adminRole">Site Owner</small>
-            <div class="admin-phone" id="adminPhone"></div>
+    <div class="header-top">
+
+        <div class="icon search">
+            ⌕
         </div>
+
+
+        <!-- আপনার logo.png -->
+        <img
+            src="logo.png"
+            class="logo"
+            alt="PLAY25 Agent List"
+        >
+
+
+        <div class="icon grid-icon">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+    <div class="tagline">
+        Agent List
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="nav-card">
+
+    <div class="nav">
+
+        <a href="#home">
+            ⌂ Home
+        </a>
+
+        <a href="#site-owner">
+            ♟ Site Owner
+        </a>
+
+        <a href="#admin">
+            ♟ Admin
+        </a>
+
+        <a href="#sub-admin">
+            ♟ Sub Admin
+        </a>
+
+        <a href="#super">
+            ♟ Super
+        </a>
+
+        <a href="#master">
+            ♟ Master
+        </a>
+
+        <a href="#lottery">
+            ◎ Lottery
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HOME ================= -->
+
+<section
+    class="link-strip"
+    id="home"
+>
+
+    <div class="label">
+        কেউ লেনদেন করবেন না...
+    </div>
+
+</section>
+
+
+
+<!-- FACEBOOK GROUP -->
+
+<section class="link-strip">
+
+    <div class="label">
+        আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ
+    </div>
+
+    <a
+        class="action"
+        href="#"
+        target="_blank"
+    >
+        f এখানে ক্লিক করুন
+    </a>
+
+</section>
+
+
+
+<!-- FACEBOOK PAGE -->
+
+<section class="link-strip">
+
+    <div class="label">
+        ফেসবুক অফিসিয়াল পেজ
+    </div>
+
+    <a
+        class="action"
+        href="#"
+        target="_blank"
+    >
+        Messenger এখানে ক্লিক করুন
+    </a>
+
+</section>
+
+
+
+<!-- ================= ADMIN ================= -->
+
+<section
+    class="section"
+    id="admin"
+>
+
+    <h2 class="section-title">
+        Admin
+    </h2>
+
+
+    <div class="admin-card">
+
+
         <div>
-            <div class="admin-id" id="adminId">ID -</div>
-            <a href="#" id="adminWa" class="admin-msg" target="_blank">Message</a>
+
+            <div class="admin-name">
+                Plabon Khan
+            </div>
+
+            <div class="admin-role">
+                Site Owner
+            </div>
+
         </div>
-    </div>
-</div>
 
-<!-- PROXY LINKS -->
-<div class="box">
-    <h2>আমাদের প্রভু লিংক</h2>
-    <table class="proxy-table" id="proxyList">
-        <tr><td colspan="4">Loading...</td></tr>
-    </table>
-</div>
 
-<!-- ABOUT -->
-<div class="box">
-    <h2>How many types of agents</h2>
-    
-    <div class="about-title">অনলাইন সুপার এজেন্ট লিস্টঃ</div>
-    <div class="about-text">
-        সুপার এজেন্ট বা, ইন্টার ফেসবুকে এরাই মেইন এজেন্ট এরা, তাদের আন্ডারে সব এডমিন থাকে। সুপার এজেন্ট এরা অনলাইনে সবসময় থাকে এবং সরাসরি লেনদেন করে। নায়ে এজেন্সির অফিসিয়ালি সাপোর্ট থাকে। [এখানে বাকি লেখা...]
-    </div>
 
-    <div class="about-title">অনলাইন মাইক্রো এজেন্ট লিস্টঃ</div>
-    <div class="about-text">
-        মাইক্রো এজেন্ট রা সুপার এজেন্ট এর আন্ডারে কাজ করে। এরা ছোট ছোট লেনদেন করে এবং অনলাইনে থাকে। [এখানে বাকি লেখা...]
-    </div>
+        <div class="id-box">
 
-    <div class="about-title">লোকাল মাইক্রো এজেন্ট লিস্টঃ</div>
-    <div class="about-text">
-        লোকাল এজেন্ট রা শুধু অফলাইনে কাজ করে। অনলাইনে তাদের পাবেন না। [এখানে বাকি লেখা...]
-    </div>
+            ID<br>
+            1
 
-    <div class="about-title">এজেন্ট লিস্ট</div>
-    <div class="about-text">
-        কাস্টমাররা নিজেরা অনলাইন সাইটে গিয়ে এ ক্লিক করার এজেন্ট খুঁজতে পারে। [এখানে বাকি লেখা...]
-    </div>
+        </div>
 
-    <div class="about-title">কিভাবে একাউন্ট খুলবেন</div>
-    <div class="about-text">
-        play25 তে একাউন্ট করতে হলে আমাদের এজেন্ট এর মাধ্যমে করতে হবে। [এখানে বাকি লেখা...]
+
+
+        <div>
+
+            <div>
+                +971507872525
+            </div>
+
+            <span class="whatsapp">
+                Whatsapp
+            </span>
+
+        </div>
+
+
+
+        <a
+            class="message"
+            href="https://wa.me/971507872525"
+            target="_blank"
+        >
+            Message
+        </a>
+
+
     </div>
 
-    <div class="about-title">play25 সব নতুন আপডেট</div>
-    <div class="about-text">
-        play25 প্রতিনিয়ত নতুন ফিচার এড করছে। [এখানে বাকি লেখা...]
+</section>
+
+
+
+<!-- ================= PROCESS LINKS ================= -->
+
+<section
+    class="section"
+    id="site-owner"
+>
+
+    <h2 class="section-title">
+        আমাদের প্রক্রিয়া লিংক
+    </h2>
+
+
+    <div class="table-wrap">
+
+        <table class="links-table">
+
+            <tbody>
+
+
+                <tr>
+
+                    <td>
+                        Main Link
+                    </td>
+
+                    <td>
+                        play25.live
+                    </td>
+
+                    <td class="status">
+
+                        <span class="status-dot"></span>
+                        Active
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="visit"
+                            href="https://play25.live"
+                            target="_blank"
+                        >
+                            Visit
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+                        Link 2
+                    </td>
+
+                    <td>
+                        plabon25.com
+                    </td>
+
+                    <td class="status">
+
+                        <span class="status-dot"></span>
+                        Active
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="visit"
+                            href="https://plabon25.com"
+                            target="_blank"
+                        >
+                            Visit
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+                        Link 4
+                    </td>
+
+                    <td>
+                        play25.bet
+                    </td>
+
+                    <td class="status">
+
+                        <span class="status-dot"></span>
+                        Active
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="visit"
+                            href="https://play25.bet"
+                            target="_blank"
+                        >
+                            Visit
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+                        Low limit casino
+                    </td>
+
+                    <td>
+                        bee25.live
+                    </td>
+
+                    <td class="status">
+
+                        <span class="status-dot"></span>
+                        Active
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="visit"
+                            href="https://bee25.live"
+                            target="_blank"
+                        >
+                            Visit
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>
+                        link 5
+                    </td>
+
+                    <td>
+                        plabon.live
+                    </td>
+
+                    <td class="status">
+
+                        <span class="status-dot"></span>
+                        Active
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            class="visit"
+                            href="https://plabon.live"
+                            target="_blank"
+                        >
+                            Visit
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
     </div>
-</div>
 
-<button class="support-btn" onclick="openSupport()">🎧 Support</button>
+</section>
 
-<!-- SUPPORT POPUP -->
-<div class="popup-overlay" id="supportPopup">
-    <div class="popup">
-        <span class="close-btn" onclick="closeSupport()">&times;</span>
-        <h3>🎧 Support Team</h3>
-        <div id="supportList">Loading...</div>
+
+
+<!-- ================= AGENT TYPES ================= -->
+
+<section
+    class="section"
+    id="super"
+>
+
+    <h2 class="section-title">
+        How many types of agents
+    </h2>
+
+
+
+    <!-- SUPER AGENT -->
+
+    <div class="agent-text">
+
+        <h3>
+            অনলাইন সুপার এজেন্ট লিস্টঃ
+        </h3>
+
+        সুপার এজেন্ট বা, ইউজার একাউন্ট এবং মাস্টার এজেন্ট একাউন্ট খুলে দিতে পারেন।
+        কোন সুপার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি এডমিন কে জানাতে হবে।
+
     </div>
-</div>
 
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-<script>
-const firebaseConfig = {
-    apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
-    authDomain: "play25agent.firebaseapp.com",
-    databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "play25agent"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
 
-function getWaLink(num){
-    if(!num) return '#';
-    let clean = String(num).replace(/[^0-9]/g,'');
-    return `https://wa.me/${clean}`;
-}
 
-function openSupport(){document.getElementById('supportPopup').style.display='flex';}
-function closeSupport(){document.getElementById('supportPopup').style.display='none';}
+    <!-- MASTER AGENT -->
 
-/* ADMIN CARD LOAD - Site Owner কে Admin হিসেবে দেখাবে */
-db.ref('agents').on('value', snap => {
-    let data = snap.val() || {};
-    for(let key in data){
-        let a = data[key];
-        if(a.role == 'Site Owner'){
-            document.getElementById('adminName').innerText = a.name || 'N/A';
-            document.getElementById('adminRole').innerText = a.role || 'Site Owner';
-            document.getElementById('adminPhone').innerText = a.phone || '';
-            document.getElementById('adminId').innerText = 'ID ' + (a.id || '-');
-            document.getElementById('adminWa').href = getWaLink(a.phone);
-            break;
-        }
-    }
-});
+    <div
+        class="agent-text"
+        id="master"
+    >
 
-/* PROXY LINKS LOAD */
-db.ref('settings/proxyLinks').on('value', snap => {
-    let html = '';
-    snap.forEach(child => {
-        let p = child.val();
-        html += `<tr>
-            <td>${p.name}</td>
-            <td>${p.url}</td>
-            <td class="status">Active</td>
-            <td><a href="${p.url}" target="_blank" class="visit">Visit</a></td>
-        </tr>`;
-    });
-    document.getElementById('proxyList').innerHTML = html || '<tr><td colspan="4">কোন Link নেই</td></tr>';
-});
+        <h3>
+            অনলাইন মাস্টার এজেন্ট লিস্টঃ
+        </h3>
 
-/* SUPPORT LOAD */
-db.ref('support').on('value', snap => {
-    let html = '';
-    snap.forEach(child => {
-        let s = child.val();
-        html += `<div class="support-item">
-            <div class="icon">🎧</div>
-            <div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div>
-            <a href="${getWaLink(s.phone)}" class="btn-msg" target="_blank">Message</a>
-        </div>`;
-    });
-    document.getElementById('supportList').innerHTML = html || 'কোন Support নেই';
-});
-</script>
+        অনলাইন মাস্টার এজেন্ট বা, শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন।
+        কোন মাস্টার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে অভিযোগ করতে হবে।
+
+    </div>
+
+
+
+    <!-- LOCAL MASTER -->
+
+    <div
+        class="agent-text"
+        id="sub-admin"
+    >
+
+        <h3>
+            লোকাল মাস্টার এজেন্ট লিস্টঃ
+        </h3>
+
+        লোকাল মাস্টার এজেন্টরা শুধু ইউজার একাউন্ট খুলে দিতে পারেন।
+        লেনদেন ও অন্যান্য তথ্যের জন্য সংশ্লিষ্ট এজেন্টের সাথে যোগাযোগ করুন।
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ACCOUNT ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        কিভাবে একাউন্ট খুলবেনঃ
+    </h2>
+
+
+    <div class="agent-text">
+
+        play25 তে একাউন্ট করতে হলে আপনার এজেন্ট এর মাধ্যমে একাউন্ট খুলতে হবে।
+        এজেন্ট এর মাধ্যমেই টাকা ডিপোজিট এবং উত্তোলন করতে হবে।
+        আপনি যে এজেন্ট এর কাছ থেকে একাউন্ট খুলবেন তার সাথেই সব সময় লেনদেন করতে হবে।
+        আপনি কোন এজেন্ট কে টাকা দিবেন এবং কিভাবে তার সাথে লেনদেন করবেন
+        তা বুঝতে হলে নিজের তথ্য গুলো পড়া জরুরী।
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= UPDATE ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        play25 সব নতুন আপডেট
+    </h2>
+
+
+    <div class="update-box">
+    </div>
+
+</section>
+
+
+
+<!-- ================= IMPORTANT ================= -->
+
+<section
+    class="section"
+    id="lottery"
+>
+
+    <h2 class="section-title">
+        গুরুত্বপূর্ণ তথ্য
+    </h2>
+
+
+    <div class="agent-text">
+
+        লেনদেন করার আগে সংশ্লিষ্ট এজেন্টের তথ্য যাচাই করুন।
+        কোনো ব্যক্তিকে ব্যক্তিগতভাবে টাকা পাঠানোর আগে
+        তার পরিচয় ও যোগাযোগের তথ্য নিশ্চিত করুন।
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= SUPPORT ================= -->
+
+<a
+    class="support"
+    href="#"
+    onclick="alert('Support'); return false;"
+>
+
+    <span>
+        ◉
+    </span>
+
+    Support
+
+</a>
+
+
+
 </body>
 </html>
