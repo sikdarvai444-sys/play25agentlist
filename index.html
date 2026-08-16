@@ -3,848 +3,1296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PLAY25 Agent List</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+    font-family:Arial,sans-serif
 }
 
 body{
-    background:#06477f;
+    background:#064477;
     color:#fff;
-    font-family:"Noto Sans Bengali","Poppins",sans-serif;
-    overflow-x:hidden;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:min(100%,720px);
-    margin:auto;
-    padding:0 24px;
-}
-
-
-/* ================= HEADER ================= */
+/* =========================
+   HEADER
+========================= */
 
 .header{
-    background:#06477f;
-    padding:28px 24px 24px;
-    text-align:center;
-}
-
-.header-top{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    margin-bottom:10px;
-}
-
-.icon{
-    width:48px;
-    height:48px;
-    display:flex;
     align-items:center;
-    justify-content:center;
-    color:#ffe400;
+    padding:25px 25px 15px;
+    background:#064477;
 }
 
-.search{
+.search-icon,
+.grid-icon{
     font-size:38px;
-    line-height:1;
+    color:#ffdf00;
+    cursor:pointer;
+    padding:5px;
 }
 
 .logo{
-    width:235px;
-    max-width:58vw;
+    flex:1;
+    text-align:center;
+}
+
+.logo img{
+    max-width:330px;
+    width:70%;
     height:auto;
-    object-fit:contain;
+    display:block;
+    margin:0 auto;
 }
 
-.grid-icon{
-    display:grid;
-    grid-template-columns:repeat(2,13px);
-    gap:5px;
-}
+/* =========================
+   MENU
+========================= */
 
-.grid-icon span{
-    width:13px;
-    height:13px;
-    border-radius:4px;
-    background:#ffe400;
-}
-
-.tagline{
-    color:#fff;
-    letter-spacing:8px;
-    font-size:20px;
-    font-weight:600;
-    margin-top:2px;
-}
-
-
-/* ================= NAVIGATION ================= */
-
-.nav-card,
-.section{
-    background:#0969b8;
-    border-radius:15px;
-}
-
-.nav-card{
-    padding:22px 18px;
-    margin-bottom:20px;
-}
-
-.nav{
+.menu{
+    background:#0870c5;
+    margin:8px 23px 25px;
+    border-radius:18px;
+    padding:28px 12px;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:19px 18px;
+    gap:25px 22px;
 }
 
-.nav a{
-    font-size:18px;
+.menu a{
+    color:#fff;
+    text-decoration:none;
+    font-size:25px;
+    font-weight:500;
+}
+
+.menu a.active{
+    color:#ffdf00;
+}
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home-box{
+    background:#0870c5;
+    margin:0 23px 25px;
+    border-radius:18px;
+    padding:22px;
+}
+
+.home-empty{
+    height:55px;
+    display:flex;
+    align-items:center;
+    color:#ffdf00;
+    font-size:25px;
+}
+
+/* SOCIAL BUTTONS */
+
+.social-box{
+    background:#0870c5;
+    margin:0 23px 25px;
+    border-radius:18px;
+    padding:10px 20px;
+}
+
+.social-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    margin:10px 0;
+}
+
+.social-title{
+    color:#ffdf00;
+    font-size:25px;
+    text-align:center;
+}
+
+.social-btn{
+    background:#1877f2;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    padding:12px 18px;
+    font-size:22px;
     white-space:nowrap;
 }
 
-.nav a:first-child{
-    color:#ffe400;
-}
+/* =========================
+   HOME SECTION TITLE
+========================= */
 
-
-/* ================= COMMON SECTION ================= */
-
-.section{
-    margin-bottom:20px;
-    padding:28px 10px;
-}
-
-.section-title{
+.home-title{
     text-align:center;
-    color:#ffe400;
-    font-size:31px;
+    color:#ffdf00;
+    font-size:35px;
     font-weight:500;
-    margin-bottom:28px;
+    margin:5px 0 25px;
 }
 
+/* =========================
+   ADMIN HOME CARD
+========================= */
 
-/* ================= LINK STRIP ================= */
-
-.link-strip{
+.admin-home-card{
+    background:#07508b;
+    border-radius:17px;
+    padding:15px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:10px;
-
-    padding:12px 18px;
-
-    background:#0969b8;
-    border-radius:13px;
-
-    margin-bottom:20px;
-    min-height:68px;
+    min-height:105px;
 }
 
-.link-strip .label{
-    color:#ffe400;
-    font-size:19px;
+.admin-avatar{
+    width:55px;
+    height:55px;
+    min-width:55px;
+    border-radius:50%;
+    background:#8bc400;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#064477;
+    font-size:32px;
+    margin-right:15px;
+}
+
+.admin-info{
     flex:1;
 }
 
-.action{
-    background:#197fe8;
-    border-radius:8px;
-    padding:8px 14px;
-    font-size:18px;
-    white-space:nowrap;
-}
-
-
-/* ================= NOTICE ================= */
-
-.notice{
-    background:#075087;
-    border-radius:15px;
-    padding:22px 28px;
-    text-align:center;
-    font-size:21px;
-    line-height:1.7;
-}
-
-
-/* ================= ADMIN ================= */
-
-.admin-card{
-    background:#075087;
-    border-radius:15px;
-    padding:18px 12px;
-
-    display:grid;
-    grid-template-columns:1fr 62px 1.1fr auto;
-
-    align-items:center;
-    gap:12px;
-}
-
 .admin-name{
-    font-size:17px;
+    font-size:20px;
+    display:block;
+    margin-bottom:3px;
 }
 
 .admin-role{
-    font-size:13px;
-    opacity:.65;
+    color:#aaa;
+    font-size:15px;
 }
 
-.id-box{
-    background:#8fc900;
-    color:#fff;
-
-    border-radius:15px;
-    padding:9px 10px;
-
-    text-align:center;
-    font-size:18px;
-}
-
-.whatsapp{
-    display:inline-block;
-
-    background:#4ebd46;
-
+.admin-id{
+    background:#8bc400;
+    color:#111;
     border-radius:12px;
-
-    padding:2px 9px;
-
-    font-size:13px;
-
-    margin-top:3px;
+    padding:12px 17px;
+    font-size:22px;
+    font-weight:bold;
+    margin-right:20px;
 }
 
-.message{
-    background:#4ebd46;
-
-    padding:7px 12px;
-
-    border-radius:9px;
-
-    font-size:16px;
+.admin-phone{
+    text-align:center;
+    min-width:170px;
 }
 
-
-/* ================= LINKS TABLE ================= */
-
-.table-wrap{
-    overflow-x:auto;
-    background:#075087;
-    border-radius:15px;
+.admin-phone-number{
+    font-size:17px;
+    margin-bottom:5px;
 }
 
-.links-table{
-    width:100%;
-    min-width:590px;
-    border-collapse:collapse;
+.admin-wa{
+    background:#42c95b;
+    color:#fff;
+    border-radius:10px;
+    padding:4px 10px;
+    font-size:15px;
 }
 
-.links-table td{
-    padding:12px;
-
-    border-bottom:1px solid rgba(255,255,255,.12);
-
-    font-family:"Poppins","Noto Sans Bengali",sans-serif;
-
+.admin-message{
+    background:#42c95b;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 17px;
+    border-radius:10px;
     font-size:17px;
 }
 
-.links-table tr:last-child td{
-    border-bottom:0;
+/* =========================
+   PROCESS LINKS
+========================= */
+
+.process-box{
+    background:#0870c5;
+    margin:0 23px 25px;
+    border-radius:18px;
+    padding:30px 30px 60px;
 }
 
-.status{
-    color:#45ff50;
+.process-title{
+    text-align:center;
+    color:#ffdf00;
+    font-size:35px;
+    margin-bottom:30px;
+    font-weight:500;
+}
+
+.process-table{
+    background:#07508b;
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.process-row{
+    display:grid;
+    grid-template-columns:1.15fr 1fr 1fr 95px;
+    align-items:center;
+    min-height:68px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    padding:0 12px;
+    font-size:23px;
+}
+
+.process-row:last-child{
+    border-bottom:none;
+}
+
+.process-status{
+    color:#31ff50;
     white-space:nowrap;
 }
 
 .status-dot{
     display:inline-block;
-
-    width:16px;
-    height:16px;
-
+    width:15px;
+    height:15px;
     border-radius:50%;
-
-    background:#45ff50;
-
-    margin-right:6px;
-
-    vertical-align:-2px;
-}
-
-.visit{
-    display:inline-block;
-
-    background:#8fc900;
-
-    padding:5px 18px;
-
-    border-radius:9px;
-
-    font-family:"Noto Sans Bengali",sans-serif;
-}
-
-
-/* ================= AGENT LIST ================= */
-
-.agent-text{
-    background:#075087;
-
-    border-radius:15px;
-
-    padding:22px 26px;
-
-    font-size:20px;
-
-    line-height:1.8;
-}
-
-.agent-text h3{
-    text-align:center;
-
-    color:#ffe400;
-
-    font-size:24px;
-
-    margin-bottom:12px;
-}
-
-.agent-text + .agent-text{
-    margin-top:16px;
-}
-
-
-/* ================= UPDATE ================= */
-
-.update-box{
-    height:120px;
-
-    background:#075087;
-
-    border-radius:15px;
-}
-
-
-/* ================= SUPPORT ================= */
-
-.support{
-    position:fixed;
-
-    left:32px;
-    bottom:28px;
-
-    z-index:99;
-
-    background:#8fc900;
-
-    color:#fff;
-
-    border-radius:14px;
-
-    padding:12px 18px;
-
-    font-weight:700;
-
-    font-family:"Poppins","Noto Sans Bengali",sans-serif;
-
-    font-size:18px;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.2);
-}
-
-.support span{
-    font-size:23px;
+    background:#32ff4b;
     margin-right:7px;
 }
 
+.visit-btn{
+    background:#8bc400;
+    color:#fff;
+    text-decoration:none;
+    border-radius:11px;
+    padding:9px 15px;
+    text-align:center;
+    font-size:22px;
+}
 
-/* ================= MOBILE ================= */
+/* =========================
+   TYPES OF AGENTS
+========================= */
+
+.types-box{
+    background:#0870c5;
+    margin:0 23px 25px;
+    border-radius:18px;
+    padding:30px;
+}
+
+.types-title{
+    text-align:center;
+    color:#ffdf00;
+    font-size:35px;
+    font-weight:500;
+    margin-bottom:30px;
+}
+
+.types-content{
+    background:#07508b;
+    border-radius:17px;
+    padding:30px 25px;
+    text-align:center;
+}
+
+.types-content h3{
+    color:#ffdf00;
+    font-size:31px;
+    font-weight:500;
+    margin:0 0 20px;
+}
+
+.types-content p{
+    color:#fff;
+    font-size:24px;
+    line-height:1.65;
+    margin-bottom:30px;
+}
+
+/* =========================
+   NORMAL AGENT LIST
+========================= */
+
+.box{
+    background:#0870c5;
+    margin:8px 23px;
+    border-radius:18px;
+    padding:20px;
+}
+
+h2{
+    text-align:center;
+    color:#ffeb3b;
+    margin-bottom:15px;
+    font-size:25px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+thead{
+    background:#0b3d91;
+}
+
+th{
+    color:#fff;
+    padding:10px 3px;
+    text-align:center;
+    font-weight:500;
+}
+
+td{
+    padding:8px 3px;
+    text-align:center;
+    border-bottom:1px solid #1976d2;
+    vertical-align:middle;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#8bc400;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    vertical-align:middle;
+    margin-right:5px;
+    color:#064477;
+    font-size:22px;
+}
+
+.avatar::after{
+    content:"👤";
+    font-size:22px;
+}
+
+.name-col{
+    text-align:left;
+    white-space:nowrap;
+}
+
+.name-col b{
+    font-size:14px;
+    font-weight:500;
+}
+
+.name-col small{
+    font-size:11px;
+    color:#aaa;
+    display:block;
+}
+
+.id-box{
+    background:#8bc400;
+    color:#111;
+    padding:7px 10px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:13px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:50px;
+}
+
+.stars{
+    color:#ffc107;
+    font-size:14px;
+}
+
+.btn-wa-app{
+    background:#25D366;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+
+.btn-wa-app svg{
+    width:19px;
+    height:19px;
+    fill:#fff;
+}
+
+.btn-wa-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+    text-decoration:none;
+    margin:2px 0;
+}
+
+.btn-wa-num{
+    font-size:12px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.btn-wa{
+    background:#25D366;
+    color:#fff;
+    padding:3px 7px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:9px;
+}
+
+.btn-report{
+    background:#f44336;
+    color:#fff;
+    padding:6px 9px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.btn-view{
+    color:#fff;
+    padding:5px;
+    text-decoration:none;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* COLUMN WIDTH */
+
+th:nth-child(1){width:20%}
+th:nth-child(2){width:8%}
+th:nth-child(3){width:9%}
+th:nth-child(4){width:7%}
+th:nth-child(5){width:8%}
+th:nth-child(6){width:22%}
+th:nth-child(7){width:7%}
+th:nth-child(8){width:12%}
+
+/* =========================
+   SUPPORT BUTTON
+========================= */
+
+.support-btn{
+    position:fixed;
+    bottom:20px;
+    left:30px;
+    background:#8bc400;
+    padding:12px 22px;
+    border-radius:13px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    z-index:99;
+    border:none;
+    cursor:pointer;
+    font-size:20px;
+}
+
+/* =========================
+   POPUPS
+========================= */
+
+.popup-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    z-index:999;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup{
+    background:#0870c5;
+    width:90%;
+    max-width:500px;
+    max-height:92vh;
+    overflow-y:auto;
+    border-radius:15px;
+    padding:20px;
+    position:relative;
+}
+
+.popup h3{
+    background:#064477;
+    padding:12px;
+    border-radius:7px;
+    text-align:center;
+    color:#ffeb3b;
+    margin-bottom:15px;
+}
+
+.close-btn{
+    position:absolute;
+    top:10px;
+    right:18px;
+    font-size:30px;
+    color:#fff;
+    cursor:pointer;
+    z-index:10;
+}
+
+.popup label{
+    color:#ffeb3b;
+    font-size:16px;
+    margin-top:10px;
+    display:block;
+}
+
+.popup select,
+.popup input{
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border-radius:5px;
+    border:none;
+    background:#064477;
+    color:#fff;
+}
+
+.popup button{
+    background:#8bc400;
+    color:#fff;
+    padding:10px 18px;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    float:right;
+    margin-top:10px;
+}
+
+.info-box{
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border-radius:5px;
+    background:#064477;
+    color:#fff;
+    text-align:left;
+}
+
+.btn-wa-popup{
+    background:#25D366;
+    color:#fff;
+    padding:8px 15px;
+    border-radius:5px;
+    text-decoration:none;
+    display:inline-block;
+    margin:5px 0;
+}
+
+.stars-popup{
+    text-align:center;
+    font-size:20px;
+    color:#ffc107;
+    margin:5px 0;
+}
+
+.hierarchy-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-top:5px;
+}
+
+.tag{
+    background:#8bc400;
+    padding:5px 9px;
+    border-radius:15px;
+    font-size:11px;
+}
+
+.report-header{
+    background:#f44336;
+    color:#fff;
+    text-align:center;
+    padding:10px;
+    border-radius:5px;
+    font-weight:bold;
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.report-wa-btn{
+    display:block;
+    background:#25D366;
+    color:#fff;
+    padding:10px;
+    border-radius:5px;
+    text-decoration:none;
+    text-align:center;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+.upper-panel-title{
+    color:#ffeb3b;
+    font-size:16px;
+    font-weight:bold;
+    margin-top:15px;
+    margin-bottom:8px;
+}
+
+.upper-panel-list{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    margin-top:5px;
+}
+
+.upper-panel-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:7px;
+    background:#064477;
+    padding:8px;
+    border-radius:7px;
+}
+
+.upper-panel-info{
+    flex:1;
+    min-width:0;
+}
+
+.upper-panel-name{
+    color:#fff;
+    font-size:13px;
+    font-weight:bold;
+    display:block;
+}
+
+.upper-panel-role{
+    color:#ffc107;
+    font-size:11px;
+    display:block;
+    margin-top:2px;
+}
+
+.upper-panel-id{
+    color:#aaa;
+    font-size:10px;
+}
+
+.report-to-btn{
+    background:#f44336;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    padding:7px 9px;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.no-upper-panel{
+    background:#064477;
+    color:#aaa;
+    padding:10px;
+    border-radius:5px;
+    text-align:center;
+    font-size:12px;
+}
+
+.support-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#064477;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:8px;
+}
+
+.support-item .icon{
+    width:35px;
+    height:35px;
+    background:#8bc400;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#000;
+}
+
+.support-item .info{
+    flex:1;
+}
+
+.support-item .btn-msg{
+    background:#42c95b;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
+    body{
+        background:#064477;
+    }
+
     .header{
-        padding-top:24px;
+        padding:25px 22px 10px;
     }
 
-    .logo{
-        width:230px;
+    .search-icon,
+    .grid-icon{
+        font-size:32px;
     }
 
-    .tagline{
-        font-size:17px;
-        letter-spacing:5px;
+    .logo img{
+        max-width:300px;
+        width:75%;
     }
 
-    .nav{
-        gap:14px 13px;
+    .menu{
+        margin:8px 23px 30px;
+        padding:27px 10px;
+        gap:25px 20px;
     }
 
-    .nav a{
-        font-size:17px;
+    .menu a{
+        font-size:24px;
     }
 
-    .section{
-        padding:24px 10px;
+    .home-box{
+        margin:0 23px 25px;
+        padding:10px 20px;
     }
 
-    .section-title{
-        font-size:28px;
+    .home-empty{
+        height:55px;
+        font-size:22px;
     }
 
-    .notice{
+    .social-box{
+        margin:0 23px 25px;
+        padding:10px 8px;
+    }
+
+    .social-row{
+        gap:8px;
+    }
+
+    .social-title{
+        font-size:21px;
+    }
+
+    .social-btn{
         font-size:19px;
-        padding:20px 22px;
+        padding:10px 11px;
     }
 
-    .link-strip .label{
-        font-size:17px;
+    .home-title{
+        font-size:32px;
+        margin-bottom:25px;
     }
 
-    .action{
+    .admin-home-card{
+        min-height:120px;
+        padding:14px 16px;
+    }
+
+    .admin-avatar{
+        width:48px;
+        height:48px;
+        min-width:48px;
+        font-size:25px;
+        margin-right:8px;
+    }
+
+    .admin-name{
         font-size:16px;
     }
 
-    .admin-card{
-        grid-template-columns:1fr 56px;
+    .admin-role{
+        font-size:12px;
     }
 
-    .admin-card > :nth-child(3){
-        grid-column:1;
-        grid-row:2;
-    }
-
-    .admin-card > :nth-child(4){
-        grid-column:2;
-        grid-row:2;
-    }
-
-    .agent-text{
+    .admin-id{
+        padding:12px 13px;
         font-size:18px;
+        margin-right:8px;
     }
 
-    .support{
-        left:32px;
-        bottom:26px;
+    .admin-phone{
+        min-width:85px;
+    }
+
+    .admin-phone-number{
+        font-size:11px;
+    }
+
+    .admin-wa{
+        font-size:11px;
+        padding:3px 6px;
+    }
+
+    .admin-message{
+        padding:8px 10px;
+        font-size:14px;
+    }
+
+    .process-box{
+        padding:28px 10px 60px;
+    }
+
+    .process-title{
+        font-size:30px;
+    }
+
+    .process-row{
+        grid-template-columns:1.15fr 1fr 1fr 68px;
+        font-size:18px;
+        padding:0 10px;
+        min-height:62px;
+    }
+
+    .visit-btn{
+        font-size:18px;
+        padding:7px 9px;
+    }
+
+    .status-dot{
+        width:13px;
+        height:13px;
+    }
+
+    .types-box{
+        padding:28px 10px;
+    }
+
+    .types-title{
+        font-size:31px;
+    }
+
+    .types-content{
+        padding:28px 18px;
+    }
+
+    .types-content h3{
+        font-size:28px;
+    }
+
+    .types-content p{
+        font-size:22px;
+        line-height:1.6;
+    }
+
+    .box{
+        margin:8px 23px;
+        padding:8px;
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:650px;
+    }
+
+    .support-btn{
+        left:30px;
+        bottom:25px;
+        font-size:19px;
+        padding:11px 18px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
 
-<!-- ================= HEADER ================= -->
+<div class="header">
 
-<header class="header">
+    <div class="search-icon" onclick="openSearch()">⌕</div>
 
-    <div class="header-top">
+    <div class="logo">
+        <img src="logo.png" alt="PLAY25 Agent List">
+    </div>
 
-        <div class="icon search">
-            ⌕
+    <div class="grid-icon">▦</div>
+
+</div>
+
+<!-- =========================
+     MENU
+========================= -->
+
+<div class="menu">
+
+    <a href="index.html" class="active">⌂ Home</a>
+
+    <a href="siteowner.html">♟ Site Owner</a>
+
+    <a href="admin.html">♟ Admin</a>
+
+    <a href="subadmin.html">♟ Sub Admin</a>
+
+    <a href="super.html">♟ Super</a>
+
+    <a href="master.html">♟ Master</a>
+
+    <a href="#">◉ Lottery</a>
+
+</div>
+
+
+<!-- ==================================================
+     HOME PAGE
+================================================== -->
+
+<div id="homePage">
+
+    <!-- EMPTY BLUE PANEL -->
+
+    <div class="home-box">
+
+        <div class="home-empty">
+            ..
         </div>
 
-
-        <!-- আপনার logo.png -->
-        <img
-            src="logo.png"
-            class="logo"
-            alt="PLAY25 Agent List"
-        >
-
-
-        <div class="icon grid-icon">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
     </div>
 
 
-    <div class="tagline">
-        Agent List
-    </div>
+    <!-- FACEBOOK GROUP / PAGE -->
 
-</header>
+    <div class="social-box">
 
+        <div class="social-row">
 
-
-<main class="container">
-
-
-<!-- ================= NAVIGATION ================= -->
-
-<nav class="nav-card">
-
-    <div class="nav">
-
-        <a href="#home">
-            ⌂ Home
-        </a>
-
-        <a href="#site-owner">
-            ♟ Site Owner
-        </a>
-
-        <a href="#admin">
-            ♟ Admin
-        </a>
-
-        <a href="#sub-admin">
-            ♟ Sub Admin
-        </a>
-
-        <a href="#super">
-            ♟ Super
-        </a>
-
-        <a href="#master">
-            ♟ Master
-        </a>
-
-        <a href="#lottery">
-            ◎ Lottery
-        </a>
-
-    </div>
-
-</nav>
-
-
-
-<!-- ================= HOME ================= -->
-
-<section
-    class="link-strip"
-    id="home"
->
-
-    <div class="label">
-        কেউ লেনদেন করবেন না...
-    </div>
-
-</section>
-
-
-
-<!-- FACEBOOK GROUP -->
-
-<section class="link-strip">
-
-    <div class="label">
-        আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ
-    </div>
-
-    <a
-        class="action"
-        href="#"
-        target="_blank"
-    >
-        f এখানে ক্লিক করুন
-    </a>
-
-</section>
-
-
-
-<!-- FACEBOOK PAGE -->
-
-<section class="link-strip">
-
-    <div class="label">
-        ফেসবুক অফিসিয়াল পেজ
-    </div>
-
-    <a
-        class="action"
-        href="#"
-        target="_blank"
-    >
-        Messenger এখানে ক্লিক করুন
-    </a>
-
-</section>
-
-
-
-<!-- ================= ADMIN ================= -->
-
-<section
-    class="section"
-    id="admin"
->
-
-    <h2 class="section-title">
-        Admin
-    </h2>
-
-
-    <div class="admin-card">
-
-
-        <div>
-
-            <div class="admin-name">
-                Plabon Khan
+            <div class="social-title">
+                আমাদের অফিসিয়াল ফেসবুক গ্রুপঃ
             </div>
 
-            <div class="admin-role">
-                Site Owner
+            <a
+                href="#"
+                target="_blank"
+                class="social-btn"
+            >
+                f এখানে ক্লিক করুন
+            </a>
+
+        </div>
+
+        <div class="social-row">
+
+            <div class="social-title">
+                ফেসবুক অফিসিয়াল পেজ
+            </div>
+
+            <a
+                href="#"
+                target="_blank"
+                class="social-btn"
+            >
+                Messenger এখানে ক্লিক করুন
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN -->
+
+    <div class="home-box">
+
+        <div class="home-title">
+            Admin
+        </div>
+
+        <div id="homeAdminList">
+
+            <!-- Firebase থেকে Admin আসবে -->
+
+            <div class="admin-home-card">
+
+                <div class="admin-avatar">
+                    👤
+                </div>
+
+                <div class="admin-info">
+
+                    <span class="admin-name">
+                        Plabon Khan
+                    </span>
+
+                    <span class="admin-role">
+                        Site Owner
+                    </span>
+
+                </div>
+
+                <div class="admin-id">
+                    ID<br>1
+                </div>
+
+                <div class="admin-phone">
+
+                    <div class="admin-phone-number">
+                        +971507872525
+                    </div>
+
+                    <span class="admin-wa">
+                        Whatsapp
+                    </span>
+
+                </div>
+
+                <a
+                    href="https://wa.me/971507872525"
+                    target="_blank"
+                    class="admin-message"
+                >
+                    Message
+                </a>
+
             </div>
 
         </div>
 
+    </div>
 
 
-        <div class="id-box">
+    <!-- PROCESS LINKS -->
 
-            ID<br>
-            1
+    <div class="process-box">
 
+        <div class="process-title">
+            আমাদের প্রক্সি লিংক
         </div>
 
+        <div class="process-table">
 
+            <div class="process-row">
 
-        <div>
+                <div>Main Link</div>
 
-            <div>
-                +971507872525
+                <div>play25.live</div>
+
+                <div class="process-status">
+                    <span class="status-dot"></span>
+                    Active
+                </div>
+
+                <a
+                    href="https://play25.live"
+                    target="_blank"
+                    class="visit-btn"
+                >
+                    Visit
+                </a>
+
             </div>
 
-            <span class="whatsapp">
-                Whatsapp
-            </span>
+
+            <div class="process-row">
+
+                <div>Link 2</div>
+
+                <div>plabon25.com</div>
+
+                <div class="process-status">
+                    <span class="status-dot"></span>
+                    Active
+                </div>
+
+                <a
+                    href="https://plabon25.com"
+                    target="_blank"
+                    class="visit-btn"
+                >
+                    Visit
+                </a>
+
+            </div>
+
+
+            <div class="process-row">
+
+                <div>Link 4</div>
+
+                <div>play25.bet</div>
+
+                <div class="process-status">
+                    <span class="status-dot"></span>
+                    Active
+                </div>
+
+                <a
+                    href="https://play25.bet"
+                    target="_blank"
+                    class="visit-btn"
+                >
+                    Visit
+                </a>
+
+            </div>
+
+
+            <div class="process-row">
+
+                <div>Low limit<br>casino</div>
+
+                <div>bee25.live</div>
+
+                <div class="process-status">
+                    <span class="status-dot"></span>
+                    Active
+                </div>
+
+                <a
+                    href="https://bee25.live"
+                    target="_blank"
+                    class="visit-btn"
+                >
+                    Visit
+                </a>
+
+            </div>
+
+
+            <div class="process-row">
+
+                <div>link 5</div>
+
+                <div>plabon.live</div>
+
+                <div class="process-status">
+                    <span class="status-dot"></span>
+                    Active
+                </div>
+
+                <a
+                    href="https://plabon.live"
+                    target="_blank"
+                    class="visit-btn"
+                >
+                    Visit
+                </a>
+
+            </div>
 
         </div>
-
-
-
-        <a
-            class="message"
-            href="https://wa.me/971507872525"
-            target="_blank"
-        >
-            Message
-        </a>
-
 
     </div>
 
-</section>
+
+    <!-- HOW MANY TYPES -->
+
+    <div class="types-box">
+
+        <div class="types-title">
+            How many types of agents
+        </div>
+
+        <div class="types-content">
+
+            <h3>
+                অনলাইন সুপার এজেন্ট লিস্টঃ
+            </h3>
+
+            <p>
+                সুপার এজেন্ট রা, ইউজার একাউন্ট এবং মাস্টার এজেন্ট
+                একাউন্ট খুলে দিতে পারেন। কোন সুপার এজেন্ট এর নামে
+                অভিযোগ থাকলে সরাসরি এডমিন কে জানাতে হবে।
+            </p>
 
 
+            <h3>
+                অনলাইন মাস্টার এজেন্ট লিস্টঃ
+            </h3>
 
-<!-- ================= PROCESS LINKS ================= -->
+            <p>
+                অনলাইন মাস্টার এজেন্ট রা, শুধু ইউজার একাউন্ট
+                একাউন্ট খুলে দিতে পারেন। কোন মাস্টার এজেন্ট এর
+                নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে
+                অভিযোগ করতে হবে।
+            </p>
 
-<section
-    class="section"
-    id="site-owner"
->
+        </div>
 
-    <h2 class="section-title">
-        আমাদের প্রক্রিয়া লিংক
-    </h2>
+    </div>
 
-
-    <div class="table-wrap">
-
-        <table class="links-table">
-
-            <tbody>
+</div>
 
 
-                <tr>
+<!-- ==================================================
+     NORMAL AGENT LIST
+================================================== -->
 
-                    <td>
-                        Main Link
-                    </td>
+<div id="agentPage" style="display:none">
 
-                    <td>
-                        play25.live
-                    </td>
+    <div class="box">
 
-                    <td class="status">
+        <h2 id="roleTitle">
+            MASTER LIST
+        </h2>
 
-                        <span class="status-dot"></span>
-                        Active
+        <table>
 
-                    </td>
-
-                    <td>
-
-                        <a
-                            class="visit"
-                            href="https://play25.live"
-                            target="_blank"
-                        >
-                            Visit
-                        </a>
-
-                    </td>
-
-                </tr>
-
-
-
-                <tr>
-
-                    <td>
-                        Link 2
-                    </td>
-
-                    <td>
-                        plabon25.com
-                    </td>
-
-                    <td class="status">
-
-                        <span class="status-dot"></span>
-                        Active
-
-                    </td>
-
-                    <td>
-
-                        <a
-                            class="visit"
-                            href="https://plabon25.com"
-                            target="_blank"
-                        >
-                            Visit
-                        </a>
-
-                    </td>
-
-                </tr>
-
-
+            <thead>
 
                 <tr>
 
-                    <td>
-                        Link 4
-                    </td>
-
-                    <td>
-                        play25.bet
-                    </td>
-
-                    <td class="status">
-
-                        <span class="status-dot"></span>
-                        Active
-
-                    </td>
-
-                    <td>
-
-                        <a
-                            class="visit"
-                            href="https://play25.bet"
-                            target="_blank"
-                        >
-                            Visit
-                        </a>
-
-                    </td>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Rating</th>
+                    <th>App</th>
+                    <th>FB</th>
+                    <th>Phone</th>
+                    <th>View</th>
+                    <th>Report</th>
 
                 </tr>
 
+            </thead>
 
+            <tbody id="agentList">
 
                 <tr>
-
-                    <td>
-                        Low limit casino
+                    <td colspan="8">
+                        Loading...
                     </td>
-
-                    <td>
-                        bee25.live
-                    </td>
-
-                    <td class="status">
-
-                        <span class="status-dot"></span>
-                        Active
-
-                    </td>
-
-                    <td>
-
-                        <a
-                            class="visit"
-                            href="https://bee25.live"
-                            target="_blank"
-                        >
-                            Visit
-                        </a>
-
-                    </td>
-
                 </tr>
-
-
-
-                <tr>
-
-                    <td>
-                        link 5
-                    </td>
-
-                    <td>
-                        plabon.live
-                    </td>
-
-                    <td class="status">
-
-                        <span class="status-dot"></span>
-                        Active
-
-                    </td>
-
-                    <td>
-
-                        <a
-                            class="visit"
-                            href="https://plabon.live"
-                            target="_blank"
-                        >
-                            Visit
-                        </a>
-
-                    </td>
-
-                </tr>
-
 
             </tbody>
 
@@ -852,159 +1300,1666 @@ a{
 
     </div>
 
-</section>
+</div>
 
 
+<!-- SUPPORT -->
 
-<!-- ================= AGENT TYPES ================= -->
+<button
+    class="support-btn"
+    onclick="openSupport()"
+>
+    🎧 Support
+</button>
 
-<section
-    class="section"
-    id="super"
+
+<!-- =========================
+     SEARCH POPUP
+========================= -->
+
+<div
+    class="popup-overlay"
+    id="searchPopup"
 >
 
-    <h2 class="section-title">
-        How many types of agents
-    </h2>
+    <div class="popup">
 
-
-
-    <!-- SUPER AGENT -->
-
-    <div class="agent-text">
-
-        <h3>
-            অনলাইন সুপার এজেন্ট লিস্টঃ
-        </h3>
-
-        সুপার এজেন্ট বা, ইউজার একাউন্ট এবং মাস্টার এজেন্ট একাউন্ট খুলে দিতে পারেন।
-        কোন সুপার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি এডমিন কে জানাতে হবে।
-
-    </div>
-
-
-
-    <!-- MASTER AGENT -->
-
-    <div
-        class="agent-text"
-        id="master"
-    >
+        <span
+            class="close-btn"
+            onclick="closeSearch()"
+        >
+            &times;
+        </span>
 
         <h3>
-            অনলাইন মাস্টার এজেন্ট লিস্টঃ
+            👤 এজেন্ট খুঁজুন
         </h3>
 
-        অনলাইন মাস্টার এজেন্ট বা, শুধু ইউজার একাউন্ট একাউন্ট খুলে দিতে পারেন।
-        কোন মাস্টার এজেন্ট এর নামে অভিযোগ থাকলে সরাসরি সুপার এজেন্ট এর কাছে অভিযোগ করতে হবে।
+        <label>Type</label>
+
+        <select id="searchType">
+
+            <option value="all">
+                All Agent
+            </option>
+
+            <option value="Site Owner">
+                Site Owner
+            </option>
+
+            <option value="Admin">
+                Admin
+            </option>
+
+            <option value="Sub Admin">
+                Sub Admin
+            </option>
+
+            <option value="Super">
+                Super
+            </option>
+
+            <option value="Master">
+                Master
+            </option>
+
+        </select>
+
+        <label>
+            Search By Agent ID
+        </label>
+
+        <input
+            type="text"
+            id="searchId"
+        >
+
+        <label>
+            Search by Whatsapp
+        </label>
+
+        <input
+            type="text"
+            id="searchPhone"
+        >
+
+        <button onclick="doSearch()">
+            Search
+        </button>
 
     </div>
 
+</div>
 
 
-    <!-- LOCAL MASTER -->
+<!-- =========================
+     SUPPORT POPUP
+========================= -->
 
-    <div
-        class="agent-text"
-        id="sub-admin"
-    >
-
-        <h3>
-            লোকাল মাস্টার এজেন্ট লিস্টঃ
-        </h3>
-
-        লোকাল মাস্টার এজেন্টরা শুধু ইউজার একাউন্ট খুলে দিতে পারেন।
-        লেনদেন ও অন্যান্য তথ্যের জন্য সংশ্লিষ্ট এজেন্টের সাথে যোগাযোগ করুন।
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= ACCOUNT ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        কিভাবে একাউন্ট খুলবেনঃ
-    </h2>
-
-
-    <div class="agent-text">
-
-        play25 তে একাউন্ট করতে হলে আপনার এজেন্ট এর মাধ্যমে একাউন্ট খুলতে হবে।
-        এজেন্ট এর মাধ্যমেই টাকা ডিপোজিট এবং উত্তোলন করতে হবে।
-        আপনি যে এজেন্ট এর কাছ থেকে একাউন্ট খুলবেন তার সাথেই সব সময় লেনদেন করতে হবে।
-        আপনি কোন এজেন্ট কে টাকা দিবেন এবং কিভাবে তার সাথে লেনদেন করবেন
-        তা বুঝতে হলে নিজের তথ্য গুলো পড়া জরুরী।
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= UPDATE ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        play25 সব নতুন আপডেট
-    </h2>
-
-
-    <div class="update-box">
-    </div>
-
-</section>
-
-
-
-<!-- ================= IMPORTANT ================= -->
-
-<section
-    class="section"
-    id="lottery"
+<div
+    class="popup-overlay"
+    id="supportPopup"
 >
 
-    <h2 class="section-title">
-        গুরুত্বপূর্ণ তথ্য
-    </h2>
+    <div class="popup">
 
+        <span
+            class="close-btn"
+            onclick="closeSupport()"
+        >
+            &times;
+        </span>
 
-    <div class="agent-text">
+        <h3>
+            🎧 Support Team
+        </h3>
 
-        লেনদেন করার আগে সংশ্লিষ্ট এজেন্টের তথ্য যাচাই করুন।
-        কোনো ব্যক্তিকে ব্যক্তিগতভাবে টাকা পাঠানোর আগে
-        তার পরিচয় ও যোগাযোগের তথ্য নিশ্চিত করুন।
+        <div id="supportList">
+            Loading...
+        </div>
 
     </div>
 
-</section>
+</div>
 
 
-</main>
+<!-- =========================
+     VIEW POPUP
+========================= -->
 
-
-
-<!-- ================= SUPPORT ================= -->
-
-<a
-    class="support"
-    href="#"
-    onclick="alert('Support'); return false;"
+<div
+    class="popup-overlay"
+    id="viewPopup"
 >
 
-    <span>
-        ◉
-    </span>
+    <div class="popup">
 
-    Support
+        <span
+            class="close-btn"
+            onclick="closeView()"
+        >
+            &times;
+        </span>
 
-</a>
+        <div style="text-align:center;margin-bottom:10px">
+
+            <div
+                style="
+                width:70px;
+                height:70px;
+                border-radius:50%;
+                background:#555;
+                margin:0 auto;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:35px;
+                "
+            >
+                👤
+            </div>
+
+        </div>
+
+        <label>Name</label>
+        <div class="info-box" id="viewName"></div>
+
+        <label>Type</label>
+        <div class="info-box" id="viewRole"></div>
+
+        <label>Number</label>
+        <div class="info-box" id="viewPhone"></div>
+
+        <label>ID Number</label>
+        <div class="info-box" id="viewId"></div>
+
+        <label>Serial</label>
+        <div class="info-box" id="viewSerial"></div>
+
+        <label>Message</label>
+
+        <a
+            id="viewWa"
+            href="#"
+            target="_blank"
+            class="btn-wa-popup"
+        >
+            📱 Whatsapp
+        </a>
+
+        <label>Rating</label>
+
+        <div class="stars-popup">
+            ★★★
+        </div>
+
+        <label>
+            Hierarchy / কার আন্ডারে
+        </label>
+
+        <div
+            class="hierarchy-tags"
+            id="viewHierarchy"
+        ></div>
+
+    </div>
+
+</div>
 
 
+<!-- =========================
+     REPORT POPUP
+========================= -->
+
+<div
+    class="popup-overlay"
+    id="reportPopup"
+>
+
+    <div class="popup">
+
+        <span
+            class="close-btn"
+            onclick="closeReport()"
+        >
+            &times;
+        </span>
+
+        <div style="text-align:center;margin-bottom:10px">
+
+            <div
+                style="
+                width:70px;
+                height:70px;
+                border-radius:50%;
+                background:#555;
+                margin:0 auto;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:35px;
+                "
+            >
+                👤
+            </div>
+
+        </div>
+
+        <div class="report-header">
+            Report This Person
+        </div>
+
+        <label>Name</label>
+        <div class="info-box" id="reportName"></div>
+
+        <label>Type</label>
+        <div class="info-box" id="reportRole"></div>
+
+        <label>Number</label>
+        <div class="info-box" id="reportPhone"></div>
+
+        <label>ID Number</label>
+        <div class="info-box" id="reportId"></div>
+
+        <label>
+            Hierarchy / কার আন্ডারে আছে
+        </label>
+
+        <div
+            class="hierarchy-tags"
+            id="reportHierarchy"
+        ></div>
+
+        <div class="upper-panel-title">
+            ⬆️ Upper Panel / Report To
+        </div>
+
+        <div
+            class="upper-panel-list"
+            id="reportUpperPanels"
+        >
+            <div class="no-upper-panel">
+                Upper Panel খোঁজা হচ্ছে...
+            </div>
+        </div>
+
+        <a
+            id="reportWa"
+            href="#"
+            target="_blank"
+            class="report-wa-btn"
+        >
+            📱 Whatsapp এ মেসেজ করুন
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+
+<script>
+
+/* ==================================================
+   FIREBASE CONFIG
+================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
+
+    authDomain:
+        "play25agent.firebaseapp.com",
+
+    databaseURL:
+        "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId:
+        "play25agent"
+
+};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const db =
+    firebase.database();
+
+
+let allAgentsData = {};
+
+
+/* ==================================================
+   DETECT PAGE
+================================================== */
+
+let fileName =
+    window.location.pathname
+    .split("/")
+    .pop()
+    .replace(".html","");
+
+
+let currentRole =
+    fileName == ""
+        ? "index"
+        : fileName;
+
+
+/* ==================================================
+   PAGE SWITCH
+================================================== */
+
+if(currentRole == "index"){
+
+    document.getElementById("homePage").style.display =
+        "block";
+
+    document.getElementById("agentPage").style.display =
+        "none";
+
+}else{
+
+    document.getElementById("homePage").style.display =
+        "none";
+
+    document.getElementById("agentPage").style.display =
+        "block";
+
+}
+
+
+/* ==================================================
+   ROLE NAME
+================================================== */
+
+const roleNames = {
+
+    index:
+        "ALL AGENT LIST",
+
+    siteowner:
+        "SITE OWNER LIST",
+
+    admin:
+        "ADMIN LIST",
+
+    subadmin:
+        "SUB ADMIN LIST",
+
+    super:
+        "SUPER LIST",
+
+    master:
+        "MASTER LIST"
+
+};
+
+
+document.getElementById(
+    "roleTitle"
+).innerText =
+    roleNames[currentRole] ||
+    "AGENT LIST";
+
+
+/* ==================================================
+   ACTIVE MENU
+================================================== */
+
+document.querySelectorAll(
+    ".menu a"
+).forEach(a => {
+
+    let href =
+        a.getAttribute("href");
+
+    if(
+        href &&
+        href.includes(currentRole)
+    ){
+
+        a.classList.add("active");
+
+    }
+
+});
+
+
+/* ==================================================
+   POPUP FUNCTIONS
+================================================== */
+
+function openSearch(){
+
+    document.getElementById(
+        "searchPopup"
+    ).style.display = "flex";
+
+}
+
+
+function closeSearch(){
+
+    document.getElementById(
+        "searchPopup"
+    ).style.display = "none";
+
+}
+
+
+function openSupport(){
+
+    document.getElementById(
+        "supportPopup"
+    ).style.display = "flex";
+
+}
+
+
+function closeSupport(){
+
+    document.getElementById(
+        "supportPopup"
+    ).style.display = "none";
+
+}
+
+
+function closeView(){
+
+    document.getElementById(
+        "viewPopup"
+    ).style.display = "none";
+
+}
+
+
+function closeReport(){
+
+    document.getElementById(
+        "reportPopup"
+    ).style.display = "none";
+
+}
+
+
+/* ==================================================
+   WHATSAPP
+================================================== */
+
+function getWaLink(num){
+
+    if(!num)
+        return "#";
+
+    let clean =
+        String(num)
+        .replace(/[^0-9]/g,"");
+
+    return "https://wa.me/" + clean;
+
+}
+
+
+/* ==================================================
+   FIND AGENT
+================================================== */
+
+function findAgentByValue(value){
+
+    if(
+        value === undefined ||
+        value === null ||
+        value === ""
+    )
+        return null;
+
+
+    let searchValue =
+        String(value)
+        .trim()
+        .toLowerCase();
+
+
+    for(let key in allAgentsData){
+
+        let a =
+            allAgentsData[key] || {};
+
+
+        let values = [
+
+            key,
+            a.id,
+            a.name,
+            a.serial,
+            a.phone,
+            a.phone2,
+            a.parent,
+            a.parentId,
+            a.parentID,
+            a.parentSerial,
+            a.parentName
+
+        ];
+
+
+        for(let v of values){
+
+            if(
+                v !== undefined &&
+                v !== null &&
+                String(v)
+                .trim()
+                .toLowerCase()
+                === searchValue
+            ){
+
+                return {
+
+                    key:key,
+                    agent:a
+
+                };
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+
+/* ==================================================
+   PARENT
+================================================== */
+
+function getParentValue(agent){
+
+    if(!agent)
+        return null;
+
+
+    return agent.parent ||
+           agent.parentId ||
+           agent.parentID ||
+           agent.parentKey ||
+           agent.parentSerial ||
+           agent.parentName ||
+           agent.upline ||
+           agent.uplineId ||
+           agent.upper ||
+           agent.upperId ||
+           null;
+
+}
+
+
+/* ==================================================
+   UPPER PANELS
+================================================== */
+
+function getUpperPanels(
+    agentKey,
+    agent
+){
+
+    let result = [];
+
+    let visited = {};
+
+    let currentAgent =
+        agent;
+
+    let currentKey =
+        agentKey;
+
+
+    for(
+        let i=0;
+        i<20;
+        i++
+    ){
+
+        if(!currentAgent)
+            break;
+
+
+        let parentValue =
+            getParentValue(
+                currentAgent
+            );
+
+
+        if(
+            parentValue === undefined ||
+            parentValue === null ||
+            String(parentValue)
+            .trim() === ""
+        ){
+
+            break;
+
+        }
+
+
+        let parentResult =
+            findAgentByValue(
+                parentValue
+            );
+
+
+        if(!parentResult)
+            break;
+
+
+        let parentKey =
+            parentResult.key;
+
+        let parentAgent =
+            parentResult.agent;
+
+
+        if(visited[parentKey])
+            break;
+
+
+        visited[parentKey] = true;
+
+
+        if(parentKey !== currentKey){
+
+            result.push({
+
+                key:parentKey,
+                agent:parentAgent
+
+            });
+
+        }
+
+
+        currentKey =
+            parentKey;
+
+        currentAgent =
+            parentAgent;
+
+    }
+
+
+    let extraValues = [
+
+        agent.parentParent,
+        agent.upperParent,
+        agent.upperParentId,
+        agent.parentParentId,
+        agent.parentParentSerial
+
+    ];
+
+
+    for(
+        let value of extraValues
+    ){
+
+        if(
+            value === undefined ||
+            value === null ||
+            String(value).trim() === ""
+        )
+            continue;
+
+
+        let found =
+            findAgentByValue(value);
+
+
+        if(
+            found &&
+            found.key !== agentKey &&
+            !visited[found.key]
+        ){
+
+            visited[found.key] = true;
+
+
+            result.push({
+
+                key:found.key,
+                agent:found.agent
+
+            });
+
+        }
+
+    }
+
+
+    return result;
+
+}
+
+
+/* ==================================================
+   HIERARCHY
+================================================== */
+
+function getHierarchy(agent){
+
+    let tags = "";
+
+
+    if(agent.parent)
+
+        tags +=
+        `<span class="tag">
+            Direct: ${agent.parent}
+        </span>`;
+
+
+    if(agent.parentParent)
+
+        tags +=
+        `<span class="tag">
+            Upper: ${agent.parentParent}
+        </span>`;
+
+
+    if(agent.parentSerial)
+
+        tags +=
+        `<span class="tag">
+            ${agent.parentSerial}
+        </span>`;
+
+
+    if(agent.role != "Site Owner")
+
+        tags +=
+        `<span class="tag">
+            Level: ${agent.role}
+        </span>`;
+
+
+    if(!agent.parent)
+
+        tags +=
+        `<span class="tag">
+            Site Owner
+        </span>`;
+
+
+    return tags ||
+        '<span class="tag">No Parent</span>';
+
+}
+
+
+/* ==================================================
+   VIEW AGENT
+================================================== */
+
+function viewAgent(key){
+
+    let a =
+        allAgentsData[key];
+
+
+    if(!a)
+        return;
+
+
+    document.getElementById(
+        "viewName"
+    ).innerText =
+        a.name || "N/A";
+
+
+    document.getElementById(
+        "viewRole"
+    ).innerText =
+        a.role || "N/A";
+
+
+    document.getElementById(
+        "viewPhone"
+    ).innerText =
+        a.phone || "N/A";
+
+
+    document.getElementById(
+        "viewId"
+    ).innerText =
+        a.id || "N/A";
+
+
+    document.getElementById(
+        "viewSerial"
+    ).innerText =
+        a.serial || "-";
+
+
+    document.getElementById(
+        "viewWa"
+    ).href =
+        getWaLink(a.phone);
+
+
+    document.getElementById(
+        "viewHierarchy"
+    ).innerHTML =
+        getHierarchy(a);
+
+
+    document.getElementById(
+        "viewPopup"
+    ).style.display =
+        "flex";
+
+}
+
+
+/* ==================================================
+   REPORT MESSAGE
+================================================== */
+
+function makeReportMessage(
+    reportedAgent,
+    targetAgent
+){
+
+    let reportedName =
+        reportedAgent.name ||
+        "Agent";
+
+
+    let reportedRole =
+        reportedAgent.role ||
+        "";
+
+
+    let reportedId =
+        reportedAgent.id ||
+        "";
+
+
+    let targetName =
+        targetAgent.name ||
+        "Admin";
+
+
+    return encodeURIComponent(
+
+        `Assalamu Alaikum ${targetName},\n\n` +
+
+        `আমি একজন Agent সম্পর্কে Report করতে চাই।\n\n` +
+
+        `Name: ${reportedName}\n` +
+
+        `Type: ${reportedRole}\n` +
+
+        `ID: ${reportedId}\n` +
+
+        `Number: ${reportedAgent.phone || "N/A"}\n\n` +
+
+        `দয়া করে বিষয়টি যাচাই করবেন।`
+
+    );
+
+}
+
+
+/* ==================================================
+   REPORT UPPER PANEL
+================================================== */
+
+function reportToUpperPanel(
+    upperKey,
+    reportedKey
+){
+
+    let upperAgent =
+        allAgentsData[upperKey];
+
+
+    let reportedAgent =
+        allAgentsData[reportedKey];
+
+
+    if(
+        !upperAgent ||
+        !reportedAgent
+    )
+        return;
+
+
+    let phone =
+        upperAgent.phone ||
+        upperAgent.phone2;
+
+
+    if(!phone){
+
+        alert(
+            `${upperAgent.name || "Upper Panel"} এর WhatsApp Number পাওয়া যায়নি।`
+        );
+
+        return;
+
+    }
+
+
+    let cleanPhone =
+        String(phone)
+        .replace(/[^0-9]/g,"");
+
+
+    let message =
+        makeReportMessage(
+            reportedAgent,
+            upperAgent
+        );
+
+
+    let url =
+        `https://wa.me/${cleanPhone}?text=${message}`;
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* ==================================================
+   RENDER UPPER PANEL
+================================================== */
+
+function renderUpperPanels(
+    reportedKey
+){
+
+    let reportedAgent =
+        allAgentsData[reportedKey];
+
+
+    let container =
+        document.getElementById(
+            "reportUpperPanels"
+        );
+
+
+    if(!reportedAgent){
+
+        container.innerHTML =
+        `<div class="no-upper-panel">
+            Agent তথ্য পাওয়া যায়নি
+        </div>`;
+
+        return;
+
+    }
+
+
+    let upperPanels =
+        getUpperPanels(
+            reportedKey,
+            reportedAgent
+        );
+
+
+    if(!upperPanels.length){
+
+        container.innerHTML =
+        `<div class="no-upper-panel">
+            এই Agent-এর কোনো Upper Panel পাওয়া যায়নি
+        </div>`;
+
+        return;
+
+    }
+
+
+    let html = "";
+
+
+    upperPanels.forEach(
+        item => {
+
+            let a =
+                item.agent;
+
+
+            let role =
+                a.role ||
+                "Upper Panel";
+
+
+            let name =
+                a.name ||
+                role;
+
+
+            let id =
+                a.id ?
+                `ID ${a.id}` :
+                "";
+
+
+            html += `
+
+            <div class="upper-panel-item">
+
+                <div class="upper-panel-info">
+
+                    <span class="upper-panel-name">
+                        ${name}
+                    </span>
+
+                    <span class="upper-panel-role">
+                        ${role}
+                    </span>
+
+                    <span class="upper-panel-id">
+                        ${id}
+                    </span>
+
+                </div>
+
+                <button
+                    class="report-to-btn"
+                    onclick="reportToUpperPanel(
+                        '${item.key}',
+                        '${reportedKey}'
+                    )"
+                >
+                    Report To ${role}
+                </button>
+
+            </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* ==================================================
+   REPORT AGENT
+================================================== */
+
+function reportAgent(key){
+
+    let a =
+        allAgentsData[key];
+
+
+    if(!a)
+        return;
+
+
+    document.getElementById(
+        "reportName"
+    ).innerText =
+        a.name || "N/A";
+
+
+    document.getElementById(
+        "reportRole"
+    ).innerText =
+        a.role || "N/A";
+
+
+    document.getElementById(
+        "reportPhone"
+    ).innerText =
+        a.phone || "N/A";
+
+
+    document.getElementById(
+        "reportId"
+    ).innerText =
+        a.id || "N/A";
+
+
+    document.getElementById(
+        "reportHierarchy"
+    ).innerHTML =
+        getHierarchy(a);
+
+
+    document.getElementById(
+        "reportWa"
+    ).href =
+        getWaLink(a.phone);
+
+
+    renderUpperPanels(key);
+
+
+    document.getElementById(
+        "reportPopup"
+    ).style.display =
+        "flex";
+
+}
+
+
+/* ==================================================
+   LOAD AGENTS
+================================================== */
+
+db.ref("agents").on(
+    "value",
+    snap => {
+
+        allAgentsData =
+            snap.val() || {};
+
+
+        renderAgents(
+            allAgentsData
+        );
+
+
+        renderHomeAdmin(
+            allAgentsData
+        );
+
+    }
+);
+
+
+/* ==================================================
+   HOME ADMIN
+================================================== */
+
+function renderHomeAdmin(data){
+
+    let container =
+        document.getElementById(
+            "homeAdminList"
+        );
+
+
+    if(!container)
+        return;
+
+
+    let admin =
+        null;
+
+
+    for(let key in data){
+
+        let a =
+            data[key];
+
+
+        if(
+            a &&
+            (
+                a.role === "Admin" ||
+                a.role === "Site Owner"
+            )
+        ){
+
+            admin = a;
+
+            break;
+
+        }
+
+    }
+
+
+    if(!admin){
+
+        return;
+
+    }
+
+
+    let phone =
+        admin.phone ||
+        "971507872525";
+
+
+    container.innerHTML = `
+
+        <div class="admin-home-card">
+
+            <div class="admin-avatar">
+                👤
+            </div>
+
+            <div class="admin-info">
+
+                <span class="admin-name">
+                    ${admin.name || "Plabon Khan"}
+                </span>
+
+                <span class="admin-role">
+                    ${admin.role || "Site Owner"}
+                </span>
+
+            </div>
+
+            <div class="admin-id">
+                ID<br>
+                ${admin.id || "1"}
+            </div>
+
+            <div class="admin-phone">
+
+                <div class="admin-phone-number">
+                    ${phone}
+                </div>
+
+                <span class="admin-wa">
+                    Whatsapp
+                </span>
+
+            </div>
+
+            <a
+                href="${getWaLink(phone)}"
+                target="_blank"
+                class="admin-message"
+            >
+                Message
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==================================================
+   RENDER AGENTS
+================================================== */
+
+function renderAgents(data){
+
+    let html = "";
+
+
+    for(let key in data){
+
+        let a =
+            data[key];
+
+
+        if(!a)
+            continue;
+
+
+        let role =
+            String(a.role || "")
+            .toLowerCase()
+            .replace(/\s/g,"");
+
+
+        if(
+            currentRole == "index" ||
+            role == currentRole
+        ){
+
+            let appLink = `
+
+                <a
+                    href="${getWaLink(a.phone)}"
+                    target="_blank"
+                    class="btn-wa-app"
+                    title="WhatsApp"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                    >
+
+                        <path d="M20.52 3.48A11.91 11.91 0 0 0 12.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L.02 24l6.24-1.64a11.9 11.9 0 0 0 5.78 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.18-3.47-8.42zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.7.97.99-3.61-.23-.37a9.91 9.91 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.46-4.45 9.91-9.91 9.91zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.48-.88-.78-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.25-.2-.54-.35z"/>
+
+                    </svg>
+
+                </a>
+
+            `;
+
+
+            let fbLink =
+                `<span class="btn-none">--</span>`;
+
+
+            let phoneBtns = "";
+
+
+            if(a.phone){
+
+                phoneBtns += `
+
+                    <a
+                        href="${getWaLink(a.phone)}"
+                        target="_blank"
+                        class="btn-wa-wrap"
+                    >
+
+                        <div class="btn-wa-num">
+                            ${a.phone}
+                        </div>
+
+                        <div class="btn-wa">
+                            Whatsapp
+                        </div>
+
+                    </a>
+
+                `;
+
+            }
+
+
+            if(a.phone2){
+
+                phoneBtns += `
+
+                    <a
+                        href="${getWaLink(a.phone2)}"
+                        target="_blank"
+                        class="btn-wa-wrap"
+                    >
+
+                        <div class="btn-wa-num">
+                            ${a.phone2}
+                        </div>
+
+                        <div class="btn-wa">
+                            Whatsapp
+                        </div>
+
+                    </a>
+
+                `;
+
+            }
+
+
+            html += `
+
+                <tr>
+
+                    <td class="name-col">
+
+                        <div class="avatar"></div>
+
+                        <b>
+                            ${a.name || "N/A"}
+                        </b>
+
+                        <small>
+                            ${a.role || ""}
+                        </small>
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="id-box">
+                            ID ${a.id || "-"}
+                        </div>
+
+                    </td>
+
+
+                    <td class="stars">
+                        ★★★
+                    </td>
+
+
+                    <td>
+                        ${appLink}
+                    </td>
+
+
+                    <td>
+                        ${fbLink}
+                    </td>
+
+
+                    <td>
+                        ${phoneBtns || "--"}
+                    </td>
+
+
+                    <td>
+
+                        <a
+                            onclick="viewAgent('${key}')"
+                            class="btn-view"
+                        >
+                            👁️
+                        </a>
+
+                    </td>
+
+
+                    <td>
+
+                        <a
+                            onclick="reportAgent('${key}')"
+                            class="btn-report"
+                        >
+                            Report
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "agentList"
+    ).innerHTML =
+
+        html ||
+
+        `<tr>
+            <td colspan="8">
+                কোন Agent নেই
+            </td>
+        </tr>`;
+
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+function doSearch(){
+
+    let type =
+        document.getElementById(
+            "searchType"
+        ).value;
+
+
+    let id =
+        document.getElementById(
+            "searchId"
+        ).value.trim();
+
+
+    let phone =
+        document.getElementById(
+            "searchPhone"
+        ).value.trim();
+
+
+    let result = {};
+
+
+    for(let key in allAgentsData){
+
+        let a =
+            allAgentsData[key];
+
+
+        let match =
+            true;
+
+
+        if(
+            type != "all" &&
+            a.role != type
+        ){
+
+            match = false;
+
+        }
+
+
+        if(
+            id != "" &&
+            !String(a.id || "")
+            .includes(id)
+        ){
+
+            match = false;
+
+        }
+
+
+        if(
+            phone != "" &&
+            !String(a.phone || "")
+            .includes(phone) &&
+            !(
+                a.phone2 &&
+                String(a.phone2)
+                .includes(phone)
+            )
+        ){
+
+            match = false;
+
+        }
+
+
+        if(match)
+            result[key] = a;
+
+    }
+
+
+    renderAgents(
+        result
+    );
+
+
+    closeSearch();
+
+}
+
+
+/* ==================================================
+   SUPPORT LOAD
+================================================== */
+
+db.ref("support").on(
+    "value",
+    snap => {
+
+        let html = "";
+
+
+        snap.forEach(
+            child => {
+
+                let s =
+                    child.val();
+
+
+                html += `
+
+                    <div class="support-item">
+
+                        <div class="icon">
+                            🎧
+                        </div>
+
+                        <div class="info">
+
+                            <b>
+                                ${s.name || ""}
+                            </b>
+
+                            <br>
+
+                            <small>
+                                ${s.phone || ""}
+                            </small>
+
+                        </div>
+
+                        <a
+                            href="${getWaLink(s.phone)}"
+                            class="btn-msg"
+                            target="_blank"
+                        >
+                            Message
+                        </a>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+        document.getElementById(
+            "supportList"
+        ).innerHTML =
+
+            html ||
+            "কোন Support নেই";
+
+    }
+);
+
+</script>
 
 </body>
 </html>
