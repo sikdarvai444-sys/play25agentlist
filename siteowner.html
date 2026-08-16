@@ -112,14 +112,22 @@ td{
     display:block
 }
 
+/* =========================
+   ID BOX - UPDATED ONLY
+   ========================= */
+
 .id-box{
     background:#ffc107;
     color:#000;
-    padding:1px 4px;
-    border-radius:4px;
+    padding:2px 6px;
+    border-radius:3px;
     font-weight:bold;
-    font-size:8px;
-    display:inline-block
+    font-size:9px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:38px;
+    min-height:22px;
 }
 
 .stars{
@@ -835,11 +843,6 @@ function getParentValue(agent){
 
     if(!agent) return null;
 
-    /*
-       Firebase-এ Parent যেকোনো একটি
-       নামে থাকলে সেখান থেকে নেওয়া হবে।
-    */
-
     return agent.parent ||
            agent.parentId ||
            agent.parentID ||
@@ -865,11 +868,6 @@ function getUpperPanels(agentKey, agent){
     let currentAgent = agent;
     let currentKey = agentKey;
 
-    /*
-       Direct Parent থেকে শুরু করে
-       উপরের সব Parent বের করা হবে।
-    */
-
     for(let i = 0; i < 20; i++){
 
         if(!currentAgent)
@@ -888,32 +886,16 @@ function getUpperPanels(agentKey, agent){
         let parentResult = findAgentByValue(parentValue);
 
         if(!parentResult){
-
-            /*
-              parent value না মিললে
-              parentParent দিয়েও চেষ্টা
-              বন্ধ করা হবে।
-            */
-
             break;
         }
 
         let parentKey = parentResult.key;
         let parentAgent = parentResult.agent;
 
-        /*
-          একই Agent যেন বারবার না আসে
-        */
-
         if(visited[parentKey])
             break;
 
         visited[parentKey] = true;
-
-        /*
-          Current Agent নিজে যেন Upper Panel
-          হিসেবে না আসে
-        */
 
         if(parentKey !== currentKey){
 
@@ -926,12 +908,6 @@ function getUpperPanels(agentKey, agent){
         currentKey = parentKey;
         currentAgent = parentAgent;
     }
-
-    /*
-      যদি parent chain থেকে না পাওয়া যায়,
-      পুরোনো parentParent field থেকেও
-      অতিরিক্ত Upper Panel খোঁজা হবে।
-    */
 
     let extraValues = [
         agent.parentParent,
@@ -1209,12 +1185,6 @@ function reportAgent(key){
 
     document.getElementById('reportWa').href =
         getWaLink(a.phone);
-
-    /*
-      Report popup খোলার সময়
-      ওই Agent-এর সব Upper Panel
-      নতুন করে Load হবে।
-    */
 
     renderUpperPanels(key);
 
