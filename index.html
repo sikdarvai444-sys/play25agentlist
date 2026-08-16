@@ -112,14 +112,17 @@ td{
     display:block
 }
 
+/* বড় ID BOX - আপডেট করা হলো */
 .id-box{
     background:#ffc107;
     color:#000;
-    padding:1px 4px;
-    border-radius:4px;
+    padding:4px 8px; /* আগের থেকে বড় */
+    border-radius:6px; /* রাউন্ড বেশি */
     font-weight:bold;
-    font-size:8px;
-    display:inline-block
+    font-size:10px; /* ফন্ট বড় */
+    display:inline-block;
+    min-width:45px; /* বক্স চওড়া */
+    text-align:center;
 }
 
 .stars{
@@ -129,7 +132,6 @@ td{
 }
 
 /* WHATSAPP APP ICON */
-
 .btn-wa-app{
     background:#25D366;
     width:20px;
@@ -152,7 +154,6 @@ td{
 }
 
 /* PHONE */
-
 .btn-wa-wrap{
     display:flex;
     flex-direction:column;
@@ -205,14 +206,13 @@ td{
     font-size:12px
 }
 
-/* COLUMN WIDTH */
-
-th:nth-child(1){width:20%}
-th:nth-child(2){width:8%}
+/* COLUMN WIDTH - ID কলাম একটু বাড়ানো হলো */
+th:nth-child(1){width:22%}
+th:nth-child(2){width:10%} /* 8% থেকে 10% */
 th:nth-child(3){width:9%}
 th:nth-child(4){width:7%}
 th:nth-child(5){width:8%}
-th:nth-child(6){width:22%}
+th:nth-child(6){width:20%}
 th:nth-child(7){width:7%}
 th:nth-child(8){width:12%}
 
@@ -309,7 +309,6 @@ th:nth-child(8){width:12%}
 }
 
 /* VIEW POPUP */
-
 .info-box{
     width:100%;
     padding:8px;
@@ -352,10 +351,7 @@ th:nth-child(8){width:12%}
     font-size:10px
 }
 
-/* =========================
-   REPORT POPUP
-   ========================= */
-
+/* REPORT POPUP */
 .report-header{
     background:#f44336;
     color:#fff;
@@ -380,7 +376,6 @@ th:nth-child(8){width:12%}
 }
 
 /* UPPER PANEL AREA */
-
 .upper-panel-title{
     color:#ffeb3b;
     font-size:14px;
@@ -459,7 +454,6 @@ th:nth-child(8){width:12%}
 }
 
 /* SUPPORT */
-
 .support-item{
     display:flex;
     align-items:center;
@@ -470,7 +464,7 @@ th:nth-child(8){width:12%}
     margin-bottom:8px
 }
 
-.support-item .icon{
+.support-item.icon{
     width:30px;
     height:30px;
     background:#ffc107;
@@ -482,11 +476,11 @@ th:nth-child(8){width:12%}
     font-weight:bold
 }
 
-.support-item .info{
+.support-item.info{
     flex:1
 }
 
-.support-item .btn-msg{
+.support-item.btn-msg{
     background:#4caf50;
     color:#fff;
     padding:4px 8px;
@@ -501,11 +495,9 @@ th:nth-child(8){width:12%}
 
 <div class="header">
     <div class="search-icon" onclick="openSearch()">🔍</div>
-
     <div class="logo">
         <img src="logo.png" alt="PLAY25 Agent List">
     </div>
-
     <div class="grid-icon">⊞</div>
 </div>
 
@@ -520,9 +512,7 @@ th:nth-child(8){width:12%}
 </div>
 
 <div class="box">
-
     <h2 id="roleTitle">MASTER LIST</h2>
-
     <table>
         <thead>
             <tr>
@@ -536,30 +526,20 @@ th:nth-child(8){width:12%}
                 <th>Report</th>
             </tr>
         </thead>
-
         <tbody id="agentList">
-            <tr>
-                <td colspan="8">Loading...</td>
-            </tr>
+            <tr><td colspan="8">Loading...</td></tr>
         </tbody>
     </table>
-
 </div>
 
 <button class="support-btn" onclick="openSupport()">🎧 Support</button>
 
 <!-- SEARCH POPUP -->
-
 <div class="popup-overlay" id="searchPopup">
-
     <div class="popup">
-
         <span class="close-btn" onclick="closeSearch()">&times;</span>
-
         <h3>👤 এজেন্ট খুঁজুন</h3>
-
         <label>Type</label>
-
         <select id="searchType">
             <option value="all">All Agent</option>
             <option value="Site Owner">Site Owner</option>
@@ -568,163 +548,79 @@ th:nth-child(8){width:12%}
             <option value="Super">Super</option>
             <option value="Master">Master</option>
         </select>
-
         <label>Search By Agent ID</label>
         <input type="text" id="searchId">
-
         <label>Search by Whatsapp</label>
         <input type="text" id="searchPhone">
-
         <button onclick="doSearch()">Search</button>
-
     </div>
 </div>
 
 <!-- SUPPORT POPUP -->
-
 <div class="popup-overlay" id="supportPopup">
-
     <div class="popup">
-
         <span class="close-btn" onclick="closeSupport()">&times;</span>
-
         <h3>🎧 Support Team</h3>
-
         <div id="supportList">Loading...</div>
-
     </div>
 </div>
 
 <!-- VIEW DETAILS POPUP -->
-
 <div class="popup-overlay" id="viewPopup">
-
     <div class="popup">
-
         <span class="close-btn" onclick="closeView()">&times;</span>
-
         <div style="text-align:center;margin-bottom:10px">
-
-            <div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">
-                👤
-            </div>
-
+            <div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div>
         </div>
-
-        <label>Name</label>
-        <div class="info-box" id="viewName"></div>
-
-        <label>Type</label>
-        <div class="info-box" id="viewRole"></div>
-
-        <label>Number</label>
-        <div class="info-box" id="viewPhone"></div>
-
-        <label>ID Number</label>
-        <div class="info-box" id="viewId"></div>
-
-        <label>Serial</label>
-        <div class="info-box" id="viewSerial"></div>
-
-        <label>Message</label>
-
-        <a id="viewWa" href="#" target="_blank" class="btn-wa-popup">
-            📱 Whatsapp
-        </a>
-
-        <label>Rating</label>
-
-        <div class="stars-popup">
-            ★★★
-        </div>
-
-        <label>Hierarchy / কার আন্ডারে</label>
-
-        <div class="hierarchy-tags" id="viewHierarchy"></div>
-
+        <label>Name</label><div class="info-box" id="viewName"></div>
+        <label>Type</label><div class="info-box" id="viewRole"></div>
+        <label>Number</label><div class="info-box" id="viewPhone"></div>
+        <label>ID Number</label><div class="info-box" id="viewId"></div>
+        <label>Serial</label><div class="info-box" id="viewSerial"></div>
+        <label>Message</label><a id="viewWa" href="#" target="_blank" class="btn-wa-popup">📱 Whatsapp</a>
+        <label>Rating</label><div class="stars-popup">★★★</div>
+        <label>Hierarchy / কার আন্ডারে</label><div class="hierarchy-tags" id="viewHierarchy"></div>
     </div>
 </div>
 
 <!-- REPORT POPUP -->
-
 <div class="popup-overlay" id="reportPopup">
-
     <div class="popup">
-
         <span class="close-btn" onclick="closeReport()">&times;</span>
-
         <div style="text-align:center;margin-bottom:10px">
-
-            <div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">
-                👤
-            </div>
-
+            <div style="width:60px;height:60px;border-radius:50%;background:#555;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff">👤</div>
         </div>
+        <div class="report-header">Report This Person</div>
+        <label>Name</label><div class="info-box" id="reportName"></div>
+        <label>Type</label><div class="info-box" id="reportRole"></div>
+        <label>Number</label><div class="info-box" id="reportPhone"></div>
+        <label>ID Number</label><div class="info-box" id="reportId"></div>
+        <label>Hierarchy / কার আন্ডারে আছে</label><div class="hierarchy-tags" id="reportHierarchy"></div>
 
-        <div class="report-header">
-            Report This Person
-        </div>
-
-        <label>Name</label>
-        <div class="info-box" id="reportName"></div>
-
-        <label>Type</label>
-        <div class="info-box" id="reportRole"></div>
-
-        <label>Number</label>
-        <div class="info-box" id="reportPhone"></div>
-
-        <label>ID Number</label>
-        <div class="info-box" id="reportId"></div>
-
-        <label>Hierarchy / কার আন্ডারে আছে</label>
-
-        <div class="hierarchy-tags" id="reportHierarchy"></div>
-
-        <!-- UPPER PANEL -->
-
-        <div class="upper-panel-title">
-            ⬆️ Upper Panel / Report To
-        </div>
-
+        <div class="upper-panel-title">⬆️ Upper Panel / Report To</div>
         <div class="upper-panel-list" id="reportUpperPanels">
-            <div class="no-upper-panel">
-                Upper Panel খোঁজা হচ্ছে...
-            </div>
+            <div class="no-upper-panel">Upper Panel খোঁজা হচ্ছে...</div>
         </div>
 
-        <a id="reportWa" href="#" target="_blank" class="report-wa-btn">
-            📱 Whatsapp এ মেসেজ করুন
-        </a>
-
+        <a id="reportWa" href="#" target="_blank" class="report-wa-btn">📱 Whatsapp এ মেসেজ করুন</a>
     </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-
 <script>
-
 const firebaseConfig = {
     apiKey: "AIzaSyAwTPtmSGvThVxDM7uc-ey-SjD4500KJeI",
     authDomain: "play25agent.firebaseapp.com",
     databaseURL: "https://play25agent-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "play25agent"
 };
-
 firebase.initializeApp(firebaseConfig);
-
 const db = firebase.database();
-
 let allAgentsData = {};
 
-let fileName = window.location.pathname
-    .split("/")
-    .pop()
-    .replace('.html','');
-
-let currentRole = fileName == '' ? 'index' : fileName;
-
+let fileName = window.location.pathname.split("/").pop().replace('.html','');
+let currentRole = fileName == ''? 'index' : fileName;
 const roleNames = {
     'index':'ALL AGENT LIST',
     'siteowner':'SITE OWNER LIST',
@@ -733,321 +629,110 @@ const roleNames = {
     'super':'SUPER LIST',
     'master':'MASTER LIST'
 };
+document.getElementById('roleTitle').innerText = roleNames[currentRole] || 'AGENT LIST';
+document.querySelectorAll('.menu a').forEach(a => {if(a.getAttribute('href').includes(currentRole)){a.classList.add('active');}});
 
-document.getElementById('roleTitle').innerText =
-    roleNames[currentRole] || 'AGENT LIST';
-
-document.querySelectorAll('.menu a').forEach(a => {
-
-    if(a.getAttribute('href').includes(currentRole)){
-        a.classList.add('active');
-    }
-
-});
-
-function openSearch(){
-    document.getElementById('searchPopup').style.display='flex';
-}
-
-function closeSearch(){
-    document.getElementById('searchPopup').style.display='none';
-}
-
-function openSupport(){
-    document.getElementById('supportPopup').style.display='flex';
-}
-
-function closeSupport(){
-    document.getElementById('supportPopup').style.display='none';
-}
-
-function closeView(){
-    document.getElementById('viewPopup').style.display='none';
-}
-
-function closeReport(){
-    document.getElementById('reportPopup').style.display='none';
-}
+function openSearch(){document.getElementById('searchPopup').style.display='flex';}
+function closeSearch(){document.getElementById('searchPopup').style.display='none';}
+function openSupport(){document.getElementById('supportPopup').style.display='flex';}
+function closeSupport(){document.getElementById('supportPopup').style.display='none';}
+function closeView(){document.getElementById('viewPopup').style.display='none';}
+function closeReport(){document.getElementById('reportPopup').style.display='none';}
 
 /* WHATSAPP LINK */
-
 function getWaLink(num){
-
     if(!num) return '';
-
     let clean = String(num).replace(/[^0-9]/g,'');
-
     return `https://wa.me/${clean}`;
 }
 
-/* =========================
-   FIND AGENT
-   ========================= */
-
+/* FIND AGENT */
 function findAgentByValue(value){
-
-    if(value === undefined || value === null || value === '')
-        return null;
-
+    if(value === undefined || value === null || value === '') return null;
     let searchValue = String(value).trim().toLowerCase();
-
     for(let key in allAgentsData){
-
         let a = allAgentsData[key] || {};
-
-        let values = [
-            key,
-            a.id,
-            a.name,
-            a.serial,
-            a.phone,
-            a.phone2,
-            a.parent,
-            a.parentId,
-            a.parentID,
-            a.parentSerial,
-            a.parentName
-        ];
-
+        let values = [key,a.id,a.name,a.serial,a.phone,a.phone2,a.parent,a.parentId,a.parentID,a.parentSerial,a.parentName];
         for(let v of values){
-
-            if(
-                v !== undefined &&
-                v !== null &&
-                String(v).trim().toLowerCase() === searchValue
-            ){
-                return {
-                    key:key,
-                    agent:a
-                };
+            if(v!== undefined && v!== null && String(v).trim().toLowerCase() === searchValue){
+                return {key:key,agent:a};
             }
         }
     }
-
     return null;
 }
 
-/* =========================
-   GET PARENT VALUE
-   ========================= */
-
+/* GET PARENT VALUE */
 function getParentValue(agent){
-
     if(!agent) return null;
-
-    /*
-       Firebase-এ Parent যেকোনো একটি
-       নামে থাকলে সেখান থেকে নেওয়া হবে।
-    */
-
-    return agent.parent ||
-           agent.parentId ||
-           agent.parentID ||
-           agent.parentKey ||
-           agent.parentSerial ||
-           agent.parentName ||
-           agent.upline ||
-           agent.uplineId ||
-           agent.upper ||
-           agent.upperId ||
-           null;
+    return agent.parent || agent.parentId || agent.parentID || agent.parentKey || agent.parentSerial || agent.parentName || agent.upline || agent.uplineId || agent.upper || agent.upperId || null;
 }
 
-/* =========================
-   GET ALL UPPER PANELS
-   ========================= */
-
+/* GET ALL UPPER PANELS */
 function getUpperPanels(agentKey, agent){
-
     let result = [];
     let visited = {};
-
     let currentAgent = agent;
     let currentKey = agentKey;
-
-    /*
-       Direct Parent থেকে শুরু করে
-       উপরের সব Parent বের করা হবে।
-    */
-
     for(let i = 0; i < 20; i++){
-
-        if(!currentAgent)
-            break;
-
+        if(!currentAgent) break;
         let parentValue = getParentValue(currentAgent);
-
-        if(
-            parentValue === undefined ||
-            parentValue === null ||
-            String(parentValue).trim() === ''
-        ){
-            break;
-        }
-
+        if(parentValue === undefined || parentValue === null || String(parentValue).trim() === ''){break;}
         let parentResult = findAgentByValue(parentValue);
-
-        if(!parentResult){
-
-            /*
-              parent value না মিললে
-              parentParent দিয়েও চেষ্টা
-              বন্ধ করা হবে।
-            */
-
-            break;
-        }
-
+        if(!parentResult){break;}
         let parentKey = parentResult.key;
         let parentAgent = parentResult.agent;
-
-        /*
-          একই Agent যেন বারবার না আসে
-        */
-
-        if(visited[parentKey])
-            break;
-
+        if(visited[parentKey]) break;
         visited[parentKey] = true;
-
-        /*
-          Current Agent নিজে যেন Upper Panel
-          হিসেবে না আসে
-        */
-
-        if(parentKey !== currentKey){
-
-            result.push({
-                key:parentKey,
-                agent:parentAgent
-            });
+        if(parentKey!== currentKey){
+            result.push({key:parentKey,agent:parentAgent});
         }
-
         currentKey = parentKey;
         currentAgent = parentAgent;
     }
-
-    /*
-      যদি parent chain থেকে না পাওয়া যায়,
-      পুরোনো parentParent field থেকেও
-      অতিরিক্ত Upper Panel খোঁজা হবে।
-    */
-
-    let extraValues = [
-        agent.parentParent,
-        agent.upperParent,
-        agent.upperParentId,
-        agent.parentParentId,
-        agent.parentParentSerial
-    ];
-
+    let extraValues = [agent.parentParent,agent.upperParent,agent.upperParentId,agent.parentParentId,agent.parentParentSerial];
     for(let value of extraValues){
-
-        if(
-            value === undefined ||
-            value === null ||
-            String(value).trim() === ''
-        )
-            continue;
-
+        if(value === undefined || value === null || String(value).trim() === '') continue;
         let found = findAgentByValue(value);
-
-        if(
-            found &&
-            found.key !== agentKey &&
-            !visited[found.key]
-        ){
-
+        if(found && found.key!== agentKey &&!visited[found.key]){
             visited[found.key] = true;
-
-            result.push({
-                key:found.key,
-                agent:found.agent
-            });
+            result.push({key:found.key,agent:found.agent});
         }
     }
-
     return result;
 }
 
-/* =========================
-   HIERARCHY
-   ========================= */
-
+/* HIERARCHY */
 function getHierarchy(agent){
-
     let tags = '';
-
-    if(agent.parent)
-        tags += `<span class="tag">Direct: ${agent.parent}</span>`;
-
-    if(agent.parentParent)
-        tags += `<span class="tag">Upper: ${agent.parentParent}</span>`;
-
-    if(agent.parentSerial)
-        tags += `<span class="tag">${agent.parentSerial}</span>`;
-
-    if(agent.role != 'Site Owner')
-        tags += `<span class="tag">Level: ${agent.role}</span>`;
-
-    if(!agent.parent)
-        tags += `<span class="tag">Site Owner</span>`;
-
+    if(agent.parent) tags += `<span class="tag">Direct: ${agent.parent}</span>`;
+    if(agent.parentParent) tags += `<span class="tag">Upper: ${agent.parentParent}</span>`;
+    if(agent.parentSerial) tags += `<span class="tag">${agent.parentSerial}</span>`;
+    if(agent.role!= 'Site Owner') tags += `<span class="tag">Level: ${agent.role}</span>`;
+    if(!agent.parent) tags += `<span class="tag">Site Owner</span>`;
     return tags || '<span class="tag">No Parent</span>';
 }
 
-/* =========================
-   VIEW
-   ========================= */
-
+/* VIEW */
 function viewAgent(key){
-
     let a = allAgentsData[key];
-
     if(!a) return;
-
-    document.getElementById('viewName').innerText =
-        a.name || 'N/A';
-
-    document.getElementById('viewRole').innerText =
-        a.role || 'N/A';
-
-    document.getElementById('viewPhone').innerText =
-        a.phone || 'N/A';
-
-    document.getElementById('viewId').innerText =
-        a.id || 'N/A';
-
-    document.getElementById('viewSerial').innerText =
-        a.serial || '-';
-
-    document.getElementById('viewWa').href =
-        getWaLink(a.phone);
-
-    document.getElementById('viewHierarchy').innerHTML =
-        getHierarchy(a);
-
+    document.getElementById('viewName').innerText = a.name || 'N/A';
+    document.getElementById('viewRole').innerText = a.role || 'N/A';
+    document.getElementById('viewPhone').innerText = a.phone || 'N/A';
+    document.getElementById('viewId').innerText = a.id || 'N/A';
+    document.getElementById('viewSerial').innerText = a.serial || '-';
+    document.getElementById('viewWa').href = getWaLink(a.phone);
+    document.getElementById('viewHierarchy').innerHTML = getHierarchy(a);
     document.getElementById('viewPopup').style.display='flex';
 }
 
-/* =========================
-   REPORT MESSAGE
-   ========================= */
-
+/* REPORT MESSAGE */
 function makeReportMessage(reportedAgent, targetAgent){
-
-    let reportedName =
-        reportedAgent.name || 'Agent';
-
-    let reportedRole =
-        reportedAgent.role || '';
-
-    let reportedId =
-        reportedAgent.id || '';
-
-    let targetName =
-        targetAgent.name || 'Admin';
-
+    let reportedName = reportedAgent.name || 'Agent';
+    let reportedRole = reportedAgent.role || '';
+    let reportedId = reportedAgent.id || '';
+    let targetName = targetAgent.name || 'Admin';
     return encodeURIComponent(
         `Assalamu Alaikum ${targetName},\n\n` +
         `আমি একজন Agent সম্পর্কে Report করতে চাই।\n\n` +
@@ -1059,413 +744,131 @@ function makeReportMessage(reportedAgent, targetAgent){
     );
 }
 
-/* =========================
-   REPORT TO UPPER PANEL
-   ========================= */
-
+/* REPORT TO UPPER PANEL */
 function reportToUpperPanel(upperKey, reportedKey){
-
     let upperAgent = allAgentsData[upperKey];
     let reportedAgent = allAgentsData[reportedKey];
-
-    if(!upperAgent || !reportedAgent)
-        return;
-
+    if(!upperAgent ||!reportedAgent) return;
     let phone = upperAgent.phone || upperAgent.phone2;
-
     if(!phone){
-
-        alert(
-            `${upperAgent.name || upperAgent.role || 'Upper Panel'} এর WhatsApp Number পাওয়া যায়নি।`
-        );
-
+        alert(`${upperAgent.name || upperAgent.role || 'Upper Panel'} এর WhatsApp Number পাওয়া যায়নি।`);
         return;
     }
-
-    let cleanPhone =
-        String(phone).replace(/[^0-9]/g,'');
-
-    let message =
-        makeReportMessage(
-            reportedAgent,
-            upperAgent
-        );
-
-    let url =
-        `https://wa.me/${cleanPhone}?text=${message}`;
-
+    let cleanPhone = String(phone).replace(/[^0-9]/g,'');
+    let message = makeReportMessage(reportedAgent, upperAgent);
+    let url = `https://wa.me/${cleanPhone}?text=${message}`;
     window.open(url,'_blank');
 }
 
-/* =========================
-   CREATE UPPER PANEL LIST
-   ========================= */
-
+/* CREATE UPPER PANEL LIST */
 function renderUpperPanels(reportedKey){
-
-    let reportedAgent =
-        allAgentsData[reportedKey];
-
-    let container =
-        document.getElementById('reportUpperPanels');
-
+    let reportedAgent = allAgentsData[reportedKey];
+    let container = document.getElementById('reportUpperPanels');
     if(!reportedAgent){
-
-        container.innerHTML =
-            `<div class="no-upper-panel">
-                Agent তথ্য পাওয়া যায়নি
-            </div>`;
-
+        container.innerHTML = `<div class="no-upper-panel">Agent তথ্য পাওয়া যায়নি</div>`;
         return;
     }
-
-    let upperPanels =
-        getUpperPanels(
-            reportedKey,
-            reportedAgent
-        );
-
+    let upperPanels = getUpperPanels(reportedKey, reportedAgent);
     if(!upperPanels.length){
-
-        container.innerHTML =
-            `<div class="no-upper-panel">
-                এই Agent-এর কোনো Upper Panel পাওয়া যায়নি
-            </div>`;
-
+        container.innerHTML = `<div class="no-upper-panel">এই Agent-এর কোনো Upper Panel পাওয়া যায়নি</div>`;
         return;
     }
-
     let html = '';
-
     upperPanels.forEach(item => {
-
         let a = item.agent;
-
-        let role =
-            a.role || 'Upper Panel';
-
-        let name =
-            a.name || role;
-
-        let id =
-            a.id ? `ID ${a.id}` : '';
-
+        let role = a.role || 'Upper Panel';
+        let name = a.name || role;
+        let id = a.id? `ID ${a.id}` : '';
         html += `
         <div class="upper-panel-item">
-
             <div class="upper-panel-info">
-
-                <span class="upper-panel-name">
-                    ${name}
-                </span>
-
-                <span class="upper-panel-role">
-                    ${role}
-                </span>
-
-                <span class="upper-panel-id">
-                    ${id}
-                </span>
-
+                <span class="upper-panel-name">${name}</span>
+                <span class="upper-panel-role">${role}</span>
+                <span class="upper-panel-id">${id}</span>
             </div>
-
-            <button
-                class="report-to-btn"
-                onclick="reportToUpperPanel('${item.key}','${reportedKey}')"
-            >
-                Report To ${role}
-            </button>
-
+            <button class="report-to-btn" onclick="reportToUpperPanel('${item.key}','${reportedKey}')">Report To ${role}</button>
         </div>`;
     });
-
     container.innerHTML = html;
 }
 
-/* =========================
-   REPORT
-   ========================= */
-
+/* REPORT */
 function reportAgent(key){
-
     let a = allAgentsData[key];
-
     if(!a) return;
-
-    document.getElementById('reportName').innerText =
-        a.name || 'N/A';
-
-    document.getElementById('reportRole').innerText =
-        a.role || 'N/A';
-
-    document.getElementById('reportPhone').innerText =
-        a.phone || 'N/A';
-
-    document.getElementById('reportId').innerText =
-        a.id || 'N/A';
-
-    document.getElementById('reportHierarchy').innerHTML =
-        getHierarchy(a);
-
-    document.getElementById('reportWa').href =
-        getWaLink(a.phone);
-
-    /*
-      Report popup খোলার সময়
-      ওই Agent-এর সব Upper Panel
-      নতুন করে Load হবে।
-    */
-
+    document.getElementById('reportName').innerText = a.name || 'N/A';
+    document.getElementById('reportRole').innerText = a.role || 'N/A';
+    document.getElementById('reportPhone').innerText = a.phone || 'N/A';
+    document.getElementById('reportId').innerText = a.id || 'N/A';
+    document.getElementById('reportHierarchy').innerHTML = getHierarchy(a);
+    document.getElementById('reportWa').href = getWaLink(a.phone);
     renderUpperPanels(key);
-
     document.getElementById('reportPopup').style.display='flex';
 }
 
-/* =========================
-   AGENTS LOAD
-   ========================= */
-
+/* AGENTS LOAD */
 db.ref('agents').on('value', snap => {
-
     allAgentsData = snap.val() || {};
-
     renderAgents(allAgentsData);
-
 });
 
-/* =========================
-   RENDER AGENTS
-   ========================= */
-
+/* RENDER AGENTS */
 function renderAgents(data){
-
     let html = '';
-
     for(let key in data){
-
         let a = data[key];
-
-        if(
-            currentRole == 'index' ||
-            a.role.toLowerCase().replace(' ','') == currentRole
-        ){
-
-            let appLink = `
-            <a
-                href="${getWaLink(a.phone)}"
-                target="_blank"
-                class="btn-wa-app"
-                title="WhatsApp"
-            >
-
-                <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    aria-label="WhatsApp"
-                >
-
-                    <path d="M20.52 3.48A11.91 11.91 0 0 0 12.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L.02 24l6.24-1.64a11.9 11.9 0 0 0 5.78 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.18-3.47-8.42zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.7.97.99-3.61-.23-.37a9.91 9.91 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.46-4.45 9.91-9.91 9.91zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.48-.88-.78-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.25-.2-.54-.35z"/>
-
-                </svg>
-
-            </a>`;
-
-            let fbLink =
-                `<span class="btn-none">--</span>`;
-
+        if(currentRole == 'index' || a.role.toLowerCase().replace(' ','') == currentRole){
+            let appLink = `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-app" title="WhatsApp"><svg role="img" viewBox="0 0 24 24" aria-label="WhatsApp"><path d="M20.52 3.48A11.91 11.91 0 0 0 12.04 0C5.46 0.1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L.02 24l6.24-1.64a11.9 11.9 0 0 0 5.78 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.18-3.47-8.42zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.7.97.99-3.61-.23-.37a9.91 9.91 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.46-4.45 9.91-9.91 9.91zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.48-.88-.78-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.25-.2-.54-.35z"/></svg></a>`;
+            let fbLink = `<span class="btn-none">--</span>`;
             let phoneBtns = '';
-
             if(a.phone){
-
-                phoneBtns += `
-                <a
-                    href="${getWaLink(a.phone)}"
-                    target="_blank"
-                    class="btn-wa-wrap"
-                >
-
-                    <div class="btn-wa-num">
-                        ${a.phone}
-                    </div>
-
-                    <div class="btn-wa">
-                        Whatsapp
-                    </div>
-
-                </a>`;
+                phoneBtns += `<a href="${getWaLink(a.phone)}" target="_blank" class="btn-wa-wrap"><div class="btn-wa-num">${a.phone}</div><div class="btn-wa">Whatsapp</div></a>`;
             }
-
             if(a.phone2){
-
-                phoneBtns += `
-                <a
-                    href="${getWaLink(a.phone2)}"
-                    target="_blank"
-                    class="btn-wa-wrap"
-                >
-
-                    <div class="btn-wa-num">
-                        ${a.phone2}
-                    </div>
-
-                    <div class="btn-wa">
-                        Whatsapp
-                    </div>
-
-                </a>`;
+                phoneBtns += `<a href="${getWaLink(a.phone2)}" target="_blank" class="btn-wa-wrap"><div class="btn-wa-num">${a.phone2}</div><div class="btn-wa">Whatsapp</div></a>`;
             }
-
-            html += `
-            <tr>
-
-                <td class="name-col">
-                    <div class="avatar"></div>
-                    <b>${a.name}</b>
-                    <small>${a.role}</small>
-                </td>
-
-                <td>
-                    <div class="id-box">
-                        ID ${a.id}
-                    </div>
-                </td>
-
-                <td class="stars">
-                    ★★★
-                </td>
-
-                <td>
-                    ${appLink}
-                </td>
-
-                <td>
-                    ${fbLink}
-                </td>
-
-                <td>
-                    ${phoneBtns || '--'}
-                </td>
-
-                <td>
-                    <a
-                        onclick="viewAgent('${key}')"
-                        class="btn-view"
-                    >
-                        👁️
-                    </a>
-                </td>
-
-                <td>
-                    <a
-                        onclick="reportAgent('${key}')"
-                        class="btn-report"
-                    >
-                        Report
-                    </a>
-                </td>
-
+            html += `<tr>
+                <td class="name-col"><div class="avatar"></div><b>${a.name}</b><small>${a.role}</small></td>
+                <td><div class="id-box">ID ${a.id}</div></td>
+                <td class="stars">★★★</td>
+                <td>${appLink}</td>
+                <td>${fbLink}</td>
+                <td>${phoneBtns || '--'}</td>
+                <td><a onclick="viewAgent('${key}')" class="btn-view">👁️</a></td>
+                <td><a onclick="reportAgent('${key}')" class="btn-report">Report</a></td>
             </tr>`;
         }
     }
-
-    document.getElementById('agentList').innerHTML =
-        html ||
-        '<tr><td colspan="8">কোন Agent নেই</td></tr>';
+    document.getElementById('agentList').innerHTML = html || '<tr><td colspan="8">কোন Agent নেই</td></tr>';
 }
 
-/* =========================
-   SEARCH
-   ========================= */
-
+/* SEARCH */
 function doSearch(){
-
-    let type =
-        document.getElementById('searchType').value;
-
-    let id =
-        document.getElementById('searchId').value.trim();
-
-    let phone =
-        document.getElementById('searchPhone').value.trim();
-
+    let type = document.getElementById('searchType').value;
+    let id = document.getElementById('searchId').value.trim();
+    let phone = document.getElementById('searchPhone').value.trim();
     let result = {};
-
     for(let key in allAgentsData){
-
         let a = allAgentsData[key];
-
         let match = true;
-
-        if(type != 'all' && a.role != type)
-            match = false;
-
-        if(
-            id != '' &&
-            !String(a.id || '').includes(id)
-        )
-            match = false;
-
-        if(
-            phone != '' &&
-            !String(a.phone || '').includes(phone) &&
-            !(a.phone2 &&
-              String(a.phone2).includes(phone))
-        )
-            match = false;
-
-        if(match)
-            result[key] = a;
+        if(type!= 'all' && a.role!= type) match = false;
+        if(id!= '' &&!String(a.id || '').includes(id)) match = false;
+        if(phone!= '' &&!String(a.phone || '').includes(phone) &&!(a.phone2 && String(a.phone2).includes(phone))) match = false;
+        if(match) result[key] = a;
     }
-
     renderAgents(result);
-
     closeSearch();
 }
 
-/* =========================
-   SUPPORT LOAD
-   ========================= */
-
+/* SUPPORT LOAD */
 db.ref('support').on('value', snap => {
-
     let html = '';
-
     snap.forEach(child => {
-
         let s = child.val();
-
-        html += `
-        <div class="support-item">
-
-            <div class="icon">
-                🎧
-            </div>
-
-            <div class="info">
-
-                <b>${s.name}</b>
-                <br>
-                <small>${s.phone}</small>
-
-            </div>
-
-            <a
-                href="${getWaLink(s.phone)}"
-                class="btn-msg"
-                target="_blank"
-            >
-                Message
-            </a>
-
-        </div>`;
+        html += `<div class="support-item"><div class="icon">🎧</div><div class="info"><b>${s.name}</b><br><small>${s.phone}</small></div><a href="${getWaLink(s.phone)}" class="btn-msg" target="_blank">Message</a></div>`;
     });
-
-    document.getElementById('supportList').innerHTML =
-        html || 'কোন Support নেই';
-
+    document.getElementById('supportList').innerHTML = html || 'কোন Support নেই';
 });
-
 </script>
-
 </body>
 </html>
